@@ -1,10 +1,17 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738866088
+::res://::1738867806
 icon.svg::CompressedTexture2D::8297565175563010850::1738864476::1738864476::1::::<><>::
-player.tscn::PackedScene::-1::1738866088::0::1::::<><>::
+player.tscn::PackedScene::4482608070579377640::1738866088::0::1::::<><>::res://PlayerMovement.gd<>res://PlayerCamera.gd
 PlayerCamera.gd::GDScript::-1::1738866088::0::1::::<>Camera3D<>::
 PlayerMovement.gd::GDScript::-1::1738866088::0::1::::<>CharacterBody3D<>::
 README.md::TextFile::-1::1738864476::0::1::::<><>::
-world.tscn::PackedScene::-1::1738866088::0::1::::<><>::
-::res://Inventory/::1738866088
+world.tscn::PackedScene::7629774297141392054::1738866088::0::1::::<><>::uid://b44n5un2mgd3u::::res://player.tscn
+::res://Assets/::1738867806
+::res://Assets/UI Assets/::1738867806
+inventory_texture.png::CompressedTexture2D::5925552566772062451::1738867806::1738867873::1::::<><>::
+test1x2_texture.png::CompressedTexture2D::9156114276161189016::1738867806::1738867873::1::::<><>::
+::res://Fire/::1738867609
+Fire.tscn::PackedScene::8823415859765794271::1738867609::0::1::::<><>::
+damage volume.tscn::PackedScene::3170304035126150681::1738867609::0::1::::<><>::
+::res://Inventory/::1738867806
 inventory.tscn::PackedScene::549981864441797872::1738866088::0::1::::<><>::
