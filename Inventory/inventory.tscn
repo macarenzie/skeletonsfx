@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://h3oed28gj68k"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 400.0
+color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 299.0
+offset_bottom = 400.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
