@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://h3oed28gj68k"]
+[gd_scene load_steps=2 format=3 uid="uid://h3oed28gj68k"]
+
+[ext_resource type="Texture2D" uid="uid://cqom8qybks2m6" path="res://Assets/UI Assets/inventory_texture.png" id="1_l4f7j"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -37,3 +39,12 @@ size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_l4f7j")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer/TextureRect"]
+layout_mode = 2
+offset_top = 4.0
+offset_bottom = 4.0
