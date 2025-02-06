@@ -1,4 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738863139
-icon.svg::CompressedTexture2D::8297565175563010850::1738694227::1738694590::1::::<><>::
-README.md::TextFile::-1::1738694621::0::1::::<><>::
+::res://::1738866088
+icon.svg::CompressedTexture2D::8297565175563010850::1738864476::1738864476::1::::<><>::
+player.tscn::PackedScene::-1::1738866088::0::1::::<><>::
+PlayerCamera.gd::GDScript::-1::1738866088::0::1::::<>Camera3D<>::
+PlayerMovement.gd::GDScript::-1::1738866088::0::1::::<>CharacterBody3D<>::
+README.md::TextFile::-1::1738864476::0::1::::<><>::
+world.tscn::PackedScene::-1::1738866088::0::1::::<><>::
+::res://Inventory/::1738866088
+inventory.tscn::PackedScene::549981864441797872::1738866088::0::1::::<><>::
