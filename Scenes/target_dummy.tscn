@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cybr83rnnlyul"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a85y"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8nhmf"]
+material = SubResource("StandardMaterial3D_0a85y")
+height = 1.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ol6uu"]
+height = 1.6
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wbelt"]
+top_radius = 0.3
+bottom_radius = 0.4
+height = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p8e7f"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.7
+
+[node name="TargetDummy" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+mesh = SubResource("CapsuleMesh_8nhmf")
+
+[node name="Hurtbox" type="Area3D" parent="Body"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Hurtbox"]
+shape = SubResource("CapsuleShape3D_ol6uu")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("CylinderMesh_wbelt")
+
+[node name="Stand" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+mesh = SubResource("CylinderMesh_p8e7f")

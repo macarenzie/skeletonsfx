@@ -1,7 +1,7 @@
 extends Camera3D
 
-@export var SENSITIVITY_X = 0.02
-@export var SENSITIVITY_Y = 0.02
+@export var SENSITIVITY_X : float = 0.02
+@export var SENSITIVITY_Y : float = 0.02
 
 @onready var player = $"../.."
 @onready var camera = %PlayerCamera
