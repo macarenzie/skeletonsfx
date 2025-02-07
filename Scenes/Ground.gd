@@ -1,5 +1,5 @@
 extends MeshInstance3D
-@export var material: String = "stone"
+@export var material: String = "wood"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
