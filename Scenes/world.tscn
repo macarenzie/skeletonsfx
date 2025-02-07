@@ -1,7 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=19 format=3 uid="uid://dgx6jd0rfjota"]
 
+[ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
+[ext_resource type="Script" path="res://Scenes/Box.gd" id="2_1sjxc"]
 [ext_resource type="PackedScene" uid="uid://cybr83rnnlyul" path="res://Scenes/target_dummy.tscn" id="2_2re6m"]
+[ext_resource type="PackedScene" uid="uid://dxyemt3e2j4sp" path="res://Fire/Fire.tscn" id="3_mhhwa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -56,6 +59,7 @@ shadow_enabled = true
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_qx0vw")
+script = ExtResource("1_ff0u1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
 
@@ -67,6 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51751, 0.5, -3.98112)
 mesh = SubResource("BoxMesh_jsrsl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Box"]
+script = ExtResource("2_1sjxc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vtdv1")
@@ -143,3 +148,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0.72549, 0.72549, 1)
+
+[node name="Fire" parent="." instance=ExtResource("3_mhhwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49981, 1.56862, -4.1927)
