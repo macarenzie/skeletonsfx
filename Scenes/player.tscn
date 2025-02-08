@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=14 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
+[ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -19,12 +20,14 @@ top_radius = 0.15
 bottom_radius = 0.15
 height = 0.05
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkum0"]
+
 [sub_resource type="Animation" id="Animation_bam0r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponHolder/Weapon:position")
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHolder/Weapon:rotation")
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +51,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WeaponHolder:rotation")
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -64,7 +67,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponHolder/Weapon:rotation")
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +79,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHolder/Weapon:position")
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -88,7 +91,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WeaponHolder:rotation")
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -105,7 +108,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponHolder/Weapon:position")
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -117,7 +120,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHolder/Weapon:rotation")
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -125,6 +128,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(-0.106465, 0, 0), Vector3(-0.308923, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bd23k"]
@@ -141,31 +156,45 @@ script = ExtResource("1_4wc5k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ur0qq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlayerModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_vgxxl")
 
 [node name="PlayerHead" type="Node3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 fov = 90.0
 script = ExtResource("2_kcqsg")
 SENSITIVITY_X = 0.002
 SENSITIVITY_Y = 0.001
 
-[node name="WeaponHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
+collide_with_bodies = false
 
-[node name="Weapon" type="MeshInstance3D" parent="WeaponHolder"]
+[node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Weapon" type="MeshInstance3D" parent="PlayerHead/WeaponHolder"]
 transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
 mesh = SubResource("CapsuleMesh_hhpyp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponHolder/Weapon"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/WeaponHolder/Weapon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360777, 0)
 mesh = SubResource("CylinderMesh_5bv5e")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+monitoring = false
+script = ExtResource("4_hiqmd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_gkum0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

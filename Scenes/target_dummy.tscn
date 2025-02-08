@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cybr83rnnlyul"]
+[gd_scene load_steps=9 format=3 uid="uid://cybr83rnnlyul"]
+
+[ext_resource type="Script" path="res://Scripts/TargetDummy.gd" id="1_5uxeg"]
+[ext_resource type="Script" path="res://Scripts/Hittable.gd" id="1_amnkv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a85y"]
 albedo_color = Color(0, 1, 1, 1)
@@ -8,6 +11,9 @@ material = SubResource("StandardMaterial3D_0a85y")
 height = 1.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ol6uu"]
+height = 1.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_obv7l"]
 height = 1.6
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wbelt"]
@@ -21,16 +27,24 @@ bottom_radius = 0.1
 height = 0.7
 
 [node name="TargetDummy" type="Node3D"]
+script = ExtResource("1_5uxeg")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 mesh = SubResource("CapsuleMesh_8nhmf")
 
-[node name="Hurtbox" type="Area3D" parent="Body"]
+[node name="Hurtbox" type="Area3D" parent="Body" node_paths=PackedStringArray("combat_controller")]
 monitoring = false
+script = ExtResource("1_amnkv")
+combat_controller = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Hurtbox"]
 shape = SubResource("CapsuleShape3D_ol6uu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Body"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_obv7l")
 
 [node name="Base" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
