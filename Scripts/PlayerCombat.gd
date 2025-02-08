@@ -15,7 +15,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("attack"): 
 		attack()
 	pass
@@ -40,7 +40,7 @@ func attack_raycast():
 	#var raycast = RayCast3D.new()
 	pass
 
-func reset_animation():
+func reset_animation(_anim_name):
 	if anim_player.current_animation == "attack":
 		anim_player.play("idle")
 
