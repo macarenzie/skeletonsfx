@@ -36,6 +36,8 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_xfvv5")]
+collision_layer = 2
+collision_mask = 2
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
@@ -54,6 +56,8 @@ skeleton = NodePath("../..")
 script = ExtResource("1_ff0u1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Ground"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ground/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5j4yk")

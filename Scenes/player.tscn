@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=15 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
 [ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
+[ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -207,6 +208,9 @@ autoplay = "idle"
 script = ExtResource("3_lv7ac")
 attack_delay = 0.35
 attack_speed = 0.4
+
+[node name="InnerFire" type="Node" parent="."]
+script = ExtResource("4_yqfp7")
 
 [node name="Crosshair" type="CanvasLayer" parent="."]
 

@@ -31,6 +31,12 @@ func attack():
 	Scheduler.schedule(attack_raycast, attack_delay)
 
 	anim_player.play("attack")
+	
+	var new_fire = load("res://Fire/Fire.tscn").instantiate()
+	new_fire.global_position = get_parent().position;
+	get_parent().get_parent().add_child(new_fire)
+	var innerfire = get_parent().get_child(6)
+	innerfire.innerFire - 30.0
 
 func reset_attack():
 	attacking = false

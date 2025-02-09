@@ -41,9 +41,9 @@ combat_controller = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Hurtbox"]
 shape = SubResource("CapsuleShape3D_ol6uu")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Body"]
+[node name="BodyCollider" type="StaticBody3D" parent="Body"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/BodyCollider"]
 shape = SubResource("CapsuleShape3D_obv7l")
 
 [node name="Base" type="MeshInstance3D" parent="."]
