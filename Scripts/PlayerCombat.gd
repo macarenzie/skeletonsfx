@@ -7,6 +7,7 @@ extends Node
 @export var attack_distance : float = 2.0
 @export var attack_delay : float = 0.4
 @export var attack_speed : float = 1.0
+@export var attack_damage : int = 10
 @onready var attack_ray : RayCast3D = %RayCast3D
 var attacking : bool = false
 var ready_to_attack : bool = true
@@ -49,7 +50,7 @@ func attack_raycast():
 		return
 	var object_hit : Hittable = attack_ray.get_collider()
 	print("I hit "+object_hit.to_string())
-	object_hit.hit()
+	object_hit.hit(attack_damage)
 
 func reset_animation(_anim_name):
 	if _anim_name == "attack":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=16 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -9,6 +9,9 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xgvwq"]
+height = 0.1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hhpyp"]
 radius = 0.05
@@ -177,6 +180,13 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="ShieldHolder" type="Node3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.62472, 0, -0.355409)
+mesh = SubResource("CylinderMesh_xgvwq")
 
 [node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
