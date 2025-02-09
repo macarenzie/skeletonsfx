@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=13 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
+[ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -18,35 +19,6 @@ rings = 1
 top_radius = 0.15
 bottom_radius = 0.15
 height = 0.05
-
-[sub_resource type="Animation" id="Animation_ob7em"]
-resource_name = "idle"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponHolder/Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(0.486111, 0.415537, -0.682223), Vector3(0.48611, 0.504951, -0.765582)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHolder/Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(-0.106465, 0, 0), Vector3(-0.308923, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_bam0r"]
 length = 0.001
@@ -127,6 +99,35 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, -0.404916, 0), Vector3(0, 0, 0), Vector3(0, 1.82387, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ob7em"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponHolder/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0.486111, 0.415537, -0.682223), Vector3(0.48611, 0.504951, -0.765582)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponHolder/Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-0.106465, 0, 0), Vector3(-0.308923, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bd23k"]
 _data = {
 "RESET": SubResource("Animation_bam0r"),
@@ -178,3 +179,6 @@ autoplay = "idle"
 script = ExtResource("3_lv7ac")
 attack_delay = 0.35
 attack_speed = 0.4
+
+[node name="InnerFire" type="Node" parent="."]
+script = ExtResource("4_yqfp7")

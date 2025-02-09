@@ -28,7 +28,7 @@ extends RigidBody3D
 @export var material_multipliers: Dictionary = {
 	"wood": {"duplicate": 6.0, "despawn": 0.4, "radius": 1.2},  # Flammable!
 	"grass": {"duplicate": 6.0, "despawn": 0.3, "radius": 1.5},
-	"stone": {"duplicate": 0.00000001, "despawn": 0.1, "radius": 0.125}  # Fire hates stone
+	"stone": {"duplicate": 1.0, "despawn": 2.0, "radius": 0.125}  # Fire hates stone
 }
 var _current_material: String = "stone"
 @export var damage_per_second: int = 30  # Damage as an integer per second
@@ -36,23 +36,34 @@ var overlapping_bodies: Array = []
 var damage_accumulator: float = 0.0  # Track fractional damage
 
 func _ready():
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
+	$Area3D.body_entered.connect(_on_body_entered)
+	$Area3D.body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node3D):
 	if body.has_method("take_damage"):
 		overlapping_bodies.append(body)
-
-func _on_body_exited(body: Node3D):
-	if body in overlapping_bodies:
-		overlapping_bodies.erase(body)
 	if body.has_method("get_material"):
 		_current_material = body.get_material()
+	if(body.has_node("InnerFire")):
+		var innerFire = body.get_child(6)
+		innerFire.switch()
+		print("swithing!!!!!!!!!!!!")
+
+func _on_body_exited(body: Node3D):
+	if(body.has_node("InnerFire")):
+		var innerFire = body.get_child(6)
+		innerFire.switch()
+		print("swithing!!!!!!!!!!!!")
+	if body in overlapping_bodies:
+		overlapping_bodies.erase(body)
+		if overlapping_bodies.size() <= 0:
+			_current_material = "stone"
+
 
 func _process(delta: float):
 	# Accumulate fractional damage
 	damage_accumulator += damage_per_second * delta
-
+	#print(_current_material);
 	# Apply whole-number damage once accumulated
 	if damage_accumulator >= 1.0:
 		for body in overlapping_bodies:
