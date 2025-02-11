@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cybr83rnnlyul"]
+[gd_scene load_steps=7 format=3 uid="uid://cybr83rnnlyul"]
+
+[ext_resource type="Script" path="res://Scenes/dummy.gd" id="1_iml66"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a85y"]
 albedo_color = Color(0, 1, 1, 1)
@@ -28,6 +30,7 @@ mesh = SubResource("CapsuleMesh_8nhmf")
 
 [node name="Hurtbox" type="Area3D" parent="Body"]
 monitoring = false
+script = ExtResource("1_iml66")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Hurtbox"]
 shape = SubResource("CapsuleShape3D_ol6uu")

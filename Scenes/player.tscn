@@ -196,6 +196,7 @@ script = ExtResource("4_yqfp7")
 
 [node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
 process_mode = 3
+
 [node name="Crosshair" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Crosshair"]
