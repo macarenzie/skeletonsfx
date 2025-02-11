@@ -12,6 +12,9 @@ height = 1.6
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ol6uu"]
 height = 1.6
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_obv7l"]
+height = 1.6
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_wbelt"]
 top_radius = 0.3
 bottom_radius = 0.4
@@ -23,17 +26,23 @@ bottom_radius = 0.1
 height = 0.7
 
 [node name="TargetDummy" type="Node3D"]
+script = ExtResource("1_5uxeg")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 mesh = SubResource("CapsuleMesh_8nhmf")
 
-[node name="Hurtbox" type="Area3D" parent="Body"]
+[node name="Hurtbox" type="Area3D" parent="Body" node_paths=PackedStringArray("combat_controller")]
 monitoring = false
 script = ExtResource("1_iml66")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Hurtbox"]
 shape = SubResource("CapsuleShape3D_ol6uu")
+
+[node name="BodyCollider" type="StaticBody3D" parent="Body"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/BodyCollider"]
+shape = SubResource("CapsuleShape3D_obv7l")
 
 [node name="Base" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)

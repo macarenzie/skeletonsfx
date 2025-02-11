@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxyemt3e2j4sp"]
+[gd_scene load_steps=6 format=3 uid="uid://dxyemt3e2j4sp"]
 
 [ext_resource type="Script" path="res://Fire/Fire.gd" id="1_n824t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aui2j"]
 size = Vector3(1, 1.96, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2li8"]
+albedo_color = Color(1, 0.501961, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_rkbin"]
+material = SubResource("StandardMaterial3D_m2li8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5u28p"]
 
