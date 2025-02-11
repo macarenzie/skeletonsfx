@@ -79,7 +79,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.785398, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -136,9 +136,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_unhpg"]
 resource_name = "block_active"
-
-[sub_resource type="Animation" id="Animation_h5lgl"]
-resource_name = "block_end"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -146,7 +144,35 @@ tracks/0/path = NodePath("PlayerHead/ShieldHolder:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.785398, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHead/ShieldHolder/Shield:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(-0.625, 0, -0.355), Vector3(-0.625, 0.1, -0.355)]
+}
+
+[sub_resource type="Animation" id="Animation_h5lgl"]
+resource_name = "block_end"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHead/ShieldHolder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(0, -0.785398, 0), Vector3(0, 0, 0)]
@@ -154,6 +180,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8wghb"]
 resource_name = "block_start"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -161,7 +188,7 @@ tracks/0/path = NodePath("PlayerHead/ShieldHolder:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.785398, 0)]
@@ -275,7 +302,7 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="ShieldHolder" type="Node3D" parent="PlayerHead"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Shield" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
 transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.625, 0, -0.355)

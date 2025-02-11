@@ -13,6 +13,8 @@ var attacking : bool = false
 var ready_to_attack : bool = true
 
 @export_category("Blocking")
+@export var block_startup : float = 1.0
+@export var block_endlag : float = 0.5
 var blocking : bool = false
 var ready_to_block : bool = true
 
@@ -22,11 +24,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_pressed("block"):
+	if Input.is_action_just_pressed("block"):
+		start_block()
+	elif Input.is_action_pressed("block"):
 		block()
 	elif Input.is_action_just_released("block"):
-		pass
-	if Input.is_action_pressed("attack"): 
+		end_block()
+	elif Input.is_action_pressed("attack"): 
 		attack()
 
 #functions for attacking
@@ -64,18 +68,33 @@ func attack_raycast():
 	print("I hit "+object_hit.to_string())
 	object_hit.hit(attack_damage)
 
-func block():
-	if not ready_to_block or attacking:
-		ready_to_attack = false
+func start_block():
+	if not ready_to_block and attacking:
 		return
-	pass
+	ready_to_attack = false
+	anim_player.play("block_start")
+	anim_player.queue("block_active")
 
+func block():
+	blocking = true
+	if anim_player.current_animation == "block_start":
+		return
+	anim_player.play("block_active")
+
+func end_block():
+	if not blocking:
+		return
+	blocking = false
+	Scheduler.schedule(reset_block, block_endlag)
+	anim_player.play("block_end")
+	pass
+	
 func reset_block():
 	blocking = false
 	ready_to_attack = true
-	#ready_to_block 
+	ready_to_block = true
 
-func reset_animation(_anim_name):
-	if _anim_name == "attack":
+func reset_animation(anim_name):
+	if anim_name == "attack" or anim_name == "block_end":
 		anim_player.play("idle")
 

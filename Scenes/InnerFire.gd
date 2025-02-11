@@ -18,5 +18,6 @@ func _physics_process(delta):
 			innerFire += 0.1
 	else:
 		if (innerFire <=0.0 ):
+			return
 			get_tree().reload_current_scene() # you died
 		innerFire -= .4

@@ -1,11 +1,13 @@
 extends MeshInstance3D
 
-func _on_animation_player_animation_changed(old_name, new_name):
-	if new_name == "block_start":
+@onready var anim_player = %AnimationPlayer
+
+func _process(delta):
+	if anim_player.current_animation == "block_start":
 		mesh.material.set_albedo(Color("green"))
-	elif new_name == "block_active":
+	elif anim_player.current_animation == "block_active":
 		mesh.material.set_albedo(Color("red"))
-	elif new_name == "block_end":
+	elif anim_player.current_animation == "block_end":
 		mesh.material.set_albedo(Color("blue"))
 	else:
 		mesh.material.set_albedo(Color("white"))
