@@ -12,12 +12,20 @@ extends Node
 var attacking : bool = false
 var ready_to_attack : bool = true
 
+@export_category("Blocking")
+var blocking : bool = false
+var ready_to_block : bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim_player.animation_finished.connect(reset_animation)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Input.is_action_pressed("block"):
+		block()
+	elif Input.is_action_just_released("block"):
+		pass
 	if Input.is_action_pressed("attack"): 
 		attack()
 
@@ -25,8 +33,9 @@ func _process(_delta):
 func attack():
 	if not ready_to_attack or attacking:
 		return
-	ready_to_attack = false;
-	attacking = true;
+	ready_to_attack = false
+	attacking = true
+	ready_to_block = false
 	
 	Scheduler.schedule(reset_attack, attack_speed)
 	Scheduler.schedule(attack_raycast, attack_delay)
@@ -34,7 +43,7 @@ func attack():
 	anim_player.play("attack")
 	
 	var new_fire = load("res://Fire/Fire.tscn").instantiate()
-	new_fire.global_position = get_parent().position;
+	new_fire.global_position = get_parent().position
 	get_parent().get_parent().add_child(new_fire)
 	var innerfire = get_parent().get_child(6)
 	innerfire.innerFire - 30.0
@@ -42,6 +51,7 @@ func attack():
 func reset_attack():
 	attacking = false
 	ready_to_attack = true
+	ready_to_block = true
 
 func attack_raycast():
 	attack_ray.target_position = Vector3(0,0,-attack_distance)
@@ -53,6 +63,17 @@ func attack_raycast():
 	var object_hit : Hittable = attack_ray.get_collider()
 	print("I hit "+object_hit.to_string())
 	object_hit.hit(attack_damage)
+
+func block():
+	if not ready_to_block or attacking:
+		ready_to_attack = false
+		return
+	pass
+
+func reset_block():
+	blocking = false
+	ready_to_attack = true
+	#ready_to_block 
 
 func reset_animation(_anim_name):
 	if _anim_name == "attack":

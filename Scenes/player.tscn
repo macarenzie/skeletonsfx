@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=22 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
+[ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
 [ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
@@ -11,7 +12,10 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq118"]
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_xgvwq"]
+material = SubResource("StandardMaterial3D_dq118")
 height = 0.1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hhpyp"]
@@ -64,6 +68,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerHead/ShieldHolder:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.785398, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_oa6n8"]
@@ -147,10 +163,34 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_8wghb"]
+resource_name = "block_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHead/ShieldHolder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.785398, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_unhpg"]
+resource_name = "block_active"
+
+[sub_resource type="Animation" id="Animation_h5lgl"]
+resource_name = "block_end"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bd23k"]
 _data = {
 "RESET": SubResource("Animation_bam0r"),
 "attack": SubResource("Animation_oa6n8"),
+"block_active": SubResource("Animation_unhpg"),
+"block_end": SubResource("Animation_h5lgl"),
+"block_start": SubResource("Animation_8wghb"),
 "idle": SubResource("Animation_ob7em")
 }
 
@@ -187,11 +227,12 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="ShieldHolder" type="Node3D" parent="PlayerHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, -0.5, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
+[node name="Shield" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
 transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.62472, 0, -0.355409)
 mesh = SubResource("CylinderMesh_xgvwq")
+script = ExtResource("3_bugux")
 
 [node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
 process_mode = 1
@@ -267,3 +308,5 @@ color = Color(0, 0.72549, 0.72549, 1)
 
 [node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
 process_mode = 3
+
+[connection signal="animation_changed" from="AnimationPlayer" to="PlayerHead/ShieldHolder/Shield" method="_on_animation_player_animation_changed"]
