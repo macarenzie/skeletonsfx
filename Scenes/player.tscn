@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
 [ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
+[ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -157,19 +158,24 @@ _data = {
 script = ExtResource("1_4wc5k")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ur0qq")
 
 [node name="PlayerModel" type="MeshInstance3D" parent="."]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_vgxxl")
 
 [node name="PlayerHead" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+process_mode = 1
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 unique_name_in_owner = true
+process_mode = 1
+
 fov = 90.0
 script = ExtResource("2_kcqsg")
 SENSITIVITY_X = 0.002
@@ -188,14 +194,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.62472, 0, -0.355409)
 mesh = SubResource("CylinderMesh_xgvwq")
 
-[node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+[node name="WeaponHolder" type="Node3D" parent="."]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Weapon" type="MeshInstance3D" parent="PlayerHead/WeaponHolder"]
+[node name="Weapon" type="MeshInstance3D" parent="WeaponHolder"]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
 mesh = SubResource("CapsuleMesh_hhpyp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/WeaponHolder/Weapon"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponHolder/Weapon"]
+process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360777, 0)
 mesh = SubResource("CylinderMesh_5bv5e")
 
@@ -209,19 +218,24 @@ shape = SubResource("CapsuleShape3D_gkum0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_bd23k")
 }
 autoplay = "idle"
 
 [node name="PlayerCombat" type="Node" parent="."]
+process_mode = 1
 script = ExtResource("3_lv7ac")
 attack_delay = 0.35
 attack_speed = 0.4
 
 [node name="InnerFire" type="Node" parent="."]
+process_mode = 1
 script = ExtResource("4_yqfp7")
 
+[node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
+process_mode = 3
 [node name="Crosshair" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Crosshair"]

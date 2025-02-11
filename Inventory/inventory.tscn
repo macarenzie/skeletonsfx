@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://h3oed28gj68k"]
 
-[ext_resource type="Texture2D" uid="uid://cqom8qybks2m6" path="res://Assets/UI Assets/inventory_texture.png" id="1_l4f7j"]
+[ext_resource type="Script" path="res://Inventory/inventory.gd" id="1_83hh5"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -9,17 +9,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_83hh5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 300.0
-offset_bottom = 400.0
+offset_right = 594.0
+offset_bottom = 648.0
 color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
-layout_mode = 0
-offset_right = 299.0
-offset_bottom = 400.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
 layout_mode = 2
@@ -28,10 +32,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
+[node name="Button_Spawn" type="Button" parent="ColorRect/MarginContainer/VBoxContainer/Header"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
+text = "Add Item"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -39,12 +44,8 @@ size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+columns = 10
 
-[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_l4f7j")
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer/TextureRect"]
-layout_mode = 2
-offset_top = 4.0
-offset_bottom = 4.0
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Button_Spawn" to="." method="_on_button_spawn_pressed"]
