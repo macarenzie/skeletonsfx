@@ -323,9 +323,10 @@ process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360777, 0)
 mesh = SubResource("CylinderMesh_5bv5e")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("combat_controller")]
 monitoring = false
 script = ExtResource("4_hiqmd")
+combat_controller = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

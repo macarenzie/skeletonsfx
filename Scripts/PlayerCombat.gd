@@ -3,6 +3,10 @@ extends Node
 
 @onready var anim_player = %AnimationPlayer
 
+@export_category("Health") # I don't feel like these should be here but it's going to be here at the moment
+@export var max_health : int = 100
+var current_health : int
+
 @export_category("Attacking")
 @export var attack_distance : float = 2.0
 @export var attack_delay : float = 0.4
@@ -15,6 +19,7 @@ var ready_to_attack : bool = true
 @export_category("Blocking")
 @export var block_startup : float = 1.0
 @export var block_endlag : float = 0.5
+@export var block_damage_reduction : float = 0.5 #the percent of damage taken while blocking
 var blocking : bool = false
 var ready_to_block : bool = true
 
@@ -32,6 +37,16 @@ func _process(_delta):
 		end_block()
 	elif Input.is_action_pressed("attack"): 
 		attack()
+
+#functions for stat_changes in combat
+func take_damage(value):
+	if blocking:
+		var original_value = value
+		value = int(value * block_damage_reduction)
+		print("Player took "+str(value)+" points of damage after blocking to their lifeforce. Was originally "+str(original_value)+" points of damage")
+	else:
+		print("Player took "+str(value)+" points of damage to their lifeforce")
+	current_health -= value
 
 #functions for attacking
 func attack():
