@@ -12,10 +12,10 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq118"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ns243"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xgvwq"]
-material = SubResource("StandardMaterial3D_dq118")
+material = SubResource("StandardMaterial3D_ns243")
 height = 0.1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hhpyp"]
@@ -326,7 +326,7 @@ mesh = SubResource("CylinderMesh_5bv5e")
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("combat_controller")]
 monitoring = false
 script = ExtResource("4_hiqmd")
-combat_controller = NodePath("..")
+combat_controller = NodePath("../PlayerCombat")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -19,13 +19,15 @@ var ready_to_attack : bool = true
 @export_category("Blocking")
 @export var block_startup : float = 1.0
 @export var block_endlag : float = 0.5
-@export var block_damage_reduction : float = 0.5 #the percent of damage taken while blocking
+@export var block_damage_reduction : float = 0.5 # the percent of damage taken while blocking
+@export var block_angle : float = 180.0 # the angle where if you are blocking and the attack comes from within this angle it is blocked
 var blocking : bool = false
 var ready_to_block : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim_player.animation_finished.connect(reset_animation)
+	current_health = max_health
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -39,7 +41,10 @@ func _process(_delta):
 		attack()
 
 #functions for stat_changes in combat
-func take_damage(value):
+func take_damage(originator:Node,value:int):
+	#find if the origin of the hit was within the block angle
+	var facing_direction = Vector2()
+	
 	if blocking:
 		var original_value = value
 		value = int(value * block_damage_reduction)
@@ -64,8 +69,8 @@ func attack():
 	var new_fire = load("res://Fire/Fire.tscn").instantiate()
 	new_fire.global_position = get_parent().position
 	get_parent().get_parent().add_child(new_fire)
-	var innerfire = get_parent().get_child(6)
-	innerfire.innerFire - 30.0
+	#var innerfire = get_parent().get_child(6)
+	#innerfire.innerFire - 30.0
 
 func reset_attack():
 	attacking = false
@@ -81,7 +86,7 @@ func attack_raycast():
 		return
 	var object_hit : Hittable = attack_ray.get_collider()
 	print("I hit "+object_hit.to_string())
-	object_hit.hit(attack_damage)
+	object_hit.hit(self,attack_damage)
 
 func start_block():
 	if not ready_to_block and attacking:
