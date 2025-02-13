@@ -48,6 +48,13 @@ collision_mask = 2
 [node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
 
+[node name="EnemyGrid" parent="Player/Inventory" index="1"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 594.0
+offset_bottom = 648.0
+
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
@@ -92,3 +99,4 @@ skeleton = NodePath("../Ground")
 [connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
 
 [editable path="Player"]
+[editable path="Player/Inventory"]

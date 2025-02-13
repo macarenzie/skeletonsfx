@@ -1,10 +1,18 @@
 extends Control
 
 @onready var slot_scene = preload("res://Inventory/slot.tscn")
-@onready var grid_container = $ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 @onready var item_scene = preload("res://Inventory/item.tscn")
+
+@onready var grid_container = $ColorRect/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 @onready var scroll_container = $ColorRect/MarginContainer/VBoxContainer/ScrollContainer
+
+@onready var enemy_grid_container = $EnemyGrid/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
+@onready var enemy_scroll_container = $EnemyGrid/MarginContainer/VBoxContainer/ScrollContainer
+
 @onready var col_count = grid_container.columns
+
+@onready var player_rect = $ColorRect
+@onready var enemy_rect = $EnemyGrid
 
 signal opened
 signal closed
@@ -19,9 +27,9 @@ var isOpen: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(100):
-		create_slot()
-	
-
+		create_slot(grid_container)
+	for i in range(100):
+		create_slot(enemy_grid_container)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,19 +41,23 @@ func _process(delta):
 		if Input.is_action_just_pressed("attack"):
 			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
 				place_item()
-	
+			if enemy_scroll_container.get_global_rect().has_point(get_global_mouse_position()):
+				place_item()
 	else:
 		#left click
 		if Input.is_action_just_pressed("attack"):
 			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
 				pick_item()
+			if enemy_scroll_container.get_global_rect().has_point(get_global_mouse_position()):
+				pick_item()
+	#print(get_global_mouse_position())
 
 #Handels creating the instances of the slots. 
-func create_slot():
+func create_slot(grid_base):
 	var new_slot = slot_scene.instantiate()
 	new_slot.slot_ID = grid_array.size()
 	grid_array.push_back(new_slot)
-	grid_container.add_child(new_slot)
+	grid_base.add_child(new_slot)
 	new_slot.slot_entered.connect(_on_slot_mouse_entered)
 	new_slot.slot_exited.connect(_on_slot_mouse_exited)
 	
@@ -122,9 +134,14 @@ func place_item():
 		return
 	var calculated_grid_id = current_slot.slot_ID + icon_anchor.x * col_count + icon_anchor.y
 	item_held._snap_to(grid_array[calculated_grid_id].global_position)
+	print(grid_array[calculated_grid_id].global_position)
 	
 	item_held.get_parent().remove_child(item_held)
-	grid_container.add_child(item_held)
+	
+	if player_rect.get_global_rect().has_point(get_global_mouse_position()):
+		grid_container.add_child(item_held)
+	if enemy_rect.get_global_rect().has_point(get_global_mouse_position()):
+		enemy_grid_container.add_child(item_held)
 	item_held.global_position = get_global_mouse_position()
 	
 	item_held.grid_anchor = current_slot
@@ -167,6 +184,10 @@ func close():
 	closed.emit()
 
 
-
+	#refrence code on how to get slots without mouse. 
+	#for i in grid_container.get_child_count():
+	#	current_slot = grid_container.get_child(i)
+	#	print(current_slot.slot_ID)
+	#	current_slot = null
 
 
