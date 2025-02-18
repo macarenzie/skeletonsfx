@@ -88,3 +88,6 @@ skeleton = NodePath("../Ground")
 
 [node name="Hello" type="Node3D" parent="."]
 script = ExtResource("8_muvoo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hello"]
+root_node = NodePath("../..")
