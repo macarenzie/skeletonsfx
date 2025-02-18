@@ -17,6 +17,11 @@ func _input(event):
 			inventory.close()
 		else:
 			inventory.open()
+	if event.is_action_pressed("Interact"):
+		if inventory.isOpen:
+			inventory.close()
+		else:
+			inventory.loot.call_deferred(1,3)
 
 #unpauses the game and sets mouse back to normal
 func _on_inventory_closed():

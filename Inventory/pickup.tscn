@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6bw4p1otedk5"]
+
+[ext_resource type="Script" path="res://Inventory/Interaction.gd" id="1_wclg1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aj78r"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_34533"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58bhr"]
+albedo_color = Color(0.164162, 0.59175, 0.398221, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s8rah"]
+material = SubResource("StandardMaterial3D_58bhr")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_wclg1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(4.07099, 0, 0, 0, 4.07099, 0, 0, 0, 4.07099, 0, 0.357826, 0)
+shape = SubResource("SphereShape3D_aj78r")
+
+[node name="Sprite3D" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.00859, 0.00157499)
+billboard = 1
+texture = SubResource("ViewportTexture_34533")
+
+[node name="SubViewport" type="SubViewport" parent="Area3D/Sprite3D"]
+transparent_bg = true
+size = Vector2i(150, 75)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Area3D/Sprite3D/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "  
+    Press E to loot."
+fit_content = true
+scroll_active = false
+tab_size = 10
+
+[node name="PlayerModel" type="MeshInstance3D" parent="Area3D"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.339964, 0, 0, 0, 1, 0, 0.345671, 0)
+mesh = SubResource("CapsuleMesh_s8rah")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

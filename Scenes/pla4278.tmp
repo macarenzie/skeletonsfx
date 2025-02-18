@@ -202,7 +202,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Weapon" type="MeshInstance3D" parent="PlayerHead/WeaponHolder"]
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.994336, 0.106264, 0, -0.106264, 0.994336, 0.486111, 0.415537, -0.682223)
+transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
 mesh = SubResource("CapsuleMesh_hhpyp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/WeaponHolder/Weapon"]
@@ -272,7 +272,8 @@ color = Color(0, 0.72549, 0.72549, 1)
 process_mode = 3
 
 [node name="pickupCollision" type="Area3D" parent="."]
-collision_mask = 7
+collision_layer = 7
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pickupCollision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02984, 0)

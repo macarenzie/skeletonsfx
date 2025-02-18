@@ -36,16 +36,17 @@ func rotate_item():
 		rotation_degrees = 0
 
 #Moves the item to the position of the grid squares
-func _snap_to(destination:Vector2):
+func _snap_to(destination:Vector2,speed:float):
 	var tween = get_tree().create_tween()
 	if int(rotation_degrees) % 180 == 0:
 		destination += IconRect_path.size/2
+		
 	else:
 		var temp_xy_switch = Vector2(IconRect_path.size.y, IconRect_path.size.x)
 		destination += temp_xy_switch/2
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	print(destination)
-	tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)
+
+	tween.tween_property(self, "global_position", destination, speed).set_trans(Tween.TRANS_SINE)
 	selected = false
 
 
