@@ -31,6 +31,8 @@ var icon_anchor : Vector2
 var isOpen: bool = false
 var perferd_grid = null
 
+var in_range = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(100):
@@ -215,13 +217,16 @@ func close():
 	closed.emit()
 
 func loot(item:int, slot:int):
-	visible = true
-	enemy_color_rect.visible = true
-	isOpen = true
-	perferd_grid = enemy_grid_array
-	#other_Button.emit_signal("pressed")
-	opened.emit()
-	spawn_item.call_deferred(1,3)
+	if in_range:
+		visible = true
+		enemy_color_rect.visible = true
+		isOpen = true
+		perferd_grid = enemy_grid_array
+		#other_Button.emit_signal("pressed")
+		opened.emit()
+		spawn_item.call_deferred(1,3)
+	else:
+		pass
 
 func spawn_item(item:int, slot:int,):
 	#Set required varbles up
