@@ -1,14 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=17 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
+[ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xgvwq"]
+height = 0.1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hhpyp"]
 radius = 0.05
@@ -21,12 +25,14 @@ top_radius = 0.15
 bottom_radius = 0.15
 height = 0.05
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkum0"]
+
 [sub_resource type="Animation" id="Animation_bam0r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponHolder/Weapon:position")
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +44,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHolder/Weapon:rotation")
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -50,7 +56,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WeaponHolder:rotation")
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -66,7 +72,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponHolder/Weapon:rotation")
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +84,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHolder/Weapon:position")
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -90,7 +96,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WeaponHolder:rotation")
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -107,7 +113,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WeaponHolder/Weapon:position")
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -119,7 +125,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WeaponHolder/Weapon:rotation")
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -127,6 +133,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(-0.106465, 0, 0), Vector3(-0.308923, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bd23k"]
@@ -144,7 +162,7 @@ process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ur0qq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlayerModel" type="MeshInstance3D" parent="."]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_vgxxl")
@@ -152,29 +170,50 @@ mesh = SubResource("CapsuleMesh_vgxxl")
 [node name="PlayerHead" type="Node3D" parent="."]
 unique_name_in_owner = true
 process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 unique_name_in_owner = true
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 fov = 90.0
 script = ExtResource("2_kcqsg")
 SENSITIVITY_X = 0.002
 SENSITIVITY_Y = 0.001
 
-[node name="WeaponHolder" type="Node3D" parent="."]
-process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
+collide_with_bodies = false
 
-[node name="Weapon" type="MeshInstance3D" parent="WeaponHolder"]
+[node name="ShieldHolder" type="Node3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.62472, 0, -0.355409)
+mesh = SubResource("CylinderMesh_xgvwq")
+
+[node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Weapon" type="MeshInstance3D" parent="PlayerHead/WeaponHolder"]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
 mesh = SubResource("CapsuleMesh_hhpyp")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponHolder/Weapon"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/WeaponHolder/Weapon"]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360777, 0)
 mesh = SubResource("CylinderMesh_5bv5e")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+monitoring = false
+script = ExtResource("4_hiqmd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_gkum0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -228,3 +267,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0.72549, 0.72549, 1)
+
+[node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
+process_mode = 3

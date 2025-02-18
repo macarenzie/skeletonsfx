@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=15 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_evvha"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
@@ -28,6 +28,8 @@ size = Vector2(50, 50)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5j4yk"]
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
+[sub_resource type="BoxMesh" id="BoxMesh_6bv3e"]
+
 [node name="World" type="Node"]
 process_mode = 3
 script = ExtResource("1_evvha")
@@ -45,6 +47,9 @@ shadow_enabled = true
 process_mode = 1
 collision_layer = 2
 collision_mask = 2
+
+[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 process_mode = 1
@@ -91,3 +96,10 @@ script = ExtResource("8_muvoo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hello"]
 root_node = NodePath("../..")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hello"]
+mesh = SubResource("BoxMesh_6bv3e")
+
+[connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
+[connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
+
+[editable path="Player"]
