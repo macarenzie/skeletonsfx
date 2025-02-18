@@ -43,8 +43,15 @@ func _process(_delta):
 #functions for stat_changes in combat
 func take_damage(originator:Node,value:int):
 	#find if the origin of the hit was within the block angle
-	var facing_direction = Vector2()
-	
+	var player : Node = get_parent()
+	var player_to_attacker = rad_to_deg(Vector2(player.position.x,player.position.z).angle_to(Vector2(originator.position.x,originator.position.z)))
+	var facing_direction = rad_to_deg(player.rotation.y+PI)
+	if player_to_attacker < 0:
+		player_to_attacker + 360
+	if facing_direction < 0:
+		facing_direction + 360
+	print("facing angle "+str(facing_direction))
+	print("angle to attacker "+str(player_to_attacker))	
 	if blocking:
 		var original_value = value
 		value = int(value * block_damage_reduction)
