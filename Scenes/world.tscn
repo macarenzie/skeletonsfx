@@ -96,6 +96,7 @@ script = ExtResource("8_muvoo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hello"]
 root_node = NodePath("../..")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hello"]
 mesh = SubResource("BoxMesh_6bv3e")
 
