@@ -108,12 +108,15 @@ func check_slot_avaliblity(a_slot):
 		var line_switch_check = a_slot.slot_ID % col_count + grid[0]
 		if line_switch_check < 0 or line_switch_check >= col_count:
 			can_place = false
+			perferd_grid = null
 			return
 		if grid_to_check < 0 or grid_to_check >= grid_array.size():
 			can_place = false
+			perferd_grid = null
 			return 
 		if grid_array[grid_to_check].state == grid_array[grid_to_check].Status.TAKEN:
 			can_place = false
+			perferd_grid = null
 			return
 	can_place = true
 

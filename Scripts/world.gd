@@ -3,6 +3,10 @@
 extends Node
 
 @onready var inventory = $Player/Inventory
+@onready var playerUI = $Player/PlayerUI
+@onready var pauseMenu = $Menu
+
+var menuOpen = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,15 +31,39 @@ func _input(event):
 		if inventory.isOpen:
 			inventory.close()
 		else:
-			get_tree().quit()
+			openMenu()
+			#get_tree().quit()
+
+func openMenu():
+	if menuOpen:
+		menuOpen = false
+		pauseMenu.visible = false
+		get_tree().paused = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
+	else:
+		pauseMenu.visible = true
+		menuOpen = true
+		get_tree().paused = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
+
 
 #unpauses the game and sets mouse back to normal
 func _on_inventory_closed():
+	playerUI.visible = true
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
 
 #Pauses the game and sets mouse back to visable and stuck in window
 func _on_inventory_opened():
+	playerUI.visible = false
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED 
 
+
+
+func _on_resume_pressed():
+	openMenu()
+
+
+func _on_quit_pressed():
+	get_tree().quit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=19 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -157,6 +157,9 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_3knrg"]
 radius = 2.85713
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5tt7"]
+bg_color = Color(0.999401, 0.574862, 0.295541, 1)
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4wc5k")
 
@@ -277,3 +280,35 @@ collision_mask = 7
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pickupCollision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02984, 0)
 shape = SubResource("SphereShape3D_3knrg")
+
+[node name="PlayerUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="PlayerUI"]
+layout_mode = 0
+offset_right = 257.0
+offset_bottom = 80.0
+color = Color(0.780392, 0.780392, 0.780392, 0.537255)
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 26.0
+offset_right = 231.0
+offset_bottom = 53.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_s5tt7")
+value = 50.0
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 4.0
+offset_right = 155.0
+offset_bottom = 44.0
+text = "Fire:"
+
+[editable path="Inventory"]
