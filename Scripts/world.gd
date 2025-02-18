@@ -22,6 +22,12 @@ func _input(event):
 			inventory.close()
 		else:
 			inventory.loot.call_deferred(1,3)
+		
+	if event.is_action_pressed("quit"):
+		if inventory.isOpen:
+			inventory.close()
+		else:
+			get_tree().quit()
 
 #unpauses the game and sets mouse back to normal
 func _on_inventory_closed():
@@ -32,3 +38,4 @@ func _on_inventory_closed():
 func _on_inventory_opened():
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED 
+
