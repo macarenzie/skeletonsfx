@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Inventory/Interaction.gd" id="1_wclg1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aj78r"]
+radius = 0.728895
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_34533"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
@@ -30,7 +31,6 @@ billboard = 1
 texture = SubResource("ViewportTexture_34533")
 
 [node name="SubViewport" type="SubViewport" parent="Area3D/Sprite3D"]
-transparent_bg = true
 size = Vector2i(150, 75)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Area3D/Sprite3D/SubViewport"]

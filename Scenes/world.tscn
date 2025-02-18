@@ -99,7 +99,7 @@ transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -
 skeleton = NodePath("../Ground")
 
 [node name="Node3D" parent="." instance=ExtResource("8_o2imo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1072, 0, 0.133808)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
 
 [connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]

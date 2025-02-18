@@ -31,7 +31,9 @@ var icon_anchor : Vector2
 var isOpen: bool = false
 var perferd_grid = null
 
+#controll looting
 var in_range = false
+#var 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
