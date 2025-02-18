@@ -20,7 +20,7 @@ var ready_to_attack : bool = true
 @export var block_startup : float = 1.0
 @export var block_endlag : float = 0.5
 @export var block_damage_reduction : float = 0.5 # the percent of damage taken while blocking
-@export var block_angle : float = 180.0 # the angle where if you are blocking and the attack comes from within this angle it is blocked
+@export var block_angle : float = 60.0 # the angle where if you are blocking and the attack comes from within this angle it is blocked
 var blocking : bool = false
 var ready_to_block : bool = true
 
@@ -44,15 +44,12 @@ func _process(_delta):
 func take_damage(originator:Node,value:int):
 	#find if the origin of the hit was within the block angle
 	var player : Node = get_parent()
-	var player_to_attacker = rad_to_deg(Vector2(player.position.x,player.position.z).angle_to(Vector2(originator.position.x,originator.position.z)))
-	var facing_direction = rad_to_deg(player.rotation.y+PI)
-	if player_to_attacker < 0:
-		player_to_attacker + 360
-	if facing_direction < 0:
-		facing_direction + 360
-	print("facing angle "+str(facing_direction))
-	print("angle to attacker "+str(player_to_attacker))	
-	if blocking:
+	var player_to_attacker = Vector2(player.position.x-originator.position.x,player.position.z-originator.position.z).normalized()
+	var facing_direction = Vector2(sin(player.rotation.y),cos(player.rotation.y)).normalized()
+	var incoming_angle = rad_to_deg(acos(player_to_attacker.dot(facing_direction)))
+	#print(player_to_attacker.dot(facing_direction))
+
+	if blocking and incoming_angle < block_angle*0.5:
 		var original_value = value
 		value = int(value * block_damage_reduction)
 		print("Player took "+str(value)+" points of damage after blocking to their lifeforce. Was originally "+str(original_value)+" points of damage")
@@ -95,6 +92,7 @@ func attack_raycast():
 	print("I hit "+object_hit.to_string())
 	object_hit.hit(self,attack_damage)
 
+#functions for blocking
 func start_block():
 	if not ready_to_block and attacking:
 		return
@@ -115,7 +113,7 @@ func end_block():
 	Scheduler.schedule(reset_block, block_endlag)
 	anim_player.play("block_end")
 	pass
-	
+
 func reset_block():
 	blocking = false
 	ready_to_attack = true
