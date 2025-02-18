@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=14 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_evvha"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxyemt3e2j4sp" path="res://Fire/Fire.tscn" id="3_mhhwa"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_cml46"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="6_tatpg"]
+[ext_resource type="Script" path="res://Scenes/Hello.gd" id="8_muvoo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -84,3 +85,6 @@ skeleton = NodePath("../Ground")
 [node name="Wall_E" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, 24.4366)
 skeleton = NodePath("../Ground")
+
+[node name="Hello" type="Node3D" parent="."]
+script = ExtResource("8_muvoo")
