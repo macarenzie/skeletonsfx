@@ -8,6 +8,7 @@ data = PackedVector3Array(-25, 1.5, 0.5, 25, 1.5, 0.5, -25, -1.5, 0.5, 25, 1.5, 
 
 [node name="gb_block" type="MeshInstance3D"]
 transform = Transform3D(0.021692, 0, 0, 0, 0.323182, 0, 0, 0, 1, 0, 0, 0)
+layers = 3
 mesh = SubResource("BoxMesh_d8vwy")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
