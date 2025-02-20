@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cybr83rnnlyul"]
+[gd_scene load_steps=13 format=3 uid="uid://cybr83rnnlyul"]
 
 [ext_resource type="Script" path="res://Scenes/Dummy.gd" id="1_3jpj7"]
 
@@ -35,6 +35,15 @@ height = 0.05
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbcth"]
 size = Vector3(1, 2.045, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1sou4"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhkh3"]
+bg_color = Color(0.623529, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj5q4"]
+bg_color = Color(0.192157, 0.686275, 0, 1)
 
 [node name="TargetDummy" type="Node3D"]
 process_mode = 1
@@ -88,3 +97,31 @@ script = ExtResource("1_3jpj7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02786, 0)
 shape = SubResource("BoxShape3D_jbcth")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 2.50018, 0.00157499)
+billboard = 1
+texture = SubResource("ViewportTexture_1sou4")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+size = Vector2i(200, 40)
+
+[node name="ColorRect" type="ColorRect" parent="Sprite3D/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.804743, 0.804743, 0.804743, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="Sprite3D/SubViewport/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_lhkh3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vj5q4")
+value = 50.0
+show_percentage = false
