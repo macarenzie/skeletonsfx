@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=15 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_evvha"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxyemt3e2j4sp" path="res://Fire/Fire.tscn" id="3_mhhwa"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_cml46"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="6_tatpg"]
+[ext_resource type="Script" path="res://Scenes/Hello.gd" id="8_muvoo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,6 +30,8 @@ size = Vector2(50, 50)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5j4yk"]
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
+[sub_resource type="BoxMesh" id="BoxMesh_6bv3e"]
+
 [node name="World" type="Node"]
 process_mode = 3
 script = ExtResource("1_evvha")
@@ -47,6 +50,9 @@ process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
+
+[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 process_mode = 1
@@ -94,3 +100,17 @@ skeleton = NodePath("../Ground")
 [node name="Wall_E" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, 24.4366)
 skeleton = NodePath("../Ground")
+
+[node name="Hello" type="Node3D" parent="."]
+script = ExtResource("8_muvoo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hello"]
+root_node = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hello"]
+mesh = SubResource("BoxMesh_6bv3e")
+
+[connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
+[connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
+
+[editable path="Player"]

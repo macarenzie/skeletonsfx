@@ -270,6 +270,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_4wc5k")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
@@ -350,6 +352,9 @@ attack_speed = 0.4
 process_mode = 1
 script = ExtResource("4_yqfp7")
 
+[node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
+process_mode = 3
+
 [node name="Crosshair" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Crosshair"]
@@ -381,8 +386,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0.72549, 0.72549, 1)
-
-[node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
-process_mode = 3
-
-[connection signal="animation_changed" from="AnimationPlayer" to="PlayerHead/ShieldHolder/Shield" method="_on_animation_player_animation_changed"]
