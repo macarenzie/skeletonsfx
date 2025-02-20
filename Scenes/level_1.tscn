@@ -38,9 +38,6 @@ process_mode = 1
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 current = true
 
-[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.994336, 0.106264, 0, -0.106264, 0.994336, 0.486111, 0.415537, -0.682223)
-
 [node name="ColorRect" parent="Player/Inventory" index="0"]
 offset_right = 575.0
 
@@ -54,7 +51,6 @@ offset_bottom = 648.0
 process_mode = 1
 
 [node name="Fire" parent="." instance=ExtResource("2_qnapl")]
-process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49981, 1.56862, -4.1927)
 
 [node name="Geometry" type="Node3D" parent="."]

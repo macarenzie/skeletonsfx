@@ -22,7 +22,9 @@ func _physics_process(delta):
 			innerFire += 0.1
 	else:
 		if (innerFire <=0.0 ):
-			return
+			#If in world player can't die for testing. 
+			if get_tree().current_scene.scene_file_path == "res://Scenes/world.tscn":
+				return
 			get_tree().reload_current_scene() # you died
 		innerFire -= .4
 	fireBar.value = innerFire
