@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cybr83rnnlyul"]
+[gd_scene load_steps=10 format=3 uid="uid://cybr83rnnlyul"]
 
 [ext_resource type="Script" path="res://Scenes/Dummy.gd" id="1_3jpj7"]
 
@@ -32,6 +32,7 @@ rings = 1
 top_radius = 0.15
 bottom_radius = 0.15
 height = 0.05
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbcth"]
 size = Vector3(1, 2.045, 1)
 
@@ -79,6 +80,7 @@ mesh = SubResource("CapsuleMesh_h4j40")
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360777, 0)
 mesh = SubResource("CylinderMesh_sifma")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 script = ExtResource("1_3jpj7")
 

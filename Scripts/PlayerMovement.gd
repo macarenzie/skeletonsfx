@@ -22,13 +22,14 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var sprint_mod = 1
-	if Input.is_action_pressed("sprint"):
-		sprint_mod += sprint_multiplier
+	
+	#var sprint_mod = 1
+	#if Input.is_action_pressed("sprint"):
+	#	sprint_mod += sprint_multiplier
 	
 	if direction:
-		velocity.x = direction.x * speed * sprint_mod
-		velocity.z = direction.z * speed * sprint_mod
+		velocity.x = direction.x * speed# * sprint_mod
+		velocity.z = direction.z * speed# * sprint_mod
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
