@@ -4,6 +4,9 @@ extends Node
 
 @onready var inventory = $Player/Inventory
 @onready var playerUI = $Player/PlayerUI
+@onready var playerUIPage1 = $Menu/ColorRect/MarginContainer
+@onready var playerUIPage2 = $Menu/ColorRect/MarginContainer2
+@onready var playerCrosshair = $Player/Crosshair
 @onready var pauseMenu = $Menu
 
 var menuOpen = false
@@ -38,11 +41,15 @@ func openMenu():
 	if menuOpen:
 		menuOpen = false
 		pauseMenu.visible = false
+		playerUI.visible = true
+		playerCrosshair.visible = true
 		get_tree().paused = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
 	else:
-		pauseMenu.visible = true
 		menuOpen = true
+		pauseMenu.visible = true
+		playerUI.visible = false
+		playerCrosshair.visible = false
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 
 
@@ -50,12 +57,14 @@ func openMenu():
 #unpauses the game and sets mouse back to normal
 func _on_inventory_closed():
 	playerUI.visible = true
+	playerCrosshair.visible = true
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
 
 #Pauses the game and sets mouse back to visable and stuck in window
 func _on_inventory_opened():
 	playerUI.visible = false
+	playerCrosshair.visible = false
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED 
 
@@ -67,3 +76,27 @@ func _on_resume_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit()
+
+
+func _on_dev_room_pressed():
+	menuOpen = false
+	pauseMenu.visible = false
+	playerUI.visible = true
+	playerCrosshair.visible = true
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
+	
+	if get_tree().current_scene.scene_file_path == "res://Scenes/world.tscn":
+		get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	else :
+		get_tree().change_scene_to_file("res://Scenes/world.tscn")
+
+
+func _on_back_pressed():
+	playerUIPage1.visible = true
+	playerUIPage2.visible = false
+
+
+func _on_controls_pressed():
+	playerUIPage1.visible = false
+	playerUIPage2.visible = true

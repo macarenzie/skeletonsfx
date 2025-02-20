@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=15 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_evvha"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_cml46"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="6_tatpg"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="8_o2imo"]
+[ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="9_s5wx5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -50,12 +51,15 @@ collision_mask = 2
 current = true
 
 [node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.994336, 0.106264, 0, -0.106264, 0.994336, 0.486111, 0.415537, -0.682223)
+transform = Transform3D(1, 0, 0, 0, 0.994335, 0.106264, 0, -0.106264, 0.994335, 0.486111, 0.415537, -0.682223)
+
+[node name="ColorRect" parent="Player/Inventory" index="0"]
+offset_right = 575.0
 
 [node name="EnemyGrid" parent="Player/Inventory" index="1"]
-offset_left = 614.0
+offset_left = 577.0
 offset_top = 0.0
-offset_right = 1208.0
+offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
@@ -101,53 +105,19 @@ skeleton = NodePath("../Ground")
 [node name="Node3D" parent="." instance=ExtResource("8_o2imo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
 
-[node name="Menu" type="Control" parent="."]
-process_mode = 3
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Menu" parent="." instance=ExtResource("9_s5wx5")]
 
-[node name="ColorRect" type="ColorRect" parent="Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.513233, 0.513233, 0.513233, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="Menu/ColorRect"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 280.0
-offset_top = -33.0
-offset_right = -280.0
-offset_bottom = 33.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/ColorRect/MarginContainer"]
-layout_mode = 2
-
-[node name="Resume" type="Button" parent="Menu/ColorRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Resume"
-
-[node name="Quit" type="Button" parent="Menu/ColorRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Quit"
+[node name="DevRoom" parent="Menu/ColorRect/MarginContainer/VBoxContainer" index="3"]
+text = "Dev Room"
 
 [connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="." method="_on_dev_room_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
 
 [editable path="Player"]
 [editable path="Player/Inventory"]
+[editable path="Menu"]

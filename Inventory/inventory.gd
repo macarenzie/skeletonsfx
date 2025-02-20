@@ -91,7 +91,7 @@ func _on_slot_mouse_exited(a_Slot):
 
 #handles button press to spawn Item
 func _on_button_spawn_pressed():
-	spawn_item(1,3)
+	spawn_item(randi_range(1,2),3)
 	#var new_item = item_scene.instantiate()
 	#add_child(new_item)
 	#new_item.load_item(1)
@@ -229,7 +229,7 @@ func loot(item:int, slot:int):
 		perferd_grid = enemy_grid_array
 		#other_Button.emit_signal("pressed")
 		opened.emit()
-		spawn_item.call_deferred(1,3)
+		spawn_item.call_deferred(randi_range(1,2),3)
 	else:
 		pass
 
