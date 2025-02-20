@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=17 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_evvha"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dxyemt3e2j4sp" path="res://Fire/Fire.tscn" id="3_mhhwa"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_cml46"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="6_tatpg"]
+[ext_resource type="Script" path="res://Scenes/Hello.gd" id="8_muvoo"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="8_o2imo"]
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="9_s5wx5"]
-[ext_resource type="Script" path="res://Scenes/Hello.gd" id="8_muvoo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -47,8 +47,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_xfvv5")]
 process_mode = 1
-collision_layer = 2
-collision_mask = 2
 
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 current = true
