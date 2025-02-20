@@ -6,3 +6,4 @@ func schedule(function_name:Callable, delay:float):
 	timer.timeout.connect(timer.queue_free)
 	get_tree().root.add_child(timer)
 	timer.start(delay)
+	#print("delayed function call for "+str(function_name)+" in "+str(delay)+" second(s)")

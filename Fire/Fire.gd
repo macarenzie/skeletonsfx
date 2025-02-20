@@ -47,13 +47,13 @@ func _on_body_entered(body: Node3D):
 	if(body.has_node("InnerFire")):
 		var innerFire = body.get_child(6)
 		innerFire.switch()
-		print("swithing!!!!!!!!!!!!")
+		#print("swithing!!!!!!!!!!!!")
 
 func _on_body_exited(body: Node3D):
 	if(body.has_node("InnerFire")):
 		var innerFire = body.get_child(6)
 		innerFire.switch()
-		print("swithing!!!!!!!!!!!!")
+		#print("swithing!!!!!!!!!!!!")
 	if body in overlapping_bodies:
 		overlapping_bodies.erase(body)
 		if overlapping_bodies.size() <= 0:

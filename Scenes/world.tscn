@@ -24,6 +24,8 @@ sky = SubResource("Sky_88whd")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ka87u"]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_qx0vw"]
 size = Vector2(50, 50)
 
@@ -47,6 +49,9 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_xfvv5")]
 process_mode = 1
+transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
 
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 current = true
@@ -72,6 +77,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49981, 1.56862, -4.1927)
 
 [node name="Box" parent="." instance=ExtResource("5_cml46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82179, 0.54224, -4.84885)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box/StaticBody3D"]
+shape = SubResource("BoxShape3D_ka87u")
 
 [node name="Geometry" type="Node3D" parent="."]
 
