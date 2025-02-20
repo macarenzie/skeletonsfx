@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cybr83rnnlyul"]
+[gd_scene load_steps=8 format=3 uid="uid://cybr83rnnlyul"]
 
-[ext_resource type="Script" path="res://Scripts/TargetDummy.gd" id="1_5uxeg"]
-[ext_resource type="Script" path="res://Scripts/Hittable.gd" id="1_amnkv"]
+[ext_resource type="Script" path="res://Scenes/Dummy.gd" id="1_3jpj7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a85y"]
 albedo_color = Color(0, 1, 1, 1)
@@ -11,9 +10,6 @@ material = SubResource("StandardMaterial3D_0a85y")
 height = 1.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ol6uu"]
-height = 1.6
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_obv7l"]
 height = 1.6
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wbelt"]
@@ -26,25 +22,20 @@ top_radius = 0.1
 bottom_radius = 0.1
 height = 0.7
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbcth"]
+size = Vector3(1, 2.045, 1)
+
 [node name="TargetDummy" type="Node3D"]
-script = ExtResource("1_5uxeg")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 mesh = SubResource("CapsuleMesh_8nhmf")
 
-[node name="Hurtbox" type="Area3D" parent="Body" node_paths=PackedStringArray("combat_controller")]
+[node name="Hurtbox" type="Area3D" parent="Body"]
 monitoring = false
-script = ExtResource("1_amnkv")
-combat_controller = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Hurtbox"]
 shape = SubResource("CapsuleShape3D_ol6uu")
-
-[node name="BodyCollider" type="StaticBody3D" parent="Body"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/BodyCollider"]
-shape = SubResource("CapsuleShape3D_obv7l")
 
 [node name="Base" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
@@ -53,3 +44,10 @@ mesh = SubResource("CylinderMesh_wbelt")
 [node name="Stand" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 mesh = SubResource("CylinderMesh_p8e7f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("1_3jpj7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02786, 0)
+shape = SubResource("BoxShape3D_jbcth")

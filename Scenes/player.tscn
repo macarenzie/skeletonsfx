@@ -161,6 +161,8 @@ radius = 2.85713
 bg_color = Color(0.999401, 0.574862, 0.295541, 1)
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_4wc5k")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
