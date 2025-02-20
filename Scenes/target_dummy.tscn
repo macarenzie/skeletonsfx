@@ -37,6 +37,7 @@ height = 0.05
 size = Vector3(1, 2.045, 1)
 
 [node name="TargetDummy" type="Node3D"]
+process_mode = 1
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)

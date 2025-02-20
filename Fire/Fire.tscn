@@ -14,6 +14,7 @@ material = SubResource("StandardMaterial3D_m2li8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_5u28p"]
 
 [node name="RigidBody3D" type="RigidBody3D"]
+process_mode = 1
 mass = 0.04
 gravity_scale = 0.851
 script = ExtResource("1_n824t")
