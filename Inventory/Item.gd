@@ -16,6 +16,7 @@ func _process(delta):
 
 #Loads an item from the assets folder using the name in the item_data sheet
 func load_item(a_ItemID : int):
+	item_ID = a_ItemID
 	var Icon_path = "res://Assets/UI Assets/" + DataHandler.item_data[str(a_ItemID)]["Name"] + ".png"
 	IconRect_path.texture = load(Icon_path)
 	for grid in DataHandler.item_grid_data[str(a_ItemID)]:

@@ -34,12 +34,14 @@ var perferd_grid = null
 #controll looting
 var in_range = false
 #var 
+var number_of_slots = 100
+var enemy_item_data := {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(100):
+	for i in range(number_of_slots):
 		create_slot(grid_container)
-	for i in range(100):
+	for i in range(number_of_slots):
 		create_slot(enemy_grid_container)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,7 +93,7 @@ func _on_slot_mouse_exited(a_Slot):
 
 #handles button press to spawn Item
 func _on_button_spawn_pressed():
-	spawn_item(randi_range(1,2),3)
+	spawn_item(randi_range(1,2),3,0)
 	#var new_item = item_scene.instantiate()
 	#add_child(new_item)
 	#new_item.load_item(1)
@@ -211,12 +213,15 @@ func pick_item():
 
 #used for openong/closing inventory
 func open():
+	enemy_item_data = {}
 	visible = true
 	isOpen = true
 	opened.emit()
 
 func close():
 	kill_out_of_place_items()
+	pull_enemy_grid()
+	clear_enemy_grid()
 	visible = false
 	isOpen = false
 	enemy_color_rect.visible = false
@@ -230,16 +235,17 @@ func loot(item:int, slot:int):
 		perferd_grid = enemy_grid_array
 		#other_Button.emit_signal("pressed")
 		opened.emit()
-		spawn_item.call_deferred(randi_range(1,2),3)
+		spawn_item.call_deferred(randi_range(1,2),3,0)
 	else:
 		pass
 
-func spawn_item(item:int, slot:int,):
+func spawn_item(item:int, slot:int, itemRotate:int):
 	#Set required varbles up
 	var new_item = item_scene.instantiate()
 	add_child(new_item)
 	new_item.load_item(item)
 	new_item.selected = true
+	new_item.rotation_degrees = itemRotate
 	item_held = new_item
 	set_desired_slot(slot)
 
@@ -277,3 +283,30 @@ func kill_out_of_place_items():
 		if child.get_index() > 1:
 			child.queue_free()
 			item_held = null
+			
+
+func pull_enemy_grid():
+	enemy_item_data = {}
+	var children = enemy_grid_container.get_children()
+	for child in children:
+		if child.get_index() >= number_of_slots:
+			var temp_grid_array := []
+			temp_grid_array.push_back(child.item_ID)
+			temp_grid_array.push_back(child.grid_anchor.slot_ID)
+			temp_grid_array.push_back(child.rotation_degrees)
+			enemy_item_data[child.get_index() - number_of_slots] = temp_grid_array
+	if enemy_item_data != {} :
+		print(enemy_item_data)
+
+
+func clear_enemy_grid():
+	var children = enemy_grid_container.get_children()
+	for child in children:
+		if child.get_index() >= number_of_slots:
+			child.queue_free()
+	update_array_grid_to_check()
+
+func load_enemy_grid(storage):
+	for items in storage
+	storage[items]
+	spawn_item()
