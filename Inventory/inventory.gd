@@ -216,6 +216,7 @@ func open():
 	opened.emit()
 
 func close():
+	kill_out_of_place_items()
 	visible = false
 	isOpen = false
 	enemy_color_rect.visible = false
@@ -267,3 +268,12 @@ func update_array_grid_to_check():
 			grid_array = enemy_grid_array
 	else:
 		grid_array = perferd_grid
+
+#kills anything more than the grids when inventory is closed.
+#if more is added or changed to the inventory UI change the number appropriately. 
+func kill_out_of_place_items():
+	var children = get_children()  
+	for child in children:
+		if child.get_index() > 1:
+			child.queue_free()
+			item_held = null
