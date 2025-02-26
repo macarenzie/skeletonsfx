@@ -20,6 +20,7 @@ extends Control
 
 signal opened
 signal closed
+signal placed_enemy
 
 var player_grid_array := []
 var enemy_grid_array := []
@@ -36,6 +37,8 @@ var in_range = false
 #var 
 var number_of_slots = 100
 var enemy_item_data := {}
+var loaded_enemy_item_data := {}
+var is_Loaded = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -105,18 +108,20 @@ func check_slot_avaliblity(a_slot):
 	for grid in item_held.item_grids:
 		#grid Test
 		update_array_grid_to_check()
-			
 		var grid_to_check = a_slot.slot_ID + grid[0] + grid[1] * col_count
 		var line_switch_check = a_slot.slot_ID % col_count + grid[0]
 		if line_switch_check < 0 or line_switch_check >= col_count:
+			print("fail test 1")
 			can_place = false
 			perferd_grid = null
 			return
 		if grid_to_check < 0 or grid_to_check >= grid_array.size():
+			print("fail test 2")
 			can_place = false
 			perferd_grid = null
 			return 
 		if grid_array[grid_to_check].state == grid_array[grid_to_check].Status.TAKEN:
+			print("fail test 3")
 			can_place = false
 			perferd_grid = null
 			return
@@ -189,6 +194,7 @@ func place_item(speed):
 	item_held = null
 	perferd_grid = null
 	clear_grid()
+	placed_enemy.emit()
 
 #Used to pickup placed items
 func pick_item():
@@ -220,8 +226,6 @@ func open():
 
 func close():
 	kill_out_of_place_items()
-	pull_enemy_grid()
-	clear_enemy_grid()
 	visible = false
 	isOpen = false
 	enemy_color_rect.visible = false
@@ -229,13 +233,19 @@ func close():
 
 func loot(item:int, slot:int):
 	if in_range:
+		enemy_item_data = {}
 		visible = true
 		enemy_color_rect.visible = true
 		isOpen = true
 		perferd_grid = enemy_grid_array
 		#other_Button.emit_signal("pressed")
 		opened.emit()
-		spawn_item.call_deferred(randi_range(1,2),3,0)
+		#spawn_item.call_deferred(item,slot,0)
+		for items in loaded_enemy_item_data:
+			perferd_grid = enemy_grid_array
+			spawn_item.call_deferred(loaded_enemy_item_data[items][0],loaded_enemy_item_data[items][1],loaded_enemy_item_data[items][2])
+			await placed_enemy
+		loaded_enemy_item_data = {}
 	else:
 		pass
 
@@ -245,8 +255,23 @@ func spawn_item(item:int, slot:int, itemRotate:int):
 	add_child(new_item)
 	new_item.load_item(item)
 	new_item.selected = true
-	new_item.rotation_degrees = itemRotate
 	item_held = new_item
+	if itemRotate == 90:
+		item_held.rotate_item()
+		clear_grid()
+	if itemRotate == 180:
+		item_held.rotate_item()
+		clear_grid()
+		item_held.rotate_item()
+		clear_grid()
+	if itemRotate == 270:
+		item_held.rotate_item()
+		clear_grid()
+		item_held.rotate_item()
+		clear_grid()
+		item_held.rotate_item()
+		clear_grid()
+	
 	set_desired_slot(slot)
 
 
@@ -275,6 +300,13 @@ func update_array_grid_to_check():
 	else:
 		grid_array = perferd_grid
 
+
+func left_looting_area():
+	pull_enemy_grid()
+	is_Loaded = false
+	clear_enemy_grid()
+	return enemy_item_data
+
 #kills anything more than the grids when inventory is closed.
 #if more is added or changed to the inventory UI change the number appropriately. 
 func kill_out_of_place_items():
@@ -290,23 +322,24 @@ func pull_enemy_grid():
 	var children = enemy_grid_container.get_children()
 	for child in children:
 		if child.get_index() >= number_of_slots:
+			print("I got Slots")
 			var temp_grid_array := []
 			temp_grid_array.push_back(child.item_ID)
 			temp_grid_array.push_back(child.grid_anchor.slot_ID)
 			temp_grid_array.push_back(child.rotation_degrees)
 			enemy_item_data[child.get_index() - number_of_slots] = temp_grid_array
-	if enemy_item_data != {} :
-		print(enemy_item_data)
 
 
 func clear_enemy_grid():
 	var children = enemy_grid_container.get_children()
 	for child in children:
-		if child.get_index() >= number_of_slots:
-			child.queue_free()
-	update_array_grid_to_check()
+		child.queue_free()
+	
+	enemy_grid_array = []
+	for i in range(number_of_slots):
+		create_slot(enemy_grid_container)
+
 
 func load_enemy_grid(storage):
-	for items in storage
-	storage[items]
-	spawn_item()
+	is_Loaded = true
+	loaded_enemy_item_data = storage

@@ -129,6 +129,9 @@ root_node = NodePath("../..")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hello"]
 mesh = SubResource("BoxMesh_6bv3e")
 
+[node name="Node3D2" parent="." instance=ExtResource("8_o2imo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
+
 [connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
