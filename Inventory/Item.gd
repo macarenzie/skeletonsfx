@@ -4,8 +4,11 @@ extends Node2D
 
 var item_ID : int
 var item_grids := []
+var slot_type = ""
+
 var selected = false
 var grid_anchor = null
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +21,7 @@ func _process(delta):
 func load_item(a_ItemID : int):
 	item_ID = a_ItemID
 	var Icon_path = "res://Assets/UI Assets/" + DataHandler.item_data[str(a_ItemID)]["Name"] + ".png"
+	slot_type = DataHandler.item_data[str(a_ItemID)]["Slot"]
 	IconRect_path.texture = load(Icon_path)
 	for grid in DataHandler.item_grid_data[str(a_ItemID)]:
 		var converter_array := []
