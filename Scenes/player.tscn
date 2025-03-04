@@ -363,10 +363,8 @@ script = ExtResource("4_yqfp7")
 process_mode = 3
 
 [node name="equipment Slots" parent="Inventory" index="2"]
-offset_left = 205.0
-offset_top = 103.0
-offset_right = 799.0
-offset_bottom = 751.0
+offset_left = 1.0
+offset_right = 595.0
 
 [node name="pickupCollision" type="Area3D" parent="."]
 collision_mask = 7
