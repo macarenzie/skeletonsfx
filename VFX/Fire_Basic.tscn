@@ -1,37 +1,67 @@
-[gd_scene load_steps=14 format=3 uid="uid://6q53rgjerv1k"]
+[gd_scene load_steps=13 format=3 uid="uid://6q53rgjerv1k"]
 
 [ext_resource type="Shader" uid="uid://brb5prkl0e0lp" path="res://VFX/FireVFXShader.tres" id="1_wq0ej"]
 [ext_resource type="Texture2D" uid="uid://sgidv8n4fsvx" path="res://VFX/Dissolve.png" id="2_j1vq0"]
 [ext_resource type="Texture2D" uid="uid://bt7stmr2m47wj" path="res://VFX/FireSheet.png" id="3_usw6y"]
+[ext_resource type="Shader" uid="uid://jcn44qg3x24i" path="res://VFX/FlipbookProcess.tres" id="4_ajeos"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pnrg7"]
 render_priority = 0
 shader = ExtResource("1_wq0ej")
 shader_parameter/DissolveScale = Vector2(0.5, 0.5)
-shader_parameter/DissolveSpeed = Vector2(0.5, 1)
+shader_parameter/DissolveSpeed = Vector2(0.2, 1)
 shader_parameter/DissolveStrength = 1.0
 shader_parameter/DissolveTex = ExtResource("2_j1vq0")
 shader_parameter/vectMainTex = ExtResource("3_usw6y")
 
-[sub_resource type="Curve" id="Curve_vrb8x"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.379214, 1), 0.0, 0.0, 0, 0, Vector2(0.58427, 0.708424), 0.0, 0.0, 0, 0, Vector2(1, 0.0185995), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_i37v1"]
-curve = SubResource("Curve_vrb8x")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rkxn5"]
-gravity = Vector3(0, 3, 0)
-scale_curve = SubResource("CurveTexture_i37v1")
-color = Color(4, 3, 1, 1)
-anim_offset_max = 1.0
-turbulence_enabled = true
-turbulence_noise_strength = 0.84
-turbulence_noise_scale = 7.265
-turbulence_noise_speed = Vector3(0, 0.1, 0)
-turbulence_noise_speed_random = 0.08
-turbulence_influence_min = 0.008
-turbulence_influence_max = 0.038
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_603kg"]
+shader = ExtResource("4_ajeos")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 45.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 0.0
+shader_parameter/initial_linear_velocity_max = 0.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = null
+shader_parameter/radial_velocity_max = null
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 1.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/color_value = Color(4, 3, 1, 1)
+shader_parameter/gravity = Vector3(0, 3, 0)
+shader_parameter/turbulence_noise_strength = 0.84
+shader_parameter/turbulence_noise_scale = -0.307088
+shader_parameter/turbulence_influence_min = 0.008
+shader_parameter/turbulence_influence_max = 0.038
+shader_parameter/turbulence_initial_displacement_min = 0.0
+shader_parameter/turbulence_initial_displacement_max = 0.0
+shader_parameter/turbulence_noise_speed_random = 0.08
+shader_parameter/turbulence_noise_speed = Vector3(0, 0.1, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_muapw"]
 
@@ -67,11 +97,12 @@ material_override = SubResource("ShaderMaterial_pnrg7")
 gi_mode = 2
 amount = 6
 draw_order = 1
-process_material = SubResource("ParticleProcessMaterial_rkxn5")
+process_material = SubResource("ShaderMaterial_603kg")
 draw_pass_1 = SubResource("QuadMesh_muapw")
 
 [node name="Smoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0462494, 0)
+visible = false
 material_override = SubResource("ShaderMaterial_6edrk")
 process_material = SubResource("ParticleProcessMaterial_u0e1a")
 draw_pass_1 = SubResource("QuadMesh_n1q4h")
