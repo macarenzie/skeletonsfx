@@ -72,6 +72,9 @@ offset_top = 650.0
 offset_right = 601.0
 offset_bottom = 1298.0
 
+[node name="ColorRect" parent="Player/PlayerUI" index="0"]
+anchor_bottom = 1.675
+
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 
@@ -124,7 +127,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
 [node name="Menu" parent="." instance=ExtResource("9_s5wx5")]
 
 [node name="DevRoom" parent="Menu/ColorRect/MarginContainer/VBoxContainer" index="3"]
-text = "Dev Room"
+text = "Level 1"
 
 [node name="Hello" type="Node3D" parent="."]
 script = ExtResource("8_muvoo")

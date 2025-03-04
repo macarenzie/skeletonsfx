@@ -21,14 +21,15 @@ color = Color(0.513233, 0.513233, 0.513233, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 280.0
-offset_top = -33.0
-offset_right = -280.0
-offset_bottom = 33.0
+anchors_preset = -1
+anchor_left = 0.243
+anchor_top = 0.395
+anchor_right = 0.757
+anchor_bottom = 0.605
+offset_left = 0.0639954
+offset_top = 35.04
+offset_right = -0.0640259
+offset_bottom = -35.04
 grow_horizontal = 2
 grow_vertical = 2
 
