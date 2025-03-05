@@ -51,38 +51,11 @@ shadow_enabled = true
 process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
 
-[node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
-current = true
-
-[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.994335, 0.106264, 0, -0.106264, 0.994335, 0.486111, 0.415537, -0.682223)
-
-[node name="ColorRect" parent="Player/Inventory" index="0"]
-offset_right = 575.0
-
-[node name="EnemyGrid" parent="Player/Inventory" index="1"]
-offset_left = 577.0
-offset_top = 0.0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="equipment Slots" parent="Player/Inventory" index="2"]
-offset_left = 7.0
-offset_top = 650.0
-offset_right = 601.0
-offset_bottom = 1298.0
-
-[node name="ColorRect" parent="Player/PlayerUI" index="0"]
-anchor_bottom = 1.675
-
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 
 [node name="Fire" parent="." instance=ExtResource("3_mhhwa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49981, 1.56862, -4.1927)
-
-[node name="Player" parent="." instance=ExtResource("1_xfvv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69231, 0.056115, 0)
 
 [node name="Box" parent="." instance=ExtResource("5_cml46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82179, 0.54224, -4.84885)
