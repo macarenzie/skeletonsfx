@@ -81,6 +81,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 [node name="Fire" parent="." instance=ExtResource("3_mhhwa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49981, 1.56862, -4.1927)
 
+[node name="Player" parent="." instance=ExtResource("1_xfvv5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69231, 0.056115, 0)
+
 [node name="Box" parent="." instance=ExtResource("5_cml46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82179, 0.54224, -4.84885)
 
@@ -141,14 +144,10 @@ mesh = SubResource("BoxMesh_6bv3e")
 [node name="Node3D2" parent="." instance=ExtResource("8_o2imo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 
-[connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
-[connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="." method="_on_dev_room_pressed"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
 
-[editable path="Player"]
-[editable path="Player/Inventory"]
 [editable path="Menu"]
