@@ -9,7 +9,6 @@
 albedo_texture = ExtResource("1_u1bqw")
 metallic = 1.0
 metallic_texture = ExtResource("3_y138d")
-roughness_texture = ExtResource("3_y138d")
 emission_enabled = true
 emission_texture = ExtResource("2_gwy4v")
 normal_enabled = true
