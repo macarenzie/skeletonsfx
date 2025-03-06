@@ -6,7 +6,8 @@
 size = Vector3(1, 1.96, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2li8"]
-albedo_color = Color(1, 1, 0, 1)
+transparency = 1
+albedo_color = Color(1, 1, 0, 0.509804)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rkbin"]
 material = SubResource("StandardMaterial3D_m2li8")
@@ -14,6 +15,7 @@ material = SubResource("StandardMaterial3D_m2li8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_5u28p"]
 
 [node name="RigidBody3D" type="RigidBody3D"]
+process_mode = 1
 mass = 0.04
 gravity_scale = 0.851
 script = ExtResource("1_n824t")

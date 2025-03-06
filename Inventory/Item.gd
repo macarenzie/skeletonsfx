@@ -4,8 +4,11 @@ extends Node2D
 
 var item_ID : int
 var item_grids := []
+var slot_type = ""
+
 var selected = false
 var grid_anchor = null
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,7 +19,9 @@ func _process(delta):
 
 #Loads an item from the assets folder using the name in the item_data sheet
 func load_item(a_ItemID : int):
+	item_ID = a_ItemID
 	var Icon_path = "res://Assets/UI Assets/" + DataHandler.item_data[str(a_ItemID)]["Name"] + ".png"
+	slot_type = DataHandler.item_data[str(a_ItemID)]["Slot"]
 	IconRect_path.texture = load(Icon_path)
 	for grid in DataHandler.item_grid_data[str(a_ItemID)]:
 		var converter_array := []
@@ -36,15 +41,17 @@ func rotate_item():
 		rotation_degrees = 0
 
 #Moves the item to the position of the grid squares
-func _snap_to(destination:Vector2):
+func _snap_to(destination:Vector2,speed:float):
 	var tween = get_tree().create_tween()
 	if int(rotation_degrees) % 180 == 0:
 		destination += IconRect_path.size/2
+		
 	else:
 		var temp_xy_switch = Vector2(IconRect_path.size.y, IconRect_path.size.x)
 		destination += temp_xy_switch/2
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)
+
+	tween.tween_property(self, "global_position", destination, speed).set_trans(Tween.TRANS_SINE)
 	selected = false
 
 

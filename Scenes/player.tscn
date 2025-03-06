@@ -1,12 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=25 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
 [ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
+[ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="4_xirlr"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
+[ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
+[ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -18,17 +21,6 @@
 material = SubResource("StandardMaterial3D_ns243")
 height = 0.1
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hhpyp"]
-radius = 0.05
-height = 1.5
-radial_segments = 4
-rings = 1
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_5bv5e"]
-top_radius = 0.15
-bottom_radius = 0.15
-height = 0.05
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkum0"]
 
 [sub_resource type="Animation" id="Animation_bam0r"]
@@ -36,62 +28,62 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
+tracks/0/path = NodePath("PlayerHead/WeaponHolder:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.486111, 0.415537, -0.682223)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
+tracks/1/path = NodePath("PlayerHead/ShieldHolder:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.106465, 0, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
+tracks/2/path = NodePath("PlayerHead/ShieldHolder/Shield:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.625, 0, -0.355)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerHead/ShieldHolder:rotation")
+tracks/3/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(3.09086e-08, -1.5708, 0.785398)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerHead/ShieldHolder/Shield:position")
+tracks/4/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.625, 0, -0.355)]
+"values": [Vector3(0.486111, 0.127508, -0.460107)]
 }
 
 [sub_resource type="Animation" id="Animation_oa6n8"]
@@ -269,6 +261,12 @@ _data = {
 "idle": SubResource("Animation_ob7em")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3knrg"]
+radius = 2.85713
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5tt7"]
+bg_color = Color(0.999401, 0.574862, 0.295541, 1)
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 2
@@ -317,13 +315,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Weapon" type="MeshInstance3D" parent="PlayerHead/WeaponHolder"]
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
-mesh = SubResource("CapsuleMesh_hhpyp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/WeaponHolder/Weapon"]
-process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360777, 0)
-mesh = SubResource("CylinderMesh_5bv5e")
+transform = Transform3D(-5.27643e-08, 9.05291e-09, -0.999998, 0.707107, 0.707105, -3.09086e-08, 0.707107, -0.707105, -4.37113e-08, 0.486111, 0.127508, -0.460107)
+mesh = ExtResource("4_xirlr")
+surface_material_override/0 = ExtResource("5_i507g")
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("combat_controller")]
 monitoring = false
@@ -355,7 +349,83 @@ script = ExtResource("4_yqfp7")
 [node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
 process_mode = 3
 
+[node name="equipment Slots" parent="Inventory" index="2"]
+offset_left = 1.0
+offset_right = 595.0
+
+[node name="pickupCollision" type="Area3D" parent="."]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pickupCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02984, 0)
+shape = SubResource("SphereShape3D_3knrg")
+
+[node name="PlayerUI" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchor_right = 0.035
+anchor_bottom = 0.062
+offset_right = -0.32
+offset_bottom = -0.176003
+
+[node name="ColorRect" type="ColorRect" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 6.425
+anchor_bottom = 2.0
+color = Color(0.780392, 0.780392, 0.780392, 0.537255)
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 5.775
+anchor_bottom = 1.0
+offset_bottom = 13.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_s5tt7")
+value = 50.0
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 0.1
+anchor_right = 1.375
+anchor_bottom = 0.675
+text = "Fire:"
+fit_content = true
+
+[node name="The Real Text" type="Button" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.175
+anchor_right = 1.55
+anchor_bottom = 0.775
+icon = ExtResource("8_5j2rg")
+flat = true
+expand_icon = true
+
 [node name="Crosshair" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Crosshair"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -25.0
+offset_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.72549, 0.72549, 1)
 
 [node name="ColorRect" type="ColorRect" parent="Crosshair"]
 anchors_preset = 8
@@ -372,17 +442,4 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0.72549, 0.72549, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="Crosshair"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -25.0
-offset_right = 1.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0.72549, 0.72549, 1)
+[editable path="Inventory"]

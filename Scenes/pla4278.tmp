@@ -1,0 +1,280 @@
+[gd_scene load_steps=18 format=3 uid="uid://b44n5un2mgd3u"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
+[ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
+[ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
+[ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
+[ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
+[ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xgvwq"]
+height = 0.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hhpyp"]
+radius = 0.05
+height = 1.5
+radial_segments = 4
+rings = 1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5bv5e"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.05
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkum0"]
+
+[sub_resource type="Animation" id="Animation_bam0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.486111, 0.415537, -0.682223)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.106465, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oa6n8"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(-0.106465, 0, 0), Vector3(0.50091, 0, 0), Vector3(0.50091, 0.404916, -1.06465), Vector3(0.50091, 0.404916, -1.46957)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0.486111, 0.415537, -0.682223), Vector3(0.48611, 0.785759, -0.75215), Vector3(0.48611, 0.225281, -0.75215), Vector3(0.48611, 0.225281, -0.75215)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.404916, 0), Vector3(0, 0, 0), Vector3(0, 1.82387, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ob7em"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerHead/WeaponHolder/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0.486111, 0.415537, -0.682223), Vector3(0.48611, 0.504951, -0.765582)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerHead/WeaponHolder/Weapon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-0.106465, 0, 0), Vector3(-0.308923, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHead/WeaponHolder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bd23k"]
+_data = {
+"RESET": SubResource("Animation_bam0r"),
+"attack": SubResource("Animation_oa6n8"),
+"idle": SubResource("Animation_ob7em")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3knrg"]
+radius = 2.85713
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4wc5k")
+
+[node name="PlayerCollider" type="CollisionShape3D" parent="."]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ur0qq")
+
+[node name="PlayerModel" type="MeshInstance3D" parent="."]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_vgxxl")
+
+[node name="PlayerHead" type="Node3D" parent="."]
+unique_name_in_owner = true
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
+unique_name_in_owner = true
+process_mode = 1
+fov = 90.0
+script = ExtResource("2_kcqsg")
+SENSITIVITY_X = 0.002
+SENSITIVITY_Y = 0.001
+
+[node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ShieldHolder" type="Node3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.62472, 0, -0.355409)
+mesh = SubResource("CylinderMesh_xgvwq")
+
+[node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Weapon" type="MeshInstance3D" parent="PlayerHead/WeaponHolder"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
+mesh = SubResource("CapsuleMesh_hhpyp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerHead/WeaponHolder/Weapon"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360777, 0)
+mesh = SubResource("CylinderMesh_5bv5e")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+monitoring = false
+script = ExtResource("4_hiqmd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_gkum0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_bd23k")
+}
+autoplay = "idle"
+
+[node name="PlayerCombat" type="Node" parent="."]
+process_mode = 1
+script = ExtResource("3_lv7ac")
+attack_delay = 0.35
+attack_speed = 0.4
+
+[node name="InnerFire" type="Node" parent="."]
+process_mode = 1
+script = ExtResource("4_yqfp7")
+
+[node name="Crosshair" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Crosshair"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -1.0
+offset_right = 25.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.72549, 0.72549, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Crosshair"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -25.0
+offset_right = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.72549, 0.72549, 1)
+
+[node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
+process_mode = 3
+
+[node name="pickupCollision" type="Area3D" parent="."]
+collision_layer = 7
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pickupCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02984, 0)
+shape = SubResource("SphereShape3D_3knrg")

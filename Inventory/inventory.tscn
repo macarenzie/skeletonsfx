@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://h3oed28gj68k"]
+[gd_scene load_steps=5 format=3 uid="uid://h3oed28gj68k"]
 
 [ext_resource type="Script" path="res://Inventory/inventory.gd" id="1_83hh5"]
+[ext_resource type="Texture2D" uid="uid://cqom8qybks2m6" path="res://Assets/UI Assets/inventory_texture.png" id="2_7ey3k"]
+[ext_resource type="Texture2D" uid="uid://jtl846m6ulp0" path="res://Assets/UI Assets/equipment_texture_main.png" id="2_gpcx8"]
+[ext_resource type="Texture2D" uid="uid://cegt8bfddajci" path="res://Assets/UI Assets/equipment_texture_off.png" id="3_ttagu"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -48,4 +51,104 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 columns = 10
 
+[node name="EnemyGrid" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 1.0
+offset_right = 1203.0
+offset_bottom = 649.0
+color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="EnemyGrid"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnemyGrid/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="EnemyGrid/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Button_Spawn" type="Button" parent="EnemyGrid/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Add Item"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EnemyGrid/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="EnemyGrid/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+columns = 10
+
+[node name="equipment Slots" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 656.0
+offset_right = 596.0
+offset_bottom = 1304.0
+scale = Vector2(0.347315, 0.326641)
+color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="equipment Slots"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="equipment Slots/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="equipment Slots/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="equipment Slots/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+columns = 2
+
+[node name="Item_Slot" type="Button" parent="equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+icon = ExtResource("2_gpcx8")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Item_Slot2" type="Button" parent="equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+icon = ExtResource("3_ttagu")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Item_Slot3" type="Button" parent="equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+icon = ExtResource("2_7ey3k")
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Button_Spawn" to="." method="_on_button_spawn_pressed"]
+[connection signal="pressed" from="EnemyGrid/MarginContainer/VBoxContainer/Header/Button_Spawn" to="." method="_on_button_spawn_pressed"]
+[connection signal="pressed" from="equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer/Item_Slot" to="." method="_on_item_slot_pressed"]
+[connection signal="pressed" from="equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer/Item_Slot2" to="." method="_on_item_slot_2_pressed"]
+[connection signal="pressed" from="equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer/Item_Slot3" to="." method="_on_item_slot_3_pressed"]

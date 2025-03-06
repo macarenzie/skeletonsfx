@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=18 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_evvha"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_cml46"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="6_tatpg"]
 [ext_resource type="Script" path="res://Scenes/Hello.gd" id="8_muvoo"]
+[ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="8_o2imo"]
+[ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="9_s5wx5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -48,14 +50,11 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_xfvv5")]
 process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
-collision_layer = 2
-collision_mask = 2
 
 [node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.994337, 0.106264, 0, -0.106264, 0.994337, 0.486111, 0.415537, -0.682223)
+transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
-process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 
 [node name="Fire" parent="." instance=ExtResource("3_mhhwa")]
@@ -101,6 +100,14 @@ skeleton = NodePath("../Ground")
 transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, 24.4366)
 skeleton = NodePath("../Ground")
 
+[node name="Node3D" parent="." instance=ExtResource("8_o2imo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
+
+[node name="Menu" parent="." instance=ExtResource("9_s5wx5")]
+
+[node name="DevRoom" parent="Menu/ColorRect/MarginContainer/VBoxContainer" index="3"]
+text = "Level 1"
+
 [node name="Hello" type="Node3D" parent="."]
 script = ExtResource("8_muvoo")
 
@@ -110,7 +117,17 @@ root_node = NodePath("../..")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hello"]
 mesh = SubResource("BoxMesh_6bv3e")
 
+[node name="Node3D2" parent="." instance=ExtResource("8_o2imo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
+
 [connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
+[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="." method="_on_dev_room_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
 
 [editable path="Player"]
+[editable path="Player/Inventory"]
+[editable path="Menu"]
