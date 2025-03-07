@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Scheduler="*res://Scripts/Scheduler.gd"
 DataHandler="*res://Data/DataHandler.gd"
 
+[display]
+
+window/size/mode=4
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

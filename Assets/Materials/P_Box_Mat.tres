@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://3wawpom7yu6p"]
+
+[ext_resource type="Texture2D" uid="uid://bxnffqvvvflq0" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_BaseMap.png" id="1_u1bqw"]
+[ext_resource type="Texture2D" uid="uid://7al83j4rx3f6" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Emissive.png" id="2_gwy4v"]
+[ext_resource type="Texture2D" uid="uid://xonl4o8bb3on" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_MaskMap.png" id="3_y138d"]
+[ext_resource type="Texture2D" uid="uid://5e3pmixoi4jn" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Normal.png" id="4_i1fjt"]
+
+[resource]
+albedo_texture = ExtResource("1_u1bqw")
+metallic = 1.0
+metallic_texture = ExtResource("3_y138d")
+emission_enabled = true
+emission_texture = ExtResource("2_gwy4v")
+normal_enabled = true
+normal_texture = ExtResource("4_i1fjt")

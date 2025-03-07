@@ -51,26 +51,8 @@ shadow_enabled = true
 process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
 
-[node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
-current = true
-
 [node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.994335, 0.106264, 0, -0.106264, 0.994335, 0.486111, 0.415537, -0.682223)
-
-[node name="ColorRect" parent="Player/Inventory" index="0"]
-offset_right = 575.0
-
-[node name="EnemyGrid" parent="Player/Inventory" index="1"]
-offset_left = 577.0
-offset_top = 0.0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="equipment Slots" parent="Player/Inventory" index="2"]
-offset_left = 7.0
-offset_top = 650.0
-offset_right = 601.0
-offset_bottom = 1298.0
+transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
@@ -124,7 +106,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
 [node name="Menu" parent="." instance=ExtResource("9_s5wx5")]
 
 [node name="DevRoom" parent="Menu/ColorRect/MarginContainer/VBoxContainer" index="3"]
-text = "Dev Room"
+text = "Level 1"
 
 [node name="Hello" type="Node3D" parent="."]
 script = ExtResource("8_muvoo")

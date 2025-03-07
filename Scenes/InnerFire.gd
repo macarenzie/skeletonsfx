@@ -1,7 +1,7 @@
 extends Node
 
-@export var innerFire:float = 100.0
-@export var maxInnerFire:float = 100.0
+@export var innerFire:float = 1000.0
+@export var maxInnerFire:float = 1000.0
 @export var isInFire:bool = false
 
 @onready var fireBar = $"../PlayerUI/ProgressBar"
@@ -29,6 +29,6 @@ func _physics_process(delta):
 			if get_tree().current_scene.scene_file_path == "res://Scenes/world.tscn":
 				return
 			get_tree().reload_current_scene() # you died
-		innerFire -= .4
+		innerFire -= .028 # aprox. 10 minutes w/o fire till you die
 
 	fireBar.value = innerFire
