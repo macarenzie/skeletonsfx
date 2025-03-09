@@ -36,7 +36,7 @@ op_type = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_edqhc"]
-parameter_name = "vectMainTex"
+parameter_name = "MainTex"
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jglqj"]
 input_name = "vertex"
@@ -181,7 +181,7 @@ varying_name = "particleIndex"
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 
 // Varyings
@@ -190,7 +190,7 @@ varying float particleIndex;
 uniform vec2 DissolveScale = vec2(1.000000, 1.000000);
 uniform vec2 DissolveSpeed;
 uniform sampler2D DissolveTex;
-uniform sampler2D vectMainTex;
+uniform sampler2D MainTex;
 uniform float DissolveStrength : hint_range(0, 1) = 0;
 
 
@@ -407,7 +407,7 @@ void fragment() {
 
 	vec4 n_out3p0;
 // Texture2D:3
-	n_out3p0 = texture(vectMainTex, n_out49p0);
+	n_out3p0 = texture(MainTex, n_out49p0);
 
 
 // VectorOp:9
@@ -473,7 +473,8 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1655.21, 535.31)
+graph_offset = Vector2(4901.49, 478.546)
+modes/blend = 1
 varyings/particleIndex = "0,0"
 nodes/vertex/0/position = Vector2(300, 360)
 nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_ln666")
@@ -491,7 +492,7 @@ nodes/fragment/2/position = Vector2(400, 720)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_mdl0f")
 nodes/fragment/3/position = Vector2(2440, 480)
 nodes/fragment/4/node = SubResource("VisualShaderNodeVectorDecompose_luav8")
-nodes/fragment/4/position = Vector2(3640, 760)
+nodes/fragment/4/position = Vector2(3620, 680)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_uqq8c")
 nodes/fragment/5/position = Vector2(3300, 460)
 nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_qdk7s")
@@ -539,7 +540,7 @@ nodes/fragment/27/position = Vector2(-380, 1100)
 nodes/fragment/28/node = SubResource("VisualShaderNodeClamp_nf72x")
 nodes/fragment/28/position = Vector2(-220, 1180)
 nodes/fragment/31/node = SubResource("VisualShaderNodeInput_r6dd0")
-nodes/fragment/31/position = Vector2(240, 140)
+nodes/fragment/31/position = Vector2(0, 120)
 nodes/fragment/32/node = SubResource("VisualShaderNodeVectorDecompose_bu5yk")
 nodes/fragment/32/position = Vector2(380, -140)
 nodes/fragment/33/node = SubResource("VisualShaderNodeFloatOp_puocv")
