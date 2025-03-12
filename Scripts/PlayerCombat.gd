@@ -38,7 +38,8 @@ func _process(_delta):
 	elif Input.is_action_just_released("block"):
 		end_block()
 	elif Input.is_action_pressed("attack"): 
-		attack()
+		#attack()
+		pass
 
 #functions for stat_changes in combat
 func take_damage(originator:Node,value:int):

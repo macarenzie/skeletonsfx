@@ -1,8 +1,10 @@
 extends CharacterBody3D
 
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@export var move_speed := 2.0
 
 func _unhandled_input(event):
+	return
 	if event.is_action_pressed("ui_accept"):
 		var random_position := Vector3.ZERO
 		random_position.x = randf_range(-5.0, 5.0)
@@ -16,5 +18,9 @@ func _physics_process(delta):
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
 	look_at(destination)
-	velocity = direction * 5.0
+	velocity = direction * move_speed
 	move_and_slide()
+
+
+func _on_head_player_detected(position):
+	navigation_agent_3d.set_target_position(Vector3(position.x, 0, position.z))

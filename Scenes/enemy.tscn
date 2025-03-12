@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwsjn2nmf8tlv"]
+[gd_scene load_steps=10 format=3 uid="uid://bwsjn2nmf8tlv"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_pathfinding.gd" id="1_hnxsu"]
+[ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
+[ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
+[ext_resource type="Script" path="res://Scripts/EnemyBehavior.gd" id="3_loj3b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db5ws"]
 albedo_color = Color(1, 0, 0, 1)
@@ -24,8 +26,8 @@ height = 0.4
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bshh7"]
 height = 2.3
 
-[node name="Enemy" type="CharacterBody3D"]
-script = ExtResource("1_hnxsu")
+[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_xoblp")
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -35,6 +37,18 @@ mesh = SubResource("CapsuleMesh_q10qx")
 skeleton = NodePath("../..")
 
 [node name="Head" type="Node3D" parent="Model/Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_ris5s")
+angle = 90.0
+horizontal_range = 6.0
+
+[node name="LeftRayCast3D" type="RayCast3D" parent="Model/Body/Head"]
+target_position = Vector3(0, 0, -4)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="RightRayCast3D" type="RayCast3D" parent="Model/Body/Head"]
+target_position = Vector3(0, 0, -4)
+debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="Right Foot" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.05, -0.2)
@@ -63,3 +77,8 @@ shape = SubResource("CapsuleShape3D_bshh7")
 target_desired_distance = 0.1
 path_height_offset = 0.25
 debug_enabled = true
+
+[node name="EnemyBehavior" type="Node" parent="."]
+script = ExtResource("3_loj3b")
+
+[connection signal="Player_Detected" from="Model/Body/Head" to="." method="_on_head_player_detected"]
