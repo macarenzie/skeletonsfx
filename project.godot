@@ -22,7 +22,8 @@ DataHandler="*res://Data/DataHandler.gd"
 
 [display]
 
-window/size/mode=4
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [editor]
 

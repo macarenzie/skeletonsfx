@@ -50,7 +50,7 @@ text = "Controls"
 
 [node name="DevRoom" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Dev room"
+text = "Main Menu"
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect"]
 visible = false

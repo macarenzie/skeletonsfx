@@ -15,12 +15,12 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_88whd"]
+[sub_resource type="Sky" id="Sky_vw8te"]
 sky_material = SubResource("ProceduralSkyMaterial_eol4q")
 
 [sub_resource type="Environment" id="Environment_xhccs"]
 background_mode = 2
-sky = SubResource("Sky_88whd")
+sky = SubResource("Sky_vw8te")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -50,9 +50,6 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_xfvv5")]
 process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
-
-[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
@@ -104,9 +101,6 @@ skeleton = NodePath("../Ground")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
 
 [node name="Menu" parent="." instance=ExtResource("9_s5wx5")]
-
-[node name="DevRoom" parent="Menu/ColorRect/MarginContainer/VBoxContainer" index="3"]
-text = "Level 1"
 
 [node name="Hello" type="Node3D" parent="."]
 script = ExtResource("8_muvoo")

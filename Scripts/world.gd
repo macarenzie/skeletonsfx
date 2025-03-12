@@ -86,10 +86,11 @@ func _on_dev_room_pressed():
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
 	
-	if get_tree().current_scene.scene_file_path == "res://Scenes/world.tscn":
-		get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
-	else :
-		get_tree().change_scene_to_file("res://Scenes/world.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	#if get_tree().current_scene.scene_file_path == "res://Scenes/world.tscn":
+		#get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	#else :
+		#get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
 
 func _on_back_pressed():
