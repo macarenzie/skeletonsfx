@@ -8,8 +8,8 @@
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="4_xirlr"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
-[ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
+[ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -315,7 +315,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Weapon" type="MeshInstance3D" parent="PlayerHead/WeaponHolder"]
 process_mode = 1
-transform = Transform3D(-5.27643e-08, 9.05291e-09, -0.999998, 0.707107, 0.707105, -3.09086e-08, 0.707107, -0.707105, -4.37113e-08, 0.486111, 0.127508, -0.460107)
+transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 mesh = ExtResource("4_xirlr")
 surface_material_override/0 = ExtResource("5_i507g")
 
