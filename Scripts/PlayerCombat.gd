@@ -3,6 +3,8 @@ extends Node
 
 @onready var anim_player = %AnimationPlayer
 
+@onready var hitList = []
+
 @export_category("Health") # I don't feel like these should be here but it's going to be here at the moment
 @export var max_health : int = 100
 var current_health : int
@@ -39,6 +41,8 @@ func _process(_delta):
 		end_block()
 	elif Input.is_action_pressed("attack"): 
 		attack()
+	elif Input.is_action_just_pressed("fire"):
+		fire()
 
 #functions for stat_changes in combat
 func take_damage(originator:Node,value:int):
@@ -70,13 +74,15 @@ func attack():
 
 	anim_player.play("attack")
 	
-	var new_fire = load("res://Fire/Fire.tscn").instantiate()
-	new_fire.global_position = get_parent().position
-	get_parent().get_parent().add_child(new_fire)
+	#var new_fire = load("res://Fire/Fire.tscn").instantiate()
+	#new_fire.global_position = get_parent().position
+	#get_parent().get_parent().add_child(new_fire)
+	
 	#var innerfire = get_parent().get_child(6)
 	#innerfire.innerFire - 30.0
 
 func reset_attack():
+	hitList.clear()
 	attacking = false
 	ready_to_attack = true
 	ready_to_block = true
@@ -123,3 +129,17 @@ func reset_animation(anim_name):
 	if anim_name == "attack" or anim_name == "block_end":
 		anim_player.play("idle")
 
+func fire():
+	var new_fire = load("res://Fire/Fire.tscn").instantiate()
+	new_fire.global_position = get_parent().position
+	get_parent().get_parent().add_child(new_fire)
+	
+	var innerfire = get_parent().get_child(6)
+	innerfire.innerFire - 30.0
+
+
+#Temparary weapon damage Code. 
+func _on_area_3d_body_entered(body):
+	if body.has_method("take_damage") and not hitList.has(body) and attacking:
+		hitList.append(body)
+		body.take_damage(attack_damage)
