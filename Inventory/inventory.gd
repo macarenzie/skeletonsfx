@@ -17,6 +17,8 @@ extends Control
 @onready var enemy_rect = $EnemyGrid
 @onready var equipment_rect = $"equipment Slots"
 
+@onready var player_combat = $"../PlayerCombat"
+
 signal opened
 signal closed
 signal placed_enemy
@@ -109,7 +111,7 @@ func _on_slot_mouse_exited(a_Slot):
 
 #handles button press to spawn Item
 func _on_button_spawn_pressed():
-	spawn_item(randi_range(1,2),3,0)
+	spawn_item(randi_range(1,3),3,0)
 
 
 
@@ -387,6 +389,11 @@ func _on_item_slot_pressed():
 		if item_held == null:
 			spawn_item(slot_1[0],0,0)
 			item_slot_1.icon = load("res://Assets/UI Assets/equipment_texture_main.png")
+			
+			#player Stats
+			player_combat.attack_damage = 0
+			player_combat.attack_speed = float(0.0)
+			
 			slot_1.clear()
 		else:
 			if item_held.slot_type == "mainhand":
@@ -396,12 +403,22 @@ func _on_item_slot_pressed():
 				slot_1.push_back(item_held.item_ID)
 				item_slot_1.icon = item_held.IconRect_path.texture
 				
+				#player Stats
+				player_combat.attack_damage = item_held.item_Damage
+				player_combat.attack_speed = item_held.item_Speed
+				
 				kill_out_of_place_items()
 				spawn_item(temp_list[0],0,0)
 	else:
 		if item_held != null and item_held.slot_type == "mainhand":
 			slot_1.push_back(item_held.item_ID)
 			item_slot_1.icon = item_held.IconRect_path.texture
+			
+			#player Stats
+			player_combat.attack_damage = item_held.item_Damage
+			player_combat.attack_speed = item_held.item_Speed
+			
+			
 			kill_out_of_place_items()
 	print(slot_1)
 

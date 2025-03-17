@@ -3,6 +3,8 @@ extends Node2D
 @onready var IconRect_path = $Icon
 
 var item_ID : int
+var item_Damage : int
+var item_Speed : float
 var item_grids := []
 var slot_type = ""
 
@@ -19,9 +21,13 @@ func _process(delta):
 
 #Loads an item from the assets folder using the name in the item_data sheet
 func load_item(a_ItemID : int):
+	
 	item_ID = a_ItemID
 	var Icon_path = "res://Assets/UI Assets/" + DataHandler.item_data[str(a_ItemID)]["Name"] + ".png"
 	slot_type = DataHandler.item_data[str(a_ItemID)]["Slot"]
+	item_Damage = int(DataHandler.item_data[str(a_ItemID)]["Damage"])
+	item_Speed = float(DataHandler.item_data[str(a_ItemID)]["Speed"])
+	
 	IconRect_path.texture = load(Icon_path)
 	for grid in DataHandler.item_grid_data[str(a_ItemID)]:
 		var converter_array := []

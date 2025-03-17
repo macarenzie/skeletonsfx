@@ -4,6 +4,7 @@ extends Node
 @onready var anim_player = %AnimationPlayer
 
 @onready var hitList = []
+@onready var inventory = $"../Inventory"
 
 @export_category("Health") # I don't feel like these should be here but it's going to be here at the moment
 @export var max_health : int = 100
@@ -33,13 +34,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if inventory.slot_1 != []:
+		$"../PlayerHead/WeaponHolder".visible = true
+	else:
+		$"../PlayerHead/WeaponHolder".visible = false
+	
 	if Input.is_action_just_pressed("block"):
 		start_block()
 	elif Input.is_action_pressed("block"):
 		block()
 	elif Input.is_action_just_released("block"):
 		end_block()
-	elif Input.is_action_pressed("attack"): 
+	elif Input.is_action_pressed("attack") and $"../PlayerHead/WeaponHolder".visible == true: 
 		attack()
 	elif Input.is_action_just_pressed("fire"):
 		fire()

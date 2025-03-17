@@ -2,15 +2,28 @@
 	"1":{
 		"ItemID": "1",
 		"Name": "Item1",
-		"Value": "10",
+		"Grid": "0,0/1,0/-1,0",
 		"Slot": "mainhand",
-		"Grid": "0,0/1,0/-1,0"
+		"Damage": "10",
+		"Speed": "1.0"
+		
 	},
 	"2":{
 		"ItemID": "2",
 		"Name": "Item2",
-		"Value": "10",
+		"Grid": "0,0/0,1/-1,0",
 		"Slot": "offhand",
-		"Grid": "0,0/0,1/-1,0"
+		"Damage": "0",
+		"Speed": "0.0"
+		
+	},
+	"3":{
+		"ItemID": "3",
+		"Name": "textIsALie",
+		"Grid": "0,0/0,1/-1,0",
+		"Slot": "mainhand",
+		"Damage": "30",
+		"Speed": "0.1"
+		
 	}
 }
