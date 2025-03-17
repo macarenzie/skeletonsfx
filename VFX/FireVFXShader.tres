@@ -473,7 +473,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(4901.49, 478.546)
 modes/blend = 1
 varyings/particleIndex = "0,0"
 nodes/vertex/0/position = Vector2(300, 360)
