@@ -5,8 +5,16 @@ extends Node2D
 var item_ID : int
 var item_Damage : int
 var item_Speed : float
+var item_Delay : float
+var block_startup: float
+var block_endlag: float
+var block_damage_reduction: float
+var block_angle: float
+var maxInnerFire: float
+var fireRegen: float
 var item_grids := []
 var slot_type = ""
+var stat_list := []
 
 var selected = false
 var grid_anchor = null
@@ -25,8 +33,18 @@ func load_item(a_ItemID : int):
 	item_ID = a_ItemID
 	var Icon_path = "res://Assets/UI Assets/" + DataHandler.item_data[str(a_ItemID)]["Name"] + ".png"
 	slot_type = DataHandler.item_data[str(a_ItemID)]["Slot"]
+	
 	item_Damage = int(DataHandler.item_data[str(a_ItemID)]["Damage"])
 	item_Speed = float(DataHandler.item_data[str(a_ItemID)]["Speed"])
+	item_Delay = float(DataHandler.item_data[str(a_ItemID)]["Delay"])
+	
+	block_startup = float(DataHandler.item_data[str(a_ItemID)]["block_startup"])
+	block_endlag = float(DataHandler.item_data[str(a_ItemID)]["block_endlag"])
+	block_damage_reduction = float(DataHandler.item_data[str(a_ItemID)]["block_damage_reduction"])
+	block_angle = float(DataHandler.item_data[str(a_ItemID)]["block_angle"])
+	
+	maxInnerFire = float(DataHandler.item_data[str(a_ItemID)]["maxInnerFire"])
+	fireRegen = float(DataHandler.item_data[str(a_ItemID)]["fireRegen"])
 	
 	IconRect_path.texture = load(Icon_path)
 	for grid in DataHandler.item_grid_data[str(a_ItemID)]:

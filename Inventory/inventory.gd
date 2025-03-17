@@ -18,6 +18,7 @@ extends Control
 @onready var equipment_rect = $"equipment Slots"
 
 @onready var player_combat = $"../PlayerCombat"
+@onready var player_fire = $"../InnerFire"
 
 signal opened
 signal closed
@@ -391,32 +392,44 @@ func _on_item_slot_pressed():
 			item_slot_1.icon = load("res://Assets/UI Assets/equipment_texture_main.png")
 			
 			#player Stats
-			player_combat.attack_damage = 0
-			player_combat.attack_speed = float(0.0)
+			update_stats(slot_1,false)
+			#player_combat.attack_damage = 0
+			#player_combat.attack_speed = float(0.0)
+			#player_combat.attack_delay = float(0.0)
 			
 			slot_1.clear()
 		else:
 			if item_held.slot_type == "mainhand":
-				var temp_list = []
-				temp_list.push_back(slot_1[0])
+				var temp_list = slot_1.duplicate()
+			
+				update_stats(temp_list,false)
+				
 				slot_1.clear()
-				slot_1.push_back(item_held.item_ID)
+				slot_1 = makeStatList(item_held)
 				item_slot_1.icon = item_held.IconRect_path.texture
 				
 				#player Stats
-				player_combat.attack_damage = item_held.item_Damage
-				player_combat.attack_speed = item_held.item_Speed
+				update_stats(slot_1,true)
+				
+				#player_combat.attack_damage = item_held.item_Damage
+				#player_combat.attack_speed = item_held.item_Speed
+				#player_combat.attack_delay = item_held.item_Delay
 				
 				kill_out_of_place_items()
 				spawn_item(temp_list[0],0,0)
 	else:
 		if item_held != null and item_held.slot_type == "mainhand":
-			slot_1.push_back(item_held.item_ID)
+			slot_1 = makeStatList(item_held)
 			item_slot_1.icon = item_held.IconRect_path.texture
 			
 			#player Stats
-			player_combat.attack_damage = item_held.item_Damage
-			player_combat.attack_speed = item_held.item_Speed
+			
+			
+			update_stats(slot_1,true)
+			
+			#player_combat.attack_damage = item_held.item_Damage
+			#player_combat.attack_speed = item_held.item_Speed
+			#player_combat.attack_delay = item_held.item_Delay
 			
 			
 			kill_out_of_place_items()
@@ -428,23 +441,44 @@ func _on_item_slot_2_pressed():
 		if item_held == null:
 			spawn_item(slot_2[0],0,0)
 			item_slot_2.icon = load("res://Assets/UI Assets/equipment_texture_off.png")
+			
+			#player Stats
+			update_stats(slot_2,false)
+			
 			slot_2.clear()
 		else:
 			if item_held.slot_type == "offhand":
-				var temp_list = []
-				temp_list.push_back(slot_2[0])
+				var temp_list = slot_2.duplicate()
+			
+				update_stats(temp_list,false)
 				
 				slot_2.clear()
-				slot_2.push_back(item_held.item_ID)
+				slot_2 = makeStatList(item_held)
 				item_slot_2.icon = item_held.IconRect_path.texture
+				
+				#player Stats
+				update_stats(slot_2,true)
+				
+				#player_combat.block_startup = item_held.block_startup
+				#player_combat.block_endlag = item_held.block_endlag
+				#player_combat.block_damage_reduction = item_held.block_damage_reduction
+				#player_combat.block_angle = item_held.block_angle
 				
 				kill_out_of_place_items()
 				spawn_item(temp_list[0],0,0)
 	else:
 		if item_held != null and item_held.slot_type == "offhand":
-			slot_2.push_back(item_held.item_ID)
-			
+			slot_2 = makeStatList(item_held)
 			item_slot_2.icon = item_held.IconRect_path.texture
+			
+			#player Stats
+			update_stats(slot_2,true)
+			
+			#player_combat.block_startup = item_held.block_startup
+			#player_combat.block_endlag = item_held.block_endlag
+			#player_combat.block_damage_reduction = item_held.block_damage_reduction
+			#player_combat.block_angle = item_held.block_angle
+			
 			kill_out_of_place_items()
 	print(slot_2)
 
@@ -452,22 +486,93 @@ func _on_item_slot_2_pressed():
 func _on_item_slot_3_pressed():
 	if slot_3 != []:
 		if item_held == null:
-			spawn_item(slot_3[0],0,0)
+			var spawned_Item = spawn_item(slot_3[0],0,0)
 			item_slot_3.icon = load("res://Assets/UI Assets/inventory_texture.png")
-			slot_3.clear()
-		else:
-			var temp_list = []
-			temp_list.push_back(slot_3[0])
+			
+			#player Stats
+			update_stats(slot_3,false)
+			#player_fire.maxInnerFire -= slot_3[1]
+			#player_fire.fireRegen -= slot_3[2]
 			
 			slot_3.clear()
-			slot_3.push_back(item_held.item_ID)
+		else:
+			var temp_list = slot_3.duplicate()
+			
+			update_stats(temp_list,false)
+			
+			slot_3.clear()
+			
+			slot_3 = makeStatList(item_held)
 			item_slot_3.icon = item_held.IconRect_path.texture
-				
+			
+			
+			#player Stats
+			update_stats(slot_3,true)
+			
+			#player_fire.maxInnerFire += item_held.maxInnerFire
+			#player_fire.fireRegen += item_held.fireRegen
+			
 			kill_out_of_place_items()
 			spawn_item(temp_list[0],-1,0)
+			
+			#player Stats
+			#player_fire.maxInnerFire -= temp_list[1]
+			#player_fire.fireRegen -= temp_list[2]
 	else:
 		if item_held != null:
-			slot_3.push_back(item_held.item_ID)
+			slot_3 = makeStatList(item_held)
 			item_slot_3.icon = item_held.IconRect_path.texture
+			
+			#player Stats
+			update_stats(slot_3,true)
+			
+			#player_fire.maxInnerFire += item_held.maxInnerFire
+			#player_fire.fireRegen += item_held.fireRegen
+			
 			kill_out_of_place_items()
 	print(slot_3)
+
+
+func makeStatList(item):
+	var temp_list = []
+	temp_list.push_back(item.item_ID)
+	temp_list.push_back(item.item_Damage)
+	temp_list.push_back(item.item_Speed)
+	temp_list.push_back(item.item_Delay)
+			
+	temp_list.push_back(item.block_startup)
+	temp_list.push_back(item.block_endlag)
+	temp_list.push_back(item.block_damage_reduction)
+	temp_list.push_back(item.block_angle)
+			
+	temp_list.push_back(item.maxInnerFire)
+	temp_list.push_back(item.fireRegen)
+	
+	return temp_list
+
+func update_stats(list,add):
+	if add:
+		player_combat.attack_damage += list[1]
+		player_combat.attack_speed += list[2]
+		player_combat.attack_delay += list[3]
+		
+		player_combat.block_startup += list[4]
+		player_combat.block_endlag += list[5]
+		player_combat.block_damage_reduction += list[6]
+		player_combat.block_angle += list[7]
+		
+		player_fire.maxInnerFire += list[8]
+		player_fire.fireRegen += list[9]
+	else:
+		player_combat.attack_damage -= list[1]
+		player_combat.attack_speed -= list[2]
+		player_combat.attack_delay -= list[3]
+		
+		player_combat.block_startup -= list[4]
+		player_combat.block_endlag -= list[5]
+		player_combat.block_damage_reduction -= list[6]
+		player_combat.block_angle -= list[7]
+		
+		player_fire.maxInnerFire -= list[8]
+		player_fire.fireRegen -= list[9]
+	

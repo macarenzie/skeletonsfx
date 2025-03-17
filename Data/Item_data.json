@@ -1,29 +1,50 @@
 {
-	"1":{
+	"1": {
 		"ItemID": "1",
 		"Name": "Item1",
 		"Grid": "0,0/1,0/-1,0",
 		"Slot": "mainhand",
 		"Damage": "10",
-		"Speed": "1.0"
-		
+		"Speed": "1.0",
+		"Delay": "0.4",
+		"block_startup": "0.0",
+		"block_endlag": "0.0",
+		"block_damage_reduction": "0.0",
+		"block_angle": "0.0",
+		"maxInnerFire": "0.0",
+		"fireRegen": "0.0"
+
 	},
-	"2":{
+	"2": {
 		"ItemID": "2",
 		"Name": "Item2",
 		"Grid": "0,0/0,1/-1,0",
 		"Slot": "offhand",
 		"Damage": "0",
-		"Speed": "0.0"
-		
+		"Speed": "0.0",
+		"Delay": "0.0",
+		"block_startup": "1.0",
+		"block_endlag": "0.5",
+		"block_damage_reduction": "0.5",
+		"block_angle": "60.0",
+		"maxInnerFire": "0.0",
+		"fireRegen": "0.0"
+
 	},
-	"3":{
+	"3": {
 		"ItemID": "3",
 		"Name": "textIsALie",
 		"Grid": "0,0/0,1/-1,0",
 		"Slot": "mainhand",
 		"Damage": "30",
-		"Speed": "0.1"
-		
+		"Speed": "0.1",
+		"Delay": "0.4",
+		"block_startup": "0.0",
+		"block_endlag": "5.0",
+		"block_damage_reduction": "0.0",
+		"block_angle": "0.0",
+		"maxInnerFire": "-25.0",
+		"fireRegen": "-1.0"
+
 	}
 }

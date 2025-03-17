@@ -5,6 +5,7 @@ extends Node
 
 @onready var hitList = []
 @onready var inventory = $"../Inventory"
+@onready var shieldHolder = $"../PlayerHead/ShieldHolder"
 
 @export_category("Health") # I don't feel like these should be here but it's going to be here at the moment
 @export var max_health : int = 100
@@ -12,18 +13,18 @@ var current_health : int
 
 @export_category("Attacking")
 @export var attack_distance : float = 2.0
-@export var attack_delay : float = 0.4
-@export var attack_speed : float = 1.0
-@export var attack_damage : int = 10
+@export var attack_delay : float =  0 #0.4
+@export var attack_speed : float = 0 #1.0
+@export var attack_damage : int = 0 #10
 @onready var attack_ray : RayCast3D = %RayCast3D
 var attacking : bool = false
 var ready_to_attack : bool = true
 
 @export_category("Blocking")
-@export var block_startup : float = 1.0
-@export var block_endlag : float = 0.5
-@export var block_damage_reduction : float = 0.5 # the percent of damage taken while blocking
-@export var block_angle : float = 60.0 # the angle where if you are blocking and the attack comes from within this angle it is blocked
+@export var block_startup : float = 0 #1.0
+@export var block_endlag : float = 0 #0.5
+@export var block_damage_reduction : float = 0 #0.5 # the percent of damage taken while blocking
+@export var block_angle : float = 0 #60.0 # the angle where if you are blocking and the attack comes from within this angle it is blocked
 var blocking : bool = false
 var ready_to_block : bool = true
 
@@ -39,11 +40,16 @@ func _process(_delta):
 	else:
 		$"../PlayerHead/WeaponHolder".visible = false
 	
-	if Input.is_action_just_pressed("block"):
+	if inventory.slot_2 != []:
+		shieldHolder.visible = true
+	else:
+		shieldHolder.visible = false
+	
+	if Input.is_action_just_pressed("block") and shieldHolder.visible == true:
 		start_block()
-	elif Input.is_action_pressed("block"):
+	elif Input.is_action_pressed("block") and shieldHolder.visible == true:
 		block()
-	elif Input.is_action_just_released("block"):
+	elif Input.is_action_just_released("block") and shieldHolder.visible == true:
 		end_block()
 	elif Input.is_action_pressed("attack") and $"../PlayerHead/WeaponHolder".visible == true: 
 		attack()
@@ -69,6 +75,8 @@ func take_damage(originator:Node,value:int):
 
 #functions for attacking
 func attack():
+	print(attacking)
+	print(ready_to_attack)
 	if not ready_to_attack or attacking:
 		return
 	ready_to_attack = false
@@ -130,6 +138,7 @@ func reset_block():
 	blocking = false
 	ready_to_attack = true
 	ready_to_block = true
+	print("BlockReset")
 
 func reset_animation(anim_name):
 	if anim_name == "attack" or anim_name == "block_end":
