@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=27 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="9_t1dii"]
+[ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -346,13 +348,6 @@ attack_speed = 0.4
 process_mode = 1
 script = ExtResource("4_yqfp7")
 
-[node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
-process_mode = 3
-
-[node name="equipment Slots" parent="Inventory" index="2"]
-offset_left = 1.0
-offset_right = 595.0
-
 [node name="pickupCollision" type="Area3D" parent="."]
 collision_mask = 7
 
@@ -360,59 +355,30 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02984, 0)
 shape = SubResource("SphereShape3D_3knrg")
 
-[node name="PlayerUI" type="Control" parent="."]
+[node name="UIController" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
-anchor_right = 0.035
-anchor_bottom = 0.062
-offset_right = -0.32
-offset_bottom = -0.176003
-
-[node name="ColorRect" type="ColorRect" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 6.425
-anchor_bottom = 2.0
-color = Color(0.780392, 0.780392, 0.780392, 0.537255)
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.65
-anchor_right = 5.775
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 13.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_s5tt7")
-value = 50.0
-show_percentage = false
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_t1dii")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI"]
-visible = false
+[node name="Menu" parent="UIController" instance=ExtResource("11_wypde")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.525
-anchor_top = 0.1
-anchor_right = 1.375
-anchor_bottom = 0.675
-text = "Fire:"
-fit_content = true
 
-[node name="The Real Text" type="Button" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.45
-anchor_top = 0.175
-anchor_right = 1.55
-anchor_bottom = 0.775
-icon = ExtResource("8_5j2rg")
-flat = true
-expand_icon = true
-
-[node name="Crosshair" type="CanvasLayer" parent="."]
+[node name="Crosshair" type="Control" parent="UIController"]
 process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ColorRect2" type="ColorRect" parent="Crosshair"]
+[node name="ColorRect2" type="ColorRect" parent="UIController/Crosshair"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -427,7 +393,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0.72549, 0.72549, 1)
 
-[node name="ColorRect" type="ColorRect" parent="Crosshair"]
+[node name="ColorRect" type="ColorRect" parent="UIController/Crosshair"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -442,4 +409,65 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0.72549, 0.72549, 1)
 
-[editable path="Inventory"]
+[node name="PlayerUI" type="Control" parent="UIController"]
+process_mode = 3
+layout_mode = 1
+anchor_right = 0.035
+anchor_bottom = 0.062
+offset_right = -0.32
+offset_bottom = -0.176003
+
+[node name="ColorRect" type="ColorRect" parent="UIController/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 6.425
+anchor_bottom = 2.0
+color = Color(0.780392, 0.780392, 0.780392, 0.537255)
+
+[node name="ProgressBar" type="ProgressBar" parent="UIController/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 5.775
+anchor_bottom = 1.0
+offset_bottom = 13.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_s5tt7")
+value = 50.0
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIController/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 0.1
+anchor_right = 1.375
+anchor_bottom = 0.675
+text = "Fire:"
+fit_content = true
+
+[node name="The Real Text" type="Button" parent="UIController/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.175
+anchor_right = 1.55
+anchor_bottom = 0.775
+icon = ExtResource("8_5j2rg")
+flat = true
+expand_icon = true
+
+[node name="Inventory" parent="UIController" instance=ExtResource("5_fivcv")]
+process_mode = 3
+layout_mode = 1
+
+[node name="equipment Slots" parent="UIController/Inventory" index="2"]
+offset_left = 1.0
+offset_right = 595.0
+
+[connection signal="closed" from="UIController/Inventory" to="UIController" method="_on_inventory_closed"]
+[connection signal="opened" from="UIController/Inventory" to="UIController" method="_on_inventory_opened"]
+
+[editable path="UIController/Menu"]
+[editable path="UIController/Inventory"]

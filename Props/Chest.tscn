@@ -6,14 +6,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibs4v"]
 size = Vector3(1.63647, 1.28271, 1)
 
-[node name="Chest" type="MeshInstance3D"]
+[node name="Chest" type="StaticBody3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_shuxh")
 surface_material_override/0 = ExtResource("2_s0k8i")
 surface_material_override/1 = ExtResource("2_s0k8i")
 surface_material_override/2 = ExtResource("2_s0k8i")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000366211, 0.637244, 0)
 shape = SubResource("BoxShape3D_ibs4v")
