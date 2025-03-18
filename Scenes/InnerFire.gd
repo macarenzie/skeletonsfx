@@ -7,7 +7,7 @@ signal player_dies()
 @export var isInFire:bool = false
 @export var fireRegen:float = 0.0
 
-@onready var fireBar = $"../UIController/PlayerUI/ProgressBar"
+@onready var fireBar = $"../PlayerUI/ProgressBar"
 @onready var firesList = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
