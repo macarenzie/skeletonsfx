@@ -3,24 +3,29 @@ extends Node
 
 @onready var anim_player = %AnimationPlayer
 
+@onready var hitList = []
+@onready var inventory = $"../UIController/Inventory"
+@onready var shieldHolder = $"../PlayerHead/ShieldHolder"
+@onready var weapon_area = $"../PlayerHead/WeaponHolder/Weapon/Area3D"
+
 @export_category("Health") # I don't feel like these should be here but it's going to be here at the moment
 @export var max_health : int = 100
 var current_health : int
 
 @export_category("Attacking")
 @export var attack_distance : float = 2.0
-@export var attack_delay : float = 0.4
-@export var attack_speed : float = 1.0
-@export var attack_damage : int = 10
+@export var attack_delay : float =  0 #0.4
+@export var attack_speed : float = 0 #1.0
+@export var attack_damage : int = 0 #10
 @onready var attack_ray : RayCast3D = %RayCast3D
 var attacking : bool = false
 var ready_to_attack : bool = true
 
 @export_category("Blocking")
-@export var block_startup : float = 1.0
-@export var block_endlag : float = 0.5
-@export var block_damage_reduction : float = 0.5 # the percent of damage taken while blocking
-@export var block_angle : float = 60.0 # the angle where if you are blocking and the attack comes from within this angle it is blocked
+@export var block_startup : float = 0 #1.0
+@export var block_endlag : float = 0 #0.5
+@export var block_damage_reduction : float = 0 #0.5 # the percent of damage taken while blocking
+@export var block_angle : float = 0 #60.0 # the angle where if you are blocking and the attack comes from within this angle it is blocked
 var blocking : bool = false
 var ready_to_block : bool = true
 
@@ -31,14 +36,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_just_pressed("block"):
+	if inventory.slot_1 != []:
+		$"../PlayerHead/WeaponHolder".visible = true
+	else:
+		$"../PlayerHead/WeaponHolder".visible = false
+	
+	if inventory.slot_2 != []:
+		shieldHolder.visible = true
+	else:
+		shieldHolder.visible = false
+	
+	if Input.is_action_just_pressed("block") and shieldHolder.visible == true:
 		start_block()
-	elif Input.is_action_pressed("block"):
+	elif Input.is_action_pressed("block") and shieldHolder.visible == true:
 		block()
-	elif Input.is_action_just_released("block"):
+	elif Input.is_action_just_released("block") and shieldHolder.visible == true:
 		end_block()
-	elif Input.is_action_pressed("attack"): 
+	elif Input.is_action_pressed("attack") and $"../PlayerHead/WeaponHolder".visible == true: 
 		attack()
+	elif Input.is_action_just_pressed("fire"):
+		fire()
 
 #functions for stat_changes in combat
 func take_damage(originator:Node,value:int):
@@ -70,13 +87,15 @@ func attack():
 
 	anim_player.play("attack")
 	
-	var new_fire = load("res://Fire/Fire.tscn").instantiate()
-	new_fire.global_position = get_parent().position
-	get_parent().get_parent().add_child(new_fire)
+	#var new_fire = load("res://Fire/Fire.tscn").instantiate()
+	#new_fire.global_position = get_parent().position
+	#get_parent().get_parent().add_child(new_fire)
+	
 	#var innerfire = get_parent().get_child(6)
 	#innerfire.innerFire - 30.0
 
 func reset_attack():
+	hitList.clear()
 	attacking = false
 	ready_to_attack = true
 	ready_to_block = true
@@ -118,8 +137,23 @@ func reset_block():
 	blocking = false
 	ready_to_attack = true
 	ready_to_block = true
+	print("BlockReset")
 
 func reset_animation(anim_name):
 	if anim_name == "attack" or anim_name == "block_end":
 		anim_player.play("idle")
 
+func fire():
+	var new_fire = load("res://Fire/Fire.tscn").instantiate()
+	new_fire.global_position = get_parent().position
+	get_parent().get_parent().add_child(new_fire)
+	
+	var innerfire = get_parent().get_child(6)
+	innerfire.innerFire - 30.0
+
+
+#Temparary weapon damage Code. 
+func _on_area_3d_body_entered(body):
+	if body.has_method("take_damage") and not hitList.has(body) and attacking:
+		hitList.append(body)
+		body.take_damage(attack_damage)

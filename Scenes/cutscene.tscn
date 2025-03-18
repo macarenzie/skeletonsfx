@@ -1,0 +1,331 @@
+[gd_scene load_steps=15 format=3 uid="uid://c83bqxi51qsx0"]
+
+[ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_q1osx"]
+[ext_resource type="Script" path="res://Scenes/Ground.gd" id="2_yqt4r"]
+[ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="3_qa1ex"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0v624"]
+dof_blur_far_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8svq6"]
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_814rp"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrah3"]
+albedo_color = Color(1, 0.658824, 0.0862745, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wykgn"]
+material = SubResource("StandardMaterial3D_lrah3")
+
+[sub_resource type="Animation" id="Animation_2ahit"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rnh1g"]
+resource_name = "camera_animation"
+length = 10.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1.8437, 1.44916, -21.0777, 6, 1, -1.8437, 1.44916, 40.5111)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.968627, 0.392157, 0.172549, 0), Color(0.866667, 0.494118, 0.0666667, 0.643137), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866645, 0.493271, 0.0659541, 1), Color(0.968627, 0.392157, 0.172549, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6, 6.5, 7, 7.5, 8, 8.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6, 8, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["May you burn forever eternal...", "May you burn forever eternal...", "May you burn forever eternal...", "Now Arise "]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jkw1n"]
+_data = {
+"RESET": SubResource("Animation_2ahit"),
+"camera_animation": SubResource("Animation_rnh1g")
+}
+
+[sub_resource type="FontFile" id="FontFile_pk6th"]
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mqmcc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gybxa"]
+font_size = 50
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_q1osx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8437, 1.44916, -21.0777)
+attributes = SubResource("CameraAttributesPractical_0v624")
+current = true
+far = 13.29
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.25037, 0, -0.288092, 0)
+mesh = SubResource("PlaneMesh_8svq6")
+skeleton = NodePath("../..")
+script = ExtResource("2_yqt4r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Ground"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ground/StaticBody3D"]
+transform = Transform3D(0.998867, 0, 0, 0, 0.998867, 0, 0, 0, 0.998867, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_814rp")
+
+[node name="Wall_N" parent="Geometry" instance=ExtResource("3_qa1ex")]
+transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, 24.3121, 2.66164, 0.0679741)
+skeleton = NodePath("../Ground")
+
+[node name="Wall_S" parent="Geometry" instance=ExtResource("3_qa1ex")]
+transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, -24.2441, 2.66164, 0.0679741)
+skeleton = NodePath("../Ground")
+
+[node name="Wall_E" parent="Geometry" instance=ExtResource("3_qa1ex")]
+transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, 55.2862)
+skeleton = NodePath("../Ground")
+
+[node name="Fires_Embers" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 0, 1.46701, 3.44813)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 0, 2.49696, 15.3702)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 2.96277, 2.75063, 5.43706)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -1.73511, 2.48158, 10.4965)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -6.08073, 3.16573, 5.84227)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 0, 2.75063, -4.36687)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -3.47032, 3.50291, 17.2654)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -3.1081, 2.75063, -10.9083)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -6.31392, 0.898938, -6.29786)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -3.19872, 2.75063, 24.0365)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -5.23284, 2.75063, 19.1628)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -6.66904, 2.75063, 25.9317)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 2.7962, 2.75063, 25.7033)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 1.06108, 2.75063, 20.8296)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -0.674118, 2.75063, 27.5985)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -3.19872, 4.38804, 33.7129)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -4.93384, 4.38804, 28.8392)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -6.66904, 4.38804, 35.6081)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 2.7962, 4.38804, 35.3797)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 1.06108, 4.38804, 30.506)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -0.674118, 4.38804, 37.2749)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -3.19872, 1.22472, 30.6658)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -4.93384, 1.22472, 25.7921)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -6.66904, 1.22472, 32.561)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 2.7962, 1.22472, 32.3325)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, 1.06108, 1.22472, 27.4588)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="Fires_Embers"]
+transform = Transform3D(1, 0, 0, 0, -0.154843, 0.99681, 0, -1.93381, -0.0798162, -0.674118, 1.22472, 34.2278)
+mesh = SubResource("BoxMesh_wykgn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jkw1n")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.968627, 0.392157, 0.172549, 0)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_top = 0.447
+anchor_right = 1.0
+anchor_bottom = 0.553
+offset_top = -0.156006
+offset_bottom = 0.155975
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontFile_pk6th")
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mqmcc")
+text = "May you burn forever eternal..."
+label_settings = SubResource("LabelSettings_gybxa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

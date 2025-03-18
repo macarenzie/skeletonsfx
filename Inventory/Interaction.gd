@@ -2,11 +2,12 @@ extends Area3D
 
 var invetory = null
 var player_in_range = false
+#[Item, slot ID, rotation]
 var storage = {0: [1,32,90], 1: [2,15,0], 2:[2,60,180]}
 var old_storage = {}
 
 @onready var viewport = $Sprite3D
-
+@export var isPermanant = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport.visible = false
@@ -14,6 +15,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if storage.size() < 1 and not isPermanant:
+		$"..".queue_free()
 	pass
 	#if player_in_range:
 		#if invetory != null:
