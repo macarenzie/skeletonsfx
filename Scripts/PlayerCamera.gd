@@ -11,7 +11,7 @@ func _ready():
 	# capture and hide mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _unhandled_input(event):
+func _input(event):
 	if event is InputEventMouseMotion:
 		#grab motion of mouse and rotate camera
 		player.rotate_y(-event.relative.x * SENSITIVITY_X)

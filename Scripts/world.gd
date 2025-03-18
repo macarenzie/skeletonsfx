@@ -2,12 +2,11 @@
 
 extends Node
 
-@onready var inventory = $Player/Inventory
-@onready var playerUI = $Player/PlayerUI
+@onready var inventory = $Inventory
+@onready var playerUI = $PlayerUI
 @onready var playerUIPage1 = $Menu/ColorRect/MarginContainer
 @onready var playerUIPage2 = $Menu/ColorRect/MarginContainer2
-@onready var playerUIGameOver = $"Menu/ColorRect/Game Over"
-@onready var playerCrosshair = $Player/Crosshair
+@onready var playerCrosshair = $Crosshair
 @onready var pauseMenu = $Menu
 
 var menuOpen = false

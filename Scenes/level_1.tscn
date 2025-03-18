@@ -1,12 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5q6ap0pud10o"]
+[gd_scene load_steps=8 format=3 uid="uid://c5q6ap0pud10o"]
 
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_fv1oh"]
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_rgrcn"]
-[ext_resource type="PackedScene" uid="uid://dxyemt3e2j4sp" path="res://Fire/Fire.tscn" id="2_qnapl"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="3_2fonn"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="4_d64oc"]
 [ext_resource type="PackedScene" uid="uid://cybr83rnnlyul" path="res://Scenes/target_dummy.tscn" id="5_2p4v4"]
-[ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="7_7f5lq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_byvrr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -23,7 +20,6 @@ glow_enabled = true
 
 [node name="Level_1" type="Node3D"]
 process_mode = 3
-script = ExtResource("1_rgrcn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wynys")
@@ -38,29 +34,8 @@ process_mode = 1
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 current = true
 
-[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
-
-[node name="ColorRect" parent="Player/Inventory" index="0"]
-offset_right = 575.0
-
-[node name="EnemyGrid" parent="Player/Inventory" index="1"]
-offset_left = 577.0
-offset_top = 0.0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="equipment Slots" parent="Player/Inventory" index="2"]
-offset_left = 583.0
-offset_top = 430.0
-offset_right = 1177.0
-offset_bottom = 1078.0
-
-[node name="pickupCollision" parent="Player" index="8"]
+[node name="pickupCollision" parent="Player" index="7"]
 process_mode = 1
-
-[node name="Fire" parent="." instance=ExtResource("2_qnapl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49981, 1.56862, -4.1927)
 
 [node name="Geometry" type="Node3D" parent="."]
 process_mode = 1
@@ -214,20 +189,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5403, 8.85965, 1.77448)
 [node name="TargetDummy6" parent="Props" instance=ExtResource("5_2p4v4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.797, 8.85965, 3.91011)
 
-[node name="Menu" parent="." instance=ExtResource("7_7f5lq")]
-
-[connection signal="player_dies" from="Player/InnerFire" to="." method="_on_inner_fire_player_dies"]
-[connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
-[connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="." method="_on_dev_room_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/Game Over/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/Game Over/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
 
 [editable path="Player"]
-[editable path="Player/Inventory"]
-[editable path="Menu"]
+[editable path="Player/UIController/Menu"]
+[editable path="Player/UIController/Inventory"]
