@@ -17,8 +17,8 @@ extends Control
 @onready var enemy_rect = $EnemyGrid
 @onready var equipment_rect = $"equipment Slots"
 
-@onready var player_combat = $"../PlayerCombat"
-@onready var player_fire = $"../InnerFire"
+@onready var player_combat = $"../../PlayerCombat"
+@onready var player_fire = $"../../InnerFire"
 
 signal opened
 signal closed

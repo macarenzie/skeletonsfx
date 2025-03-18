@@ -4,8 +4,9 @@ extends Node
 @onready var anim_player = %AnimationPlayer
 
 @onready var hitList = []
-@onready var inventory = $"../Inventory"
+@onready var inventory = $"../UIController/Inventory"
 @onready var shieldHolder = $"../PlayerHead/ShieldHolder"
+@onready var weapon_area = $"../PlayerHead/WeaponHolder/Weapon/Area3D"
 
 @export_category("Health") # I don't feel like these should be here but it's going to be here at the moment
 @export var max_health : int = 100
@@ -75,8 +76,6 @@ func take_damage(originator:Node,value:int):
 
 #functions for attacking
 func attack():
-	print(attacking)
-	print(ready_to_attack)
 	if not ready_to_attack or attacking:
 		return
 	ready_to_attack = false
