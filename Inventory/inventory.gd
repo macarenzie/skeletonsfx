@@ -403,6 +403,7 @@ func left_looting_area():
 
 #----------------------Equipment Slots-------------
 func check_slots():
+	print("slot Check")
 	if item_slot_1.get_global_rect().has_point(get_global_mouse_position()):
 		_on_item_slot_pressed()
 	if item_slot_2.get_global_rect().has_point(get_global_mouse_position()):

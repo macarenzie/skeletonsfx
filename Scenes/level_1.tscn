@@ -38,6 +38,9 @@ process_mode = 1
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 current = true
 
+[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
+transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
+
 [node name="ColorRect" parent="Player/Inventory" index="0"]
 offset_right = 575.0
 
