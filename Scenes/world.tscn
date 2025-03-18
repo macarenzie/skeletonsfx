@@ -32,7 +32,7 @@ size = Vector2(50, 50)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5j4yk"]
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ix3qa"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nlhcg"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_6bv3e"]
@@ -53,9 +53,6 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_xfvv5")]
 process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
-
-[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 
 [node name="equipment Slots" parent="Player/Inventory" index="2"]
 offset_left = 616.0
@@ -116,7 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
 isPermanant = true
 
 [node name="Sprite3D" parent="Node3D/Area3D" index="1"]
-texture = SubResource("ViewportTexture_ix3qa")
+texture = SubResource("ViewportTexture_nlhcg")
 
 [node name="Menu" parent="." instance=ExtResource("9_s5wx5")]
 
@@ -132,6 +129,7 @@ mesh = SubResource("BoxMesh_6bv3e")
 [node name="Node3D2" parent="." instance=ExtResource("8_o2imo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 
+[connection signal="player_dies" from="Player/InnerFire" to="." method="_on_inner_fire_player_dies"]
 [connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
 [connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
@@ -139,6 +137,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="." method="_on_dev_room_pressed"]
 [connection signal="pressed" from="Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/Game Over/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Menu/ColorRect/Game Over/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 
 [editable path="Player"]
 [editable path="Player/Inventory"]

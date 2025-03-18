@@ -6,10 +6,12 @@ extends Node
 @onready var playerUI = $Player/PlayerUI
 @onready var playerUIPage1 = $Menu/ColorRect/MarginContainer
 @onready var playerUIPage2 = $Menu/ColorRect/MarginContainer2
+@onready var playerUIGameOver = $"Menu/ColorRect/Game Over"
 @onready var playerCrosshair = $Player/Crosshair
 @onready var pauseMenu = $Menu
 
 var menuOpen = false
+var playerDead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +33,8 @@ func _input(event):
 			inventory.loot.call_deferred(1,3)
 		
 	if event.is_action_pressed("quit"):
+		if playerDead:
+			pass
 		if inventory.isOpen:
 			inventory.close()
 		else:
@@ -101,3 +105,31 @@ func _on_back_pressed():
 func _on_controls_pressed():
 	playerUIPage1.visible = false
 	playerUIPage2.visible = true
+
+
+func _on_inner_fire_player_dies():
+	pauseMenu.visible = true
+	playerUI.visible = false
+	playerUIGameOver.visible = true
+	playerCrosshair.visible = false
+	playerUIPage1.visible = false
+	playerDead = true
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+
+
+
+func _on_restart_pressed():
+	get_tree().reload_current_scene() # you died
+
+
+func _on_main_menu_pressed():
+	menuOpen = false
+	pauseMenu.visible = false
+	playerUI.visible = true
+	playerCrosshair.visible = true
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED 
+	
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

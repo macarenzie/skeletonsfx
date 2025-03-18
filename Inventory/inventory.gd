@@ -37,10 +37,12 @@ var perferd_grid = null
 #controll looting
 var in_range = false
 #var 
-var number_of_slots = 100
+@export var number_of_slots = 100
+
 var enemy_item_data := {}
 var loaded_enemy_item_data := {}
 var is_Loaded = false
+var was_open_loaded = false
 
 #Slot Data
 @onready var item_slot_1 = $"equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer/Item_Slot"
@@ -59,6 +61,8 @@ func _ready():
 		create_slot(grid_container)
 	for i in range(number_of_slots):
 		create_slot(enemy_grid_container)
+	
+	clear_grid()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -87,7 +91,12 @@ func _process(delta):
 #Handels creating the instances of the slots. 
 func create_slot(grid_base):
 	var new_slot = slot_scene.instantiate()
+		
 	if grid_base == grid_container:
+		#Random used for barrior slots
+		if randi_range(1,4)  == 2:
+			new_slot.state = new_slot.Status.BARRIER
+		
 		new_slot.slot_ID = player_grid_array.size()
 		player_grid_array.push_back(new_slot)
 	if grid_base == enemy_grid_container:
@@ -180,7 +189,7 @@ func place_item(speed):
 
 #Used to pickup placed items
 func pick_item():
-	if not current_slot or not current_slot.item_stored:
+	if not current_slot or not current_slot.item_stored or not current_slot.Status.BARRIER:
 		return
 	item_held = current_slot.item_stored
 	item_held.selected = true
@@ -242,6 +251,10 @@ func check_slot_avaliblity(a_slot):
 			can_place = false
 			perferd_grid = null
 			return
+		if grid_array[grid_to_check].state == grid_array[grid_to_check].Status.BARRIER:
+			can_place = false
+			perferd_grid = null
+			return
 	can_place = true
 
 #sets up the grid to color the squares
@@ -290,10 +303,16 @@ func update_array_grid_to_check():
 #resets the grid square color
 func clear_grid():
 	for grid in player_grid_array:
-		grid.set_color(grid.Status.DEAFAULT)
+		if not grid.state == grid.Status.BARRIER:
+			grid.set_color(grid.Status.DEAFAULT)
+		else:
+			grid.set_color(grid.Status.BARRIER)
 		
 	for grid in enemy_grid_array:
-		grid.set_color(grid.Status.DEAFAULT)
+		if not grid.state == grid.Status.BARRIER:
+			grid.set_color(grid.Status.DEAFAULT)
+		else:
+			grid.set_color(grid.Status.BARRIER)
 
 
 
@@ -324,6 +343,7 @@ func loot(item:int, slot:int):
 		#other_Button.emit_signal("pressed")
 		opened.emit()
 		#spawn_item.call_deferred(item,slot,0)
+		was_open_loaded = true
 		for items in loaded_enemy_item_data:
 			perferd_grid = enemy_grid_array
 			spawn_item.call_deferred(loaded_enemy_item_data[items][0],loaded_enemy_item_data[items][1],loaded_enemy_item_data[items][2])
@@ -344,7 +364,7 @@ func pull_enemy_grid():
 	var children = enemy_grid_container.get_children()
 	for child in children:
 		if child.get_index() >= number_of_slots:
-			print("I got Slots")
+			#print("I got Slots")
 			var temp_grid_array := []
 			temp_grid_array.push_back(child.item_ID)
 			temp_grid_array.push_back(child.grid_anchor.slot_ID)
@@ -372,7 +392,12 @@ func left_looting_area():
 	pull_enemy_grid()
 	is_Loaded = false
 	clear_enemy_grid()
-	return enemy_item_data
+	if was_open_loaded:
+		was_open_loaded = false
+		return enemy_item_data
+	else:
+		was_open_loaded = false
+		return loaded_enemy_item_data
 
 
 

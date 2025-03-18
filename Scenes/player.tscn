@@ -396,6 +396,7 @@ shape = SubResource("SphereShape3D_3knrg")
 
 [node name="PlayerUI" type="Control" parent="."]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchor_right = 0.035
 anchor_bottom = 0.062
