@@ -341,7 +341,7 @@ func pull_enemy_grid():
 	var children = enemy_grid_container.get_children()
 	for child in children:
 		if child.get_index() >= number_of_slots:
-			print("I got Slots")
+			#print("I got Slots")
 			var temp_grid_array := []
 			temp_grid_array.push_back(child.item_ID)
 			temp_grid_array.push_back(child.grid_anchor.slot_ID)
@@ -403,7 +403,7 @@ func _on_item_slot_pressed():
 			slot_1.push_back(item_held.item_ID)
 			item_slot_1.icon = item_held.IconRect_path.texture
 			kill_out_of_place_items()
-	print(slot_1)
+	#print(slot_1)
 
 
 func _on_item_slot_2_pressed():
@@ -429,7 +429,7 @@ func _on_item_slot_2_pressed():
 			
 			item_slot_2.icon = item_held.IconRect_path.texture
 			kill_out_of_place_items()
-	print(slot_2)
+	#print(slot_2)
 
 
 func _on_item_slot_3_pressed():
@@ -453,4 +453,4 @@ func _on_item_slot_3_pressed():
 			slot_3.push_back(item_held.item_ID)
 			item_slot_3.icon = item_held.IconRect_path.texture
 			kill_out_of_place_items()
-	print(slot_3)
+	#print(slot_3)

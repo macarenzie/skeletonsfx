@@ -27,10 +27,11 @@ func _process(delta):
 	# finding out where the player is relative to the enemy
 	var local_player := Vector3(player.position.x,0,player.position.z) - Vector3(global_position.x,0,global_position.z)
 	ray_to_player.set_target_position(Vector3(local_player.x,0,local_player.z))
-	
+	#ray_to_player.set_target_position(Vector3(player.position.x,0,player.position.z))
 	# debug stuff
 	var range_check := local_player.length() < horizontal_range
-	var angle_check := Vector3.FORWARD.dot(local_player.normalized()) > cos(deg_to_rad(angle/2))
+	var angle_check := (-basis.z).dot(local_player.normalized()) > cos(deg_to_rad(angle/2))
+	# this range and angle check isnt debug
 	if range_check and angle_check:
 		ray_to_player.set_debug_shape_custom_color(Color("green"))
 		# this line isnt debug, but commented out for now

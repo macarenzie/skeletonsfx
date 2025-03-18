@@ -26,5 +26,5 @@ func set_grid_data():
 		for point in item_data[item]["Grid"].split("/"):
 			temp_grid_array.push_back(point.split(","))
 		item_grid_data[item] = temp_grid_array
-	print(item_grid_data)
+	#print(item_grid_data)
 
