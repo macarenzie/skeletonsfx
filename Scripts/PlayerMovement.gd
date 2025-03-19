@@ -25,7 +25,7 @@ func _physics_process(delta):
 	
 	#var sprint_mod = 1
 	#if Input.is_action_pressed("sprint"):
-	#	sprint_mod += sprint_multiplier
+	#	sprint_mod += sprint_multiplier              
 	
 	if direction:
 		velocity.x = direction.x * speed# * sprint_mod
