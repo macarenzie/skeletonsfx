@@ -286,7 +286,7 @@ func set_grids(a_slot):
 func kill_out_of_place_items():
 	var children = get_children()  
 	for child in children:
-		if child.get_index() > 2:
+		if child.get_index() > 3:
 			child.queue_free()
 			item_held = null
 
@@ -324,6 +324,7 @@ func open():
 	enemy_item_data = {}
 	visible = true
 	isOpen = true
+	update_stat_UI()
 	opened.emit()
 
 func close():
@@ -601,4 +602,24 @@ func update_stats(list,add):
 		
 		player_fire.maxInnerFire -= list[8]
 		player_fire.fireRegen -= list[9]
+	
+	update_stat_UI()
+
+
+
+func update_stat_UI():
+	#Fire Values
+	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Max Fire/Number".text = str(player_fire.maxInnerFire)
+	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire/Number".text = str(roundf(player_fire.innerFire))
+	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate/Number".text = str(0.028 - player_fire.fireRegen)
+	
+	#Weapon Values 
+	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Damage/Number".text = str(player_combat.attack_damage)
+	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed/Number".text = str(player_combat.attack_speed)
+	
+	#Shield Values
+	$"Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Angle/Number".text = str(player_combat.block_angle)
+	$"Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Damage Reduction/Number".text = str(player_combat.block_damage_reduction * 100) + "%"
+	$"Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block recovery time/Number".text = str(player_combat.block_endlag)
+	
 	

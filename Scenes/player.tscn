@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=29 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="9_t1dii"]
+[ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
@@ -181,6 +182,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(-0.625, 0, -0.355), Vector3(-0.625, 0.1, -0.355)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UIController/Blocking:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UIController/Crosshair:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_h5lgl"]
@@ -499,6 +524,55 @@ layout_mode = 1
 [node name="equipment Slots" parent="UIController/Inventory" index="2"]
 offset_left = 1.0
 offset_right = 595.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire" index="0"]
+layout_mode = 0
+offset_left = 110.0
+offset_right = 150.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate" index="0"]
+layout_mode = 0
+offset_left = 92.0
+offset_right = 132.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/weapon/VBoxContainer/Damage" index="0"]
+layout_mode = 0
+offset_left = 79.0
+offset_right = 119.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed" index="0"]
+layout_mode = 0
+offset_left = 115.0
+offset_right = 155.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Angle" index="0"]
+layout_mode = 0
+offset_left = 106.0
+offset_right = 146.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Damage Reduction" index="0"]
+layout_mode = 0
+offset_left = 162.0
+offset_right = 202.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block recovery time" index="0"]
+layout_mode = 0
+offset_left = 125.0
+offset_right = 165.0
+
+[node name="Blocking" type="TextureRect" parent="UIController"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464
+anchor_top = 0.415
+anchor_right = 0.54
+anchor_bottom = 0.557
+offset_left = -0.528015
+offset_top = 0.0799866
+offset_right = -0.0800171
+offset_bottom = 0.0639648
+texture = ExtResource("11_dwtxc")
+expand_mode = 1
 
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
 [connection signal="closed" from="UIController/Inventory" to="UIController" method="_on_inventory_closed"]

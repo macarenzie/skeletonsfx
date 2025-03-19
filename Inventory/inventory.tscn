@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://h3oed28gj68k"]
+[gd_scene load_steps=6 format=3 uid="uid://h3oed28gj68k"]
 
 [ext_resource type="Script" path="res://Inventory/inventory.gd" id="1_83hh5"]
 [ext_resource type="Texture2D" uid="uid://cqom8qybks2m6" path="res://Assets/UI Assets/inventory_texture.png" id="2_7ey3k"]
 [ext_resource type="Texture2D" uid="uid://jtl846m6ulp0" path="res://Assets/UI Assets/equipment_texture_main.png" id="2_gpcx8"]
 [ext_resource type="Texture2D" uid="uid://cegt8bfddajci" path="res://Assets/UI Assets/equipment_texture_off.png" id="3_ttagu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_drogs"]
+font_size = 20
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -146,6 +149,139 @@ size_flags_vertical = 4
 icon = ExtResource("2_7ey3k")
 icon_alignment = 1
 expand_icon = true
+
+[node name="Player Stats" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 659.0
+offset_right = 1159.0
+offset_bottom = 876.0
+color = Color(0.10748, 0.10748, 0.10748, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player Stats"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 860.0
+offset_bottom = 124.0
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Fire" type="Label" parent="Player Stats/HBoxContainer"]
+layout_mode = 2
+text = "Fire Stats:"
+label_settings = SubResource("LabelSettings_drogs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player Stats/HBoxContainer/Fire"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 38.0
+offset_right = 236.0
+offset_bottom = 229.0
+
+[node name="Max Fire" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
+layout_mode = 2
+text = "Max Fire: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer/Max Fire"]
+layout_mode = 0
+offset_left = 85.0
+offset_right = 125.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="Current Fire" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
+layout_mode = 2
+text = "Current Fire: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire"]
+offset_left = 109.0
+offset_right = 149.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="Burn Rate" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
+layout_mode = 2
+text = "Burn Rate: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate"]
+offset_left = 96.0
+offset_right = 136.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="weapon" type="Label" parent="Player Stats/HBoxContainer"]
+layout_mode = 2
+text = "Weapon Stats:"
+label_settings = SubResource("LabelSettings_drogs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player Stats/HBoxContainer/weapon"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 38.0
+offset_right = 236.0
+offset_bottom = 229.0
+
+[node name="Damage" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
+layout_mode = 2
+text = "Damage: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer/Damage"]
+offset_left = 78.0
+offset_right = 118.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="Attack Speed" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
+layout_mode = 2
+text = "Attack Time: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed"]
+offset_left = 114.0
+offset_right = 154.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="Sheild Stats" type="Label" parent="Player Stats/HBoxContainer"]
+layout_mode = 2
+text = "Sheild Stats:"
+label_settings = SubResource("LabelSettings_drogs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player Stats/HBoxContainer/Sheild Stats"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 38.0
+offset_right = 236.0
+offset_bottom = 229.0
+
+[node name="Block Angle" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer"]
+layout_mode = 2
+text = "Block Angle: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Angle"]
+offset_left = 103.0
+offset_right = 143.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="Block Damage Reduction" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer"]
+layout_mode = 2
+text = "Damage Reduction: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Damage Reduction"]
+offset_left = 158.0
+offset_right = 198.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="Block recovery time" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer"]
+layout_mode = 2
+text = "Recovery Time: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block recovery time"]
+offset_left = 126.0
+offset_right = 166.0
+offset_bottom = 23.0
+text = "0"
 
 [connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/Header/Button_Spawn" to="." method="_on_button_spawn_pressed"]
 [connection signal="pressed" from="EnemyGrid/MarginContainer/VBoxContainer/Header/Button_Spawn" to="." method="_on_button_spawn_pressed"]

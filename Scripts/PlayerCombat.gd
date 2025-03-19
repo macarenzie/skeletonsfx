@@ -7,6 +7,7 @@ extends Node
 @onready var inventory = $"../UIController/Inventory"
 @onready var shieldHolder = $"../PlayerHead/ShieldHolder"
 @onready var weapon_area = $"../PlayerHead/WeaponHolder/Weapon/Area3D"
+@onready var block_symbol = $"../UIController/Blocking"
 
 @export_category("Health") # I don't feel like these should be here but it's going to be here at the moment
 @export var max_health : int = 100
@@ -33,6 +34,7 @@ var ready_to_block : bool = true
 func _ready():
 	anim_player.animation_finished.connect(reset_animation)
 	current_health = max_health
+	block_symbol.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -51,11 +53,16 @@ func _process(_delta):
 	elif Input.is_action_pressed("block") and shieldHolder.visible == true:
 		block()
 	elif Input.is_action_just_released("block") and shieldHolder.visible == true:
+		#block_symbol.visible = false
 		end_block()
 	elif Input.is_action_pressed("attack") and $"../PlayerHead/WeaponHolder".visible == true: 
 		attack()
 	elif Input.is_action_just_pressed("fire"):
 		fire()
+	
+	if !blocking:
+		$"../UIController/Crosshair".visible = true
+		block_symbol.visible = false
 
 #functions for stat_changes in combat
 func take_damage(originator:Node,value:int):
