@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var enemy_behavior = %EnemyBehavior
+
 @export var angle : float = 120.0 #degrees
 @export var horizontal_range : float = 4.0
 @export var vertical_range : float  = 3.0
@@ -17,10 +19,17 @@ func _ready():
 func _process(delta):
 	# finding out where the player is relative to the enemy
 	local_player = to_local(player.position)
-	ray_to_player.set_target_position(Vector3(local_player.x,0,local_player.z))
+	ray_to_player.set_target_position(Vector3(local_player))
 	range_check = local_player.length() < horizontal_range
-	angle_check = (-basis.z).dot(local_player.normalized()) > cos(deg_to_rad(angle/2))
+	angle_check = Vector3.FORWARD.dot(local_player.normalized()) > cos(deg_to_rad(angle/2))
+	enemy_behavior.can_see_player = false
 	if range_check and angle_check:
-		Player_Detected.emit(player.position)
+		if not ray_to_player.is_colliding():
+			return
+		if ray_to_player.get_collider() != player:
+			return
+		Player_Detected.emit(player.position)	
+		enemy_behavior.can_see_player = true
 		
+
 signal Player_Detected(position:Vector3)

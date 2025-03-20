@@ -37,6 +37,7 @@ mesh = SubResource("CapsuleMesh_q10qx")
 skeleton = NodePath("../..")
 
 [node name="Head" type="Node3D" parent="Model/Body"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_ris5s")
 angle = 90.0
@@ -44,6 +45,7 @@ horizontal_range = 6.0
 
 [node name="RayToPlayer" type="RayCast3D" parent="Model/Body/Head"]
 unique_name_in_owner = true
+collision_mask = 3
 debug_shape_custom_color = Color(0, 0.776471, 0, 1)
 
 [node name="Right Foot" type="MeshInstance3D" parent="Model"]
@@ -75,6 +77,8 @@ path_height_offset = 0.25
 debug_enabled = true
 
 [node name="EnemyBehavior" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_loj3b")
 
 [connection signal="Player_Detected" from="Model/Body/Head" to="." method="_on_head_player_detected"]
+[connection signal="Player_Detected" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_player_detected"]

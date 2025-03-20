@@ -3,14 +3,6 @@ extends CharacterBody3D
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @export var move_speed := 2.0
 
-func _unhandled_input(event):
-	return
-	if event.is_action_pressed("ui_accept"):
-		var random_position := Vector3.ZERO
-		random_position.x = randf_range(-5.0, 5.0)
-		random_position.z = randf_range(-5.0, 5.0)
-		navigation_agent_3d.set_target_position(random_position)
-
 func _physics_process(delta):
 	if navigation_agent_3d.is_navigation_finished():
 		return
