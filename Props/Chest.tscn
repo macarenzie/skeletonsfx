@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfpt1o8g8rngj"]
+[gd_scene load_steps=5 format=3 uid="uid://dfpt1o8g8rngj"]
 
 [ext_resource type="ArrayMesh" uid="uid://vt5vow2kmqom" path="res://Assets/Models/P_Chest_Together.obj" id="1_shuxh"]
 [ext_resource type="Material" uid="uid://btamy7i543sx1" path="res://Assets/Materials/P_Chest_Mat.tres" id="2_s0k8i"]
+[ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="3_0cy18"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibs4v"]
 size = Vector3(1.63647, 1.28271, 1)
@@ -17,3 +18,21 @@ surface_material_override/2 = ExtResource("2_s0k8i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000366211, 0.637244, 0)
 shape = SubResource("BoxShape3D_ibs4v")
+
+[node name="Pickup" parent="." instance=ExtResource("3_0cy18")]
+
+[node name="Area3D" parent="Pickup" index="0"]
+storage = {
+0: [1, 32, 90],
+1: [2, 15, 0],
+2: [3, 60, 180]
+}
+isPermanant = true
+
+[node name="Sprite3D" parent="Pickup/Area3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.69938, 0.00157499)
+
+[node name="PlayerModel" parent="Pickup/Area3D" index="2"]
+visible = false
+
+[editable path="Pickup"]

@@ -3,7 +3,7 @@ extends Area3D
 var invetory = null
 var player_in_range = false
 #[Item, slot ID, rotation]
-var storage = {0: [1,32,90], 1: [2,15,0], 2:[2,60,180]}
+@export var storage = {0: [1,32,90], 1: [2,15,0], 2:[2,60,180]}
 var old_storage = {}
 
 @onready var viewport = $Sprite3D

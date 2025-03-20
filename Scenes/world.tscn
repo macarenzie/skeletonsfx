@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=17 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="6_tatpg"]
 [ext_resource type="Script" path="res://Scenes/Hello.gd" id="8_muvoo"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="8_o2imo"]
+[ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="9_fd2ay"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -111,6 +112,9 @@ mesh = SubResource("BoxMesh_6bv3e")
 
 [node name="Node3D2" parent="." instance=ExtResource("8_o2imo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
+
+[node name="Chest" parent="." instance=ExtResource("9_fd2ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
 
 [connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
 [connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
