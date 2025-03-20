@@ -568,6 +568,10 @@ texture = ExtResource("11_dwtxc")
 expand_mode = 1
 
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
+[connection signal="player_dies" from="InnerFire" to="UIController" method="_on_inner_fire_player_dies"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="UIController" method="_on_restart_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="UIController" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
 [connection signal="closed" from="UIController/Inventory" to="UIController" method="_on_inventory_closed"]
 [connection signal="opened" from="UIController/Inventory" to="UIController" method="_on_inventory_opened"]
 
