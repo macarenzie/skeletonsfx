@@ -53,9 +53,10 @@ func take_damage(originator:Node,value:int):
 	if blocking and incoming_angle < block_angle*0.5:
 		var original_value = value
 		value = int(value * block_damage_reduction)
-		print("Player took "+str(value)+" points of damage after blocking to their lifeforce. Was originally "+str(original_value)+" points of damage")
+		#print("Player took "+str(value)+" points of damage after blocking to their lifeforce. Was originally "+str(original_value)+" points of damage")
 	else:
-		print("Player took "+str(value)+" points of damage to their lifeforce")
+		#print("Player took "+str(value)+" points of damage to their lifeforce")
+		pass
 	current_health -= value
 
 #functions for attacking
@@ -90,7 +91,7 @@ func attack_raycast():
 	if !attack_ray.get_collider() is Hittable: #if it's not hittable don't continue
 		return
 	var object_hit : Hittable = attack_ray.get_collider()
-	print("I hit "+object_hit.to_string())
+	#print("I hit "+object_hit.to_string())
 	object_hit.hit(self,attack_damage)
 
 #functions for blocking

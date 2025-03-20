@@ -13,9 +13,9 @@ func take_damage(amount: float):
 	# Convert float damage to integer (e.g., 0.3 damage accumulates over frames)
 	health -= int(amount)
 	healthbar.value = health
-	print("Dummy health: ", health)
+	#print("Dummy health: ", health)
 	if health <= 0:
-		print("Dummy health: 0 \n YOU'VE KILLED THE DUMMY!")
+		#print("Dummy health: 0 \n YOU'VE KILLED THE DUMMY!")
 		health = 500 # Destroy when health hits 0
 func get_material() -> String:
 	return material 

@@ -15,7 +15,7 @@ func _ready():
 	
 func take_damage(originator:Node,value:int):
 	model.mesh.material.set_albedo(Color("red"))
-	print("I "+name+" was hit for "+str(value)+" damage")
+	#print("I "+name+" was hit for "+str(value)+" damage")
 	attack()
 	Scheduler.schedule(reset_color,0.5)
 	

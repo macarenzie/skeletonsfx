@@ -19,7 +19,7 @@ func switch():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#print(innerFire)
-	print(firesList)
+	#print(firesList)
 	if firesList != []:
 		if innerFire <= maxInnerFire:
 			innerFire += 0.1

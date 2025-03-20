@@ -1,6 +1,13 @@
 extends Node
 
-var awareness : float = 0.0
+
+var can_see_player := false
+
+#awareness is the value from 0-100
+#the increase and decrease rate is the rate at which the awareness value increases or decreases in seconds
+var awareness := 0.0
+var awareness_increase_rate := 5.0
+var awareness_decrease_rate := 2.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,3 +24,5 @@ func get_awareness():
 func set_awareness(value:float):
 	awareness += value
 	awareness = clampf(awareness, 0.0, 100.0)
+
+

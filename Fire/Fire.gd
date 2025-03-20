@@ -48,7 +48,7 @@ func _on_body_entered(body: Node3D):
 		var innerFire = body.get_child(6)
 		#innerFire.switch()
 		innerFire.firesList.push_back(self)
-		print("swithing!!!!!!!!!!!!")
+		#print("swithing!!!!!!!!!!!!")
 
 func _on_body_exited(body: Node3D):
 	if(body.has_node("InnerFire")):
