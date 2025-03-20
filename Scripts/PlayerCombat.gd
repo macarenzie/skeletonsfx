@@ -39,6 +39,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if inventory.slot_1 != []:
+		#print($"../PlayerHead/WeaponHolder/Weapon/Area3D/CollisionShape3D".shape.get_size())
 		$"../PlayerHead/WeaponHolder".visible = true
 	else:
 		$"../PlayerHead/WeaponHolder".visible = false

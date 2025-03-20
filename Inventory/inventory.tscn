@@ -194,6 +194,7 @@ layout_mode = 2
 text = "Current Fire: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire"]
+layout_mode = 0
 offset_left = 109.0
 offset_right = 149.0
 offset_bottom = 23.0
@@ -204,6 +205,7 @@ layout_mode = 2
 text = "Burn Rate: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate"]
+layout_mode = 0
 offset_left = 96.0
 offset_right = 136.0
 offset_bottom = 23.0
@@ -226,6 +228,7 @@ layout_mode = 2
 text = "Damage: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer/Damage"]
+layout_mode = 0
 offset_left = 78.0
 offset_right = 118.0
 offset_bottom = 23.0
@@ -236,10 +239,22 @@ layout_mode = 2
 text = "Attack Time: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed"]
+layout_mode = 0
 offset_left = 114.0
 offset_right = 154.0
 offset_bottom = 23.0
 text = "0"
+
+[node name="Reach" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
+layout_mode = 2
+text = "Weapon Reach: "
+
+[node name="Number" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer/Reach"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 168.0
+offset_bottom = 23.0
+text = "None"
 
 [node name="Sheild Stats" type="Label" parent="Player Stats/HBoxContainer"]
 layout_mode = 2
@@ -258,6 +273,7 @@ layout_mode = 2
 text = "Block Angle: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Angle"]
+layout_mode = 0
 offset_left = 103.0
 offset_right = 143.0
 offset_bottom = 23.0
@@ -268,6 +284,7 @@ layout_mode = 2
 text = "Damage Reduction: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Damage Reduction"]
+layout_mode = 0
 offset_left = 158.0
 offset_right = 198.0
 offset_bottom = 23.0
@@ -278,6 +295,7 @@ layout_mode = 2
 text = "Recovery Time: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block recovery time"]
+layout_mode = 0
 offset_left = 126.0
 offset_right = 166.0
 offset_bottom = 23.0

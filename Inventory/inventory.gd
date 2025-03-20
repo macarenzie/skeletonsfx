@@ -33,6 +33,7 @@ var can_place := false
 var icon_anchor : Vector2
 var isOpen: bool = false
 var perferd_grid = null
+var weaponRange = "None"
 
 #controll looting
 var in_range = false
@@ -419,6 +420,7 @@ func _on_item_slot_pressed():
 			item_slot_1.icon = load("res://Assets/UI Assets/equipment_texture_main.png")
 			
 			#player Stats
+			weaponRange = "None"
 			update_stats(slot_1,false)
 			#player_combat.attack_damage = 0
 			#player_combat.attack_speed = float(0.0)
@@ -436,7 +438,9 @@ func _on_item_slot_pressed():
 				item_slot_1.icon = item_held.IconRect_path.texture
 				
 				#player Stats
+				weaponRange = "Medium"
 				update_stats(slot_1,true)
+				
 				
 				#player_combat.attack_damage = item_held.item_Damage
 				#player_combat.attack_speed = item_held.item_Speed
@@ -451,7 +455,7 @@ func _on_item_slot_pressed():
 			
 			#player Stats
 			
-			
+			weaponRange = "Medium"
 			update_stats(slot_1,true)
 			
 			#player_combat.attack_damage = item_held.item_Damage
@@ -616,7 +620,8 @@ func update_stat_UI():
 	#Weapon Values 
 	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Damage/Number".text = str(player_combat.attack_damage)
 	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed/Number".text = str(player_combat.attack_speed)
-	
+	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Reach/Number".text = str(weaponRange)
+
 	#Shield Values
 	$"Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Angle/Number".text = str(player_combat.block_angle)
 	$"Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Damage Reduction/Number".text = str(player_combat.block_damage_reduction * 100) + "%"
