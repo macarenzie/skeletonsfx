@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
-[ext_resource type="Script" path="res://Scripts/world.gd" id="9_t1dii"]
+[ext_resource type="Script" path="res://Scripts/UIControl.gd" id="9_t1dii"]
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
@@ -501,6 +501,14 @@ offset_left = 1.0
 offset_right = 595.0
 
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="UIController" method="_on_resume_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="UIController" method="_on_controls_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="UIController" method="_on_dev_room_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="UIController" method="_on_back_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="UIController" method="_on_restart_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="UIController" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
 [connection signal="closed" from="UIController/Inventory" to="UIController" method="_on_inventory_closed"]
 [connection signal="opened" from="UIController/Inventory" to="UIController" method="_on_inventory_opened"]
 

@@ -9,12 +9,12 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_3frgm"]
+[sub_resource type="Sky" id="Sky_ai6f4"]
 sky_material = SubResource("ProceduralSkyMaterial_byvrr")
 
 [sub_resource type="Environment" id="Environment_wynys"]
 background_mode = 2
-sky = SubResource("Sky_3frgm")
+sky = SubResource("Sky_ai6f4")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -45,83 +45,63 @@ process_mode = 1
 
 [node name="gb_block" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.248677, 0, 0, 0, 0.323182, 0, 0, 0, 11.9889, -0.118456, -0.520872, -0.106767)
-skeleton = NodePath("../..")
 
 [node name="gb_block3" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.323182, 0, 0, 0, 9.21943, 0.744421, -0.520872, -17.7349)
-skeleton = NodePath("../..")
 
 [node name="gb_block5" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -8.10646, 0.923914, -17.7349)
-skeleton = NodePath("../..")
 
 [node name="gb_block9" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -20.2921, 3.24226, -8.63802)
-skeleton = NodePath("../..")
 
 [node name="gb_block12" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -20.2921, 3.24226, 13.9856)
-skeleton = NodePath("../..")
 
 [node name="gb_block14" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -29.428, 5.42734, 13.9856)
-skeleton = NodePath("../..")
 
 [node name="gb_block16" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -29.428, 7.46308, 5.01264)
-skeleton = NodePath("../..")
 
 [node name="gb_block20" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -29.428, 7.46308, -23.4421)
-skeleton = NodePath("../..")
 
 [node name="gb_block17" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0528491, 0, 0, 0, 0.940353, 0, 0, 0, 5.41653, -29.428, 7.46308, -2.12776)
-skeleton = NodePath("../..")
 
 [node name="gb_block19" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0528491, 0, 0, 0, 0.940353, 0, 0, 0, 5.41653, -29.428, 7.46308, -16.2127)
-skeleton = NodePath("../..")
 
 [node name="gb_block18" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0528491, 0, 0, 0, 0.940353, 0, 0, 0, 2.97701, -29.428, 7.46308, -9.16996)
-skeleton = NodePath("../..")
 
 [node name="gb_block10" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0582701, 0, 0, 0, 0.940353, 0, 0, 0, 5.52062, -20.2921, 3.24226, -1.27922)
-skeleton = NodePath("../..")
 
 [node name="gb_block11" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0582701, 0, 0, 0, 0.940353, 0, 0, 0, 5.52062, -20.2921, 3.24226, 6.70231)
-skeleton = NodePath("../..")
 
 [node name="gb_block7" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -20.3458, 0.923914, -17.7349)
-skeleton = NodePath("../..")
 
 [node name="gb_block6" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0609391, 0, 0, 0, 0.940353, 0, 0, 0, 2.38441, -14.2499, 0.923914, -17.7349)
-skeleton = NodePath("../..")
 
 [node name="gb_block4" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.135877, 0.0339904, 0, -0.0482368, 0.095747, 0, 0, 0, 2.89399, -0.118456, 0.977378, -19.7022)
-skeleton = NodePath("../..")
 
 [node name="gb_block13" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.135877, 0.0339904, 0, -0.0482368, 0.095747, 0, 0, 0, 2.89399, -21.5181, 5.44447, 17.0293)
-skeleton = NodePath("../..")
 
 [node name="gb_block15" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(-5.93938e-09, -1.48577e-09, -2.89399, -0.0482368, 0.095747, 0, 0.135877, 0.0339904, -1.265e-07, -32.5394, 7.50393, 12.6388)
-skeleton = NodePath("../..")
 
 [node name="gb_block8" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(-5.93938e-09, -1.48577e-09, 2.89399, -0.0482368, 0.095747, 0, -0.135877, -0.0339904, -1.265e-07, -23.3915, 3.27388, -16.5964)
-skeleton = NodePath("../..")
 
 [node name="gb_block2" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.078367, 0, 0, 0, 0.323182, 0, 0, 0, 7.26457, -0.118456, -0.520872, -9.73745)
-skeleton = NodePath("../..")
 
 [node name="Props" type="Node3D" parent="."]
 process_mode = 1
