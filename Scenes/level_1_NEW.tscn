@@ -1,0 +1,365 @@
+[gd_scene load_steps=6 format=3 uid="uid://ppxx5rwc6uoh"]
+
+[ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
+[ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="2_p8fb7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6jfr"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3frgm"]
+sky_material = SubResource("ProceduralSkyMaterial_i6jfr")
+
+[sub_resource type="Environment" id="Environment_ons5l"]
+background_mode = 2
+sky = SubResource("Sky_3frgm")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level 1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ons5l")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Floors" type="Node3D" parent="Geometry"]
+
+[node name="gb_block" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.148694, 0, 0, 0, 0.322951, 0, 0, 0, 8.99785, -0.21677, -0.523236, 1.52306)
+skeleton = NodePath("../..")
+
+[node name="gb_block13" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.304018, 0, 0, 0, 0.322951, 0, 0, 0, 11.1431, -12.3732, -0.526869, 6.0821)
+skeleton = NodePath("../..")
+
+[node name="gb_block22" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.242826, 0, 0, 0, 0.322951, 0, 0, 0, 13.3807, -30.3182, -0.523236, -13.2787)
+skeleton = NodePath("../..")
+
+[node name="gb_block3" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.152042, 0, 0, 0, 0.323182, 0, 0, 0, 7.16172, -0.21677, -0.523236, -18.5289)
+skeleton = NodePath("../..")
+
+[node name="gb_block6" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.152042, 0, 0, 0, 0.323182, 0, 0, 0, 9.32757, -7.79382, -0.523235, -19.6167)
+skeleton = NodePath("../..")
+
+[node name="gb_block5" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.152042, 0, 0, 0, 0.323182, 0, 0, 0, 2.16744, -0.21677, -0.523236, -23.1919)
+skeleton = NodePath("../..")
+
+[node name="gb_block14" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.440599, 0, 0, 0, 0.323182, 0, 0, 0, 2.16744, -21.1077, -0.523236, 12.7136)
+skeleton = NodePath("../..")
+
+[node name="gb_block7" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.152042, 0, 0, 0, 0.323182, 0, 0, 0, 2.16744, -9.64561, -0.523236, -13.9209)
+skeleton = NodePath("../..")
+
+[node name="gb_block8" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-4.32974e-09, 0, -2.16744, 0, 0.323182, 0, 0.099053, 0, -9.47419e-08, -12.3545, -0.523236, -10.3776)
+skeleton = NodePath("../..")
+
+[node name="gb_block12" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-4.32974e-09, 0, -2.16744, 0, 0.323182, 0, 0.099053, 0, -9.47419e-08, -12.3545, -0.523236, -1.50475)
+skeleton = NodePath("../..")
+
+[node name="gb_block16" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.47222e-09, 0, -1.23986, 0, 0.323182, 0, 0.0336805, 0, -5.41961e-08, -31.5077, -0.523236, 8.68438)
+skeleton = NodePath("../..")
+
+[node name="gb_block20" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-2.51068e-09, 0, -1.23986, 0, 0.323182, 0, 0.0574377, 0, -5.41961e-08, -27.7451, -0.523236, 0.380924)
+skeleton = NodePath("../..")
+
+[node name="gb_block17" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-5.52728e-09, 0, -1.24066, 0, 0.32339, 0, 0.126449, 0, -5.4231e-08, -28.9344, -0.523236, 6.37022)
+skeleton = NodePath("../..")
+
+[node name="gb_block24" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-5.52728e-09, 0, -1.24066, 0, 0.32339, 0, 0.126449, 0, -5.4231e-08, -28.9344, -0.523236, -11.9276)
+skeleton = NodePath("../..")
+
+[node name="gb_block19" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-5.52728e-09, 0, -1.24066, 0, 0.32339, 0, 0.126449, 0, -5.4231e-08, -30.3134, -0.523236, -1.31395)
+skeleton = NodePath("../..")
+
+[node name="gb_block15" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.86258e-09, 0, -3.81055, 0, 0.323182, 0, 0.0426109, 0, -1.66564e-07, -30.2181, -0.523236, 10.5793)
+skeleton = NodePath("../..")
+
+[node name="gb_block21" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.86258e-09, 0, -3.81055, 0, 0.323182, 0, 0.0426109, 0, -1.66564e-07, -30.3514, -0.523236, -5.52869)
+skeleton = NodePath("../..")
+
+[node name="gb_block18" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.26671e-09, 0, -3.81055, 0, 0.323182, 0, 0.0289788, 0, -1.66564e-07, -29.0275, -0.523236, 2.51305)
+skeleton = NodePath("../..")
+
+[node name="gb_block9" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-0.099053, 0, 1.89484e-07, 0, 0.323182, 0, -8.65949e-09, 0, -2.16744, -8.80927, -0.523236, -8.99387)
+skeleton = NodePath("../..")
+
+[node name="gb_block10" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-0.099053, 0, 1.89484e-07, 0, 0.323182, 0, -8.65949e-09, 0, -2.16744, -8.80927, -0.523236, -2.90015)
+skeleton = NodePath("../..")
+
+[node name="gb_block11" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(1.03747e-08, 0, 2.16744, 0, 0.323182, 0, -0.0791154, 0, 2.84226e-07, -7.41615, -0.523236, -5.92922)
+skeleton = NodePath("../..")
+
+[node name="gb_block2" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0667183, 0, 0, 0, 0.323182, 0, 0, 0, 12.4001, -0.21677, -0.523236, -8.94323)
+skeleton = NodePath("../..")
+
+[node name="gb_block4" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0373059, 0, 0, 0, 0.323182, 0, 0, 0, 7.23803, 4.50973, -0.523235, -20.6552)
+skeleton = NodePath("../..")
+
+[node name="gb_block23" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0622319, 0, 0, 0, 0.323182, 0, 0, 0, 7.23803, -30.1568, -0.523235, -23.5877)
+skeleton = NodePath("../..")
+
+[node name="Walls" type="Node3D" parent="Geometry"]
+
+[node name="gb_block" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.139946, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, -0.216525, 2.9736, 5.72415)
+skeleton = NodePath("../..")
+
+[node name="gb_block16" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.139946, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, -0.168567, 2.9736, -22.1577)
+skeleton = NodePath("../..")
+
+[node name="gb_block26" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.139946, 0, 0, 0, 6.95285, 0, 0, 0, 0.26483, -7.80898, -0.852448, -12.7536)
+skeleton = NodePath("../..")
+
+[node name="gb_block28" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.139946, 0, 0, 0, 6.95285, 0, 0, 0, 0.26483, -16.8744, -0.852448, -12.7536)
+skeleton = NodePath("../..")
+
+[node name="gb_block30" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(1.39869e-08, 0, 0.26483, 0, 6.95285, 0, -0.26272, 0, -7.45058e-09, -6.24186, -0.852448, -6.13708)
+skeleton = NodePath("../..")
+
+[node name="gb_block31" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(1.39869e-08, 0, 0.26483, 0, 6.95285, 0, -0.26272, 0, -7.45058e-09, -17.8498, -0.852448, -6.13708)
+skeleton = NodePath("../..")
+
+[node name="gb_block39" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(1.93912e-08, 0, 0.26483, 0, 6.95285, 0, -0.36423, 0, -7.45058e-09, -24.4015, -0.496598, 2.3803)
+skeleton = NodePath("../..")
+
+[node name="gb_block49" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(1.93912e-08, 0, 0.26483, 0, 6.95285, 0, -0.36423, 0, -7.45058e-09, -36.2465, -0.496598, 2.3803)
+skeleton = NodePath("../..")
+
+[node name="gb_block19" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.35162, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, -3.05078, 2.9736, -24.3712)
+skeleton = NodePath("../..")
+
+[node name="gb_block4" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0461097, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, 2.35232, 2.9736, -2.73946)
+skeleton = NodePath("../..")
+
+[node name="gb_block7" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.06951e-08, 0, -0.26483, 0, 1.31892, 0, 0.244674, 0, -1.15761e-08, 1.48051, 1.93991, -8.93281)
+skeleton = NodePath("../..")
+
+[node name="gb_block18" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-6.44356e-09, 0, -0.26483, 0, 1.31892, 0, 0.147411, 0, -1.15761e-08, 5.27821, 1.93991, -20.7385)
+skeleton = NodePath("../..")
+
+[node name="gb_block42" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.453845, 0, -1.15463e-14, 0, 1.31892, 0, 6.15263e-14, 0, 0.26483, -21.0851, 1.93991, 13.794)
+skeleton = NodePath("../..")
+
+[node name="gb_block17" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-0.0466327, 0, 2.31522e-08, 0, 1.31892, 0, -4.07676e-09, 0, -0.26483, 4.52922, 1.93991, -17.0635)
+skeleton = NodePath("../..")
+
+[node name="gb_block8" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.06951e-08, 0, -0.26483, 0, 1.31892, 0, 0.244674, 0, -1.15761e-08, -1.75157, 1.93991, -8.93281)
+skeleton = NodePath("../..")
+
+[node name="gb_block25" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.74124e-09, 0, -0.26483, 0, 1.31892, 0, 0.039835, 0, -1.15761e-08, -5.79468, 1.93437, -13.8696)
+skeleton = NodePath("../..")
+
+[node name="gb_block43" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.74124e-09, 0, -0.26483, 0, 1.31892, 0, 0.039835, 0, -1.15761e-08, -10.3297, 1.93594, 12.7377)
+skeleton = NodePath("../..")
+
+[node name="gb_block44" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.74124e-09, 0, -0.26483, 0, 1.31892, 0, 0.039835, 0, -1.15761e-08, -32.2614, 1.93594, 12.8404)
+skeleton = NodePath("../..")
+
+[node name="gb_block58" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-6.33283e-09, 0, -0.26483, 0, 1.31892, 0, 0.144879, 0, -1.15761e-08, -31.7737, 1.93594, -23.569)
+skeleton = NodePath("../..")
+
+[node name="gb_block59" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-6.33283e-09, 0, -0.26483, 0, 1.31892, 0, 0.144879, 0, -1.15761e-08, -28.5229, 1.93594, -23.569)
+skeleton = NodePath("../..")
+
+[node name="gb_block27" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.74124e-09, 0, -0.26483, 0, 1.31892, 0, 0.039835, 0, -1.15761e-08, -13.5809, 1.93437, -13.8708)
+skeleton = NodePath("../..")
+
+[node name="gb_block5" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0461097, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, -2.67543, 2.9736, -2.73946)
+skeleton = NodePath("../..")
+
+[node name="gb_block6" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 0.91471, 0, 0, 0, 0.26483, -0.155863, 4.61225, -2.73946)
+skeleton = NodePath("../..")
+
+[node name="gb_block9" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0461097, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, 2.35232, 2.9736, -14.9821)
+skeleton = NodePath("../..")
+
+[node name="gb_block10" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0461097, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, -2.67543, 2.9736, -14.9821)
+skeleton = NodePath("../..")
+
+[node name="gb_block11" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 0.91471, 0, 0, 0, 0.26483, -0.155863, 4.61225, -14.9821)
+skeleton = NodePath("../..")
+
+[node name="gb_block36" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 0.91471, 0, 0, 0, 0.26483, -7.54867, 4.61225, -14.9821)
+skeleton = NodePath("../..")
+
+[node name="gb_block22" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0496034, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, -4.9626, 2.9736, -14.9821)
+skeleton = NodePath("../..")
+
+[node name="gb_block23" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.112146, 0, 0, 0, 2.01058, 0, 0, 0, 0.265134, -11.6976, 2.9736, -14.9826)
+skeleton = NodePath("../..")
+
+[node name="gb_block55" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 0.91471, 0, 0, 0, 0.26483, -30.1746, 4.61225, -19.8452)
+skeleton = NodePath("../..")
+
+[node name="gb_block56" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0990405, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, -26.3856, 2.9736, -19.8452)
+skeleton = NodePath("../..")
+
+[node name="gb_block57" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.109134, 0, 0, 0, 2.01058, 0, 0, 0, 0.265134, -34.209, 2.9736, -19.8457)
+skeleton = NodePath("../..")
+
+[node name="gb_block37" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 0.91471, 0, 0, 0, 0.26483, -12.2702, 4.61225, 11.6528)
+skeleton = NodePath("../..")
+
+[node name="gb_block38" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.130172, 0, 0, 0, 2.00827, 0, 0, 0, 0.26483, -7.64837, 2.9736, 11.6528)
+skeleton = NodePath("../..")
+
+[node name="gb_block24" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 2.48172, 0, 0, 0, 0.26483, -12.3894, 5.84871, -12.756)
+skeleton = NodePath("../..")
+
+[node name="gb_block29" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 3.61857, 0, 0, 0, 0.26483, -12.3894, -5.85476, -12.756)
+skeleton = NodePath("../..")
+
+[node name="gb_block32" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.139946, 0, 0, 0, 6.95285, 0, 0, 0, 0.26483, -7.80898, -0.852448, 0.467019)
+skeleton = NodePath("../..")
+
+[node name="gb_block33" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.139946, 0, 0, 0, 6.95285, 0, 0, 0, 0.26483, -16.8744, -0.852448, 0.467019)
+skeleton = NodePath("../..")
+
+[node name="gb_block34" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 2.48172, 0, 0, 0, 0.26483, -12.3894, 5.84871, 0.464683)
+skeleton = NodePath("../..")
+
+[node name="gb_block35" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 3.61857, 0, 0, 0, 0.26483, -12.3894, -5.85476, 0.464683)
+skeleton = NodePath("../..")
+
+[node name="gb_block45" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.312244, 0, 0, 0, 6.95285, 0, 0, 0, 0.26483, -21.3765, -0.474109, 11.6413)
+skeleton = NodePath("../..")
+
+[node name="gb_block46" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.139946, 0, 0, 0, 6.95285, 0, 0, 0, 0.26483, -34.949, -0.474109, 11.6428)
+skeleton = NodePath("../..")
+
+[node name="gb_block47" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 2.48172, 0, 0, 0, 0.26483, -30.464, 6.22705, 11.6405)
+skeleton = NodePath("../..")
+
+[node name="gb_block50" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.162125, 0, 0, 0, 6.95285, 0, 0, 0, 0.26483, -25.0409, -0.474109, -6.65658)
+skeleton = NodePath("../..")
+
+[node name="gb_block51" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.139946, 0, 0, 0, 6.95285, 0, 0, 0, 0.26483, -34.949, -0.474109, -6.65503)
+skeleton = NodePath("../..")
+
+[node name="gb_block52" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 2.48172, 0, 0, 0, 0.26483, -30.464, 6.22705, -6.65736)
+skeleton = NodePath("../..")
+
+[node name="gb_block48" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(0.0550243, 0, 0, 0, 3.61857, 0, 0, 0, 0.26483, -30.464, -5.47642, 11.6405)
+skeleton = NodePath("../..")
+
+[node name="gb_block12" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-2.01552e-09, 0, -0.26483, 0, 2.00827, 0, 0.0461097, 0, -1.15761e-08, 3.4522, 2.9736, -16.1036)
+skeleton = NodePath("../..")
+
+[node name="gb_block13" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-2.01552e-09, 0, -0.26483, 0, 2.00827, 0, 0.0461097, 0, -1.15761e-08, 3.4522, 2.9736, -21.1314)
+skeleton = NodePath("../..")
+
+[node name="gb_block14" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-2.40519e-09, 0, -0.26483, 0, 0.91471, 0, 0.0550243, 0, -1.15761e-08, 3.4522, 4.61225, -18.6118)
+skeleton = NodePath("../..")
+
+[node name="gb_block2" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-7.64654e-09, 0, 0.26483, 0, 2.00827, 0, -0.174932, 0, -1.15761e-08, -3.66834, 2.9736, 1.44567)
+skeleton = NodePath("../..")
+
+[node name="gb_block40" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.09387e-08, 0, 0.26483, 0, 2.00827, 0, -0.250247, 0, -1.15761e-08, -4.80948, 2.9736, 6.21968)
+skeleton = NodePath("../..")
+
+[node name="gb_block53" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.15638e-08, 0, 0.26483, 0, 2.00827, 0, -0.264548, 0, -1.15761e-08, -24.227, 2.9736, -13.329)
+skeleton = NodePath("../..")
+
+[node name="gb_block54" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.15638e-08, 0, 0.26483, 0, 2.00827, 0, -0.264548, 0, -1.15761e-08, -36.4084, 2.9736, -13.329)
+skeleton = NodePath("../..")
+
+[node name="gb_block41" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.09387e-08, 0, 0.26483, 0, 2.00827, 0, -0.250247, 0, -1.15761e-08, -19.8804, 2.9736, 5.4326)
+skeleton = NodePath("../..")
+
+[node name="gb_block15" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-6.44351e-09, 0, 0.26483, 0, 2.00827, 0, -0.14741, 0, -1.15761e-08, -3.66834, 2.9736, -18.6047)
+skeleton = NodePath("../..")
+
+[node name="gb_block21" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-8.49382e-09, 0, 0.26483, 0, 2.00827, 0, -0.194316, 0, -1.15761e-08, -11.4699, 2.9736, -19.9231)
+skeleton = NodePath("../..")
+
+[node name="gb_block20" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-1.86217e-09, 0, 0.26483, 0, 0.842445, 0, -0.0426016, 0, -1.15761e-08, -3.66834, 4.7244, -23.2307)
+skeleton = NodePath("../..")
+
+[node name="gb_block3" parent="Geometry/Walls" instance=ExtResource("1_4kd8k")]
+transform = Transform3D(-7.64654e-09, 0, 0.26483, 0, 2.00827, 0, -0.174932, 0, -1.15761e-08, 3.37322, 2.9736, 1.44567)
+skeleton = NodePath("../..")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_p8fb7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
