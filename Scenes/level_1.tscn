@@ -172,12 +172,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5403, 8.85965, 1.77448)
 [node name="TargetDummy6" parent="Props" instance=ExtResource("5_2p4v4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.797, 8.85965, 3.91011)
 
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
-
 [editable path="Player"]
 [editable path="Player/UIController/Menu"]
 [editable path="Player/UIController/Inventory"]

@@ -48,6 +48,9 @@ shadow_enabled = true
 process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
 
+[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
+transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
+
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 
@@ -104,12 +107,6 @@ mesh = SubResource("BoxMesh_6bv3e")
 
 [node name="Node3D2" parent="." instance=ExtResource("8_o2imo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
-
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
 
 [editable path="Player"]
 [editable path="Player/UIController/Menu"]
