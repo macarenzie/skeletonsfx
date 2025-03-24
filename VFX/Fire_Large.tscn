@@ -1,11 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlw2yigievwho"]
+[gd_scene load_steps=10 format=3 uid="uid://ky0mvp84vdvf"]
 
-[ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="1_t88n0"]
-[ext_resource type="Shader" uid="uid://jcn44qg3x24i" path="res://VFX/FlipbookProcess.tres" id="2_o6nh4"]
-[ext_resource type="Texture2D" uid="uid://sgidv8n4fsvx" path="res://VFX/Dissolve.png" id="3_gv6tp"]
-[ext_resource type="Shader" uid="uid://c8f0mnsvfmjox" path="res://VFX/Fire_Medium_VisualShader.tres" id="3_nh7m1"]
-[ext_resource type="Texture2D" uid="uid://b2qelqhcstttp" path="res://VFX/SmokeScaleCurve.tres" id="3_wfxc7"]
-[ext_resource type="Texture2D" uid="uid://r5nr08ur1fab" path="res://VFX/Bonfire.png" id="4_cpfp8"]
+[ext_resource type="PackedScene" uid="uid://dlw2yigievwho" path="res://VFX/Fire_Medium.tscn" id="1_gbf77"]
+[ext_resource type="Texture2D" uid="uid://b2qelqhcstttp" path="res://VFX/SmokeScaleCurve.tres" id="2_ill44"]
+[ext_resource type="Shader" uid="uid://jcn44qg3x24i" path="res://VFX/FlipbookProcess.tres" id="2_inwc2"]
 
 [sub_resource type="Curve" id="Curve_fxkya"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.806005, 0.60262), -1.67869, -1.67869, 0, 0, Vector2(1, 0.443668), -4.32527, 0.0, 0, 0]
@@ -14,8 +11,8 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_gyw80"]
 curve = SubResource("Curve_fxkya")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y56lm"]
-shader = ExtResource("2_o6nh4")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t2qm"]
+shader = ExtResource("2_inwc2")
 shader_parameter/direction = Vector3(1, 0, 0)
 shader_parameter/spread = 46.44
 shader_parameter/flatness = 0.0
@@ -49,7 +46,7 @@ shader_parameter/anim_speed_max = 0.0
 shader_parameter/anim_offset_min = 0.0
 shader_parameter/anim_offset_max = 1.0
 shader_parameter/lifetime_randomness = 0.0
-shader_parameter/emission_sphere_radius = 0.05
+shader_parameter/emission_sphere_radius = 0.2
 shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
 shader_parameter/emission_shape_scale = Vector3(5.67, 8.465, 4.715)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
@@ -419,10 +416,10 @@ void process() {
 
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_shkl8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubb4t"]
 shader = SubResource("Shader_8kpqr")
 shader_parameter/direction = Vector3(1, 0, 0)
-shader_parameter/spread = 45.0
+shader_parameter/spread = 80.0
 shader_parameter/flatness = 0.0
 shader_parameter/inherit_emitter_velocity_ratio = 0.0
 shader_parameter/initial_linear_velocity_min = 0.0
@@ -439,14 +436,14 @@ shader_parameter/linear_accel_min = 0.0
 shader_parameter/linear_accel_max = 1.04
 shader_parameter/radial_accel_min = 0.0
 shader_parameter/radial_accel_max = 0.0
-shader_parameter/tangent_accel_min = 0.0
-shader_parameter/tangent_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.175
+shader_parameter/tangent_accel_max = 0.61
 shader_parameter/damping_min = 0.0
 shader_parameter/damping_max = 0.0
 shader_parameter/initial_angle_min = 0.0
 shader_parameter/initial_angle_max = 0.0
 shader_parameter/scale_min = 1.0
-shader_parameter/scale_max = 2.0
+shader_parameter/scale_max = 3.635
 shader_parameter/hue_variation_min = 0.0
 shader_parameter/hue_variation_max = 0.0
 shader_parameter/anim_speed_min = 0.0
@@ -457,41 +454,35 @@ shader_parameter/lifetime_randomness = 0.0
 shader_parameter/emission_shape_offset = Vector3(0, 0.295, 0)
 shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
-shader_parameter/emission_sphere_radius = 1.0
+shader_parameter/emission_sphere_radius = 1.92
 shader_parameter/color_value = Color(0.3, 0.2, 0.2, 1)
 shader_parameter/gravity = Vector3(0, 3, 0)
-shader_parameter/scale_curve = ExtResource("3_wfxc7")
+shader_parameter/scale_curve = ExtResource("2_ill44")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vabw4"]
-render_priority = 1
-shader = ExtResource("3_nh7m1")
-shader_parameter/DissolveScale = Vector2(1.525, 1.695)
-shader_parameter/DissolveSpeed = Vector2(1.11, 1.975)
-shader_parameter/DissolveStrength = 0.898
-shader_parameter/DissolveTex = ExtResource("3_gv6tp")
-shader_parameter/MainTex = ExtResource("4_cpfp8")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jtadg"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_trlph"]
 particle_flag_align_y = true
 emission_shape_scale = Vector3(1.2, 1.2, 1.2)
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0, 0.5)
+velocity_pivot = Vector3(0, 1, 0)
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 2.0
 color = Color(1.61961, 1.08235, 1.08235, 1)
 
-[node name="StaticFlame" instance=ExtResource("1_t88n0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743209, 0)
-amount = 12
-process_material = SubResource("ShaderMaterial_y56lm")
+[node name="StaticFlame" instance=ExtResource("1_gbf77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22627, 0)
+amount = 24
+process_material = SubResource("ShaderMaterial_7t2qm")
 
 [node name="Smoke" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24087, 0)
-amount = 36
-process_material = SubResource("ShaderMaterial_shkl8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.283866, 0)
+process_material = SubResource("ShaderMaterial_ubb4t")
 
 [node name="GPUParticles3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395576, 0)
-material_override = SubResource("ShaderMaterial_vabw4")
-transparency = 1.0
-amount = 6
-process_material = SubResource("ParticleProcessMaterial_jtadg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.72318, 0)
+amount = 48
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_trlph")

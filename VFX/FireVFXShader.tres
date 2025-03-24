@@ -55,7 +55,7 @@ default_input_values = [1, -1.0, 2, 1.0, 3, 1.0, 4, 0.2]
 input_name = "node_position_world"
 
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_ltacg"]
-default_input_values = [1, -0.135, 2, 0.16, 3, 0.0, 4, 1.0]
+default_input_values = [1, -0.135, 2, 0.06, 3, 0.0, 4, 1.0]
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_d4nx1"]
 
@@ -431,7 +431,7 @@ void fragment() {
 	float n_out25p0;
 // Remap:25
 	float n_in25p1 = -0.13500;
-	float n_in25p2 = 0.16000;
+	float n_in25p2 = 0.06000;
 	float n_in25p3 = 0.00000;
 	float n_in25p4 = 1.00000;
 	{
@@ -473,7 +473,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1827.93, 2732.22)
+graph_offset = Vector2(-1477.37, 1488.28)
 modes/blend = 1
 varyings/particleIndex = "0,0"
 nodes/vertex/0/position = Vector2(300, 360)

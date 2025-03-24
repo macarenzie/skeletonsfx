@@ -57,6 +57,7 @@ shader_parameter/anim_speed_max = 0.0
 shader_parameter/anim_offset_min = 0.0
 shader_parameter/anim_offset_max = 1.0
 shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_sphere_radius = null
 shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
 shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
