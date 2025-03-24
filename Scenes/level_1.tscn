@@ -1,29 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5q6ap0pud10o"]
+[gd_scene load_steps=8 format=3 uid="uid://c5q6ap0pud10o"]
 
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_fv1oh"]
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_rgrcn"]
-[ext_resource type="PackedScene" uid="uid://dxyemt3e2j4sp" path="res://Fire/Fire.tscn" id="2_qnapl"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="3_2fonn"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="4_d64oc"]
 [ext_resource type="PackedScene" uid="uid://cybr83rnnlyul" path="res://Scenes/target_dummy.tscn" id="5_2p4v4"]
-[ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="7_7f5lq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_byvrr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_3frgm"]
+[sub_resource type="Sky" id="Sky_ai6f4"]
 sky_material = SubResource("ProceduralSkyMaterial_byvrr")
 
 [sub_resource type="Environment" id="Environment_wynys"]
 background_mode = 2
-sky = SubResource("Sky_3frgm")
+sky = SubResource("Sky_ai6f4")
 tonemap_mode = 2
 glow_enabled = true
 
 [node name="Level_1" type="Node3D"]
 process_mode = 3
-script = ExtResource("1_rgrcn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wynys")
@@ -38,103 +34,74 @@ process_mode = 1
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 current = true
 
-[node name="ColorRect" parent="Player/Inventory" index="0"]
-offset_right = 575.0
+[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
+transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 
-[node name="EnemyGrid" parent="Player/Inventory" index="1"]
-offset_left = 577.0
-offset_top = 0.0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="pickupCollision" parent="Player" index="8"]
+[node name="pickupCollision" parent="Player" index="7"]
 process_mode = 1
-
-[node name="Fire" parent="." instance=ExtResource("2_qnapl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.49981, 1.56862, -4.1927)
 
 [node name="Geometry" type="Node3D" parent="."]
 process_mode = 1
 
 [node name="gb_block" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.248677, 0, 0, 0, 0.323182, 0, 0, 0, 11.9889, -0.118456, -0.520872, -0.106767)
-skeleton = NodePath("../..")
 
 [node name="gb_block3" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.323182, 0, 0, 0, 9.21943, 0.744421, -0.520872, -17.7349)
-skeleton = NodePath("../..")
 
 [node name="gb_block5" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -8.10646, 0.923914, -17.7349)
-skeleton = NodePath("../..")
 
 [node name="gb_block9" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -20.2921, 3.24226, -8.63802)
-skeleton = NodePath("../..")
 
 [node name="gb_block12" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -20.2921, 3.24226, 13.9856)
-skeleton = NodePath("../..")
 
 [node name="gb_block14" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -29.428, 5.42734, 13.9856)
-skeleton = NodePath("../..")
 
 [node name="gb_block16" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -29.428, 7.46308, 5.01264)
-skeleton = NodePath("../..")
 
 [node name="gb_block20" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -29.428, 7.46308, -23.4421)
-skeleton = NodePath("../..")
 
 [node name="gb_block17" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0528491, 0, 0, 0, 0.940353, 0, 0, 0, 5.41653, -29.428, 7.46308, -2.12776)
-skeleton = NodePath("../..")
 
 [node name="gb_block19" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0528491, 0, 0, 0, 0.940353, 0, 0, 0, 5.41653, -29.428, 7.46308, -16.2127)
-skeleton = NodePath("../..")
 
 [node name="gb_block18" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0528491, 0, 0, 0, 0.940353, 0, 0, 0, 2.97701, -29.428, 7.46308, -9.16996)
-skeleton = NodePath("../..")
 
 [node name="gb_block10" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0582701, 0, 0, 0, 0.940353, 0, 0, 0, 5.52062, -20.2921, 3.24226, -1.27922)
-skeleton = NodePath("../..")
 
 [node name="gb_block11" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0582701, 0, 0, 0, 0.940353, 0, 0, 0, 5.52062, -20.2921, 3.24226, 6.70231)
-skeleton = NodePath("../..")
 
 [node name="gb_block7" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.186997, 0, 0, 0, 0.940353, 0, 0, 0, 9.21943, -20.3458, 0.923914, -17.7349)
-skeleton = NodePath("../..")
 
 [node name="gb_block6" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.0609391, 0, 0, 0, 0.940353, 0, 0, 0, 2.38441, -14.2499, 0.923914, -17.7349)
-skeleton = NodePath("../..")
 
 [node name="gb_block4" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.135877, 0.0339904, 0, -0.0482368, 0.095747, 0, 0, 0, 2.89399, -0.118456, 0.977378, -19.7022)
-skeleton = NodePath("../..")
 
 [node name="gb_block13" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.135877, 0.0339904, 0, -0.0482368, 0.095747, 0, 0, 0, 2.89399, -21.5181, 5.44447, 17.0293)
-skeleton = NodePath("../..")
 
 [node name="gb_block15" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(-5.93938e-09, -1.48577e-09, -2.89399, -0.0482368, 0.095747, 0, 0.135877, 0.0339904, -1.265e-07, -32.5394, 7.50393, 12.6388)
-skeleton = NodePath("../..")
 
 [node name="gb_block8" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(-5.93938e-09, -1.48577e-09, 2.89399, -0.0482368, 0.095747, 0, -0.135877, -0.0339904, -1.265e-07, -23.3915, 3.27388, -16.5964)
-skeleton = NodePath("../..")
 
 [node name="gb_block2" parent="Geometry" instance=ExtResource("3_2fonn")]
 transform = Transform3D(0.078367, 0, 0, 0, 0.323182, 0, 0, 0, 7.26457, -0.118456, -0.520872, -9.73745)
-skeleton = NodePath("../..")
 
 [node name="Props" type="Node3D" parent="."]
 process_mode = 1
@@ -205,16 +172,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5403, 8.85965, 1.77448)
 [node name="TargetDummy6" parent="Props" instance=ExtResource("5_2p4v4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.797, 8.85965, 3.91011)
 
-[node name="Menu" parent="." instance=ExtResource("7_7f5lq")]
-
-[connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
-[connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="." method="_on_dev_room_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
-
 [editable path="Player"]
-[editable path="Player/Inventory"]
-[editable path="Menu"]
+[editable path="Player/UIController/Menu"]
+[editable path="Player/UIController/Inventory"]

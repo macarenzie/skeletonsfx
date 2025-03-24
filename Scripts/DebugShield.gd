@@ -4,10 +4,13 @@ extends MeshInstance3D
 
 func _process(delta):
 	if anim_player.current_animation == "block_start":
-		mesh.material.set_albedo(Color("green"))
+		mesh.material.set_albedo(Color("white"))
+		#mesh.material.set_albedo(Color("green"))
 	elif anim_player.current_animation == "block_active":
-		mesh.material.set_albedo(Color("red"))
+		mesh.material.set_albedo(Color("white"))
+		#mesh.material.set_albedo(Color("red"))
 	elif anim_player.current_animation == "block_end":
-		mesh.material.set_albedo(Color("blue"))
+		mesh.material.set_albedo(Color("white"))
+		#mesh.material.set_albedo(Color("blue"))
 	else:
 		mesh.material.set_albedo(Color("white"))

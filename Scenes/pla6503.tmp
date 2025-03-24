@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=29 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -10,10 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
-[ext_resource type="Script" path="res://Scripts/UIControl.gd" id="9_t1dii"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="9_t1dii"]
 [ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
-[ext_resource type="Texture2D" uid="uid://bgx72do3k6dku" path="res://Assets/UI Assets/circle.png" id="12_ghlo1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -322,7 +321,7 @@ radius = 2.85713
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5tt7"]
 bg_color = Color(0.999401, 0.574862, 0.295541, 1)
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_4wc5k")
@@ -491,8 +490,7 @@ anchor_left = 0.5
 anchor_top = 0.65
 anchor_right = 5.775
 anchor_bottom = 1.0
-offset_top = -0.999996
-offset_bottom = 12.0
+offset_bottom = 13.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_s5tt7")
 value = 50.0
 show_percentage = false
@@ -511,30 +509,16 @@ fit_content = true
 [node name="The Real Text" type="Button" parent="UIController/PlayerUI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
+anchor_left = 0.45
 anchor_top = 0.175
-anchor_right = 1.6
+anchor_right = 1.55
 anchor_bottom = 0.775
 icon = ExtResource("8_5j2rg")
 flat = true
 expand_icon = true
 
-[node name="Air Bar" type="TextureProgressBar" parent="UIController/PlayerUI"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.225
-anchor_top = -0.075
-anchor_right = 1.875
-anchor_bottom = 2.025
-value = 100.0
-fill_mode = 3
-nine_patch_stretch = true
-texture_progress = ExtResource("12_ghlo1")
-
 [node name="Inventory" parent="UIController" instance=ExtResource("5_fivcv")]
 process_mode = 3
-visible = false
 layout_mode = 1
 
 [node name="equipment Slots" parent="UIController/Inventory" index="2"]
@@ -542,30 +526,37 @@ offset_left = 1.0
 offset_right = 595.0
 
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire" index="0"]
+layout_mode = 0
 offset_left = 110.0
 offset_right = 150.0
 
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate" index="0"]
+layout_mode = 0
 offset_left = 92.0
 offset_right = 132.0
 
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/weapon/VBoxContainer/Damage" index="0"]
+layout_mode = 0
 offset_left = 79.0
 offset_right = 119.0
 
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed" index="0"]
+layout_mode = 0
 offset_left = 115.0
 offset_right = 155.0
 
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Angle" index="0"]
+layout_mode = 0
 offset_left = 106.0
 offset_right = 146.0
 
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Damage Reduction" index="0"]
+layout_mode = 0
 offset_left = 162.0
 offset_right = 202.0
 
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block recovery time" index="0"]
+layout_mode = 0
 offset_left = 125.0
 offset_right = 165.0
 
@@ -584,15 +575,6 @@ texture = ExtResource("11_dwtxc")
 expand_mode = 1
 
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
-[connection signal="player_dies" from="InnerFire" to="UIController" method="_on_inner_fire_player_dies"]
-[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="UIController" method="_on_resume_pressed"]
-[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
-[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="UIController" method="_on_controls_pressed"]
-[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="UIController" method="_on_dev_room_pressed"]
-[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="UIController" method="_on_back_pressed"]
-[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="UIController" method="_on_restart_pressed"]
-[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="UIController" method="_on_main_menu_pressed"]
-[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
 [connection signal="closed" from="UIController/Inventory" to="UIController" method="_on_inventory_closed"]
 [connection signal="opened" from="UIController/Inventory" to="UIController" method="_on_inventory_opened"]
 

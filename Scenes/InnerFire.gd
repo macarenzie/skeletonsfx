@@ -1,10 +1,13 @@
 extends Node
 
+signal player_dies()
+
 @export var innerFire:float = 1000.0
 @export var maxInnerFire:float = 1000.0
 @export var isInFire:bool = false
+@export var fireRegen:float = 0.0
 
-@onready var fireBar = $"../PlayerUI/ProgressBar"
+@onready var fireBar = $"../UIController/PlayerUI/ProgressBar"
 @onready var firesList = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,13 +25,13 @@ func _physics_process(delta):
 	#print(firesList)
 	if firesList != []:
 		if innerFire <= maxInnerFire:
-			innerFire += 0.1
+			innerFire += 0.1 + fireRegen
 	else:
 		if (innerFire <=0.0 ):
 			#If in world player can't die for testing. 
 			if get_tree().current_scene.scene_file_path == "res://Scenes/world.tscn":
 				return
-			get_tree().reload_current_scene() # you died
-		innerFire -= .028 # aprox. 10 minutes w/o fire till you die
+			player_dies.emit()
+		innerFire -= .028 - fireRegen # aprox. 10 minutes w/o fire till you die
 
 	fireBar.value = innerFire

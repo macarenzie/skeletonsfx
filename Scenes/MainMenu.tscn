@@ -1,0 +1,248 @@
+[gd_scene load_steps=14 format=3 uid="uid://oedns07ol4yc"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_36k88"]
+[ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_gbiat"]
+[ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="2_kwctc"]
+[ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="3_5iol5"]
+[ext_resource type="PackedScene" uid="uid://c54fra6i3bswh" path="res://Props/Barrel.tscn" id="4_vmse7"]
+[ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_njdd2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nd5cw"]
+line_spacing = 30.0
+font_size = 40
+font_color = Color(0.950935, 0.398728, 0.112357, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xhip0"]
+dof_blur_far_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_imakp"]
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3xcv5"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2rnaj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_hffpi"]
+sky_material = SubResource("ProceduralSkyMaterial_2rnaj")
+
+[sub_resource type="Environment" id="Environment_juh5q"]
+background_mode = 1
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_hffpi")
+ambient_light_energy = 0.0
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+adjustment_enabled = true
+adjustment_brightness = 0.66
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_36k88")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ControlesRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.852
+anchor_top = 0.219
+anchor_right = 0.961
+anchor_bottom = 0.594
+offset_left = -2.50409
+offset_top = 0.0879974
+offset_right = -0.0720215
+offset_bottom = 0.0879822
+color = Color(0.294118, 0.294118, 0.294118, 0.603922)
+
+[node name="Start" type="Button" parent="CanvasLayer/ControlesRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104
+anchor_top = 0.041
+anchor_right = 0.872
+anchor_bottom = 0.204
+offset_left = 1.14441e-05
+offset_top = 0.0369987
+offset_right = 1.52588e-05
+offset_bottom = 0.0669899
+text = "Start Game"
+
+[node name="Dev Room" type="Button" parent="CanvasLayer/ControlesRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.102
+anchor_top = 0.309
+anchor_right = 0.805
+anchor_bottom = 0.473
+offset_left = -0.0560074
+offset_top = -0.086998
+offset_right = -0.0400543
+offset_bottom = 0.0610123
+text = "Dev Room"
+
+[node name="Controles" type="Button" parent="CanvasLayer/ControlesRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104
+anchor_top = 0.576
+anchor_right = 0.768
+anchor_bottom = 0.739
+offset_left = 1.14441e-05
+offset_top = 0.0319824
+offset_right = -4.57764e-05
+offset_bottom = 0.0619812
+text = "Controles"
+
+[node name="Quit" type="Button" parent="CanvasLayer/ControlesRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.117
+anchor_top = 0.835
+anchor_right = 0.773
+anchor_bottom = 0.971
+offset_left = 0.0240002
+offset_top = 0.0949707
+offset_right = 0.0559921
+offset_bottom = 0.0469818
+text = "Quit"
+
+[node name="Title Rect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.298
+anchor_top = 0.045
+anchor_right = 0.702
+anchor_bottom = 0.168
+offset_left = -0.296021
+offset_top = -0.160002
+offset_right = 0.295959
+offset_bottom = 0.135994
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.74902, 0.74902, 0.74902, 0.431373)
+
+[node name="Title Text" type="Label" parent="CanvasLayer/Title Rect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Bonefire"
+label_settings = SubResource("LabelSettings_nd5cw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.753984, 0.753984, 0.753984, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Menu/ColorRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 154.0
+offset_top = -180.0
+offset_right = -406.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4196, 1.81911)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Menu/ColorRect/MarginContainer2"]
+layout_mode = 2
+text = "WASD to move
+Space to jump
+Left click to attack/spawn fire
+Right click to block
+I to open inventory
+E to loot items
+Esc for menu"
+fit_content = true
+
+[node name="Back" type="Button" parent="CanvasLayer/Menu/ColorRect/MarginContainer2/RichTextLabel"]
+layout_mode = 2
+offset_left = 355.029
+offset_top = 7.14636
+offset_right = 947.029
+offset_bottom = 168.146
+scale = Vector2(0.373718, 0.20174)
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8437, 1.44916, 4.09305)
+attributes = SubResource("CameraAttributesPractical_xhip0")
+current = true
+far = 25.0
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Geometry"]
+mesh = SubResource("PlaneMesh_imakp")
+skeleton = NodePath("../..")
+script = ExtResource("1_gbiat")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/Ground"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3xcv5")
+
+[node name="Wall_N" parent="Geometry" instance=ExtResource("2_kwctc")]
+transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, 24.3121, 2.66164, 0.0679741)
+skeleton = NodePath("../Ground")
+
+[node name="Wall_S" parent="Geometry" instance=ExtResource("2_kwctc")]
+transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, -24.2441, 2.66164, 0.0679741)
+skeleton = NodePath("../Ground")
+
+[node name="Wall_E" parent="Geometry" instance=ExtResource("2_kwctc")]
+transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, 13.2967)
+skeleton = NodePath("../Ground")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+process_mode = 1
+environment = SubResource("Environment_juh5q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+process_mode = 1
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.494
+shadow_enabled = true
+
+[node name="Chest" parent="." instance=ExtResource("3_5iol5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97613, 4.76837e-07, 9.0592)
+
+[node name="Barrel" parent="." instance=ExtResource("4_vmse7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.525117, 0.685578, 9.62691)
+
+[node name="Barrel2" parent="." instance=ExtResource("4_vmse7")]
+transform = Transform3D(0.0638182, 0.997962, 0, -0.997962, 0.0638182, 0, 0, 0, 1, 0.498237, 0.319123, 10.4921)
+
+[node name="Box" parent="." instance=ExtResource("5_njdd2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88613, 0.494556, 10.2725)
+
+[connection signal="pressed" from="CanvasLayer/ControlesRect/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlesRect/Dev Room" to="." method="_on_dev_room_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlesRect/Controles" to="." method="_on_controles_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlesRect/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]

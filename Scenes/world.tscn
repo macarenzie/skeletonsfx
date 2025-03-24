@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=17 format=3 uid="uid://dgx6jd0rfjota"]
 
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_evvha"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
 [ext_resource type="PackedScene" uid="uid://cybr83rnnlyul" path="res://Scenes/target_dummy.tscn" id="2_2re6m"]
@@ -9,18 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="6_tatpg"]
 [ext_resource type="Script" path="res://Scenes/Hello.gd" id="8_muvoo"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="8_o2imo"]
-[ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="9_s5wx5"]
+[ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="9_fd2ay"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_88whd"]
+[sub_resource type="Sky" id="Sky_vw8te"]
 sky_material = SubResource("ProceduralSkyMaterial_eol4q")
 
 [sub_resource type="Environment" id="Environment_xhccs"]
 background_mode = 2
-sky = SubResource("Sky_88whd")
+sky = SubResource("Sky_vw8te")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -36,7 +35,6 @@ data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0,
 
 [node name="World" type="Node"]
 process_mode = 3
-script = ExtResource("1_evvha")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 process_mode = 1
@@ -86,27 +84,18 @@ shape = SubResource("ConcavePolygonShape3D_5j4yk")
 
 [node name="Wall_N" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, 24.3121, 2.66164, 0.0679741)
-skeleton = NodePath("../Ground")
 
 [node name="Wall_S" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, -24.2441, 2.66164, 0.0679741)
-skeleton = NodePath("../Ground")
 
 [node name="Wall_W" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, -23.7464)
-skeleton = NodePath("../Ground")
 
 [node name="Wall_E" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, 24.4366)
-skeleton = NodePath("../Ground")
 
 [node name="Node3D" parent="." instance=ExtResource("8_o2imo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
-
-[node name="Menu" parent="." instance=ExtResource("9_s5wx5")]
-
-[node name="DevRoom" parent="Menu/ColorRect/MarginContainer/VBoxContainer" index="3"]
-text = "Level 1"
 
 [node name="Hello" type="Node3D" parent="."]
 script = ExtResource("8_muvoo")
@@ -120,14 +109,15 @@ mesh = SubResource("BoxMesh_6bv3e")
 [node name="Node3D2" parent="." instance=ExtResource("8_o2imo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 
-[connection signal="closed" from="Player/Inventory" to="." method="_on_inventory_closed"]
-[connection signal="opened" from="Player/Inventory" to="." method="_on_inventory_opened"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="." method="_on_dev_room_pressed"]
-[connection signal="pressed" from="Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
+[node name="Chest" parent="." instance=ExtResource("9_fd2ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
+
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
 
 [editable path="Player"]
-[editable path="Player/Inventory"]
-[editable path="Menu"]
+[editable path="Player/UIController/Menu"]
+[editable path="Player/UIController/Inventory"]
