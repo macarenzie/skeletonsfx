@@ -5,11 +5,33 @@ extends CharacterBody3D
 @export var speed = 5.0
 @export var sprint_multiplier = 1 # I don't know if the game is going to have sprinting in it, but for me phillip i want this just for debuging, if you set this to 0 it's effectively disabled
 const jump_velocity = 4.5
-
+@export var oxygen: float = 1.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready() -> void:
+	add_to_group("player")
+	# Connect signals from the player air detector (an Area3D child)
+	$PlayerAirDetector.area_entered.connect(_on_air_entered)
+	$PlayerAirDetector.area_exited.connect(_on_air_exited)
 
+func decrement_oxygen(delta: float) -> void:
+	oxygen = max(oxygen - 0.01 * delta, 0)
+
+func _on_air_entered(area: Area3D) -> void:
+	 # Check if the area we entered is a room's Air node (assumed to be in the "air" group)
+	print("AIR ENTERED")
+	
+
+func _on_air_exited(area: Area3D) -> void:
+	# (Optional) Do something when exiting a room's air area.
+	if area.is_in_group("air"):
+		 # Reset oxygen to one
+		oxygen = 1.0
+		# Destroy all fires in the scene immediately
+		for fire in get_tree().get_nodes_in_group("fire"):
+			fire.queue_free()
+			print("Room transition: oxygen reset and fires destroyed.")
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
