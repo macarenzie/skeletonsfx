@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwsjn2nmf8tlv"]
+[gd_scene load_steps=12 format=3 uid="uid://bwsjn2nmf8tlv"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
@@ -22,6 +22,14 @@ height = 1.0
 top_radius = 0.0
 bottom_radius = 0.1
 height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wvgtp"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_drn4h"]
+size = Vector3(0.4, 0.05, 0.05)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bshh7"]
 height = 2.3
@@ -60,12 +68,38 @@ skeleton = NodePath("../Body")
 
 [node name="DirectionSign" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.68605, 0)
+visible = false
 mesh = SubResource("CylinderMesh_bgho1")
 skeleton = NodePath("../..")
 
 [node name="Cone" type="MeshInstance3D" parent="Model/DirectionSign"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.681111, 0)
 mesh = SubResource("CylinderMesh_1pb5f")
+
+[node name="Face" type="Node3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53657, -0.564385)
+
+[node name="Left Eye" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.2, 0, 0)
+mesh = SubResource("CylinderMesh_wvgtp")
+skeleton = NodePath("../..")
+
+[node name="Right Eye" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.2, 0, 0)
+mesh = SubResource("CylinderMesh_wvgtp")
+skeleton = NodePath("../..")
+
+[node name="Right Brow" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(0.939693, -0.34202, 0, 0.34202, 0.939692, 0, 0, 0, 1, 0.228975, 0.231427, 0)
+mesh = SubResource("BoxMesh_drn4h")
+
+[node name="Left Brow" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939692, 0, 0, 0, 1, -0.229, 0.231, 0)
+mesh = SubResource("BoxMesh_drn4h")
+
+[node name="Mouth" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -0.337969, 0)
+mesh = SubResource("BoxMesh_drn4h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)

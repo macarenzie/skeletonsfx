@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmyimjpixfm2m"]
+[gd_scene load_steps=7 format=3 uid="uid://dmyimjpixfm2m"]
 
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_mmxt8"]
 [ext_resource type="PackedScene" uid="uid://bwsjn2nmf8tlv" path="res://Scenes/enemy.tscn" id="1_rdrsi"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="2_fbw6n"]
 
@@ -25,7 +24,6 @@ geometry_source_group_name = &"Traversable"
 agent_height = 2.3
 
 [node name="PathfindingTest" type="Node3D"]
-script = ExtResource("1_mmxt8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_w6qcf")
@@ -37,8 +35,11 @@ shadow_enabled = true
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_d2acr")
 
-[node name="Enemy" parent="." instance=ExtResource("1_rdrsi")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, -3.72529e-08, 11)
+[node name="Enemy 1" parent="." instance=ExtResource("1_rdrsi")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6, -3.72529e-08, 11)
+
+[node name="Enemy 2" parent="." instance=ExtResource("1_rdrsi")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 8, -3.72529e-08, -8)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." groups=["Traversable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)

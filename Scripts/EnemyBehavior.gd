@@ -27,7 +27,7 @@ func _process(delta):
 		set_awareness(get_awareness()+awareness_increase_rate*delta)
 	else:
 		set_awareness(get_awareness()-awareness_decrease_rate*delta)
-	print("enemy awareness value of: "+str(get_awareness()))
+	#print("enemy awareness value of: "+str(get_awareness()))
 	
 	if awareness == 0.0: # idle/wandering
 		pass
