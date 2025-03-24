@@ -33,7 +33,7 @@ var can_place := false
 var icon_anchor : Vector2
 var isOpen: bool = false
 var perferd_grid = null
-var weaponRange = "None"
+var weaponRange = 0
 
 #controll looting
 var in_range = false
@@ -420,7 +420,7 @@ func _on_item_slot_pressed():
 			item_slot_1.icon = load("res://Assets/UI Assets/equipment_texture_main.png")
 			
 			#player Stats
-			weaponRange = "None"
+			weaponRange = 0
 			update_stats(slot_1,false)
 			#player_combat.attack_damage = 0
 			#player_combat.attack_speed = float(0.0)
@@ -438,7 +438,7 @@ func _on_item_slot_pressed():
 				item_slot_1.icon = item_held.IconRect_path.texture
 				
 				#player Stats
-				weaponRange = "Medium"
+				weaponRange = roundf($"../../PlayerHead/WeaponHolder/Weapon/Area3D/CollisionShape3D".shape.get_size().y)
 				update_stats(slot_1,true)
 				
 				
@@ -455,7 +455,7 @@ func _on_item_slot_pressed():
 			
 			#player Stats
 			
-			weaponRange = "Medium"
+			weaponRange = roundf($"../../PlayerHead/WeaponHolder/Weapon/Area3D/CollisionShape3D".shape.get_size().y)
 			update_stats(slot_1,true)
 			
 			#player_combat.attack_damage = item_held.item_Damage

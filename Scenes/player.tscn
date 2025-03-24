@@ -541,6 +541,9 @@ layout_mode = 1
 offset_left = 1.0
 offset_right = 595.0
 
+[node name="Player Stats" parent="UIController/Inventory" index="3"]
+scale = Vector2(1.00024, 1.00024)
+
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire" index="0"]
 offset_left = 110.0
 offset_right = 150.0
