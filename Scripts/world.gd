@@ -24,6 +24,8 @@ func _input(event):
 	if event.is_action_pressed("toggle_inventory"):
 		if inventory.isOpen:
 			inventory.close()
+		elif menuOpen:
+			pass
 		else:
 			inventory.open()
 	if event.is_action_pressed("Interact"):
