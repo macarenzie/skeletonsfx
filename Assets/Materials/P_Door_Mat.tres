@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://cd7855w43sbcn"]
+
+[ext_resource type="Texture2D" uid="uid://lq6f30ibudey" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Albedo.png" id="1_m831l"]
+[ext_resource type="Texture2D" uid="uid://b4f8ft56r4mup" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_AO.png" id="2_61saq"]
+[ext_resource type="Texture2D" uid="uid://ce1kd5ej87i18" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Height.png" id="3_q3mqo"]
+[ext_resource type="Texture2D" uid="uid://b2ui0a4pprn8x" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Metallic.png" id="4_e3lks"]
+[ext_resource type="Texture2D" uid="uid://c522qqifqwn83" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Normal.png" id="5_5bo57"]
+
+[resource]
+albedo_texture = ExtResource("1_m831l")
+metallic = 1.0
+metallic_texture = ExtResource("4_e3lks")
+normal_enabled = true
+normal_texture = ExtResource("5_5bo57")
+ao_enabled = true
+ao_texture = ExtResource("2_61saq")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_q3mqo")

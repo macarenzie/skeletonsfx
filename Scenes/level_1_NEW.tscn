@@ -420,9 +420,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3357, 1.45887, 11.3554)
 
 [node name="Chest" parent="Props" instance=ExtResource("3_fbhii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.228, -0.0388089, -14.6953)
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_p8fb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
 
-[node name="Node3D" parent="." instance=ExtResource("5_26ev8")]
+[node name="Sword Pickup" parent="." instance=ExtResource("5_26ev8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -20.6576)
