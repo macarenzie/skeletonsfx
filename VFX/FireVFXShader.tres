@@ -39,7 +39,7 @@ operator = 2
 parameter_name = "MainTex"
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jglqj"]
-input_name = "vertex"
+input_name = "node_position_world"
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_5ot06"]
 
@@ -52,10 +52,10 @@ operator = 2
 default_input_values = [1, -1.0, 2, 1.0, 3, 1.0, 4, 0.2]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_28lhk"]
-input_name = "vertex"
+input_name = "node_position_world"
 
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_ltacg"]
-default_input_values = [1, -0.5, 2, 0.0, 3, 0.0, 4, 1.0]
+default_input_values = [1, -0.135, 2, 0.16, 3, 0.0, 4, 1.0]
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_d4nx1"]
 
@@ -240,7 +240,7 @@ void fragment() {
 
 
 // Input:20
-	vec3 n_out20p0 = VERTEX;
+	vec3 n_out20p0 = NODE_POSITION_WORLD;
 
 
 // VectorDecompose:21
@@ -419,7 +419,7 @@ void fragment() {
 
 
 // Input:24
-	vec3 n_out24p0 = VERTEX;
+	vec3 n_out24p0 = NODE_POSITION_WORLD;
 
 
 // VectorDecompose:26
@@ -430,8 +430,8 @@ void fragment() {
 
 	float n_out25p0;
 // Remap:25
-	float n_in25p1 = -0.50000;
-	float n_in25p2 = 0.00000;
+	float n_in25p1 = -0.13500;
+	float n_in25p2 = 0.16000;
 	float n_in25p3 = 0.00000;
 	float n_in25p4 = 1.00000;
 	{
@@ -473,6 +473,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1827.93, 2732.22)
 modes/blend = 1
 varyings/particleIndex = "0,0"
 nodes/vertex/0/position = Vector2(300, 360)

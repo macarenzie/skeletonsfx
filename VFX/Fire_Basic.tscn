@@ -113,7 +113,7 @@ operator = 2
 parameter_name = "MainTex"
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_1umeb"]
-input_name = "vertex"
+input_name = "node_position_world"
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_8ce2b"]
 
@@ -126,7 +126,7 @@ operator = 2
 default_input_values = [1, -1.0, 2, 1.0, 3, 1.0, 4, 0.2]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_7j357"]
-input_name = "vertex"
+input_name = "node_position_world"
 
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_5ffk0"]
 default_input_values = [1, -0.5, 2, 0.0, 3, 0.0, 4, 1.0]
@@ -314,7 +314,7 @@ void fragment() {
 
 
 // Input:20
-	vec3 n_out20p0 = VERTEX;
+	vec3 n_out20p0 = NODE_POSITION_WORLD;
 
 
 // VectorDecompose:21
@@ -445,7 +445,7 @@ void fragment() {
 
 
 // Input:24
-	vec3 n_out24p0 = VERTEX;
+	vec3 n_out24p0 = NODE_POSITION_WORLD;
 
 
 // VectorDecompose:26
@@ -499,7 +499,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(1019.74, -60.0292)
+graph_offset = Vector2(-2092.92, -88.6877)
 varyings/particleIndex = "0,0"
 nodes/vertex/0/position = Vector2(300, 360)
 nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_dvw7e")

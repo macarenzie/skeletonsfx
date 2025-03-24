@@ -1,8 +1,9 @@
-[gd_scene load_steps=65 format=3 uid="uid://dlw2yigievwho"]
+[gd_scene load_steps=13 format=3 uid="uid://dlw2yigievwho"]
 
 [ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="1_t88n0"]
 [ext_resource type="Shader" uid="uid://jcn44qg3x24i" path="res://VFX/FlipbookProcess.tres" id="2_o6nh4"]
 [ext_resource type="Texture2D" uid="uid://sgidv8n4fsvx" path="res://VFX/Dissolve.png" id="3_gv6tp"]
+[ext_resource type="Shader" uid="uid://c8f0mnsvfmjox" path="res://VFX/Fire_Medium_VisualShader.tres" id="3_nh7m1"]
 [ext_resource type="Texture2D" uid="uid://r5nr08ur1fab" path="res://VFX/Bonfire.png" id="4_cpfp8"]
 
 [sub_resource type="Curve" id="Curve_fxkya"]
@@ -38,8 +39,8 @@ shader_parameter/damping_min = 0.0
 shader_parameter/damping_max = 0.0
 shader_parameter/initial_angle_min = 0.0
 shader_parameter/initial_angle_max = 0.0
-shader_parameter/scale_min = 1.0
-shader_parameter/scale_max = 1.0
+shader_parameter/scale_min = 1.2
+shader_parameter/scale_max = 1.4
 shader_parameter/hue_variation_min = 0.0
 shader_parameter/hue_variation_max = 0.0
 shader_parameter/anim_speed_min = 0.0
@@ -47,6 +48,7 @@ shader_parameter/anim_speed_max = 0.0
 shader_parameter/anim_offset_min = 0.0
 shader_parameter/anim_offset_max = 1.0
 shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_sphere_radius = 0.05
 shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
 shader_parameter/emission_shape_scale = Vector3(5.67, 8.465, 4.715)
 shader_parameter/velocity_pivot = Vector3(0, 0, 0)
@@ -62,558 +64,405 @@ shader_parameter/turbulence_noise_speed_random = 0.08
 shader_parameter/turbulence_noise_speed = Vector3(0, 0.1, 0)
 shader_parameter/scale_curve = SubResource("CurveTexture_gyw80")
 
-[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_qvl87"]
-default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, 0.5]
-op_type = 6
+[sub_resource type="Shader" id="Shader_8kpqr"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's ParticleProcessMaterial.
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_fwj77"]
-parameter_name = "DissolveStrength"
-hint = 1
-default_value_enabled = true
-
-[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_evgf4"]
-
-[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_rfqsr"]
-parameter_name = "DissolveSpeed"
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_s0t74"]
-input_name = "time"
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ccpxv"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-operator = 2
-
-[sub_resource type="VisualShaderNodeVec2Parameter" id="VisualShaderNodeVec2Parameter_2pdd5"]
-parameter_name = "DissolveScale"
-default_value_enabled = true
-default_value = Vector2(1, 1)
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_g5pwo"]
-input_name = "uv"
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_jl2d6"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-operator = 2
-
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_dcf8p"]
-parameter_name = "MainTex"
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wl5or"]
-input_name = "vertex"
-
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_llmv7"]
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_3787m"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-operator = 2
-
-[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_hgyie"]
-default_input_values = [1, -1.0, 2, 1.0, 3, 1.0, 4, 0.2]
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0f8hd"]
-input_name = "vertex"
-
-[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_6vn2g"]
-default_input_values = [1, -0.5, 2, -0.3, 3, 0.0, 4, 1.0]
-
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_f1c0f"]
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_x0xee"]
-operator = 2
-
-[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_c4wwa"]
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_43b0d"]
-source = 5
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_6wiom"]
-input_name = "uv"
-
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_h0485"]
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_phomx"]
-operator = 2
-
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_xanft"]
-default_input_values = [0, Vector2(0, 0)]
-op_type = 0
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_vny5b"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_iie8l"]
-default_input_values = [0, 0.0, 1, 0.2]
-operator = 2
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_w87eq"]
-default_input_values = [0, 0.0, 1, -0.1]
-
-[sub_resource type="VisualShaderNodeClamp" id="VisualShaderNodeClamp_2iqd1"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0), 2, Vector2(1, 1)]
-op_type = 3
-
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_g573a"]
-function = 31
-
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_c1atb"]
-default_input_values = [0, Quaternion(0, 0, 0, 0)]
-op_type = 2
-
-[sub_resource type="VisualShaderNodeRandomRange" id="VisualShaderNodeRandomRange_64vuq"]
-default_input_values = [0, Vector3(1, 1, 1), 1, 0.0, 2, 4.0]
-
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_03mu6"]
-function = 14
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_bh255"]
-default_input_values = [0, 0.0, 1, 2.0]
-operator = 3
-
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_3bfj1"]
-function = 14
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_e5hfv"]
-operator = 1
-
-[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_tuxci"]
-op_type = 0
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_0mjsf"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_md2bo"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
-op_type = 0
-operator = 2
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_tc24h"]
-input_name = "color"
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_nq6x2"]
-constant = 0.5
-
-[sub_resource type="VisualShaderNodeVaryingGetter" id="VisualShaderNodeVaryingGetter_fh7a7"]
-varying_name = "particleIndex"
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_518b1"]
-default_input_values = [0, 0.0, 1, 2.0]
-operator = 2
-
-[sub_resource type="VisualShaderNodeRandomRange" id="VisualShaderNodeRandomRange_pukj2"]
-default_input_values = [0, Vector3(1, 1, 1), 1, 0.0, 2, 4.0]
-
-[sub_resource type="VisualShaderNodeVaryingGetter" id="VisualShaderNodeVaryingGetter_jso7s"]
-varying_name = "particleIndex"
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_6n883"]
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_vujpc"]
-default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
-op_type = 2
-operator = 2
-
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_g4j8k"]
-parameter_name = "DissolveTex"
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_uipm0"]
-source = 5
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_so1ol"]
-default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
-op_type = 2
-operator = 2
-
-[sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_yp021"]
-keep_scale = true
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wcn85"]
-input_name = "instance_custom"
-
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_umfn3"]
-default_input_values = [0, Quaternion(0, 0, 0, 0)]
-op_type = 2
-
-[sub_resource type="VisualShaderNodeVaryingSetter" id="VisualShaderNodeVaryingSetter_kucjs"]
-varying_name = "particleIndex"
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jl51y"]
-input_name = "vertex"
-
-[sub_resource type="VisualShader" id="VisualShader_tgxnv"]
-code = "shader_type spatial;
-render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-
-// Varyings
-varying float particleIndex;
-
-uniform vec2 DissolveScale = vec2(1.000000, 1.000000);
-uniform vec2 DissolveSpeed;
-uniform sampler2D DissolveTex;
-uniform sampler2D MainTex;
-uniform float DissolveStrength : hint_range(0, 1) = 0;
-
-
-
-
-// 3D Noise with friendly permission by Inigo Quilez
-vec3 hash_noise_range( vec3 p ) {
-	p *= mat3(vec3(127.1, 311.7, -53.7), vec3(269.5, 183.3, 77.1), vec3(-301.7, 27.3, 215.3));
-	return 2.0 * fract(fract(p)*4375.55) -1.;
+shader_type particles;
+render_mode disable_velocity;
+uniform vec3 direction;
+uniform float spread;
+uniform float flatness;
+uniform float inherit_emitter_velocity_ratio = 0;
+uniform float initial_linear_velocity_min;
+uniform float initial_linear_velocity_max;
+uniform float directional_velocity_min;
+uniform float directional_velocity_max;
+uniform float angular_velocity_min;
+uniform float angular_velocity_max;
+uniform float orbit_velocity_min;
+uniform float orbit_velocity_max;
+uniform float radial_velocity_min;
+uniform float radial_velocity_max;
+uniform float linear_accel_min;
+uniform float linear_accel_max;
+uniform float radial_accel_min;
+uniform float radial_accel_max;
+uniform float tangent_accel_min;
+uniform float tangent_accel_max;
+uniform float damping_min;
+uniform float damping_max;
+uniform float initial_angle_min;
+uniform float initial_angle_max;
+uniform float scale_min;
+uniform float scale_max;
+uniform float hue_variation_min;
+uniform float hue_variation_max;
+uniform float anim_speed_min;
+uniform float anim_speed_max;
+uniform float anim_offset_min;
+uniform float anim_offset_max;
+uniform float lifetime_randomness;
+uniform vec3 emission_shape_offset = vec3(0.);
+uniform vec3 emission_shape_scale = vec3(1.);
+uniform vec3 velocity_pivot = vec3(0.);
+uniform float emission_sphere_radius;
+uniform vec4 color_value : source_color;
+uniform vec3 gravity;
+uniform sampler2D scale_curve : repeat_disable;
+vec4 rotate_hue(vec4 current_color, float hue_rot_angle){
+	float hue_rot_c = cos(hue_rot_angle);
+	float hue_rot_s = sin(hue_rot_angle);
+	mat4 hue_rot_mat = mat4(vec4(0.299, 0.587, 0.114, 0.0),
+			vec4(0.299, 0.587, 0.114, 0.0),
+			vec4(0.299, 0.587, 0.114, 0.0),
+			vec4(0.000, 0.000, 0.000, 1.0)) +
+		mat4(vec4(0.701, -0.587, -0.114, 0.0),
+			vec4(-0.299, 0.413, -0.114, 0.0),
+			vec4(-0.300, -0.588, 0.886, 0.0),
+			vec4(0.000, 0.000, 0.000, 0.0)) * hue_rot_c +
+		mat4(vec4(0.168, 0.330, -0.497, 0.0),
+			vec4(-0.328, 0.035,  0.292, 0.0),
+			vec4(1.250, -1.050, -0.203, 0.0),
+			vec4(0.000, 0.000, 0.000, 0.0)) * hue_rot_s;
+	return hue_rot_mat * current_color;
 }
 
 
-void vertex() {
-// Input:6
-	vec3 n_out6p0 = VERTEX;
-
-
-	mat4 n_out2p0;
-// GetBillboardMatrix:2
-	{
-		mat4 __mvm = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
-		__mvm = __mvm * mat4(vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0), vec4(0.0, length(MODEL_MATRIX[1].xyz), 0.0, 0.0), vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0), vec4(0.0, 0.0, 0.0, 1.0));
-		n_out2p0 = __mvm;
-	}
-
-
-// Output:0
-	VERTEX = n_out6p0;
-	MODELVIEW_MATRIX = n_out2p0;
-
-
-// Input:3
-	vec4 n_out3p0 = INSTANCE_CUSTOM;
-
-
-// VectorDecompose:4
-	float n_out4p0 = n_out3p0.x;
-	float n_out4p1 = n_out3p0.y;
-	float n_out4p2 = n_out3p0.z;
-	float n_out4p3 = n_out3p0.w;
-
-
-// VaryingSetter:5
-	particleIndex = n_out4p2;
-
-
+float rand_from_seed(inout uint seed) {
+	int k;
+	int s = int(seed);
+	if (s == 0)
+	s = 305420679;
+	k = s / 127773;
+	s = 16807 * (s - k * 127773) - 2836 * k;
+	if (s < 0)
+		s += 2147483647;
+	seed = uint(s);
+	return float(seed % uint(65536)) / 65535.0;
 }
 
-void fragment() {
-// Input:5
-	vec4 n_out5p0 = COLOR;
-
-
-// Input:20
-	vec3 n_out20p0 = VERTEX;
-
-
-// VectorDecompose:21
-	float n_out21p0 = n_out20p0.x;
-	float n_out21p1 = n_out20p0.y;
-	float n_out21p2 = n_out20p0.z;
-
-
-	float n_out23p0;
-// Remap:23
-	float n_in23p1 = -1.00000;
-	float n_in23p2 = 1.00000;
-	float n_in23p3 = 1.00000;
-	float n_in23p4 = 0.20000;
-	{
-		float __input_range = n_in23p2 - n_in23p1;
-		float __output_range = n_in23p4 - n_in23p3;
-		n_out23p0 = n_in23p3 + __output_range * ((n_out21p1 - n_in23p1) / __input_range);
-	}
-
-
-// Input:18
-	vec2 n_out18p0 = UV;
-
-
-// Vector2Parameter:17
-	vec2 n_out17p0 = DissolveScale;
-
-
-// VectorOp:19
-	vec2 n_out19p0 = n_out18p0 * n_out17p0;
-
-
-// VectorOp:22
-	vec2 n_out22p0 = vec2(n_out23p0) * n_out19p0;
-
-
-// Input:15
-	float n_out15p0 = TIME;
-
-
-// VaryingGetter:56
-	float n_out56p0 = particleIndex;
-
-
-// RandomRange:55
-	float n_in55p1 = 0.00000;
-	float n_in55p2 = 4.00000;
-	float n_out55p0 = mix(n_in55p1, n_in55p2, hash_noise_range(vec3(n_out56p0)).x);
-
-
-// FloatOp:57
-	float n_out57p0 = n_out15p0 + n_out55p0;
-
-
-// Vector2Parameter:14
-	vec2 n_out14p0 = DissolveSpeed;
-
-
-// VectorOp:16
-	vec2 n_out16p0 = vec2(n_out57p0) * n_out14p0;
-
-
-// UVFunc:13
-	vec2 n_in13p1 = vec2(1.00000, 1.00000);
-	vec2 n_out13p0 = n_out16p0 * n_in13p1 + n_out22p0;
-
-
-	vec4 n_out8p0;
-// Texture2D:8
-	n_out8p0 = texture(DissolveTex, n_out13p0);
-
-
-// VectorDecompose:32
-	float n_out32p0 = vec3(n_out8p0.xyz).x;
-	float n_out32p1 = vec3(n_out8p0.xyz).y;
-	float n_out32p2 = vec3(n_out8p0.xyz).z;
-
-
-// Input:31
-	vec2 n_out31p0 = UV;
-
-
-// VectorDecompose:34
-	float n_out34p0 = n_out31p0.x;
-	float n_out34p1 = n_out31p0.y;
-
-
-// FloatFunc:39
-	float n_out39p0 = 1.0 - n_out34p1;
-
-
-// FloatOp:33
-	float n_out33p0 = n_out32p0 * n_out39p0;
-
-
-// FloatOp:37
-	float n_in37p1 = -0.10000;
-	float n_out37p0 = n_out33p0 + n_in37p1;
-
-
-// FloatOp:36
-	float n_in36p1 = 0.20000;
-	float n_out36p0 = n_out37p0 * n_in36p1;
-
-
-// VectorOp:35
-	vec2 n_out35p0 = vec2(n_out36p0) + n_out31p0;
-
-
-// Clamp:38
-	vec2 n_in38p1 = vec2(0.00000, 0.00000);
-	vec2 n_in38p2 = vec2(1.00000, 1.00000);
-	vec2 n_out38p0 = clamp(n_out35p0, n_in38p1, n_in38p2);
-
-
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = texture(MainTex, n_out38p0);
-
-
-// VectorOp:9
-	vec4 n_out9p0 = n_out3p0 * n_out8p0;
-
-
-// FloatParameter:12
-	float n_out12p0 = DissolveStrength;
-
-
-// Input:24
-	vec3 n_out24p0 = VERTEX;
-
-
-// VectorDecompose:26
-	float n_out26p0 = n_out24p0.x;
-	float n_out26p1 = n_out24p0.y;
-	float n_out26p2 = n_out24p0.z;
-
-
-	float n_out25p0;
-// Remap:25
-	float n_in25p1 = -0.50000;
-	float n_in25p2 = -0.30000;
-	float n_in25p3 = 0.00000;
-	float n_in25p4 = 1.00000;
-	{
-		float __input_range = n_in25p2 - n_in25p1;
-		float __output_range = n_in25p4 - n_in25p3;
-		n_out25p0 = n_in25p3 + __output_range * ((n_out26p1 - n_in25p1) / __input_range);
-	}
-
-
-// FloatOp:27
-	float n_out27p0 = n_out12p0 * n_out25p0;
-
-
-// Clamp:28
-	float n_in28p1 = 0.00000;
-	float n_in28p2 = 1.00000;
-	float n_out28p0 = clamp(n_out27p0, n_in28p1, n_in28p2);
-
-
-// Mix:11
-	vec4 n_out11p0 = mix(n_out3p0, n_out9p0, n_out28p0);
-
-
-// VectorOp:6
-	vec4 n_out6p0 = n_out5p0 * n_out11p0;
-
-
-// VectorDecompose:4
-	float n_out4p0 = n_out11p0.x;
-	float n_out4p1 = n_out11p0.y;
-	float n_out4p2 = n_out11p0.z;
-	float n_out4p3 = n_out11p0.w;
-
-
-// Output:0
-	ALBEDO = vec3(n_out6p0.xyz);
-	ALPHA = n_out4p3;
-
-
+float rand_from_seed_m1_p1(inout uint seed) {
+	return rand_from_seed(seed) * 2.0 - 1.0;
 }
+
+uint hash(uint x) {
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = (x >> uint(16)) ^ x;
+	return x;
+}
+
+struct DisplayParameters{
+	vec3 scale;
+	float hue_rotation;
+	float animation_speed;
+	float animation_offset;
+	float lifetime;
+	vec4 color;
+};
+
+struct DynamicsParameters{
+	float angle;
+	float angular_velocity;
+	float initial_velocity_multiplier;
+	float directional_velocity;
+	float radial_velocity;
+	float orbit_velocity;
+};
+struct PhysicalParameters{
+	float linear_accel;
+	float radial_accel;
+	float tangent_accel;
+	float damping;
+};
+
+void calculate_initial_physical_params(inout PhysicalParameters params, inout uint alt_seed){
+	params.linear_accel = mix(linear_accel_min, linear_accel_max, rand_from_seed(alt_seed));
+	params.radial_accel = mix(radial_accel_min, radial_accel_max, rand_from_seed(alt_seed));
+	params.tangent_accel = mix(tangent_accel_min, tangent_accel_max, rand_from_seed(alt_seed));
+	params.damping = mix(damping_min, damping_max, rand_from_seed(alt_seed));
+}
+
+void calculate_initial_dynamics_params(inout DynamicsParameters params,inout uint alt_seed){
+	// -------------------- DO NOT REORDER OPERATIONS, IT BREAKS VISUAL COMPATIBILITY
+	// -------------------- ADD NEW OPERATIONS AT THE BOTTOM
+	params.angle = mix(initial_angle_min, initial_angle_max, rand_from_seed(alt_seed));
+	params.angular_velocity = mix(angular_velocity_min, angular_velocity_max, rand_from_seed(alt_seed));
+	params.initial_velocity_multiplier = mix(initial_linear_velocity_min, initial_linear_velocity_max,rand_from_seed(alt_seed));
+	params.directional_velocity = mix(directional_velocity_min, directional_velocity_max,rand_from_seed(alt_seed));
+	params.radial_velocity = mix(radial_velocity_min, radial_velocity_max,rand_from_seed(alt_seed));
+	params.orbit_velocity = mix(orbit_velocity_min, orbit_velocity_max,rand_from_seed(alt_seed));
+}
+void calculate_initial_display_params(inout DisplayParameters params,inout uint alt_seed){
+	// -------------------- DO NOT REORDER OPERATIONS, IT BREAKS VISUAL COMPATIBILITY
+	// -------------------- ADD NEW OPERATIONS AT THE BOTTOM
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+   params.scale = vec3(mix(scale_min, scale_max, rand_from_seed(alt_seed)));
+   params.scale = sign(params.scale) * max(abs(params.scale), 0.001);
+	params.hue_rotation =  pi * 2.0 * mix(hue_variation_min, hue_variation_max, rand_from_seed(alt_seed));
+	params.animation_speed = mix(anim_speed_min, anim_speed_max, rand_from_seed(alt_seed));
+	params.animation_offset = mix(anim_offset_min, anim_offset_max, rand_from_seed(alt_seed));
+	params.lifetime = (1.0 - lifetime_randomness * rand_from_seed(alt_seed));
+	params.color = color_value;
+}
+void process_display_param(inout DisplayParameters parameters, float lifetime){
+	// compile-time add textures
+	parameters.scale *= texture(scale_curve, vec2(lifetime)).rgb;
+	parameters.color = rotate_hue(parameters.color, parameters.hue_rotation);
+}
+vec3 calculate_initial_position(inout uint alt_seed) {
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+	vec3 pos = vec3(0.);
+		float s = rand_from_seed(alt_seed) * 2.0 - 1.0;
+		float t = rand_from_seed(alt_seed) * 2.0 * pi;
+		float p = rand_from_seed(alt_seed);
+		float radius = emission_sphere_radius * sqrt(1.0 - s * s);
+		pos = mix(vec3(0.0, 0.0, 0.0), vec3(radius * cos(t), radius * sin(t), emission_sphere_radius * s), p);
+	return pos * emission_shape_scale + emission_shape_offset;
+}
+
+vec3 get_random_direction_from_spread(inout uint alt_seed, float spread_angle){
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+	vec3 velocity = vec3(0.);
+	float spread_rad = spread_angle * degree_to_rad;
+	float angle1_rad = rand_from_seed_m1_p1(alt_seed) * spread_rad;
+	float angle2_rad = rand_from_seed_m1_p1(alt_seed) * spread_rad * (1.0 - flatness);
+	vec3 direction_xz = vec3(sin(angle1_rad), 0.0, cos(angle1_rad));
+	vec3 direction_yz = vec3(0.0, sin(angle2_rad), cos(angle2_rad));
+	direction_yz.z = direction_yz.z / max(0.0001,sqrt(abs(direction_yz.z))); // better uniform distribution
+	vec3 spread_direction = vec3(direction_xz.x * direction_yz.z, direction_yz.y, direction_xz.z * direction_yz.z);
+	vec3 direction_nrm = length(direction) > 0.0 ? normalize(direction) : vec3(0.0, 0.0, 1.0);
+	// rotate spread to direction
+	vec3 binormal = cross(vec3(0.0, 1.0, 0.0), direction_nrm);
+	if (length(binormal) < 0.0001) {
+		// direction is parallel to Y. Choose Z as the binormal.
+		binormal = vec3(0.0, 0.0, 1.0);
+	}
+	binormal = normalize(binormal);
+	vec3 normal = cross(binormal, direction_nrm);
+	spread_direction = binormal * spread_direction.x + normal * spread_direction.y + direction_nrm * spread_direction.z;
+	return spread_direction;
+}
+vec3 process_radial_displacement(DynamicsParameters param, float lifetime, inout uint alt_seed, mat4 transform, mat4 emission_transform, float delta){
+	vec3 radial_displacement = vec3(0.0);
+	if (delta < 0.001){
+		return radial_displacement;
+	}
+	float radial_displacement_multiplier = 1.0;
+	vec3 global_pivot = (emission_transform * vec4(velocity_pivot, 1.0)).xyz;
+	if(length(transform[3].xyz - global_pivot) > 0.01){
+		radial_displacement = normalize(transform[3].xyz - global_pivot) * radial_displacement_multiplier * param.radial_velocity;
+	}else{radial_displacement = get_random_direction_from_spread(alt_seed, 360.0)* param.radial_velocity;} 
+	if (radial_displacement_multiplier * param.radial_velocity < 0.0){
+ // Prevent inwards velocity to flicker once the point is reached.		if (length(radial_displacement) > 0.01){
+		radial_displacement = normalize(radial_displacement) * min(abs((radial_displacement_multiplier * param.radial_velocity)), length(transform[3].xyz - global_pivot) / delta);
+		}
+	
+	return radial_displacement;
+}
+
+void process_physical_parameters(inout PhysicalParameters params, float lifetime_percent){
+	
+}
+
+void start() {
+	uint base_number = NUMBER;
+	uint alt_seed = hash(base_number + uint(1) + RANDOM_SEED);
+	DisplayParameters params;
+	calculate_initial_display_params(params, alt_seed);
+	// reset alt seed?
+	// alt_seed = hash(base_number + uint(1) + RANDOM_SEED);
+	DynamicsParameters dynamic_params;
+	calculate_initial_dynamics_params(dynamic_params, alt_seed);
+	PhysicalParameters physics_params;
+	calculate_initial_physical_params(physics_params, alt_seed);
+   process_display_param(params, 0.0);
+	if (rand_from_seed(alt_seed) > AMOUNT_RATIO) {
+		ACTIVE = false;
+	}
+	
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+	
+	if (RESTART_CUSTOM){
+		CUSTOM = vec4(0.);
+		CUSTOM.w = params.lifetime;
+		CUSTOM.x = dynamic_params.angle;
+	}
+	if (RESTART_COLOR){
+		COLOR = params.color;
+	}
+	if (RESTART_ROT_SCALE) {
+		TRANSFORM[0].xyz = vec3(1.0, 0.0, 0.0);
+		TRANSFORM[1].xyz = vec3(0.0, 1.0, 0.0);
+		TRANSFORM[2].xyz = vec3(0.0, 0.0, 1.0);
+	}
+
+	if (RESTART_POSITION) {
+		TRANSFORM[3].xyz = calculate_initial_position(alt_seed);
+		TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
+		}
+	if (RESTART_VELOCITY) {
+		VELOCITY = get_random_direction_from_spread(alt_seed, spread) * dynamic_params.initial_velocity_multiplier;
+		}
+	process_display_param(params, 0.);
+//	process_dynamic_parameters(dynamic_params, 0., alt_seed, TRANSFORM, EMISSION_TRANSFORM, DELTA);
+	VELOCITY = (EMISSION_TRANSFORM * vec4(VELOCITY, 0.0)).xyz;
+	VELOCITY += EMITTER_VELOCITY * inherit_emitter_velocity_ratio;
+}
+
+void process() {
+	uint base_number = NUMBER;
+//	if (repeatable){
+//		base_number = INDEX;
+//	}
+	uint alt_seed = hash(base_number + uint(1) + RANDOM_SEED);
+	DisplayParameters params;
+	calculate_initial_display_params(params, alt_seed);
+	DynamicsParameters dynamic_params;
+	calculate_initial_dynamics_params(dynamic_params, alt_seed);
+	PhysicalParameters physics_params;
+	calculate_initial_physical_params(physics_params, alt_seed);
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+
+	CUSTOM.y += DELTA / LIFETIME;
+	CUSTOM.y = mix(CUSTOM.y, 1.0, INTERPOLATE_TO_END);
+	float lifetime_percent = CUSTOM.y/ params.lifetime;
+	if (CUSTOM.y > CUSTOM.w) {
+		ACTIVE = false;
+	}
+	
+	
+	
+	// will use this later to calculate final displacement and orient the particle.
+	vec3 starting_position = TRANSFORM[3].xyz;
+	vec3 controlled_displacement = vec3(0.0);
+	
+//	VELOCITY += process_physics_parameters(dynamic_params, lifetime_percent, alt_seed, TRANSFORM, EMISSION_TRANSFORM, DELTA);
+	
+	// calculate all velocity
+	
+	controlled_displacement += process_radial_displacement(dynamic_params, lifetime_percent, alt_seed, TRANSFORM, EMISSION_TRANSFORM, DELTA);
+	
+	
+	process_physical_parameters(physics_params, lifetime_percent);
+	vec3 force;
+	{
+		// copied from previous version
+		vec3 pos = TRANSFORM[3].xyz;
+		force = gravity;
+		// apply linear acceleration
+		force += length(VELOCITY) > 0.0 ? normalize(VELOCITY) * physics_params.linear_accel : vec3(0.0);
+		// apply radial acceleration
+		vec3 org = EMISSION_TRANSFORM[3].xyz;
+		vec3 diff = pos - org;
+		force += length(diff) > 0.0 ? normalize(diff) * physics_params.radial_accel : vec3(0.0);
+		// apply tangential acceleration;
+		float tangent_accel_val = physics_params.tangent_accel;
+		vec3 crossDiff = cross(normalize(diff), normalize(gravity));
+		force += length(crossDiff) > 0.0 ? normalize(crossDiff) * tangent_accel_val : vec3(0.0);
+		force += ATTRACTOR_FORCE;
+
+		// apply attractor forces
+		VELOCITY += force * DELTA;
+	}
+	{
+		// copied from previous version
+		if (physics_params.damping > 0.0) {
+			float v = length(VELOCITY);
+			v -= physics_params.damping * DELTA;
+			if (v < 0.0) {
+				VELOCITY = vec3(0.0);
+			} else {
+				VELOCITY = normalize(VELOCITY) * v;
+			}
+		}
+		
+	}
+	
+	
+	// turbulence before limiting
+	vec3 final_velocity = controlled_displacement + VELOCITY;
+	
+	// limit velocity
+	
+	TRANSFORM[3].xyz += final_velocity * DELTA;
+	
+	
+	process_display_param(params, lifetime_percent);
+	
+	float base_angle = dynamic_params.angle;
+	base_angle += CUSTOM.y * LIFETIME * dynamic_params.angular_velocity;
+	CUSTOM.x = base_angle * degree_to_rad;
+   COLOR = params.color;
+	TRANSFORM[0].xyz = normalize(TRANSFORM[0].xyz);
+	TRANSFORM[1].xyz = normalize(TRANSFORM[1].xyz);
+	TRANSFORM[2].xyz = normalize(TRANSFORM[2].xyz);
+//	params.scale *= length(final_velocity)/100.0;
+
+	TRANSFORM[0].xyz *= sign(params.scale.x) * max(abs(params.scale.x), 0.001);
+	TRANSFORM[1].xyz *= sign(params.scale.y) * max(abs(params.scale.y), 0.001);
+	TRANSFORM[2].xyz *= sign(params.scale.z) * max(abs(params.scale.z), 0.001);
+	
+	// 
+	CUSTOM.z = params.animation_offset + lifetime_percent * params.animation_speed;
+	
+	if (CUSTOM.y > CUSTOM.w) {
+		ACTIVE = false;
+	}
+}
+
 "
-graph_offset = Vector2(-686.801, 286.979)
-modes/blend = 1
-varyings/particleIndex = "0,0"
-nodes/vertex/0/position = Vector2(300, 360)
-nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_yp021")
-nodes/vertex/2/position = Vector2(-80, 580)
-nodes/vertex/3/node = SubResource("VisualShaderNodeInput_wcn85")
-nodes/vertex/3/position = Vector2(-580, 280)
-nodes/vertex/4/node = SubResource("VisualShaderNodeVectorDecompose_umfn3")
-nodes/vertex/4/position = Vector2(-200, 260)
-nodes/vertex/5/node = SubResource("VisualShaderNodeVaryingSetter_kucjs")
-nodes/vertex/5/position = Vector2(300, 280)
-nodes/vertex/6/node = SubResource("VisualShaderNodeInput_jl51y")
-nodes/vertex/6/position = Vector2(-267.649, 468.928)
-nodes/vertex/connections = PackedInt32Array(2, 0, 0, 10, 3, 0, 4, 0, 4, 2, 5, 0, 6, 0, 0, 0)
-nodes/fragment/0/position = Vector2(3960, 560)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_dcf8p")
-nodes/fragment/2/position = Vector2(400, 720)
-nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_43b0d")
-nodes/fragment/3/position = Vector2(2440, 480)
-nodes/fragment/4/node = SubResource("VisualShaderNodeVectorDecompose_c1atb")
-nodes/fragment/4/position = Vector2(3620, 680)
-nodes/fragment/5/node = SubResource("VisualShaderNodeInput_tc24h")
-nodes/fragment/5/position = Vector2(3300, 460)
-nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_vujpc")
-nodes/fragment/6/position = Vector2(3640, 480)
-nodes/fragment/7/node = SubResource("VisualShaderNodeTexture2DParameter_g4j8k")
-nodes/fragment/7/position = Vector2(-500, 760)
-nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_uipm0")
-nodes/fragment/8/position = Vector2(-160, 580)
-nodes/fragment/9/node = SubResource("VisualShaderNodeVectorOp_so1ol")
-nodes/fragment/9/position = Vector2(2760, 500)
-nodes/fragment/11/node = SubResource("VisualShaderNodeMix_qvl87")
-nodes/fragment/11/position = Vector2(2980, 520)
-nodes/fragment/12/node = SubResource("VisualShaderNodeFloatParameter_fwj77")
-nodes/fragment/12/position = Vector2(-780, 1100)
-nodes/fragment/13/node = SubResource("VisualShaderNodeUVFunc_evgf4")
-nodes/fragment/13/position = Vector2(-420, 580)
-nodes/fragment/14/node = SubResource("VisualShaderNodeVec2Parameter_rfqsr")
-nodes/fragment/14/position = Vector2(-1000, 780)
-nodes/fragment/15/node = SubResource("VisualShaderNodeInput_s0t74")
-nodes/fragment/15/position = Vector2(-1240, 560)
-nodes/fragment/16/node = SubResource("VisualShaderNodeVectorOp_ccpxv")
-nodes/fragment/16/position = Vector2(-640, 600)
-nodes/fragment/17/node = SubResource("VisualShaderNodeVec2Parameter_2pdd5")
-nodes/fragment/17/position = Vector2(-1220, 320)
-nodes/fragment/18/node = SubResource("VisualShaderNodeInput_g5pwo")
-nodes/fragment/18/position = Vector2(-1260, 220)
-nodes/fragment/19/node = SubResource("VisualShaderNodeVectorOp_jl2d6")
-nodes/fragment/19/position = Vector2(-920, 400)
-nodes/fragment/20/node = SubResource("VisualShaderNodeInput_wl5or")
-nodes/fragment/20/position = Vector2(-1340, 60)
-nodes/fragment/21/node = SubResource("VisualShaderNodeVectorDecompose_llmv7")
-nodes/fragment/21/position = Vector2(-1000, 60)
-nodes/fragment/22/node = SubResource("VisualShaderNodeVectorOp_3787m")
-nodes/fragment/22/position = Vector2(-640, 420)
-nodes/fragment/23/node = SubResource("VisualShaderNodeRemap_hgyie")
-nodes/fragment/23/position = Vector2(-800, 160)
-nodes/fragment/24/node = SubResource("VisualShaderNodeInput_0f8hd")
-nodes/fragment/24/position = Vector2(-1020, 1380)
-nodes/fragment/25/node = SubResource("VisualShaderNodeRemap_6vn2g")
-nodes/fragment/25/position = Vector2(-520, 1380)
-nodes/fragment/26/node = SubResource("VisualShaderNodeVectorDecompose_f1c0f")
-nodes/fragment/26/position = Vector2(-700, 1380)
-nodes/fragment/27/node = SubResource("VisualShaderNodeFloatOp_x0xee")
-nodes/fragment/27/position = Vector2(-380, 1100)
-nodes/fragment/28/node = SubResource("VisualShaderNodeClamp_c4wwa")
-nodes/fragment/28/position = Vector2(-220, 1180)
-nodes/fragment/31/node = SubResource("VisualShaderNodeInput_6wiom")
-nodes/fragment/31/position = Vector2(0, 120)
-nodes/fragment/32/node = SubResource("VisualShaderNodeVectorDecompose_h0485")
-nodes/fragment/32/position = Vector2(380, -140)
-nodes/fragment/33/node = SubResource("VisualShaderNodeFloatOp_phomx")
-nodes/fragment/33/position = Vector2(760, -20)
-nodes/fragment/34/node = SubResource("VisualShaderNodeVectorDecompose_xanft")
-nodes/fragment/34/position = Vector2(380, 20)
-nodes/fragment/35/node = SubResource("VisualShaderNodeVectorOp_vny5b")
-nodes/fragment/35/position = Vector2(1460, 20)
-nodes/fragment/36/node = SubResource("VisualShaderNodeFloatOp_iie8l")
-nodes/fragment/36/position = Vector2(1100, -20)
-nodes/fragment/37/node = SubResource("VisualShaderNodeFloatOp_w87eq")
-nodes/fragment/37/position = Vector2(920, -20)
-nodes/fragment/38/node = SubResource("VisualShaderNodeClamp_2iqd1")
-nodes/fragment/38/position = Vector2(1620, 20)
-nodes/fragment/39/node = SubResource("VisualShaderNodeFloatFunc_g573a")
-nodes/fragment/39/position = Vector2(560, 60)
-nodes/fragment/40/node = SubResource("VisualShaderNodeRandomRange_64vuq")
-nodes/fragment/40/position = Vector2(760, 220)
-nodes/fragment/42/node = SubResource("VisualShaderNodeFloatFunc_03mu6")
-nodes/fragment/42/position = Vector2(1100, 180)
-nodes/fragment/43/node = SubResource("VisualShaderNodeFloatOp_bh255")
-nodes/fragment/43/position = Vector2(980, 360)
-nodes/fragment/44/node = SubResource("VisualShaderNodeFloatFunc_3bfj1")
-nodes/fragment/44/position = Vector2(1140, 420)
-nodes/fragment/45/node = SubResource("VisualShaderNodeFloatOp_e5hfv")
-nodes/fragment/45/position = Vector2(1480, 180)
-nodes/fragment/47/node = SubResource("VisualShaderNodeVectorCompose_tuxci")
-nodes/fragment/47/position = Vector2(1660, 260)
-nodes/fragment/48/node = SubResource("VisualShaderNodeVectorOp_0mjsf")
-nodes/fragment/48/position = Vector2(1860, 60)
-nodes/fragment/49/node = SubResource("VisualShaderNodeVectorOp_md2bo")
-nodes/fragment/49/position = Vector2(2060, 200)
-nodes/fragment/50/node = SubResource("VisualShaderNodeFloatConstant_nq6x2")
-nodes/fragment/50/position = Vector2(1860, 360)
-nodes/fragment/51/node = SubResource("VisualShaderNodeVaryingGetter_fh7a7")
-nodes/fragment/51/position = Vector2(320, 220)
-nodes/fragment/54/node = SubResource("VisualShaderNodeFloatOp_518b1")
-nodes/fragment/54/position = Vector2(1320, 480)
-nodes/fragment/55/node = SubResource("VisualShaderNodeRandomRange_pukj2")
-nodes/fragment/55/position = Vector2(-1120, 640)
-nodes/fragment/56/node = SubResource("VisualShaderNodeVaryingGetter_jso7s")
-nodes/fragment/56/position = Vector2(-1340, 640)
-nodes/fragment/57/node = SubResource("VisualShaderNodeFloatOp_6n883")
-nodes/fragment/57/position = Vector2(-880.914, 609.153)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 7, 0, 8, 2, 3, 0, 9, 0, 8, 0, 9, 1, 3, 0, 11, 0, 9, 0, 11, 1, 13, 0, 8, 0, 14, 0, 16, 1, 16, 0, 13, 2, 17, 0, 19, 1, 19, 0, 22, 1, 22, 0, 13, 0, 21, 1, 23, 0, 23, 0, 22, 0, 26, 1, 25, 0, 12, 0, 27, 0, 25, 0, 27, 1, 27, 0, 28, 0, 28, 0, 11, 2, 11, 0, 6, 1, 11, 0, 4, 0, 8, 0, 32, 0, 32, 0, 33, 0, 33, 0, 37, 0, 37, 0, 36, 0, 35, 0, 38, 0, 36, 0, 35, 0, 34, 1, 39, 0, 39, 0, 33, 1, 43, 0, 44, 0, 42, 0, 45, 0, 45, 0, 47, 0, 44, 0, 47, 1, 38, 0, 48, 0, 47, 0, 48, 1, 50, 0, 49, 1, 5, 0, 6, 0, 31, 0, 34, 0, 20, 0, 21, 0, 18, 0, 19, 0, 24, 0, 26, 0, 31, 0, 35, 1, 4, 3, 0, 1, 40, 0, 42, 0, 40, 0, 43, 0, 48, 0, 49, 0, 44, 0, 54, 0, 54, 0, 45, 1, 6, 0, 0, 0, 51, 0, 40, 0, 56, 0, 55, 0, 15, 0, 57, 0, 55, 0, 57, 1, 57, 0, 16, 0, 38, 0, 3, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_shkl8"]
+shader = SubResource("Shader_8kpqr")
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 45.0
+shader_parameter/flatness = 0.0
+shader_parameter/inherit_emitter_velocity_ratio = 0.0
+shader_parameter/initial_linear_velocity_min = 0.0
+shader_parameter/initial_linear_velocity_max = 0.0
+shader_parameter/directional_velocity_min = 1.0
+shader_parameter/directional_velocity_max = 1.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/linear_accel_max = 1.04
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 2.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/emission_shape_offset = Vector3(0, 0.295, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/emission_sphere_radius = 1.0
+shader_parameter/color_value = Color(0.3, 0.2, 0.2, 1)
+shader_parameter/gravity = Vector3(0, 3, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vabw4"]
-render_priority = 0
-shader = SubResource("VisualShader_tgxnv")
+render_priority = 1
+shader = ExtResource("3_nh7m1")
 shader_parameter/DissolveScale = Vector2(0.64, 0.735)
 shader_parameter/DissolveSpeed = Vector2(1, 1.695)
 shader_parameter/DissolveStrength = 0.715
@@ -624,19 +473,23 @@ shader_parameter/MainTex = ExtResource("4_cpfp8")
 particle_flag_align_y = true
 emission_shape_scale = Vector3(1.2, 1.2, 1.2)
 gravity = Vector3(0, 0, 0)
-scale_min = 1.1
-scale_max = 1.1
-color = Color(1.621, 1.082, 1.082, 1)
+scale_min = 2.0
+scale_max = 2.0
+color = Color(1.61961, 1.08235, 1.08235, 1)
 
 [node name="StaticFlame" instance=ExtResource("1_t88n0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743209, 0)
 amount = 12
 process_material = SubResource("ShaderMaterial_y56lm")
 
 [node name="Smoke" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162711, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24087, 0)
+amount = 24
+process_material = SubResource("ShaderMaterial_shkl8")
 
 [node name="GPUParticles3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000454068, 0.203098, -0.00329113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395576, 0)
 material_override = SubResource("ShaderMaterial_vabw4")
+transparency = 1.0
 amount = 6
 process_material = SubResource("ParticleProcessMaterial_jtadg")

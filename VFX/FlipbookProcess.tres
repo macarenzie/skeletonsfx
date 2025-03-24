@@ -38,6 +38,7 @@ uniform float anim_speed_max;
 uniform float anim_offset_min;
 uniform float anim_offset_max;
 uniform float lifetime_randomness;
+uniform float emission_sphere_radius;
 uniform vec3 emission_shape_offset = vec3(0.);
 uniform vec3 emission_shape_scale = vec3(1.);
 uniform vec3 velocity_pivot = vec3(0.);
@@ -241,7 +242,11 @@ vec3 calculate_initial_position(inout uint alt_seed) {
 	float pi = 3.14159;
 	float degree_to_rad = pi / 180.0;
 	vec3 pos = vec3(0.);
-	 pos = vec3(0.);
+		float s = rand_from_seed(alt_seed) * 2.0 - 1.0;
+		float t = rand_from_seed(alt_seed) * 2.0 * pi;
+		float p = rand_from_seed(alt_seed);
+		float radius = emission_sphere_radius * sqrt(1.0 - s * s);
+		pos = mix(vec3(0.0, 0.0, 0.0), vec3(radius * cos(t), radius * sin(t), emission_sphere_radius * s), p);
 	return pos * emission_shape_scale + emission_shape_offset;
 }
 

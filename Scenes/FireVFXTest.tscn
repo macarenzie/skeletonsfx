@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbrnc3akoikmo"]
+[gd_scene load_steps=5 format=3 uid="uid://bbrnc3akoikmo"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_gxt3e"]
 [ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="2_uirvp"]
 [ext_resource type="PackedScene" uid="uid://dlw2yigievwho" path="res://VFX/Fire_Medium.tscn" id="3_6gpvv"]
+[ext_resource type="PackedScene" uid="uid://c54fra6i3bswh" path="res://Props/Barrel.tscn" id="4_7bus1"]
 
 [node name="FireVfxTest" type="Node3D"]
 
@@ -13,11 +14,13 @@ transform = Transform3D(0.230473, 0, 0, 0, 0.0763017, 0, 0, 0, 11.9851, -0.04554
 transform = Transform3D(4.3389, 0, 0, 0, 13.1059, 0, 0, 0, 0.083437, 0, 7.08582, 0.171082)
 
 [node name="StaticFlame" parent="." instance=ExtResource("2_uirvp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0643752, 0.495546, -0.071972)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176447, 2.49555, -0.071972)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.45792, 0.888993, 0, -0.888993, 0.45792, 0, 2.87324, 0)
 
+[node name="Barrel" parent="." instance=ExtResource("4_7bus1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793566, 0.730645, 2.076)
+
 [node name="StaticFlame2" parent="." instance=ExtResource("3_6gpvv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74131, 0.348406, 0.822388)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7642, 0.613764, 2)
