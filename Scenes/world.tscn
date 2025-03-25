@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=15 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
 [ext_resource type="PackedScene" uid="uid://cybr83rnnlyul" path="res://Scenes/target_dummy.tscn" id="2_2re6m"]
@@ -47,6 +47,9 @@ transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 
 
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
+transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=32 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -615,6 +615,7 @@ offset_right = -0.0800171
 offset_bottom = 0.0639648
 texture = ExtResource("11_dwtxc")
 expand_mode = 1
+
 [node name="PlayerAirDetector" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 4

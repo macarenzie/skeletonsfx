@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=17 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://86tqqctnpter" path="res://Scenes/enemy.tscn" id="4_cydpp"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
-[ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
+[ext_resource type="Material" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6jfr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,6 +36,9 @@ vertices = PackedVector3Array(-35.8888, 0.238704, -19.469, -35.8888, 0.238704, -
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
 geometry_source_geometry_mode = 2
 geometry_source_group_name = &"Traversable"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uv2il"]
+viewport_path = NodePath("Sprite3D/SubViewport")
 
 [node name="Level 1" type="Node3D"]
 
@@ -475,6 +478,9 @@ navigation_mesh = SubResource("NavigationMesh_ieyax")
 
 [node name="Enemy" parent="." instance=ExtResource("4_cydpp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.304, -0.0424425, 9.16856)
+
+[node name="Sprite3D" parent="Enemy" index="5"]
+texture = SubResource("ViewportTexture_uv2il")
 
 [node name="Enemy2" parent="." instance=ExtResource("4_cydpp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.411, -0.0388095, -15.3205)
