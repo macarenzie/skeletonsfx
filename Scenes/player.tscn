@@ -405,7 +405,7 @@ script = ExtResource("3_lv7ac")
 attack_delay = 0.35
 attack_speed = 0.4
 
-[node name="InnerFire" type="Node" parent="."]
+[node name="InnerFire" type="Node" parent="." groups=["Player"]]
 process_mode = 1
 script = ExtResource("4_yqfp7")
 
