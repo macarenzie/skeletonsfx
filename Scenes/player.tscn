@@ -1,25 +1,29 @@
-[gd_scene load_steps=25 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=32 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
+[ext_resource type="Material" uid="uid://ciifs4ls3fber" path="res://Assets/Materials/Shield_Mat.tres" id="3_yeb8m"]
+[ext_resource type="ArrayMesh" uid="uid://c81apgiit1rek" path="res://Assets/Models/P_Shield.obj" id="4_a0uk6"]
 [ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="4_xirlr"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
+[ext_resource type="Script" path="res://Scripts/UIControl.gd" id="9_t1dii"]
+[ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
+[ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
+[ext_resource type="Texture2D" uid="uid://bgx72do3k6dku" path="res://Assets/UI Assets/circle.png" id="12_ghlo1"]
+[ext_resource type="Texture2D" uid="uid://bkerarfq26kbe" path="res://Assets/UI Assets/Healthbar_UI.png" id="13_1s16w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ns243"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_xgvwq"]
-material = SubResource("StandardMaterial3D_ns243")
-height = 0.1
+[sub_resource type="BoxShape3D" id="BoxShape3D_2p3wn"]
+size = Vector3(0.30542, 1.02698, 0.212189)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkum0"]
 
@@ -85,6 +89,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0.486111, 0.127508, -0.460107)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerHead/WeaponHolder/Weapon/Area3D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_oa6n8"]
 resource_name = "attack"
@@ -125,6 +141,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.404916, 0), Vector3(0, 0, 0), Vector3(0, 1.82387, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerHead/WeaponHolder/Weapon/Area3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_unhpg"]
 resource_name = "block_active"
@@ -152,6 +180,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector3(-0.625, 0, -0.355), Vector3(-0.625, 0.1, -0.355)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UIController/Blocking:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UIController/Crosshair:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_h5lgl"]
@@ -267,9 +319,11 @@ radius = 2.85713
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5tt7"]
 bg_color = Color(0.999401, 0.574862, 0.295541, 1)
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdbma"]
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_4wc5k")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
@@ -290,6 +344,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 unique_name_in_owner = true
 process_mode = 1
+current = true
 fov = 90.0
 script = ExtResource("2_kcqsg")
 SENSITIVITY_X = 0.002
@@ -305,8 +360,9 @@ collide_with_bodies = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Shield" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
-transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.625, 0, -0.355)
-mesh = SubResource("CylinderMesh_xgvwq")
+transform = Transform3D(0.493183, 0.513635, -0.702103, 0.706957, -0.706957, -0.0205934, -0.506935, -0.486201, -0.711777, -0.625, 0, -0.355)
+material_override = ExtResource("3_yeb8m")
+mesh = ExtResource("4_a0uk6")
 script = ExtResource("3_bugux")
 
 [node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
@@ -318,6 +374,13 @@ process_mode = 1
 transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 mesh = ExtResource("4_xirlr")
 surface_material_override/0 = ExtResource("5_i507g")
+
+[node name="Area3D" type="Area3D" parent="PlayerHead/WeaponHolder/Weapon"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHead/WeaponHolder/Weapon/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -3.9563e-11, -1.30285e-10, 1, 0.00378326, 0.474306, -0.00929293)
+shape = SubResource("BoxShape3D_2p3wn")
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("combat_controller")]
 monitoring = false
@@ -346,13 +409,6 @@ attack_speed = 0.4
 process_mode = 1
 script = ExtResource("4_yqfp7")
 
-[node name="Inventory" parent="." instance=ExtResource("5_fivcv")]
-process_mode = 3
-
-[node name="equipment Slots" parent="Inventory" index="2"]
-offset_left = 1.0
-offset_right = 595.0
-
 [node name="pickupCollision" type="Area3D" parent="."]
 collision_mask = 7
 
@@ -360,59 +416,40 @@ collision_mask = 7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02984, 0)
 shape = SubResource("SphereShape3D_3knrg")
 
-[node name="PlayerUI" type="Control" parent="."]
+[node name="UIController" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
-anchor_right = 0.035
-anchor_bottom = 0.062
-offset_right = -0.32
-offset_bottom = -0.176003
-
-[node name="ColorRect" type="ColorRect" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 6.425
-anchor_bottom = 2.0
-color = Color(0.780392, 0.780392, 0.780392, 0.537255)
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.65
-anchor_right = 5.775
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 13.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_s5tt7")
-value = 50.0
-show_percentage = false
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_t1dii")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI"]
-visible = false
+[node name="Menu" parent="UIController" instance=ExtResource("11_wypde")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.525
-anchor_top = 0.1
-anchor_right = 1.375
-anchor_bottom = 0.675
-text = "Fire:"
-fit_content = true
 
-[node name="The Real Text" type="Button" parent="PlayerUI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.45
-anchor_top = 0.175
-anchor_right = 1.55
-anchor_bottom = 0.775
-icon = ExtResource("8_5j2rg")
-flat = true
-expand_icon = true
+[node name="RichTextLabel" parent="UIController/Menu/ColorRect/MarginContainer2" index="0"]
+text = "WASD to move
+Space to jump
+Left click to attack
+Right click to block
+Middle Click to Spawn Fire
+I to open inventory
+E to loot items
+Esc for menu"
 
-[node name="Crosshair" type="CanvasLayer" parent="."]
+[node name="Crosshair" type="Control" parent="UIController"]
 process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ColorRect2" type="ColorRect" parent="Crosshair"]
+[node name="ColorRect2" type="ColorRect" parent="UIController/Crosshair"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -427,7 +464,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0.72549, 0.72549, 1)
 
-[node name="ColorRect" type="ColorRect" parent="Crosshair"]
+[node name="ColorRect" type="ColorRect" parent="UIController/Crosshair"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -442,4 +480,161 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0.72549, 0.72549, 1)
 
-[editable path="Inventory"]
+[node name="PlayerUI" type="Control" parent="UIController"]
+process_mode = 3
+layout_mode = 1
+anchor_left = 0.403
+anchor_top = 0.887
+anchor_right = 0.437
+anchor_bottom = 0.949
+offset_left = -0.256042
+offset_top = 0.223999
+offset_right = 0.575989
+offset_bottom = 0.0479736
+
+[node name="ColorRect" type="ColorRect" parent="UIController/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 6.425
+anchor_bottom = 2.0
+color = Color(0.780392, 0.780392, 0.780392, 0.537255)
+
+[node name="ProgressBar" type="ProgressBar" parent="UIController/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 5.775
+anchor_bottom = 1.0
+offset_top = -0.999996
+offset_bottom = 12.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_s5tt7")
+value = 50.0
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UIController/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 0.1
+anchor_right = 1.375
+anchor_bottom = 0.675
+text = "Fire:"
+fit_content = true
+
+[node name="The Real Text" type="Button" parent="UIController/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.175
+anchor_right = 1.6
+anchor_bottom = 0.775
+icon = ExtResource("8_5j2rg")
+flat = true
+expand_icon = true
+
+[node name="Air Bar" type="TextureProgressBar" parent="UIController/PlayerUI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.225
+anchor_top = -0.075
+anchor_right = 1.875
+anchor_bottom = 2.025
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("12_ghlo1")
+
+[node name="Player Health Bar UI" type="TextureRect" parent="UIController/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.275
+anchor_top = -0.258
+anchor_right = 7.0
+anchor_bottom = 1.341
+offset_top = -40.68
+offset_right = -3.05176e-05
+offset_bottom = 33.36
+texture = ExtResource("13_1s16w")
+expand_mode = 1
+
+[node name="Inventory" parent="UIController" instance=ExtResource("5_fivcv")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="equipment Slots" parent="UIController/Inventory" index="2"]
+offset_left = 1.0
+offset_right = 595.0
+
+[node name="Player Stats" parent="UIController/Inventory" index="3"]
+scale = Vector2(1.00024, 1.00024)
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire" index="0"]
+offset_left = 110.0
+offset_right = 150.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate" index="0"]
+offset_left = 92.0
+offset_right = 132.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/weapon/VBoxContainer/Damage" index="0"]
+offset_left = 79.0
+offset_right = 119.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed" index="0"]
+offset_left = 115.0
+offset_right = 155.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Angle" index="0"]
+offset_left = 106.0
+offset_right = 146.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block Damage Reduction" index="0"]
+offset_left = 162.0
+offset_right = 202.0
+
+[node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Sheild Stats/VBoxContainer/Block recovery time" index="0"]
+offset_left = 125.0
+offset_right = 165.0
+
+[node name="Blocking" type="TextureRect" parent="UIController"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464
+anchor_top = 0.415
+anchor_right = 0.54
+anchor_bottom = 0.557
+offset_left = -0.528015
+offset_top = 0.0799866
+offset_right = -0.0800171
+offset_bottom = 0.0639648
+texture = ExtResource("11_dwtxc")
+expand_mode = 1
+
+[node name="PlayerAirDetector" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAirDetector"]
+shape = SubResource("BoxShape3D_qdbma")
+
+[connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
+[connection signal="player_dies" from="InnerFire" to="UIController" method="_on_inner_fire_player_dies"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="UIController" method="_on_resume_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="UIController" method="_on_controls_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="UIController" method="_on_dev_room_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="UIController" method="_on_back_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="UIController" method="_on_restart_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="UIController" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
+[connection signal="closed" from="UIController/Inventory" to="UIController" method="_on_inventory_closed"]
+[connection signal="opened" from="UIController/Inventory" to="UIController" method="_on_inventory_opened"]
+
+[editable path="UIController/Menu"]
+[editable path="UIController/Inventory"]

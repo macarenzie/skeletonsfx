@@ -7,7 +7,7 @@ signal slot_exited(slot)
 
 var slot_ID
 var is_hovering := false
-enum Status {DEAFAULT, TAKEN, FREE}
+enum Status {DEAFAULT, TAKEN, FREE, BARRIER}
 var state := Status.DEAFAULT
 var item_stored = null
 
@@ -20,6 +20,8 @@ func set_color(a_state = Status.DEAFAULT):
 			filter.color = Color(Color.RED, 0.2)
 		Status.FREE:
 			filter.color = Color(Color.GREEN, 0.2)
+		Status.BARRIER:
+			filter.color = Color(Color.BLACK, 1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
