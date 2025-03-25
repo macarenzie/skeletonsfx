@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwsjn2nmf8tlv"]
+[gd_scene load_steps=18 format=3 uid="uid://bwsjn2nmf8tlv"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
 [ext_resource type="Script" path="res://Scripts/EnemyBehavior.gd" id="3_loj3b"]
+[ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_e0cbn"]
+[ext_resource type="Script" path="res://Scripts/EnemyCombat.gd" id="5_1v3i0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db5ws"]
 albedo_color = Color(1, 0, 0, 1)
@@ -33,6 +35,17 @@ size = Vector3(0.4, 0.05, 0.05)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bshh7"]
 height = 2.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xch5m"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3ekfp"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q36u1"]
+bg_color = Color(0.623529, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwd6c"]
+bg_color = Color(0.192157, 0.686275, 0, 1)
 
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 16
@@ -115,6 +128,50 @@ path_height_offset = 0.25
 [node name="EnemyBehavior" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_loj3b")
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("combat_controller")]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_e0cbn")
+combat_controller = NodePath("../EnemyCombat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+shape = SubResource("CapsuleShape3D_xch5m")
+
+[node name="EnemyCombat" type="Node" parent="."]
+script = ExtResource("5_1v3i0")
+
+[node name="HealthBar" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 2.5, 0.002)
+billboard = 1
+texture = SubResource("ViewportTexture_3ekfp")
+
+[node name="SubViewport" type="SubViewport" parent="HealthBar"]
+size = Vector2i(200, 40)
+
+[node name="ColorRect" type="ColorRect" parent="HealthBar/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.804743, 0.804743, 0.804743, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthBar/SubViewport/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_q36u1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wwd6c")
+value = 50.0
+show_percentage = false
 
 [connection signal="Player_Detected" from="Model/Body/Head" to="." method="_on_head_player_detected"]
 [connection signal="Player_Detected" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_player_detected"]
