@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=15 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
@@ -23,9 +23,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7cwaa"]
-viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_5hl6p"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
@@ -456,7 +453,6 @@ storage = {
 
 [node name="Sprite3D" parent="Sword Pickup/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.16763, 0.00157547)
-texture = SubResource("ViewportTexture_5hl6p")
 
 [node name="PlayerModel" parent="Sword Pickup/Area3D" index="2"]
 visible = false
