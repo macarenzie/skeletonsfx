@@ -321,7 +321,7 @@ bg_color = Color(0.999401, 0.574862, 0.295541, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qdbma"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 10
 script = ExtResource("1_4wc5k")
@@ -405,7 +405,7 @@ script = ExtResource("3_lv7ac")
 attack_delay = 0.35
 attack_speed = 0.4
 
-[node name="InnerFire" type="Node" parent="." groups=["Player"]]
+[node name="InnerFire" type="Node" parent="."]
 process_mode = 1
 script = ExtResource("4_yqfp7")
 
