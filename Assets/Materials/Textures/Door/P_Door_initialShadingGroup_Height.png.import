@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3e08e4r6po56"
+uid="uid://dk6p7h5ws2en6"
 path.s3tc="res://.godot/imported/P_Door_initialShadingGroup_Height.png-6f1b02040eeb49a761d1b05a4577166e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -24,8 +24,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=7
-roughness/src_normal="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

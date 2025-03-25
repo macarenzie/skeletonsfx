@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ppxx5rwc6uoh"]
+[gd_scene load_steps=11 format=3 uid="uid://ppxx5rwc6uoh"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="2_p8fb7"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="3_fbhii"]
+[ext_resource type="PackedScene" uid="uid://bwsjn2nmf8tlv" path="res://Scenes/enemy.tscn" id="4_cydpp"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6jfr"]
@@ -19,6 +20,12 @@ sky = SubResource("Sky_3frgm")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_ieyax"]
+vertices = PackedVector3Array(-19.5547, 0.238704, 0.911175, -19.5547, 0.238704, 11.1612, -5.30473, 0.238704, 11.1612, -5.30473, 0.238704, 0.911175)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_source_geometry_mode = 2
+geometry_source_group_name = &"Traversable"
+
 [node name="Level 1" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -32,7 +39,7 @@ environment = SubResource("Environment_ons5l")
 transform = Transform3D(0.148694, 0, 0, 0, 0.322951, 0, 0, 0, 8.99785, -0.21677, -0.523236, 1.52306)
 skeleton = NodePath("../..")
 
-[node name="gb_block13" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+[node name="gb_block13" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("1_4kd8k")]
 transform = Transform3D(0.304018, 0, 0, 0, 0.322951, 0, 0, 0, 11.1431, -12.3732, -0.526869, 6.0821)
 skeleton = NodePath("../..")
 
@@ -80,7 +87,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(-5.52728e-09, 0, -1.24066, 0, 0.32339, 0, 0.126449, 0, -5.4231e-08, -28.9344, -0.523236, 6.37022)
 skeleton = NodePath("../..")
 
-[node name="gb_block24" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+[node name="gb_block24" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("1_4kd8k")]
 transform = Transform3D(-5.52728e-09, 0, -1.24066, 0, 0.32339, 0, 0.126449, 0, -5.4231e-08, -28.9344, -0.523236, -11.9276)
 skeleton = NodePath("../..")
 
@@ -427,3 +434,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
 
 [node name="Sword Pickup" parent="." instance=ExtResource("5_26ev8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -20.6576)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_ieyax")
+
+[node name="Enemy" parent="." instance=ExtResource("4_cydpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.304, -0.0424425, 9.16856)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_cydpp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.411, -0.0388095, -15.3205)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_cydpp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.5168, -0.0814573, -15.7027)
