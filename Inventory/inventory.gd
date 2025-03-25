@@ -95,8 +95,8 @@ func create_slot(grid_base):
 		
 	if grid_base == grid_container:
 		#Random used for barrior slots
-		if randi_range(1,4)  == 2:
-			new_slot.state = new_slot.Status.BARRIER
+#		if randi_range(1,4)  == 2:
+#			new_slot.state = new_slot.Status.BARRIER
 		
 		new_slot.slot_ID = player_grid_array.size()
 		player_grid_array.push_back(new_slot)

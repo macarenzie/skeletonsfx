@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=31 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
 [ext_resource type="Texture2D" uid="uid://bgx72do3k6dku" path="res://Assets/UI Assets/circle.png" id="12_ghlo1"]
+[ext_resource type="Texture2D" uid="uid://bkerarfq26kbe" path="res://Assets/UI Assets/Healthbar_UI.png" id="13_1s16w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -472,12 +473,17 @@ color = Color(0, 0.72549, 0.72549, 1)
 [node name="PlayerUI" type="Control" parent="UIController"]
 process_mode = 3
 layout_mode = 1
-anchor_right = 0.035
-anchor_bottom = 0.062
-offset_right = -0.32
-offset_bottom = -0.176003
+anchor_left = 0.014
+anchor_top = 0.042
+anchor_right = 0.049
+anchor_bottom = 0.103
+offset_left = -0.128
+offset_top = -0.216002
+offset_right = -0.448002
+offset_bottom = 0.255997
 
 [node name="ColorRect" type="ColorRect" parent="UIController/PlayerUI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 6.425
@@ -509,6 +515,7 @@ text = "Fire:"
 fit_content = true
 
 [node name="The Real Text" type="Button" parent="UIController/PlayerUI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -531,6 +538,19 @@ value = 100.0
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("12_ghlo1")
+
+[node name="Player Health Bar UI" type="TextureRect" parent="UIController/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.275
+anchor_top = -0.258
+anchor_right = 7.0
+anchor_bottom = 1.341
+offset_top = -40.68
+offset_right = -3.05176e-05
+offset_bottom = 33.36
+texture = ExtResource("13_1s16w")
+expand_mode = 1
 
 [node name="Inventory" parent="UIController" instance=ExtResource("5_fivcv")]
 process_mode = 3
