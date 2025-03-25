@@ -84,19 +84,15 @@ shape = SubResource("ConcavePolygonShape3D_5j4yk")
 
 [node name="Wall_N" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, 24.3121, 2.66164, 0.0679741)
-skeleton = NodePath("../Ground")
 
 [node name="Wall_S" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, -24.2441, 2.66164, 0.0679741)
-skeleton = NodePath("../Ground")
 
 [node name="Wall_W" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, -23.7464)
-skeleton = NodePath("../Ground")
 
 [node name="Wall_E" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(-9.48187e-10, 0, -49.9973, 0, 1.95374, 0, 0.021692, 0, -2.18545e-06, 0.164431, 2.66164, 24.4366)
-skeleton = NodePath("../Ground")
 
 [node name="Node3D" parent="." instance=ExtResource("8_o2imo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454932, 0, -4.62156)
@@ -115,12 +111,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 
 [node name="Chest" parent="." instance=ExtResource("9_fd2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
-
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
 
 [editable path="Player"]
 [editable path="Player/UIController/Menu"]

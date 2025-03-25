@@ -464,7 +464,7 @@ func _on_item_slot_pressed():
 			
 			
 			kill_out_of_place_items()
-	print(slot_1)
+	#print(slot_1)
 
 
 func _on_item_slot_2_pressed():
@@ -511,7 +511,7 @@ func _on_item_slot_2_pressed():
 			#player_combat.block_angle = item_held.block_angle
 			
 			kill_out_of_place_items()
-	print(slot_2)
+	#print(slot_2)
 
 
 func _on_item_slot_3_pressed():

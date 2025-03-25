@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwsjn2nmf8tlv"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
+[ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
+[ext_resource type="Script" path="res://Scripts/EnemyBehavior.gd" id="3_loj3b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db5ws"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q10qx"]
+material = SubResource("StandardMaterial3D_db5ws")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0mh1c"]
+size = Vector3(0.2, 0.1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bgho1"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1pb5f"]
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wvgtp"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_drn4h"]
+size = Vector3(0.4, 0.05, 0.05)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bshh7"]
+height = 2.3
+
+[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
+collision_layer = 16
+collision_mask = 24
+script = ExtResource("1_xoblp")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="Body" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+mesh = SubResource("CapsuleMesh_q10qx")
+skeleton = NodePath("../..")
+
+[node name="Head" type="Node3D" parent="Model/Body"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_ris5s")
+angle = 90.0
+horizontal_range = 6.0
+surrounding_range = 3.0
+
+[node name="RayToPlayer" type="RayCast3D" parent="Model/Body/Head"]
+unique_name_in_owner = true
+collision_mask = 10
+debug_shape_custom_color = Color(0, 0.776471, 0, 1)
+
+[node name="Right Foot" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.05, -0.2)
+mesh = SubResource("BoxMesh_0mh1c")
+skeleton = NodePath("../Body")
+
+[node name="Left Foot" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.05, -0.2)
+mesh = SubResource("BoxMesh_0mh1c")
+skeleton = NodePath("../Body")
+
+[node name="DirectionSign" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.68605, 0)
+visible = false
+mesh = SubResource("CylinderMesh_bgho1")
+skeleton = NodePath("../..")
+
+[node name="Cone" type="MeshInstance3D" parent="Model/DirectionSign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.681111, 0)
+mesh = SubResource("CylinderMesh_1pb5f")
+
+[node name="Face" type="Node3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53657, -0.564385)
+
+[node name="Left Eye" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.2, 0, 0)
+mesh = SubResource("CylinderMesh_wvgtp")
+skeleton = NodePath("../..")
+
+[node name="Right Eye" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.2, 0, 0)
+mesh = SubResource("CylinderMesh_wvgtp")
+skeleton = NodePath("../..")
+
+[node name="Right Brow" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(0.939693, -0.34202, 0, 0.34202, 0.939692, 0, 0, 0, 1, 0.228975, 0.231427, 0)
+mesh = SubResource("BoxMesh_drn4h")
+
+[node name="Left Brow" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939692, 0, 0, 0, 1, -0.229, 0.231, 0)
+mesh = SubResource("BoxMesh_drn4h")
+
+[node name="Mouth" type="MeshInstance3D" parent="Model/Face"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -0.337969, 0)
+mesh = SubResource("BoxMesh_drn4h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+shape = SubResource("CapsuleShape3D_bshh7")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 0.1
+path_height_offset = 0.25
+debug_enabled = true
+
+[node name="EnemyBehavior" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_loj3b")
+
+[connection signal="Player_Detected" from="Model/Body/Head" to="." method="_on_head_player_detected"]
+[connection signal="Player_Detected" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_player_detected"]

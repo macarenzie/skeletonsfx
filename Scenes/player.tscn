@@ -4,13 +4,15 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
+[ext_resource type="Material" uid="uid://ciifs4ls3fber" path="res://Assets/Materials/Shield_Mat.tres" id="3_yeb8m"]
+[ext_resource type="ArrayMesh" uid="uid://c81apgiit1rek" path="res://Assets/Models/P_Shield.obj" id="4_a0uk6"]
 [ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="4_xirlr"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
-[ext_resource type="Script" path="res://Scripts/world.gd" id="9_t1dii"]
+[ext_resource type="Script" path="res://Scripts/UIControl.gd" id="9_t1dii"]
 [ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
 [ext_resource type="Texture2D" uid="uid://bgx72do3k6dku" path="res://Assets/UI Assets/circle.png" id="12_ghlo1"]
@@ -19,12 +21,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ns243"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_xgvwq"]
-material = SubResource("StandardMaterial3D_ns243")
-height = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p3wn"]
 size = Vector3(0.30542, 1.02698, 0.212189)
@@ -323,9 +319,9 @@ radius = 2.85713
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5tt7"]
 bg_color = Color(0.999401, 0.574862, 0.295541, 1)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_4wc5k")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
@@ -361,8 +357,9 @@ collide_with_bodies = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Shield" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
-transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, -0.625, 0, -0.355)
-mesh = SubResource("CylinderMesh_xgvwq")
+transform = Transform3D(0.493183, 0.513635, -0.702103, 0.706957, -0.706957, -0.0205934, -0.506935, -0.486201, -0.711777, -0.625, 0, -0.355)
+material_override = ExtResource("3_yeb8m")
+mesh = ExtResource("4_a0uk6")
 script = ExtResource("3_bugux")
 
 [node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
@@ -608,6 +605,11 @@ expand_mode = 1
 
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
 [connection signal="player_dies" from="InnerFire" to="UIController" method="_on_inner_fire_player_dies"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="UIController" method="_on_resume_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="UIController" method="_on_controls_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="UIController" method="_on_dev_room_pressed"]
+[connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="UIController" method="_on_back_pressed"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="UIController" method="_on_restart_pressed"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="UIController" method="_on_main_menu_pressed"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
