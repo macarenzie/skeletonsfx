@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=31 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
 [ext_resource type="Texture2D" uid="uid://bgx72do3k6dku" path="res://Assets/UI Assets/circle.png" id="12_ghlo1"]
+[ext_resource type="Texture2D" uid="uid://bkerarfq26kbe" path="res://Assets/UI Assets/Healthbar_UI.png" id="13_1s16w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
 
@@ -425,6 +426,16 @@ script = ExtResource("9_t1dii")
 [node name="Menu" parent="UIController" instance=ExtResource("11_wypde")]
 layout_mode = 1
 
+[node name="RichTextLabel" parent="UIController/Menu/ColorRect/MarginContainer2" index="0"]
+text = "WASD to move
+Space to jump
+Left click to attack
+Right click to block
+Middle Click to Spawn Fire
+I to open inventory
+E to loot items
+Esc for menu"
+
 [node name="Crosshair" type="Control" parent="UIController"]
 process_mode = 3
 layout_mode = 1
@@ -469,12 +480,17 @@ color = Color(0, 0.72549, 0.72549, 1)
 [node name="PlayerUI" type="Control" parent="UIController"]
 process_mode = 3
 layout_mode = 1
-anchor_right = 0.035
-anchor_bottom = 0.062
-offset_right = -0.32
-offset_bottom = -0.176003
+anchor_left = 0.403
+anchor_top = 0.887
+anchor_right = 0.437
+anchor_bottom = 0.949
+offset_left = -0.256042
+offset_top = 0.223999
+offset_right = 0.575989
+offset_bottom = 0.0479736
 
 [node name="ColorRect" type="ColorRect" parent="UIController/PlayerUI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 6.425
@@ -506,6 +522,7 @@ text = "Fire:"
 fit_content = true
 
 [node name="The Real Text" type="Button" parent="UIController/PlayerUI"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -529,6 +546,19 @@ fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("12_ghlo1")
 
+[node name="Player Health Bar UI" type="TextureRect" parent="UIController/PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.275
+anchor_top = -0.258
+anchor_right = 7.0
+anchor_bottom = 1.341
+offset_top = -40.68
+offset_right = -3.05176e-05
+offset_bottom = 33.36
+texture = ExtResource("13_1s16w")
+expand_mode = 1
+
 [node name="Inventory" parent="UIController" instance=ExtResource("5_fivcv")]
 process_mode = 3
 visible = false
@@ -537,6 +567,9 @@ layout_mode = 1
 [node name="equipment Slots" parent="UIController/Inventory" index="2"]
 offset_left = 1.0
 offset_right = 595.0
+
+[node name="Player Stats" parent="UIController/Inventory" index="3"]
+scale = Vector2(1.00024, 1.00024)
 
 [node name="Number" parent="UIController/Inventory/Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire" index="0"]
 offset_left = 110.0

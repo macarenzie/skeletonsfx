@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=18 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
@@ -32,6 +32,9 @@ size = Vector2(50, 50)
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6bv3e"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dxojm"]
+viewport_path = NodePath("Chest/Pickup/Area3D/Sprite3D/SubViewport")
 
 [node name="World" type="Node"]
 process_mode = 3
@@ -112,6 +115,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 [node name="Chest" parent="." instance=ExtResource("9_fd2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
 
+[node name="Sprite3D" parent="Chest/Pickup/Area3D" index="1"]
+texture = SubResource("ViewportTexture_dxojm")
+
 [editable path="Player"]
 [editable path="Player/UIController/Menu"]
 [editable path="Player/UIController/Inventory"]
+[editable path="Chest"]
+[editable path="Chest/Pickup"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwsjn2nmf8tlv"]
+[gd_scene load_steps=17 format=3 uid="uid://86tqqctnpter"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
 [ext_resource type="Script" path="res://Scripts/EnemyBehavior.gd" id="3_loj3b"]
+[ext_resource type="Script" path="res://Scenes/Dummy.gd" id="4_vqdun"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_db5ws"]
 albedo_color = Color(1, 0, 0, 1)
@@ -33,6 +34,18 @@ size = Vector3(0.4, 0.05, 0.05)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bshh7"]
 height = 2.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2v5rh"]
+size = Vector3(1, 2.045, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_70wnc"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aj0bx"]
+bg_color = Color(0.623529, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xftbv"]
+bg_color = Color(0.192157, 0.686275, 0, 1)
 
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 16
@@ -115,6 +128,43 @@ path_height_offset = 0.25
 [node name="EnemyBehavior" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_loj3b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("4_vqdun")
+health = 100
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02786, 0)
+shape = SubResource("BoxShape3D_2v5rh")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 2.50018, 0.00157499)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_70wnc")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+size = Vector2i(200, 40)
+
+[node name="ColorRect" type="ColorRect" parent="Sprite3D/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.804743, 0.804743, 0.804743, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="Sprite3D/SubViewport/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_aj0bx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xftbv")
+value = 50.0
+show_percentage = false
 
 [connection signal="Player_Detected" from="Model/Body/Head" to="." method="_on_head_player_detected"]
 [connection signal="Player_Detected" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_player_detected"]
