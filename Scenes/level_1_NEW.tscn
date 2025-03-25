@@ -25,7 +25,7 @@ glow_enabled = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_7cwaa"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5hl6p"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bmr3l"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
@@ -456,7 +456,7 @@ storage = {
 
 [node name="Sprite3D" parent="Sword Pickup/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.16763, 0.00157547)
-texture = SubResource("ViewportTexture_5hl6p")
+texture = SubResource("ViewportTexture_bmr3l")
 
 [node name="PlayerModel" parent="Sword Pickup/Area3D" index="2"]
 visible = false

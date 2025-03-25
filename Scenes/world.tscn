@@ -33,7 +33,7 @@ data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0,
 
 [sub_resource type="BoxMesh" id="BoxMesh_6bv3e"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ntyxs"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dxojm"]
 viewport_path = NodePath("Chest/Pickup/Area3D/Sprite3D/SubViewport")
 
 [node name="World" type="Node"]
@@ -113,7 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
 
 [node name="Sprite3D" parent="Chest/Pickup/Area3D" index="1"]
-texture = SubResource("ViewportTexture_ntyxs")
+texture = SubResource("ViewportTexture_dxojm")
 
 [connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
 [connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
