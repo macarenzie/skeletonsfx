@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://ppxx5rwc6uoh"]
+[gd_scene load_steps=16 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="2_p8fb7"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="3_fbhii"]
-[ext_resource type="PackedScene" uid="uid://bwsjn2nmf8tlv" path="res://Scenes/enemy.tscn" id="4_cydpp"]
+[ext_resource type="PackedScene" uid="uid://86tqqctnpter" path="res://Scenes/enemy.tscn" id="4_cydpp"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
+[ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
+[ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6jfr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,6 +21,15 @@ background_mode = 2
 sky = SubResource("Sky_3frgm")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7cwaa"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5hl6p"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
+size = Vector3(0.30542, 1.02698, 0.212189)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ieyax"]
 vertices = PackedVector3Array(-19.5547, 0.238704, 0.911175, -19.5547, 0.238704, 11.1612, -5.30473, 0.238704, 11.1612, -5.30473, 0.238704, 0.911175)
@@ -429,11 +440,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3357, 1.45887, 11.3554)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.228, -0.0388089, -14.6953)
 visible = false
 
+[node name="Sprite3D" parent="Props/Chest/Pickup/Area3D" index="1"]
+texture = SubResource("ViewportTexture_7cwaa")
+
 [node name="Player" parent="." instance=ExtResource("2_p8fb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
 
 [node name="Sword Pickup" parent="." instance=ExtResource("5_26ev8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -20.6576)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -21.6091)
+
+[node name="Area3D" parent="Sword Pickup" index="0"]
+storage = {
+0: [1, 32, 90]
+}
+
+[node name="Sprite3D" parent="Sword Pickup/Area3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.16763, 0.00157547)
+texture = SubResource("ViewportTexture_5hl6p")
+
+[node name="PlayerModel" parent="Sword Pickup/Area3D" index="2"]
+visible = false
+
+[node name="Weapon" type="MeshInstance3D" parent="Sword Pickup"]
+process_mode = 1
+transform = Transform3D(-0.991908, 0.117558, -0.0479577, 0.116476, 0.692223, -0.712219, -0.0505297, -0.712041, -0.700314, 0.00271076, 0.127508, 0.260683)
+mesh = ExtResource("6_a6e2v")
+surface_material_override/0 = ExtResource("7_kl3kh")
+
+[node name="Area3D" type="Area3D" parent="Sword Pickup/Weapon"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sword Pickup/Weapon/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -3.9563e-11, -1.30285e-10, 1, 0.00378326, 0.474306, -0.00929293)
+shape = SubResource("BoxShape3D_5j4v6")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ieyax")
@@ -446,3 +485,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.41
 
 [node name="Enemy3" parent="." instance=ExtResource("4_cydpp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.5168, -0.0814573, -15.7027)
+
+[editable path="Props/Box"]
+[editable path="Props/Chest"]
+[editable path="Props/Chest/Pickup"]
+[editable path="Sword Pickup"]
+[editable path="Enemy"]

@@ -8,6 +8,7 @@ extends Node
 @onready var shieldHolder = $"../PlayerHead/ShieldHolder"
 @onready var weapon_area = $"../PlayerHead/WeaponHolder/Weapon/Area3D"
 @onready var block_symbol = $"../UIController/Blocking"
+@onready var weapon_shape = $"../PlayerHead/WeaponHolder/Weapon/Area3D/CollisionShape3D"
 
 @export_category("Health") # I don't feel like these should be here but it's going to be here at the moment
 @export var max_health : int = 100
