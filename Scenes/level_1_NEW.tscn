@@ -25,15 +25,15 @@ glow_enabled = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_7cwaa"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bmr3l"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ky74i"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
 size = Vector3(0.30542, 1.02698, 0.212189)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ieyax"]
-vertices = PackedVector3Array(-19.5547, 0.238704, 0.911175, -19.5547, 0.238704, 11.1612, -5.30473, 0.238704, 11.1612, -5.30473, 0.238704, 0.911175)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-35.8888, 0.238704, -19.469, -35.8888, 0.238704, -6.96905, -24.6388, 0.238704, -6.96905, -24.6388, 0.238704, -19.469, -19.6388, 0.238704, 0.780951, -19.6388, 0.238704, 11.031, -5.38885, 0.238704, 11.031, -5.38885, 0.238704, 0.780951)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
 geometry_source_geometry_mode = 2
 geometry_source_group_name = &"Traversable"
 
@@ -54,7 +54,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.304018, 0, 0, 0, 0.322951, 0, 0, 0, 11.1431, -12.3732, -0.526869, 6.0821)
 skeleton = NodePath("../..")
 
-[node name="gb_block22" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
+[node name="gb_block22" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("1_4kd8k")]
 transform = Transform3D(0.242826, 0, 0, 0, 0.322951, 0, 0, 0, 13.3807, -30.3182, -0.523236, -13.2787)
 skeleton = NodePath("../..")
 
@@ -96,10 +96,6 @@ skeleton = NodePath("../..")
 
 [node name="gb_block17" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
 transform = Transform3D(-5.52728e-09, 0, -1.24066, 0, 0.32339, 0, 0.126449, 0, -5.4231e-08, -28.9344, -0.523236, 6.37022)
-skeleton = NodePath("../..")
-
-[node name="gb_block24" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("1_4kd8k")]
-transform = Transform3D(-5.52728e-09, 0, -1.24066, 0, 0.32339, 0, 0.126449, 0, -5.4231e-08, -28.9344, -0.523236, -11.9276)
 skeleton = NodePath("../..")
 
 [node name="gb_block19" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
@@ -456,7 +452,7 @@ storage = {
 
 [node name="Sprite3D" parent="Sword Pickup/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.16763, 0.00157547)
-texture = SubResource("ViewportTexture_bmr3l")
+texture = SubResource("ViewportTexture_ky74i")
 
 [node name="PlayerModel" parent="Sword Pickup/Area3D" index="2"]
 visible = false
