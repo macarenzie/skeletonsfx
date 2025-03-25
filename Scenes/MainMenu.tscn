@@ -170,8 +170,9 @@ scale = Vector2(1.4196, 1.81911)
 layout_mode = 2
 text = "WASD to move
 Space to jump
-Left click to attack/spawn fire
+Left click to attack
 Right click to block
+Middle Click to Spawn Fire
 I to open inventory
 E to loot items
 Esc for menu"
