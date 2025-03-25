@@ -10,7 +10,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="4_xirlr"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
-[ext_resource type="Material" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
+[ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
 [ext_resource type="Script" path="res://Scripts/UIControl.gd" id="9_t1dii"]
 [ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
