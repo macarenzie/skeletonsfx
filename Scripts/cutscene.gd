@@ -14,8 +14,8 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("quit"):
-		get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+		get_tree().change_scene_to_file("res://Scenes/level_1_NEW.tscn")
 
 
 func _on_animation_player_animation_finished(anim_name):
-	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/level_1_NEW.tscn")

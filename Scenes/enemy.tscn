@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwsjn2nmf8tlv"]
+[gd_scene load_steps=12 format=3 uid="uid://86tqqctnpter"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]

@@ -75,10 +75,10 @@ tracks/3/path = NodePath("CanvasLayer/Label:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 6, 6.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.8, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [false, true, true]
+"values": [false, false, true, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -87,10 +87,10 @@ tracks/4/path = NodePath("CanvasLayer/Label:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(6, 6.5, 7, 7.5, 8, 8.5, 9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 6, 6.5, 7, 7.5, 8, 8.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -99,10 +99,10 @@ tracks/5/path = NodePath("CanvasLayer/Label:text")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 6, 8, 8.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.9, 6, 8, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": ["May you burn forever eternal...", "May you burn forever eternal...", "May you burn forever eternal...", "Now Arise "]
+"values": ["Press Escape to skip", "May you burn forever eternal...", "May you burn forever eternal...", "May you burn forever eternal...", "Now Arise "]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -114,7 +114,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jkw1n"]
@@ -297,7 +297,6 @@ libraries = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -309,7 +308,6 @@ grow_vertical = 2
 color = Color(0.968627, 0.392157, 0.172549, 0)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
 anchors_preset = -1
 anchor_top = 0.447
 anchor_right = 1.0
@@ -323,7 +321,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = SubResource("FontFile_pk6th")
 theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mqmcc")
-text = "May you burn forever eternal..."
+text = "Press Escape to skip"
 label_settings = SubResource("LabelSettings_gybxa")
 horizontal_alignment = 1
 vertical_alignment = 1

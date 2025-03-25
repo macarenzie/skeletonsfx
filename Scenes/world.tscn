@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=18 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_ff0u1"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
@@ -33,6 +33,9 @@ data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0,
 
 [sub_resource type="BoxMesh" id="BoxMesh_6bv3e"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ntyxs"]
+viewport_path = NodePath("Chest/Pickup/Area3D/Sprite3D/SubViewport")
+
 [node name="World" type="Node"]
 process_mode = 3
 
@@ -48,9 +51,6 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_xfvv5")]
 process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 0, 0, 0)
-
-[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
-transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
 
 [node name="TargetDummy" parent="." instance=ExtResource("2_2re6m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
@@ -112,6 +112,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 [node name="Chest" parent="." instance=ExtResource("9_fd2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
 
+[node name="Sprite3D" parent="Chest/Pickup/Area3D" index="1"]
+texture = SubResource("ViewportTexture_ntyxs")
+
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="Player/UIController" method="_on_restart_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="Player/UIController" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+
 [editable path="Player"]
 [editable path="Player/UIController/Menu"]
 [editable path="Player/UIController/Inventory"]
+[editable path="Chest"]
+[editable path="Chest/Pickup"]

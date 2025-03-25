@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
-[ext_resource type="Material" uid="uid://ciifs4ls3fber" path="res://Assets/Materials/Shield_Mat.tres" id="3_yeb8m"]
+[ext_resource type="Material" path="res://Assets/Materials/Shield_Mat.tres" id="3_yeb8m"]
 [ext_resource type="ArrayMesh" uid="uid://c81apgiit1rek" path="res://Assets/Models/P_Shield.obj" id="4_a0uk6"]
 [ext_resource type="Script" path="res://Scripts/Hittable.gd" id="4_hiqmd"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="4_xirlr"]
@@ -425,6 +425,16 @@ script = ExtResource("9_t1dii")
 
 [node name="Menu" parent="UIController" instance=ExtResource("11_wypde")]
 layout_mode = 1
+
+[node name="RichTextLabel" parent="UIController/Menu/ColorRect/MarginContainer2" index="0"]
+text = "WASD to move
+Space to jump
+Left click to attack
+Right click to block
+Middle Click to Spawn Fire
+I to open inventory
+E to loot items
+Esc for menu"
 
 [node name="Crosshair" type="Control" parent="UIController"]
 process_mode = 3
