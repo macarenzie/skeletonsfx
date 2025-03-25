@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=32 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
@@ -10,7 +10,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="4_xirlr"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
-[ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
+[ext_resource type="Material" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
 [ext_resource type="Script" path="res://Scripts/UIControl.gd" id="9_t1dii"]
 [ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
@@ -319,6 +319,8 @@ radius = 2.85713
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5tt7"]
 bg_color = Color(0.999401, 0.574862, 0.295541, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdbma"]
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 10
@@ -342,6 +344,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 unique_name_in_owner = true
 process_mode = 1
+current = true
 fov = 90.0
 script = ExtResource("2_kcqsg")
 SENSITIVITY_X = 0.002
@@ -612,6 +615,13 @@ offset_right = -0.0800171
 offset_bottom = 0.0639648
 texture = ExtResource("11_dwtxc")
 expand_mode = 1
+
+[node name="PlayerAirDetector" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAirDetector"]
+shape = SubResource("BoxShape3D_qdbma")
 
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
 [connection signal="player_dies" from="InnerFire" to="UIController" method="_on_inner_fire_player_dies"]

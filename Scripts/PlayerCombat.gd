@@ -155,7 +155,7 @@ func reset_animation(anim_name):
 
 func fire():
 	var new_fire = load("res://Fire/Fire.tscn").instantiate()
-	new_fire.global_position = get_parent().position
+	new_fire.global_position = get_parent().position + Vector3(0, 0.8, 0)
 	get_parent().get_parent().add_child(new_fire)
 	
 	var innerfire = get_parent().get_child(6)
