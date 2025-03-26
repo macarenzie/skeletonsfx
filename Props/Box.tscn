@@ -1,15 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqyao6x5oq0kc"]
+[gd_scene load_steps=10 format=3 uid="uid://dqyao6x5oq0kc"]
 
 [ext_resource type="ArrayMesh" uid="uid://duv13ddn1agl3" path="res://Assets/Models/P_Box.obj" id="1_7eacy"]
 [ext_resource type="Script" path="res://Props/Prop.gd" id="1_u5mym"]
-[ext_resource type="Material" uid="uid://3wawpom7yu6p" path="res://Assets/Materials/P_Box_Mat.tres" id="2_sfrqs"]
+[ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="2_6t682"]
+[ext_resource type="Texture2D" uid="uid://7al83j4rx3f6" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Emissive.png" id="3_4767x"]
+[ext_resource type="Texture2D" uid="uid://xonl4o8bb3on" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_MaskMap.png" id="4_l1m0h"]
+[ext_resource type="Texture2D" uid="uid://5e3pmixoi4jn" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Normal.png" id="5_ynygv"]
+[ext_resource type="Texture2D" uid="uid://bxnffqvvvflq0" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_BaseMap.png" id="6_l0aqh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8e2e"]
+render_priority = 0
+shader = ExtResource("2_6t682")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+shader_parameter/Metallic = 0.0
+shader_parameter/Roughness = 1.0
+shader_parameter/Emissive_Intensity = 1.0
+shader_parameter/Texture2DParameter = ExtResource("6_l0aqh")
+shader_parameter/MaskMap = ExtResource("4_l1m0h")
+shader_parameter/EmissionMap = ExtResource("3_4767x")
+shader_parameter/Normal = ExtResource("5_ynygv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uptam"]
 size = Vector3(1.00343, 0.997331, 1)
 
 [node name="Box" type="MeshInstance3D"]
 mesh = ExtResource("1_7eacy")
-surface_material_override/0 = ExtResource("2_sfrqs")
+surface_material_override/0 = SubResource("ShaderMaterial_v8e2e")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 collision_layer = 3
