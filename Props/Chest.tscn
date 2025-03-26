@@ -8,6 +8,7 @@
 size = Vector3(1.63647, 1.28271, 1)
 
 [node name="Chest" type="StaticBody3D"]
+collision_layer = 3
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_shuxh")
