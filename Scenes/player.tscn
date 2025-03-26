@@ -1,8 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=34 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
+[ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="2_3xs3q"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
+[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="3_jwemy"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
 [ext_resource type="Material" uid="uid://ciifs4ls3fber" path="res://Assets/Materials/Shield_Mat.tres" id="3_yeb8m"]
 [ext_resource type="ArrayMesh" uid="uid://c81apgiit1rek" path="res://Assets/Models/P_Shield.obj" id="4_a0uk6"]
@@ -17,10 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
 [ext_resource type="Texture2D" uid="uid://bgx72do3k6dku" path="res://Assets/UI Assets/circle.png" id="12_ghlo1"]
 [ext_resource type="Texture2D" uid="uid://bkerarfq26kbe" path="res://Assets/UI Assets/Healthbar_UI.png" id="13_1s16w"]
+[ext_resource type="PackedScene" uid="uid://cbq0vt8tvw5yf" path="res://Shader/CellShader.tscn" id="18_cp1i3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p3wn"]
 size = Vector3(0.30542, 1.02698, 0.212189)
@@ -333,13 +334,14 @@ shape = SubResource("CapsuleShape3D_ur0qq")
 
 [node name="PlayerModel" type="MeshInstance3D" parent="."]
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_vgxxl")
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0118192, 0.11158)
+mesh = ExtResource("2_3xs3q")
+surface_material_override/0 = ExtResource("3_jwemy")
 
 [node name="PlayerHead" type="Node3D" parent="."]
 unique_name_in_owner = true
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91616, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 unique_name_in_owner = true
@@ -622,6 +624,8 @@ collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAirDetector"]
 shape = SubResource("BoxShape3D_qdbma")
+
+[node name="Shader" parent="." instance=ExtResource("18_cp1i3")]
 
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
 [connection signal="player_dies" from="InnerFire" to="UIController" method="_on_inner_fire_player_dies"]
