@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c83bqxi51qsx0"]
+[gd_scene load_steps=16 format=3 uid="uid://c83bqxi51qsx0"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_q1osx"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="2_yqt4r"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="3_qa1ex"]
+[ext_resource type="PackedScene" uid="uid://cbq0vt8tvw5yf" path="res://Shader/CellShader.tscn" id="4_md6lx"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0v624"]
 dof_blur_far_enabled = true
@@ -325,5 +326,7 @@ text = "Press Escape to skip"
 label_settings = SubResource("LabelSettings_gybxa")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Shader" parent="." instance=ExtResource("4_md6lx")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
