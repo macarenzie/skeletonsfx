@@ -139,7 +139,6 @@ shape = SubResource("BoxShape3D_2v5rh")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 2.50018, 0.00157499)
-visible = false
 billboard = 1
 texture = SubResource("ViewportTexture_70wnc")
 
