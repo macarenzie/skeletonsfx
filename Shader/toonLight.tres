@@ -274,7 +274,6 @@ void light() {
 
 }
 "
-graph_offset = Vector2(-279.642, 385.392)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_c050m")
 nodes/vertex/2/position = Vector2(-140, 160)
 nodes/vertex/connections = PackedInt32Array(2, 0, 0, 1)
