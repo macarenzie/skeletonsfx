@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://86tqqctnpter"]
+[gd_scene load_steps=18 format=3 uid="uid://86tqqctnpter"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
@@ -47,6 +47,8 @@ bg_color = Color(0.623529, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xftbv"]
 bg_color = Color(0.192157, 0.686275, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lbkkr"]
+
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 16
 collision_mask = 24
@@ -63,9 +65,8 @@ skeleton = NodePath("../..")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_ris5s")
-angle = 90.0
 horizontal_range = 6.0
-surrounding_range = 3.0
+surrounding_range = 4.0
 
 [node name="RayToPlayer" type="RayCast3D" parent="Model/Body/Head"]
 unique_name_in_owner = true
@@ -122,8 +123,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
 shape = SubResource("CapsuleShape3D_bshh7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-target_desired_distance = 0.1
+path_desired_distance = 2.0
 path_height_offset = 0.25
+debug_enabled = true
 
 [node name="EnemyBehavior" type="Node" parent="."]
 unique_name_in_owner = true
@@ -164,6 +166,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_aj0bx")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xftbv")
 value = 50.0
 show_percentage = false
+
+[node name="HitBox" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23089, 1, -1.39868)
+shape = SubResource("BoxShape3D_lbkkr")
+target_position = Vector3(0, 0, 0)
+collision_mask = 2
+debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [connection signal="Player_Detected" from="Model/Body/Head" to="." method="_on_head_player_detected"]
 [connection signal="Player_Detected" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_player_detected"]

@@ -10,6 +10,8 @@ func _physics_process(delta):
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
 	look_at(destination)
+	#var target = basis.looking_at(direction)
+	#basis = basis.slerp(target,1)
 	velocity = direction * move_speed
 	move_and_slide()
 
