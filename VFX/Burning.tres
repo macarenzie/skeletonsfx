@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dod5ylpv8a7ka"]
+
+[ext_resource type="Shader" uid="uid://b3hmc4186s0ji" path="res://Shader/burningObject.tres" id="1_dfe55"]
+[ext_resource type="Texture2D" uid="uid://sgidv8n4fsvx" path="res://VFX/Dissolve.png" id="2_2owm0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_dfe55")
+shader_parameter/FireColor = Color(2, 0.35, 0, 1)
+shader_parameter/TriplanarScale = Vector3(0.25, 0.2, 0.25)
+shader_parameter/FloatParameter = 2.0
+shader_parameter/Alpha = 0.795
+shader_parameter/SideTexture = ExtResource("2_2owm0")
+shader_parameter/TopTexture = ExtResource("2_2owm0")
