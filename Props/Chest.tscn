@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfpt1o8g8rngj"]
+[gd_scene load_steps=6 format=3 uid="uid://dfpt1o8g8rngj"]
 
 [ext_resource type="ArrayMesh" uid="uid://vt5vow2kmqom" path="res://Assets/Models/P_Chest_Together.obj" id="1_shuxh"]
 [ext_resource type="Material" uid="uid://btamy7i543sx1" path="res://Assets/Materials/P_Chest_Mat.tres" id="2_s0k8i"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibs4v"]
 size = Vector3(1.63647, 1.28271, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8bxlv"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [node name="Chest" type="StaticBody3D"]
 collision_layer = 3
@@ -32,6 +35,7 @@ isPermanant = true
 
 [node name="Sprite3D" parent="Pickup/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.69938, 0.00157499)
+texture = SubResource("ViewportTexture_8bxlv")
 
 [node name="PlayerModel" parent="Pickup/Area3D" index="2"]
 visible = false

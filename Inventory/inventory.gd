@@ -38,7 +38,7 @@ var weaponRange = 0
 #controll looting
 var in_range = false
 #var 
-@export var number_of_slots = 100
+@export var number_of_slots = 54
 
 var enemy_item_data := {}
 var loaded_enemy_item_data := {}
@@ -152,7 +152,7 @@ func spawn_item(item:int, slot:int, itemRotate:int):
 		item_held.rotate_item()
 		clear_grid()
 	
-	if slot > -1:
+	if slot > -1 and slot < number_of_slots +1:
 		set_desired_slot(slot)
 
 #Used to place the item
@@ -287,7 +287,7 @@ func set_grids(a_slot):
 func kill_out_of_place_items():
 	var children = get_children()  
 	for child in children:
-		if child.get_index() > 3:
+		if child.get_index() > 4:
 			child.queue_free()
 			item_held = null
 
