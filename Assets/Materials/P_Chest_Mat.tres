@@ -1,12 +1,14 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://crvkybdkraiio"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://crvkybdkraiio"]
 
 [ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="1_cjeh1"]
+[ext_resource type="Material" uid="uid://dod5ylpv8a7ka" path="res://VFX/Burning.tres" id="1_iqtp1"]
 [ext_resource type="Texture2D" uid="uid://ccynqqc4kly70" path="res://Assets/Materials/Textures/Chest/P_Chest_Apart_initialShadingGroup_MaskMap.png" id="2_6gepx"]
 [ext_resource type="Texture2D" uid="uid://cdf6jv5uv2lkg" path="res://Assets/Materials/Textures/Chest/P_Chest_Apart_initialShadingGroup_Normal.png" id="3_41unr"]
 [ext_resource type="Texture2D" uid="uid://c2l6323xeixcm" path="res://Assets/Materials/Textures/Chest/P_Chest_Apart_initialShadingGroup_BaseMap.png" id="4_n2xdc"]
 
 [resource]
 render_priority = 0
+next_pass = ExtResource("1_iqtp1")
 shader = ExtResource("1_cjeh1")
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 shader_parameter/Metallic = 1.0

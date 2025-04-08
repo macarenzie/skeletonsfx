@@ -1,18 +1,17 @@
-[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://cd7855w43sbcn"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://bsu5xijq241fm"]
 
-[ext_resource type="Texture2D" uid="uid://e7g277cabvv6" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Albedo.png" id="1_m831l"]
-[ext_resource type="Texture2D" uid="uid://6cr4y5itjnde" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_AO.png" id="2_61saq"]
-[ext_resource type="Texture2D" uid="uid://dk6p7h5ws2en6" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Height.png" id="3_q3mqo"]
-[ext_resource type="Texture2D" uid="uid://ki13e5d6aw8w" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Metallic.png" id="4_e3lks"]
-[ext_resource type="Texture2D" uid="uid://gbo6up3kmbeo" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Normal.png" id="5_5bo57"]
+[ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="1_slkwa"]
+[ext_resource type="Texture2D" uid="uid://ki13e5d6aw8w" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Metallic.png" id="2_815om"]
+[ext_resource type="Texture2D" uid="uid://gbo6up3kmbeo" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Normal.png" id="3_n3387"]
+[ext_resource type="Texture2D" uid="uid://e7g277cabvv6" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Albedo.png" id="4_gidr1"]
 
 [resource]
-albedo_texture = ExtResource("1_m831l")
-metallic = 1.0
-metallic_texture = ExtResource("4_e3lks")
-normal_enabled = true
-normal_texture = ExtResource("5_5bo57")
-ao_enabled = true
-ao_texture = ExtResource("2_61saq")
-heightmap_scale = 0.205
-heightmap_texture = ExtResource("3_q3mqo")
+render_priority = 0
+shader = ExtResource("1_slkwa")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+shader_parameter/Metallic = 1.0
+shader_parameter/Roughness = 1.0
+shader_parameter/Emissive_Intensity = 1.0
+shader_parameter/Texture2DParameter = ExtResource("4_gidr1")
+shader_parameter/MaskMap = ExtResource("2_815om")
+shader_parameter/Normal = ExtResource("3_n3387")

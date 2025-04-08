@@ -1,6 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cnysmqcqdj7di"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cnysmqcqdj7di"]
 
 [ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="1_0d7pb"]
+[ext_resource type="Material" uid="uid://dod5ylpv8a7ka" path="res://VFX/Burning.tres" id="1_xavue"]
 [ext_resource type="Texture2D" uid="uid://7al83j4rx3f6" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Emissive.png" id="2_dvpq6"]
 [ext_resource type="Texture2D" uid="uid://xonl4o8bb3on" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_MaskMap.png" id="3_0o6na"]
 [ext_resource type="Texture2D" uid="uid://5e3pmixoi4jn" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Normal.png" id="4_h25qd"]
@@ -8,6 +9,7 @@
 
 [resource]
 render_priority = 0
+next_pass = ExtResource("1_xavue")
 shader = ExtResource("1_0d7pb")
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 shader_parameter/Metallic = 0.0
