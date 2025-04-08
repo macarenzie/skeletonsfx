@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://fh4c32uxs4jk"
+path="res://.godot/imported/P_Doorframe_Pt1.obj-8ade55d1d626aa0212f40b47bee31809.mesh"
+
+[deps]
+
+files=["res://.godot/imported/P_Doorframe_Pt1.obj-8ade55d1d626aa0212f40b47bee31809.mesh"]
+
+source_file="res://Assets/Models/Geometry/P_Doorframe_Pt1.obj"
+dest_files=["res://.godot/imported/P_Doorframe_Pt1.obj-8ade55d1d626aa0212f40b47bee31809.mesh", "res://.godot/imported/P_Doorframe_Pt1.obj-8ade55d1d626aa0212f40b47bee31809.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

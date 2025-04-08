@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="2_3xs3q"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
-[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="3_jwemy"]
+[ext_resource type="Material" path="res://Assets/Materials/Skeleton_Mat.tres" id="3_jwemy"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
 [ext_resource type="Material" uid="uid://ciifs4ls3fber" path="res://Assets/Materials/Shield_Mat.tres" id="3_yeb8m"]
 [ext_resource type="ArrayMesh" uid="uid://c81apgiit1rek" path="res://Assets/Models/P_Shield.obj" id="4_a0uk6"]
@@ -628,7 +628,6 @@ shape = SubResource("BoxShape3D_qdbma")
 [node name="Shader" parent="." instance=ExtResource("18_cp1i3")]
 
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
-[connection signal="player_dies" from="InnerFire" to="UIController" method="_on_inner_fire_player_dies"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="UIController" method="_on_resume_pressed"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="UIController" method="_on_controls_pressed"]

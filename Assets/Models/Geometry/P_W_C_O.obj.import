@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vga1cgrmlf5q"
+path="res://.godot/imported/P_W_C_O.obj-afbd32a5ef7023f5a826d90ee9000068.mesh"
+
+[deps]
+
+files=["res://.godot/imported/P_W_C_O.obj-afbd32a5ef7023f5a826d90ee9000068.mesh"]
+
+source_file="res://Assets/Models/Geometry/P_W_C_O.obj"
+dest_files=["res://.godot/imported/P_W_C_O.obj-afbd32a5ef7023f5a826d90ee9000068.mesh", "res://.godot/imported/P_W_C_O.obj-afbd32a5ef7023f5a826d90ee9000068.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

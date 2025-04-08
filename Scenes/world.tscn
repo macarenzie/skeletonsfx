@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dlw2yigievwho" path="res://VFX/Fire_Medium.tscn" id="10_l6si3"]
 [ext_resource type="PackedScene" uid="uid://33mj4e2b1ksm" path="res://Props/Door.tscn" id="11_dwo0m"]
 [ext_resource type="PackedScene" uid="uid://ky0mvp84vdvf" path="res://VFX/Fire_Large.tscn" id="11_xkdmb"]
-[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="12_n2obh"]
+[ext_resource type="Material" path="res://Assets/Materials/Skeleton_Mat.tres" id="12_n2obh"]
 [ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="13_21dio"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
@@ -29,8 +29,8 @@ glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ka87u"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dxojm"]
-viewport_path = NodePath("Chest/Pickup/Area3D/Sprite3D/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_noe5v"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [node name="World" type="Node"]
 process_mode = 3
@@ -94,14 +94,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 [node name="Chest" parent="." instance=ExtResource("9_fd2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
 
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="Player/UIController" method="_on_restart_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="Player/UIController" method="_on_main_menu_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+[node name="Sprite3D" parent="Chest/Pickup/Area3D" index="1"]
+texture = SubResource("ViewportTexture_noe5v")
 
 [node name="StaticFlame" parent="." instance=ExtResource("9_4y1dm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8986, 0.478946, 5.03084)

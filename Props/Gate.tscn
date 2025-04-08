@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://e7xwfrqac8at"]
+[gd_scene load_steps=5 format=3 uid="uid://byjysf483irr"]
 
 [ext_resource type="Script" path="res://Props/Gate.gd" id="1_i5xu7"]
-[ext_resource type="Material" uid="uid://c028kwiriwfw6" path="res://Assets/Materials/GB_Bars_Mat.tres" id="2_8kpy6"]
+[ext_resource type="Material" path="res://Assets/Materials/GB_Bars_Mat.tres" id="2_8kpy6"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_p62pf"]
 

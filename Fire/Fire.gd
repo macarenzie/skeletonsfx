@@ -96,7 +96,7 @@ func _process(delta: float) -> void:
 		)
 	
 	# Update visual mesh scale
-	var mesh = $MeshInstance3D
+	var mesh = $StaticFlame
 	if mesh:
 		mesh.scale = Vector3(
 			size * 0.8,  # Width (X)

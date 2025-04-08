@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
 [ext_resource type="Script" path="res://Scripts/Room Managers/L1_Manager.gd" id="1_tw7dh"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
-[ext_resource type="PackedScene" uid="uid://e7xwfrqac8at" path="res://Props/Gate.tscn" id="2_06a27"]
+[ext_resource type="PackedScene" uid="uid://byjysf483irr" path="res://Props/Gate.tscn" id="2_06a27"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="2_p8fb7"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="3_fbhii"]
 [ext_resource type="PackedScene" uid="uid://86tqqctnpter" path="res://Scenes/enemy.tscn" id="4_cydpp"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
-[ext_resource type="PackedScene" uid="uid://djbb56l5ga5uc" path="res://Props/death_plane.tscn" id="11_uj820"]
+[ext_resource type="PackedScene" uid="uid://ics10igxbxyv" path="res://Props/death_plane.tscn" id="11_uj820"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w48xy"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
