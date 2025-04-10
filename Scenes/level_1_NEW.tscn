@@ -17,6 +17,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfu4"]
 size = Vector3(1, 2.55579, 0.916504)
 
+[ext_resource type="Material" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
 [sub_resource type="ViewportTexture" id="ViewportTexture_w48xy"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
