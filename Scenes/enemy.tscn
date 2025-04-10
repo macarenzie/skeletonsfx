@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://86tqqctnpter"]
+[gd_scene load_steps=20 format=3 uid="uid://86tqqctnpter"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
@@ -47,7 +47,17 @@ bg_color = Color(0.623529, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xftbv"]
 bg_color = Color(0.192157, 0.686275, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lbkkr"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_si27w"]
+size = Vector3(0.4, 1.5, 0.4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nqg0h"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_2l2w6"]
+radius = 0.2
+height = 0.4
 
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 16
@@ -65,8 +75,6 @@ skeleton = NodePath("../..")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_ris5s")
-horizontal_range = 6.0
-surrounding_range = 4.0
 
 [node name="RayToPlayer" type="RayCast3D" parent="Model/Body/Head"]
 unique_name_in_owner = true
@@ -167,12 +175,23 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_xftbv")
 value = 50.0
 show_percentage = false
 
-[node name="HitBox" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23089, 1, -1.39868)
-shape = SubResource("BoxShape3D_lbkkr")
+[node name="Weapon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, -0.731, 0.9, -0.6)
+
+[node name="HitBox" type="ShapeCast3D" parent="Weapon"]
+enabled = false
+shape = SubResource("BoxShape3D_si27w")
 target_position = Vector3(0, 0, 0)
 collision_mask = 2
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
+[node name="shaft" type="MeshInstance3D" parent="Weapon"]
+mesh = SubResource("CylinderMesh_nqg0h")
+
+[node name="ball" type="MeshInstance3D" parent="Weapon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.558111, 0)
+mesh = SubResource("SphereMesh_2l2w6")
+
+[connection signal="Attack_Player" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_attack_player"]
 [connection signal="Player_Detected" from="Model/Body/Head" to="." method="_on_head_player_detected"]
 [connection signal="Player_Detected" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_player_detected"]
