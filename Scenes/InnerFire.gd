@@ -1,7 +1,7 @@
 extends Node
 
-@export var innerFire:float = 250.0
-@export var maxInnerFire:float = 250.0
+@export var innerFire:float = 1000.0
+@export var maxInnerFire:float = 1000.0
 @export var isInFire:bool = false
 @export var fireRegen:float = 0.0
 
