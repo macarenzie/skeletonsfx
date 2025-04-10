@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=22 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
 [ext_resource type="Script" path="res://Scripts/Room Managers/L1_Manager.gd" id="1_tw7dh"]
@@ -6,11 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://byjysf483irr" path="res://Props/Gate.tscn" id="2_06a27"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="2_p8fb7"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="3_fbhii"]
+[ext_resource type="Script" path="res://Scenes/Air.gd" id="4_2rlua"]
 [ext_resource type="PackedScene" uid="uid://86tqqctnpter" path="res://Scenes/enemy.tscn" id="4_cydpp"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
+[ext_resource type="PackedScene" uid="uid://cponc45xl3euw" path="res://Props/Torch.tscn" id="10_bu4vf"]
 [ext_resource type="PackedScene" uid="uid://ics10igxbxyv" path="res://Props/death_plane.tscn" id="11_uj820"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wfu4"]
+size = Vector3(1, 2.55579, 0.916504)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w48xy"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
@@ -402,6 +407,16 @@ isOpen = true
 unique_name_in_owner = true
 transform = Transform3D(1.885, 0, 0, 0, 1.885, 0, 0, 0, 1.885, -30.3146, 1.53063, -19.8361)
 
+[node name="Air" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_2rlua")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Air"]
+transform = Transform3D(50.09, 0, 0, 0, -12.0463, 0, 0, 0, 50.09, -16.7897, 0.9277, 5.88228)
+shape = SubResource("BoxShape3D_0wfu4")
+
 [node name="Props" type="Node3D" parent="."]
 
 [node name="Box" parent="Props" instance=ExtResource("2_3t8e0")]
@@ -490,6 +505,20 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Sword Pickup/Weapon/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -3.9563e-11, -1.30285e-10, 1, 0.00378326, 0.474306, -0.00929293)
 shape = SubResource("BoxShape3D_5j4v6")
+
+[node name="Torches" type="Node3D" parent="Props"]
+
+[node name="Torch" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61916, 1.82506, -5.45585)
+
+[node name="Torch2" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61916, 1.82506, -10.2212)
+
+[node name="Torch3" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.39516, 1.82506, -10.2212)
+
+[node name="Torch4" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.39516, 1.82506, -5.45585)
 
 [node name="Enemies" type="Node3D" parent="."]
 
