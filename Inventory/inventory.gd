@@ -38,7 +38,7 @@ var weaponRange = 0
 #controll looting
 var in_range = false
 #var 
-@export var number_of_slots = 54
+@export var number_of_slots = 48
 
 var enemy_item_data := {}
 var loaded_enemy_item_data := {}
