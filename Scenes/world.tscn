@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=15 format=3 uid="uid://dgx6jd0rfjota"]
+=======
+[gd_scene load_steps=21 format=3 uid="uid://dgx6jd0rfjota"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
 [ext_resource type="PackedScene" uid="uid://cybr83rnnlyul" path="res://Scenes/target_dummy.tscn" id="2_2re6m"]
@@ -8,6 +12,15 @@
 [ext_resource type="Script" path="res://Scenes/Hello.gd" id="8_muvoo"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="8_o2imo"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="9_fd2ay"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://dlw2yigievwho" path="res://VFX/Fire_Medium.tscn" id="10_l6si3"]
+[ext_resource type="PackedScene" uid="uid://33mj4e2b1ksm" path="res://Props/Door.tscn" id="11_dwo0m"]
+[ext_resource type="PackedScene" uid="uid://ky0mvp84vdvf" path="res://VFX/Fire_Large.tscn" id="11_xkdmb"]
+[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="12_n2obh"]
+[ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="13_21dio"]
+[ext_resource type="PackedScene" uid="uid://ics10igxbxyv" path="res://Props/death_plane.tscn" id="14_g6td3"]
+>>>>>>> Stashed changes
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,10 +37,19 @@ glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ka87u"]
 
+<<<<<<< Updated upstream
 [sub_resource type="BoxMesh" id="BoxMesh_6bv3e"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dxojm"]
 viewport_path = NodePath("Chest/Pickup/Area3D/Sprite3D/SubViewport")
+=======
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wsiy"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_noe5v"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
+>>>>>>> Stashed changes
 
 [node name="World" type="Node"]
 process_mode = 3
@@ -67,6 +89,7 @@ shape = SubResource("BoxShape3D_ka87u")
 [node name="Geometry" type="Node3D" parent="."]
 
 [node name="Ground" parent="Geometry" instance=ExtResource("5_m0f4h")]
+surface_material_override/0 = SubResource("StandardMaterial3D_5wsiy")
 
 [node name="Wall_N" parent="Geometry" instance=ExtResource("6_tatpg")]
 transform = Transform3D(0.021692, 0, 0, 0, 1.95374, 0, 0, 0, 49.9973, 24.3121, 2.66164, 0.0679741)
@@ -103,7 +126,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
 
 [node name="Sprite3D" parent="Chest/Pickup/Area3D" index="1"]
+<<<<<<< Updated upstream
 texture = SubResource("ViewportTexture_dxojm")
+=======
+texture = SubResource("ViewportTexture_noe5v")
+
+[node name="StaticFlame" parent="." instance=ExtResource("9_4y1dm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8986, 0.478946, 5.03084)
+
+[node name="StaticFlame2" parent="." instance=ExtResource("10_l6si3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8754, 0.380347, 2.20929)
+
+[node name="StaticFlame3" parent="." instance=ExtResource("11_xkdmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0437, 1.54334, -2.22646)
+
+[node name="Door" parent="." instance=ExtResource("11_dwo0m")]
+transform = Transform3D(1.465, 0, 0, 0, 1.465, 0, 0, 0, 1.465, -1.9147, 0, 6.43731)
+
+[node name="Skeleton" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.43791, 0.0135708, 7.83517)
+material_override = ExtResource("12_n2obh")
+mesh = ExtResource("13_21dio")
+
+[node name="Death Plane" parent="." instance=ExtResource("14_g6td3")]
+transform = Transform3D(82.005, 0, 0, 0, 82.005, 0, 0, 0, 82.005, -0.0278091, -41.3423, 0.751404)
+
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="Player/UIController" method="_on_restart_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="Player/UIController" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+>>>>>>> Stashed changes
 
 [editable path="Player"]
 [editable path="Player/UIController/Menu"]

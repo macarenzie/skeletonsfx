@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ics10igxbxyv"]
+
+[ext_resource type="Script" path="res://Props/death_plane.gd" id="1_d5kjt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_47c6p"]
+
+[node name="Death Plane" type="Node3D"]
+script = ExtResource("1_d5kjt")
+
+[node name="CollisionShape3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape3D"]
+shape = SubResource("BoxShape3D_47c6p")
+
+[connection signal="body_entered" from="CollisionShape3D" to="." method="_on_collision_shape_3d_body_entered"]

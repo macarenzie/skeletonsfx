@@ -1,9 +1,14 @@
 extends Node
 
+<<<<<<< Updated upstream
 signal player_dies()
 
 @export var innerFire:float = 1000.0
 @export var maxInnerFire:float = 1000.0
+=======
+@export var innerFire:float = 250.0
+@export var maxInnerFire:float = 250.0
+>>>>>>> Stashed changes
 @export var isInFire:bool = false
 @export var fireRegen:float = 0.0
 

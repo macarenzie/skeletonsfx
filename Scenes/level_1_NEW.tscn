@@ -8,6 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
 [ext_resource type="Material" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://ics10igxbxyv" path="res://Props/death_plane.tscn" id="11_uj820"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w48xy"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
+size = Vector3(0.30542, 1.02698, 0.212189)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_67rnx"]
+size = Vector3(12.1844, 5.89551, 9.84729)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ieyax"]
+vertices = PackedVector3Array(-35.8888, 0.238704, -19.469, -35.8888, 0.238704, -6.96905, -24.6388, 0.238704, -6.96905, -24.6388, 0.238704, -19.469, -19.6388, 0.238704, 0.780951, -19.6388, 0.238704, 11.031, -5.38885, 0.238704, 11.031, -5.38885, 0.238704, 0.780951)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
+geometry_source_geometry_mode = 2
+geometry_source_group_name = &"Traversable"
+>>>>>>> Stashed changes
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6jfr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
