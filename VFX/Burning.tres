@@ -1,21 +1,22 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dod5ylpv8a7ka"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dod5ylpv8a7ka"]
 
 [ext_resource type="Shader" uid="uid://b3hmc4186s0ji" path="res://Shader/burningObject.tres" id="1_dfe55"]
 [ext_resource type="Texture2D" uid="uid://sgidv8n4fsvx" path="res://VFX/Dissolve.png" id="2_2owm0"]
 [ext_resource type="Texture2D" uid="uid://ckr8v5we0bodt" path="res://VFX/FlammableFire.png" id="2_cjrku"]
+[ext_resource type="Texture2D" uid="uid://cvn86mk3fd30d" path="res://VFX/CloudNoise.png" id="2_r6eho"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_dfe55")
 shader_parameter/FireIntensity = 1.0
 shader_parameter/FireColor = Color(4, 2, 2, 1)
-shader_parameter/TriplanarSpeed = Vector3(0.2, 1.5, 0.2)
+shader_parameter/TriplanarSpeed = Vector3(0.5, 2, 0.2)
 shader_parameter/TriplanarScale = Vector3(0.5, 0.5, 0.5)
-shader_parameter/TriplanarScale2 = Vector3(0.2, 0.2, 0.2)
-shader_parameter/WarpStrength = 0.755
-shader_parameter/TriplanarPower = 1.0
-shader_parameter/Alpha = 1.0
+shader_parameter/TriplanarScale2 = Vector3(0.5, 0.5, 0.5)
+shader_parameter/WarpStrength = 0.2
+shader_parameter/TriplanarPower = 2.0
+shader_parameter/Alpha = 0.675
 shader_parameter/VertexNoiseParameter = ExtResource("2_2owm0")
-shader_parameter/NoiseTexture = ExtResource("2_2owm0")
+shader_parameter/NoiseTexture = ExtResource("2_r6eho")
 shader_parameter/SideTexture = ExtResource("2_cjrku")
 shader_parameter/TopTexture = ExtResource("2_cjrku")
