@@ -4,10 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="3_jwemy"]
->>>>>>> Stashed changes
 =======
 [ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="3_jwemy"]
 >>>>>>> Stashed changes
