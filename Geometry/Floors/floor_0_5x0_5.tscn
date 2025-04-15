@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqj28ljoc0gwy"]
+
+[ext_resource type="Material" uid="uid://b0vjx4r71tmx1" path="res://Assets/Materials/Geometry/cobble_floor_mat.tres" id="1_tsgkg"]
+[ext_resource type="ArrayMesh" uid="uid://chviulvr1t7fa" path="res://Assets/Models/Geometry/Floors/0_5x0_5.obj" id="2_mv6k7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1tc2"]
+size = Vector3(0.504639, 0.0664063, 0.507751)
+
+[node name="Floor 0_5x0_5" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_tsgkg")
+mesh = ExtResource("2_mv6k7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00305176, -0.0332031, 0.00088501)
+shape = SubResource("BoxShape3D_g1tc2")

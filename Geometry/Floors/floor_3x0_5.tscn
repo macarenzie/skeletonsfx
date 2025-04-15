@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://pge006vsyjsq"]
+
+[ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_hsrce"]
+[ext_resource type="Material" uid="uid://b0vjx4r71tmx1" path="res://Assets/Materials/Geometry/cobble_floor_mat.tres" id="2_ekj3l"]
+[ext_resource type="ArrayMesh" uid="uid://bfxbbo2np2g3x" path="res://Assets/Models/Geometry/Floors/3x0_5.obj" id="3_55ap8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_li6y3"]
+size = Vector3(0.499512, 0.198303, 3.00061)
+
+[node name="Floor 3x0_5" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_hsrce")
+material = "stone"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_ekj3l")
+mesh = ExtResource("3_55ap8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00146484, -0.0990295, 0.000183105)
+shape = SubResource("BoxShape3D_li6y3")
