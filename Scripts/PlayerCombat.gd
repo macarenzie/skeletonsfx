@@ -157,16 +157,6 @@ func fire():
 	var new_fire = load("res://Fire/Fire.tscn").instantiate()
 	new_fire.global_position = get_parent().position + Vector3(0, 0.8, 0)
 	get_parent().get_parent().add_child(new_fire)
-	var camera = get_parent().get_node("PlayerHead/PlayerCamera")
-	var forward = -camera.global_transform.basis.z.normalized()  # forward = -Z
-	#var up = Vector3.UP  # global up
-	#var up = camera.global_transform.basis.y.normalized()   # camera up
-	# Combine forward and up for 45-degree arc
-	var launch_direction = (forward ).normalized()
-	# Scale force
-	var force = launch_direction * 25  # adjust this for more/less power
-	# Apply the force
-	new_fire.apply_force(force)
 	
 	var innerfire = get_parent().get_child(6)
 	innerfire.innerFire - 30.0
