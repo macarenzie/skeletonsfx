@@ -35,7 +35,6 @@ func _process(delta):
 	if attack_range_check and angle_check and not enemy_behavior.attacking_player:
 		print("I want to attack")
 		Attack_Player.emit()
-	
 	if short_range_check:
 		Player_Detected.emit(player.position)	
 		enemy_behavior.can_see_player = true

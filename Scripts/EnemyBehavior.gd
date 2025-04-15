@@ -2,10 +2,15 @@ extends Node
 
 @onready var enemy_detection = %Head
 @onready var enemy_pathfinding = $".."
+@onready var hit_box = $"../Weapon/HitBox"
+@onready var animation_player = $"../AnimationPlayer"
 
 
-var attacking_player := false
+@export var attacking_player := false
 var can_see_player := false
+
+var attack_landed := false
+
 #awareness is the value from 0-100
 #the increase and decrease rate is the rate at which the awareness value increases or decreases in seconds
 var awareness := 0.0
@@ -47,6 +52,17 @@ func _process(delta):
 	else: # full awareness
 		pass
 
+func _physics_process(delta):
+	if not attacking_player or attack_landed:
+		return
+	var obj_hit = hit_box.get_collider(0)
+	print(obj_hit)
+	if obj_hit == null:
+		return
+	attack_landed = true
+	hit_box.enabled = false
+	obj_hit.get_child(6).innerFire = obj_hit.get_child(6).innerFire - 50.0
+
 func get_awareness() -> float:
 	return awareness
 
@@ -55,10 +71,14 @@ func set_awareness(value:float):
 	awareness = clampf(awareness, 0.0, 100.0)
 
 func _on_head_attack_player():
-	attacking_player = true
-	#temporary timed function to act as the time an animation would run for
-	Scheduler.schedule(func(): 
-		attacking_player = false
-		print("i can move again")
-	, 1.0)
-	pass # Replace with function body.
+	if not attacking_player:
+		attacking_player = true
+		attack_landed = false
+		animation_player.play("attack")
+		animation_player.queue("idle")
+		#temporary timed function to act as the time an animation would run for
+		#Scheduler.schedule(func(): 
+		#	attacking_player = false
+		#	print("i can move again")
+		#, 1.0)
+		pass # Replace with function body.
