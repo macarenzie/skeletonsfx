@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dyyunhivjhu27"
-path="res://.godot/imported/AM_SkeleAttackWithoutMace.glb-6980212e9309efce89445737e0cb255d.scn"
+uid="uid://doruu4y4wy2de"
+path="res://.godot/imported/Skeleton Mesh.glb-3e5d6df77725a4a72f4b38eeb362010d.scn"
 
 [deps]
 
-source_file="res://Assets/Animations/Skeleton/AM_SkeleAttackWithoutMace.glb"
-dest_files=["res://.godot/imported/AM_SkeleAttackWithoutMace.glb-6980212e9309efce89445737e0cb255d.scn"]
+source_file="res://Assets/Animations/Skeleton/Skeleton Mesh.glb"
+dest_files=["res://.godot/imported/Skeleton Mesh.glb-3e5d6df77725a4a72f4b38eeb362010d.scn"]
 
 [params]
 

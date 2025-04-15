@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://om4v6uapr76n"
-path="res://.godot/imported/Idol Animation v2.glb-7f88f9ff441952cfa65c62a1651b649f.scn"
+path="res://.godot/imported/Idol Animation v2.glb-11033e381d817cbf25ed892944e8920d.scn"
 
 [deps]
 
-source_file="res://Assets/Animations/Skeleton/Idol Animation v2.glb"
-dest_files=["res://.godot/imported/Idol Animation v2.glb-7f88f9ff441952cfa65c62a1651b649f.scn"]
+source_file="res://Assets/Animations/Skeleton/Enemy/Idol Animation v2.glb"
+dest_files=["res://.godot/imported/Idol Animation v2.glb-11033e381d817cbf25ed892944e8920d.scn"]
 
 [params]
 
