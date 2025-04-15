@@ -7,6 +7,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	MainMenu.visible = true
+	print("wocky slush")
 	title.visible = true
 	controleMenu.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
