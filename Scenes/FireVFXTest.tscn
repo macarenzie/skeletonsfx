@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23615, 1.39548, -2.96258)
 visible = false
 
 [node name="Box" parent="." instance=ExtResource("6_ynkde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259144, 0.527534, -0.87622)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259144, 0.64135, -0.735662)
 material_override = ExtResource("7_ofyi2")
 
 [node name="StaticBody3D" parent="." instance=ExtResource("8_y85j1")]
