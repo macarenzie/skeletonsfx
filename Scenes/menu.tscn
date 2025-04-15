@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://01m5b13q5rf5"]
+[gd_scene load_steps=5 format=3 uid="uid://01m5b13q5rf5"]
+
+[ext_resource type="Theme" uid="uid://fq3f5aqpe066" path="res://Assets/Themes/Button.tres" id="1_wok1l"]
+[ext_resource type="FontFile" uid="uid://b4vnrueaby676" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="2_3nyb2"]
+[ext_resource type="FontFile" uid="uid://cgmmpik56qoat" path="res://Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf" id="3_fd8hq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bppd5"]
+font = ExtResource("2_3nyb2")
 font_size = 60
-font_color = Color(1, 0, 0, 1)
+font_color = Color(0.882353, 0.545098, 0.290196, 1)
 
 [node name="Menu" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.513233, 0.513233, 0.513233, 1)
+color = Color(0.345098, 0.27451, 0.262745, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1
@@ -42,18 +46,26 @@ layout_mode = 2
 
 [node name="Resume" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Resume"
 
 [node name="Quit" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Quit"
 
 [node name="Controls" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Controls"
 
 [node name="DevRoom" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Main Menu"
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect"]
@@ -74,6 +86,8 @@ scale = Vector2(1.4196, 1.81911)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/MarginContainer2"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/normal_font = ExtResource("3_fd8hq")
 text = "WASD to move
 Space to jump
 Left click to attack/spawn fire
@@ -90,6 +104,8 @@ offset_top = 7.14636
 offset_right = 947.029
 offset_bottom = 168.146
 scale = Vector2(0.373718, 0.20174)
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
 theme_override_font_sizes/font_size = 60
 text = "Back"
 
@@ -122,12 +138,18 @@ vertical_alignment = 1
 
 [node name="Restart" type="Button" parent="ColorRect/Game Over/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Restart"
 
 [node name="MainMenu" type="Button" parent="ColorRect/Game Over/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Main Menu"
 
 [node name="Quit" type="Button" parent="ColorRect/Game Over/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Quit"

@@ -429,6 +429,7 @@ grow_vertical = 2
 script = ExtResource("9_t1dii")
 
 [node name="Menu" parent="UIController" instance=ExtResource("11_wypde")]
+visible = false
 layout_mode = 1
 
 [node name="RichTextLabel" parent="UIController/Menu/ColorRect/MarginContainer2" index="0"]

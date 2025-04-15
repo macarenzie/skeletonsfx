@@ -10,6 +10,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_drogs"]
 font_size = 20
+font_color = Color(0.996078, 0.898039, 0.666667, 1)
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -99,6 +100,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
 [node name="Button_Spawn" type="Button" parent="EnemyGrid/MarginContainer/VBoxContainer/Header"]
+visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -203,6 +205,7 @@ offset_bottom = 229.0
 
 [node name="Max Fire" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Max Fire: "
 
@@ -211,11 +214,13 @@ layout_mode = 0
 offset_left = 85.0
 offset_right = 125.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="Current Fire" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Current Fire: "
 
@@ -224,11 +229,13 @@ layout_mode = 0
 offset_left = 109.0
 offset_right = 149.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="Burn Rate" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Burn Rate: "
 
@@ -237,6 +244,7 @@ layout_mode = 0
 offset_left = 96.0
 offset_right = 136.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
@@ -255,6 +263,7 @@ offset_bottom = 229.0
 
 [node name="Damage" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Damage: "
 
@@ -263,11 +272,13 @@ layout_mode = 0
 offset_left = 78.0
 offset_right = 118.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="Attack Speed" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Attack Time: "
 
@@ -276,11 +287,13 @@ layout_mode = 0
 offset_left = 114.0
 offset_right = 154.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="Reach" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Weapon Reach: "
 
@@ -289,6 +302,7 @@ layout_mode = 0
 offset_left = 128.0
 offset_right = 168.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/font = ExtResource("7_i2kss")
 text = "None"
 

@@ -55,7 +55,6 @@ var slot_2 = []
 @onready var item_slot_3 = $"equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer/Item_Slot3"
 var slot_3 = []
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(number_of_slots):
