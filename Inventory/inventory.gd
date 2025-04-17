@@ -617,7 +617,7 @@ func update_stat_UI():
 	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate/Number".text = str(0.028 - player_fire.fireRegen)
 	
 	#Weapon Values 
-	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Damage/Number".text = str(player_combat.attack_damage)
+	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Damage/Number".text = str(roundf(player_combat.attack_damage /10) )
 	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed/Number".text = str(player_combat.attack_speed)
 	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Reach/Number".text = str(weaponRange)
 

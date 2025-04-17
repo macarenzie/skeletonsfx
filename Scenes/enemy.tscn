@@ -131,7 +131,6 @@ script = ExtResource("3_loj3b")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 script = ExtResource("4_vqdun")
-health = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02786, 0)
