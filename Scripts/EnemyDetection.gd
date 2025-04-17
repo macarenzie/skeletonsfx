@@ -16,6 +16,7 @@ var angle_check : bool
 var local_player : Vector3
 
 signal Attack_Player
+signal Player_Detected(position:Vector3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,4 +48,3 @@ func _process(delta):
 		enemy_behavior.can_see_player = true
 		
 
-signal Player_Detected(position:Vector3)
