@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://7ggsbhjfmxp4" path="res://Assets/Models/Geometry/Floors/1x1.obj" id="2_073em"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbc01"]
-size = Vector3(1, 0.192596, 1.00247)
+size = Vector3(1, 0.5, 1)
 
 [node name="Floor 1x1" type="StaticBody3D"]
 collision_layer = 8
@@ -18,5 +18,5 @@ material_override = ExtResource("1_m8slw")
 mesh = ExtResource("2_073em")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0898285, 0.00172424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 shape = SubResource("BoxShape3D_bbc01")
