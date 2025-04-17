@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpp1khge30mag"]
+
+[ext_resource type="Material" uid="uid://di6ggk706stb" path="res://Assets/Materials/Geometry/cobble_roof_mat.tres" id="1_axh6c"]
+[ext_resource type="ArrayMesh" uid="uid://baecace80mauc" path="res://Assets/Models/Geometry/Floors/2x0_5.obj" id="2_wo0q7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwvnc"]
+size = Vector3(0.503906, 0.134277, 1.99799)
+
+[node name="Roof 2x0_5" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
+material_override = ExtResource("1_axh6c")
+mesh = ExtResource("2_wo0q7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000976563, 0.0661621, 0.00088501)
+shape = SubResource("BoxShape3D_xwvnc")

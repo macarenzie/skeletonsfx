@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dflwrnm40bos5"]
+
+[ext_resource type="Material" uid="uid://db28u4332yayi" path="res://Assets/Materials/Geometry/cobble_wall_mat.tres" id="1_h5k7y"]
+[ext_resource type="ArrayMesh" uid="uid://bvu142qjduawj" path="res://Assets/Models/Geometry/Walls/Misc/Inside Corners/0_5x0_5.obj" id="2_2svyp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cmy7f"]
+size = Vector3(0.500427, 0.500977, 0.248047)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7857y"]
+size = Vector3(0.251099, 0.500488, 0.500427)
+
+[node name="iCorner 0_5x0_5" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_h5k7y")
+mesh = ExtResource("2_2svyp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000335693, 0.000488281, -0.375977)
+shape = SubResource("BoxShape3D_cmy7f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.374451, 0.000732422, 0.000640869)
+shape = SubResource("BoxShape3D_7857y")
