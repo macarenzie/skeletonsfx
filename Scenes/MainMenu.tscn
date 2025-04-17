@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://oedns07ol4yc"]
+[gd_scene load_steps=22 format=3 uid="uid://oedns07ol4yc"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_36k88"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_gbiat"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://cgmmpik56qoat" path="res://Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf" id="3_bvq4v"]
 [ext_resource type="Theme" uid="uid://fq3f5aqpe066" path="res://Assets/Themes/Button.tres" id="3_f3woq"]
 [ext_resource type="PackedScene" uid="uid://c54fra6i3bswh" path="res://Props/Barrel.tscn" id="4_vmse7"]
+[ext_resource type="Texture2D" uid="uid://dic8hqwepeeqr" path="res://Assets/UI Assets/Playbutton UI.png" id="5_jrw1s"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_njdd2"]
 [ext_resource type="PackedScene" uid="uid://cbq0vt8tvw5yf" path="res://Shader/CellShader.tscn" id="7_whgx2"]
 [ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="8_u6rtx"]
@@ -142,11 +143,16 @@ anchor_left = 0.852
 anchor_top = 0.219
 anchor_right = 0.961
 anchor_bottom = 0.594
-offset_left = -2.50409
+offset_left = -18.504
 offset_top = 0.0879974
-offset_right = -0.0720215
-offset_bottom = 0.0879822
+offset_right = 29.928
+offset_bottom = 0.0880127
 color = Color(0.345098, 0.27451, 0.262745, 0.521569)
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
+position = Vector2(90, 28)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
 
 [node name="Start" type="Button" parent="CanvasLayer/ControlesRect"]
 layout_mode = 1
@@ -160,8 +166,15 @@ offset_top = 0.0370007
 offset_right = -6.10352e-05
 offset_bottom = -0.0579987
 theme = ExtResource("3_f3woq")
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
 theme_override_fonts/font = ExtResource("2_f2caj")
 text = "Start Game"
+flat = true
 
 [node name="Dev Room" type="Button" parent="CanvasLayer/ControlesRect"]
 layout_mode = 1
