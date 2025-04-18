@@ -3,6 +3,7 @@ extends RigidBody3D
 @export var damage_per_second: int = 30
 var damage_accumulator: float = 0.0
 var overlapping_bodies: Array = []
+@export var size: float
 
 # Material multipliers for different surface types
 @export var material_multipliers: Dictionary = {
@@ -21,8 +22,8 @@ var multipliers
 func _ready() -> void:
 	
 	# Connect signals for detecting overlapping bodies
-	$Area3D.body_entered.connect(_on_body_entered)
-	$Area3D.body_exited.connect(_on_body_exited)
+	$FireFloorDetector.body_entered.connect(_on_body_entered)
+	$FireFloorDetector.body_exited.connect(_on_body_exited)
 	
 	# Get initial oxygen from air node
 	var air_node = get_tree().get_first_node_in_group("air")
@@ -83,7 +84,7 @@ func _process(delta: float) -> void:
 	
 	# Quadratic interpolation for size
 	var t = current_time / lifetime
-	var size: float
+	
 	
 	if t < 0.5:
 		# Growing phase (0 to 0.5)

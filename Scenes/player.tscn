@@ -1,10 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=35 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="2_3xs3q"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
-[ext_resource type="Material" path="res://Assets/Materials/Skeleton_Mat.tres" id="3_jwemy"]
+[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="3_jwemy"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
 [ext_resource type="Material" uid="uid://ciifs4ls3fber" path="res://Assets/Materials/Shield_Mat.tres" id="3_yeb8m"]
 [ext_resource type="ArrayMesh" uid="uid://c81apgiit1rek" path="res://Assets/Models/P_Shield.obj" id="4_a0uk6"]
@@ -25,6 +25,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p3wn"]
 size = Vector3(0.30542, 1.02698, 0.212189)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pweor"]
+size = Vector3(0.301025, 0.307312, 3.17871)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkum0"]
 
@@ -355,6 +358,7 @@ SENSITIVITY_Y = 0.001
 [node name="RayCast3D" type="RayCast3D" parent="PlayerHead"]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
+collision_mask = 3
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -383,6 +387,13 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHead/WeaponHolder/Weapon/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -3.9563e-11, -1.30285e-10, 1, 0.00378326, 0.474306, -0.00929293)
 shape = SubResource("BoxShape3D_2p3wn")
+
+[node name="FireAbsorber" type="Area3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.91616, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHead/FireAbsorber"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0231909, 1.92807, -1.61951)
+shape = SubResource("BoxShape3D_pweor")
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("combat_controller")]
 monitoring = false
