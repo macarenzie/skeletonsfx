@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://enoxlcmvupwd"
+path="res://.godot/imported/P_Torch.obj-fcda36ad3243c57853692afe21840f6b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/P_Torch.obj-fcda36ad3243c57853692afe21840f6b.mesh"]
+
+source_file="res://Assets/Models/P_Torch.obj"
+dest_files=["res://.godot/imported/P_Torch.obj-fcda36ad3243c57853692afe21840f6b.mesh", "res://.godot/imported/P_Torch.obj-fcda36ad3243c57853692afe21840f6b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
