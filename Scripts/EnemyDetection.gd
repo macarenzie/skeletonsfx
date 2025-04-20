@@ -46,5 +46,7 @@ func _process(delta):
 			return
 		Player_Detected.emit(player.position)	
 		enemy_behavior.can_see_player = true
-		
+	elif enemy_behavior.get_awareness() == 100.0:
+		Player_Detected.emit(player.position)	
+		enemy_behavior.can_see_player = true
 

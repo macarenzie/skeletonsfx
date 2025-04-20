@@ -3,9 +3,7 @@ extends Node
 @onready var enemy_detection = %Head
 @onready var enemy_pathfinding = $".."
 @onready var hit_box = %WeaponHitBox
-@onready var animation_player = $"../AnimationPlayer"
-
-
+@onready var animation_player = %AnimationPlayer
 
 @export var attacking_player := false
 var can_see_player := false
@@ -94,8 +92,8 @@ func _on_head_attack_player():
 	if not attacking_player:
 		#attacking_player = true
 		attack_landed = false
-		animation_player.play("attack")
-		animation_player.queue("idle")
+		animation_player.play("EnemyAttack/Attack")
+		animation_player.queue("EnemyIdle/Idle")
 		#temporary timed function to act as the time an animation would run for
 		#Scheduler.schedule(func(): 
 		#	attacking_player = false
