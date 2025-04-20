@@ -180,7 +180,7 @@ func fire():
 	
 	# Apply the force
 	new_fire.apply_force(force)
-	var innerfire = get_parent().get_child(6)
+	var innerfire = %InnerFire
 	innerfire.innerFire - 30.0
 
 

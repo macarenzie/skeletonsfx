@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxmdcyy0olkrp"]
+
+[ext_resource type="Material" uid="uid://db28u4332yayi" path="res://Assets/Materials/Geometry/cobble_wall_mat.tres" id="1_cwob1"]
+[ext_resource type="ArrayMesh" uid="uid://ccb18mr5ydqse" path="res://Assets/Models/Geometry/Walls/Misc/Outside Corners/1x3.obj" id="2_5v8o3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vptk4"]
+size = Vector3(0.5, 1, 3)
+
+[node name="oCorner 1x3" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_cwob1")
+mesh = ExtResource("2_5v8o3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
+shape = SubResource("BoxShape3D_vptk4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1.25)
+shape = SubResource("BoxShape3D_vptk4")

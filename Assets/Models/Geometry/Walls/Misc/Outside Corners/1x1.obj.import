@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bxctfl2v2rvrc"
+path="res://.godot/imported/1x1.obj-743573c3c85424bfcc5fdfff9f1ca167.mesh"
+
+[deps]
+
+files=["res://.godot/imported/1x1.obj-743573c3c85424bfcc5fdfff9f1ca167.mesh"]
+
+source_file="res://Assets/Models/Geometry/Walls/Misc/Outside Corners/1x1.obj"
+dest_files=["res://.godot/imported/1x1.obj-743573c3c85424bfcc5fdfff9f1ca167.mesh", "res://.godot/imported/1x1.obj-743573c3c85424bfcc5fdfff9f1ca167.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d0h1a8tvwwj6l"
+path="res://.godot/imported/1x3.obj-8dbe5e7b6641372c89137c9d1e8917ee.mesh"
+
+[deps]
+
+files=["res://.godot/imported/1x3.obj-8dbe5e7b6641372c89137c9d1e8917ee.mesh"]
+
+source_file="res://Assets/Models/Geometry/Walls/1x3.obj"
+dest_files=["res://.godot/imported/1x3.obj-8dbe5e7b6641372c89137c9d1e8917ee.mesh", "res://.godot/imported/1x3.obj-8dbe5e7b6641372c89137c9d1e8917ee.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
