@@ -5,7 +5,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_aj78r"]
 radius = 0.728895
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4gc2t"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_34533"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58bhr"]
@@ -28,7 +28,7 @@ shape = SubResource("SphereShape3D_aj78r")
 [node name="Sprite3D" type="Sprite3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.00859, 0.00157499)
 billboard = 1
-texture = SubResource("ViewportTexture_4gc2t")
+texture = SubResource("ViewportTexture_34533")
 
 [node name="SubViewport" type="SubViewport" parent="Area3D/Sprite3D"]
 size = Vector2i(150, 75)

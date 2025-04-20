@@ -1,5 +1,7 @@
 extends Node
 
+signal player_dies()
+
 @export var innerFire:float = 1000.0
 @export var maxInnerFire:float = 1000.0
 @export var isInFire:bool = false
@@ -29,7 +31,7 @@ func _physics_process(delta):
 			#If in world player can't die for testing. 
 			if get_tree().current_scene.scene_file_path == "res://Scenes/world.tscn":
 				return
-			Globals.player_dies.emit()
+			player_dies.emit()
 		innerFire -= .028 - fireRegen # aprox. 10 minutes w/o fire till you die
 
 	fireBar.value = innerFire

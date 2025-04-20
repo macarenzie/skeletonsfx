@@ -1,11 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=32 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
-[ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="2_3xs3q"]
-[ext_resource type="PackedScene" uid="uid://bo3dstoq7nr26" path="res://Assets/Animations/Skeleton/Player/AM_PlayerIdle.glb" id="2_62u7t"]
 [ext_resource type="Script" path="res://Scripts/PlayerCamera.gd" id="2_kcqsg"]
 [ext_resource type="Script" path="res://Scripts/DebugShield.gd" id="3_bugux"]
-[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="3_jwemy"]
 [ext_resource type="Script" path="res://Scripts/PlayerCombat.gd" id="3_lv7ac"]
 [ext_resource type="Material" uid="uid://ciifs4ls3fber" path="res://Assets/Materials/Shield_Mat.tres" id="3_yeb8m"]
 [ext_resource type="ArrayMesh" uid="uid://c81apgiit1rek" path="res://Assets/Models/P_Shield.obj" id="4_a0uk6"]
@@ -13,27 +10,22 @@
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="4_xirlr"]
 [ext_resource type="Script" path="res://Scenes/InnerFire.gd" id="4_yqfp7"]
 [ext_resource type="PackedScene" uid="uid://h3oed28gj68k" path="res://Inventory/inventory.tscn" id="5_fivcv"]
-[ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
-[ext_resource type="AnimationLibrary" uid="uid://buur6e80eak6b" path="res://Assets/Animations/Skeleton/res/Player/PlayerAttack.res" id="6_givst"]
-[ext_resource type="AnimationLibrary" uid="uid://djo54h313lges" path="res://Assets/Animations/Skeleton/res/Player/PlayerBlock.res" id="7_wrbvp"]
+[ext_resource type="Material" path="res://Assets/Materials/Sword_Mat.tres" id="5_i507g"]
 [ext_resource type="Texture2D" uid="uid://ctkpdpv4uqrj" path="res://Assets/UI Assets/textIsALie.png" id="8_5j2rg"]
-[ext_resource type="AnimationLibrary" uid="uid://dobo50knk4aj6" path="res://Assets/Animations/Skeleton/res/Player/PlayerDamaged.res" id="8_nqn1l"]
-[ext_resource type="AnimationLibrary" uid="uid://bbsdkitniu0va" path="res://Assets/Animations/Skeleton/res/Player/PlayerDeath.res" id="9_nmdub"]
 [ext_resource type="Script" path="res://Scripts/UIControl.gd" id="9_t1dii"]
-[ext_resource type="AnimationLibrary" uid="uid://dvji1h15ls55x" path="res://Assets/Animations/Skeleton/res/Player/PlayerIdle.res" id="10_jgubd"]
 [ext_resource type="Texture2D" uid="uid://j1xrqi5pvmud" path="res://Assets/UI Assets/Shield Icon.png" id="11_dwtxc"]
 [ext_resource type="PackedScene" uid="uid://01m5b13q5rf5" path="res://Scenes/menu.tscn" id="11_wypde"]
 [ext_resource type="Texture2D" uid="uid://bgx72do3k6dku" path="res://Assets/UI Assets/circle.png" id="12_ghlo1"]
 [ext_resource type="Texture2D" uid="uid://bkerarfq26kbe" path="res://Assets/UI Assets/Healthbar_UI.png" id="13_1s16w"]
-[ext_resource type="PackedScene" uid="uid://cbq0vt8tvw5yf" path="res://Shader/CellShader.tscn" id="18_cp1i3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ur0qq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vgxxl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2p3wn"]
 size = Vector3(0.30542, 1.02698, 0.212189)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gkum0"]
-height = 1.74177
 
 [sub_resource type="Animation" id="Animation_bam0r"]
 length = 0.001
@@ -329,87 +321,10 @@ bg_color = Color(0.999401, 0.574862, 0.295541, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qdbma"]
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 10
 script = ExtResource("1_4wc5k")
-
-[node name="AM_PlayerIdle" parent="." instance=ExtResource("2_62u7t")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0596654, 0, 0)
-
-[node name="Skeleton3D" parent="AM_PlayerIdle/CM_Skeleton_Skeleton_Rig" index="0"]
-bones/0/position = Vector3(0.0362788, -0.0449656, -0.884314)
-bones/0/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
-bones/1/position = Vector3(0.319509, -0.00802994, -0.074874)
-bones/1/rotation = Quaternion(0.00869061, -0.0461912, 0.0128218, 0.998813)
-bones/2/position = Vector3(0.233662, 0.0029033, -0.0057029)
-bones/2/rotation = Quaternion(-0.0591665, -0.0457459, -0.0231961, 0.99693)
-bones/3/position = Vector3(0.165014, -0.019711, -0.00255625)
-bones/3/rotation = Quaternion(0.207125, 0.114513, -0.602643, 0.762107)
-bones/4/rotation = Quaternion(-0.682113, -0.554318, 0.244654, 0.409387)
-bones/5/position = Vector3(0.143651, 0.061292, 0.0215649)
-bones/5/rotation = Quaternion(0.427154, 0.572194, -0.346232, 0.608488)
-bones/6/position = Vector3(0.123913, 0.0572748, 0.0271245)
-bones/6/rotation = Quaternion(-0.727372, 0.686089, -0.0122787, 0.00787178)
-bones/7/position = Vector3(-0.236141, 0.034783, 0.00983932)
-bones/7/rotation = Quaternion(-0.00792067, -0.0418817, -0.0428791, 0.998171)
-bones/8/rotation = Quaternion(-0.159153, -0.530748, -0.22921, 0.800275)
-bones/9/position = Vector3(-0.374206, -0.0114492, 0.00196646)
-bones/9/rotation = Quaternion(-0.284825, -0.476815, -0.207718, 0.805218)
-bones/34/position = Vector3(0.0610364, -0.00326333, -0.0148743)
-bones/34/rotation = Quaternion(-0.317945, -0.266093, -0.327234, 0.849131)
-bones/35/rotation = Quaternion(-0.0949984, 0.000265664, -0.543428, 0.834063)
-bones/37/rotation = Quaternion(0.00360987, -0.122561, -0.0247847, 0.992145)
-bones/38/rotation = Quaternion(-0.0316127, 0.201861, -0.161719, 0.965453)
-bones/39/rotation = Quaternion(-0.0253049, 0.113396, -0.129477, 0.984752)
-bones/42/rotation = Quaternion(-0.024656, -0.0307379, -0.0752479, 0.996386)
-bones/43/rotation = Quaternion(0.0166883, 0.0628965, -0.114572, 0.991281)
-bones/47/rotation = Quaternion(0.0073311, 0.0487598, -0.133743, 0.989789)
-bones/58/position = Vector3(0.0858468, -0.0118181, -0.0381915)
-bones/58/rotation = Quaternion(0.024178, -0.704489, 0.709195, 0.0123746)
-bones/60/rotation = Quaternion(0.0820594, 0.0372006, 0.995638, 0.0242347)
-bones/61/position = Vector3(-0.478747, -0.00404697, -0.00603678)
-bones/61/rotation = Quaternion(0.996607, 0.0764959, -0.0299608, 0.00498311)
-bones/63/position = Vector3(-0.00653796, 0.0231914, 0.00260086)
-bones/63/rotation = Quaternion(-0.147232, -0.00688514, 0.550357, 0.821817)
-bones/64/position = Vector3(-0.123312, -0.0236598, -0.000990495)
-bones/64/rotation = Quaternion(0.0959915, 0.0533107, 0.257295, 0.960075)
-bones/65/position = Vector3(-0.110312, -0.00394684, -0.00200775)
-bones/65/rotation = Quaternion(-0.117075, 0.718233, 0.176432, 0.662802)
-bones/66/position = Vector3(0.0150343, 0.0322288, 0.111253)
-bones/66/rotation = Quaternion(-0.0469978, -0.0505992, 0.0161562, 0.997482)
-bones/67/position = Vector3(0.500023, -0.00101098, 0.0224481)
-bones/67/rotation = Quaternion(0.989408, 0.0638629, -0.0174581, -0.129183)
-bones/69/position = Vector3(0.0185131, -0.000378305, 0.00265503)
-bones/69/rotation = Quaternion(-0.0211054, 0.0562338, 0.629425, 0.774736)
-bones/70/rotation = Quaternion(0.0141726, -0.00219191, 0.0559492, 0.998331)
-bones/71/position = Vector3(0.117643, 0.00740073, -0.0061207)
-bones/71/rotation = Quaternion(-0.066075, 0.753479, 0.0826947, 0.648896)
-
-[node name="P_Shield" parent="AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="0"]
-transform = Transform3D(-0.26188, -0.477811, -0.182745, -0.328507, 0.314448, -0.351405, 0.39215, -0.0556689, -0.416412, -0.243349, 0.504711, -1.43917)
-
-[node name="P_Shield" parent="AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Shield" index="0"]
-surface_material_override/0 = ExtResource("3_yeb8m")
-
-[node name="P_Sword" parent="AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.722505, 0.978542, 0.086892, -0.539019, 0.485046, -0.980458, -0.821312, 0.542489, 0.719903, 0.334823, 0.455588, -1.14244)
-
-[node name="P_Sword" parent="AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Sword" index="0"]
-surface_material_override/0 = ExtResource("5_i507g")
-
-[node name="CM_Skeleton_Skeleton_Mesh_Combined_pasted__pasted__pCube166" parent="AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="2"]
-surface_material_override/0 = ExtResource("3_jwemy")
-
-[node name="AnimationPlayer" parent="AM_PlayerIdle" index="1"]
-libraries = {
-"PlayerAttack": ExtResource("6_givst"),
-"PlayerBlock": ExtResource("7_wrbvp"),
-"PlayerDamaged": ExtResource("8_nqn1l"),
-"PlayerDeath": ExtResource("9_nmdub"),
-"PlayerIdle": ExtResource("10_jgubd")
-}
-autoplay = "PlayerIdle/Idle"
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
 process_mode = 1
@@ -418,15 +333,13 @@ shape = SubResource("CapsuleShape3D_ur0qq")
 
 [node name="PlayerModel" type="MeshInstance3D" parent="."]
 process_mode = 1
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0118192, 0.11158)
-visible = false
-mesh = ExtResource("2_3xs3q")
-surface_material_override/0 = ExtResource("3_jwemy")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_vgxxl")
 
 [node name="PlayerHead" type="Node3D" parent="."]
 unique_name_in_owner = true
 process_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48145, -0.142122)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerHead"]
 unique_name_in_owner = true
@@ -445,7 +358,6 @@ collide_with_bodies = false
 
 [node name="ShieldHolder" type="Node3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-visible = false
 
 [node name="Shield" type="MeshInstance3D" parent="PlayerHead/ShieldHolder"]
 transform = Transform3D(0.493183, 0.513635, -0.702103, 0.706957, -0.706957, -0.0205934, -0.506935, -0.486201, -0.711777, -0.625, 0, -0.355)
@@ -456,7 +368,6 @@ script = ExtResource("3_bugux")
 [node name="WeaponHolder" type="Node3D" parent="PlayerHead"]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-visible = false
 
 [node name="Weapon" type="MeshInstance3D" parent="PlayerHead/WeaponHolder"]
 process_mode = 1
@@ -477,7 +388,7 @@ script = ExtResource("4_hiqmd")
 combat_controller = NodePath("../PlayerCombat")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.833547, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_gkum0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -494,8 +405,7 @@ script = ExtResource("3_lv7ac")
 attack_delay = 0.35
 attack_speed = 0.4
 
-[node name="InnerFire" type="Node" parent="."]
-unique_name_in_owner = true
+[node name="InnerFire" type="Node" parent="." groups=["Player"]]
 process_mode = 1
 script = ExtResource("4_yqfp7")
 
@@ -713,9 +623,8 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAirDetector"]
 shape = SubResource("BoxShape3D_qdbma")
 
-[node name="Shader" parent="." instance=ExtResource("18_cp1i3")]
-
 [connection signal="body_entered" from="PlayerHead/WeaponHolder/Weapon/Area3D" to="PlayerCombat" method="_on_area_3d_body_entered"]
+[connection signal="player_dies" from="InnerFire" to="UIController" method="_on_inner_fire_player_dies"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="UIController" method="_on_resume_pressed"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="UIController" method="_on_quit_pressed"]
 [connection signal="pressed" from="UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="UIController" method="_on_controls_pressed"]
@@ -727,6 +636,5 @@ shape = SubResource("BoxShape3D_qdbma")
 [connection signal="closed" from="UIController/Inventory" to="UIController" method="_on_inventory_closed"]
 [connection signal="opened" from="UIController/Inventory" to="UIController" method="_on_inventory_opened"]
 
-[editable path="AM_PlayerIdle"]
 [editable path="UIController/Menu"]
 [editable path="UIController/Inventory"]

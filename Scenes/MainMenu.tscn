@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://oedns07ol4yc"]
+[gd_scene load_steps=14 format=3 uid="uid://oedns07ol4yc"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_36k88"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_gbiat"]
@@ -6,10 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="3_5iol5"]
 [ext_resource type="PackedScene" uid="uid://c54fra6i3bswh" path="res://Props/Barrel.tscn" id="4_vmse7"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_njdd2"]
-[ext_resource type="PackedScene" uid="uid://cbq0vt8tvw5yf" path="res://Shader/CellShader.tscn" id="7_whgx2"]
-[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="8_u6rtx"]
-[ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="9_mu2pk"]
-[ext_resource type="Script" path="res://Scenes/Spiiiiiin.gd" id="10_ul3hu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nd5cw"]
 line_spacing = 30.0
@@ -174,9 +170,8 @@ scale = Vector2(1.4196, 1.81911)
 layout_mode = 2
 text = "WASD to move
 Space to jump
-Left click to attack
+Left click to attack/spawn fire
 Right click to block
-Middle Click to Spawn Fire
 I to open inventory
 E to loot items
 Esc for menu"
@@ -245,14 +240,6 @@ transform = Transform3D(0.0638182, 0.997962, 0, -0.997962, 0.0638182, 0, 0, 0, 1
 
 [node name="Box" parent="." instance=ExtResource("5_njdd2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88613, 0.494556, 10.2725)
-
-[node name="Shader" parent="." instance=ExtResource("7_whgx2")]
-
-[node name="Skeleton" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.331256, 0.0135708, 7.83517)
-material_override = ExtResource("8_u6rtx")
-mesh = ExtResource("9_mu2pk")
-script = ExtResource("10_ul3hu")
 
 [connection signal="pressed" from="CanvasLayer/ControlesRect/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlesRect/Dev Room" to="." method="_on_dev_room_pressed"]

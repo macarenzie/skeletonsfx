@@ -7,11 +7,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibs4v"]
 size = Vector3(1.63647, 1.28271, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u4sem"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ko51y"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [node name="Chest" type="StaticBody3D"]
-collision_layer = 3
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_shuxh")
@@ -35,7 +34,7 @@ isPermanant = true
 
 [node name="Sprite3D" parent="Pickup/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.69938, 0.00157499)
-texture = SubResource("ViewportTexture_u4sem")
+texture = SubResource("ViewportTexture_ko51y")
 
 [node name="PlayerModel" parent="Pickup/Area3D" index="2"]
 visible = false
