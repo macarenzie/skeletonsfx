@@ -1,7 +1,7 @@
 extends CharacterBody3D
 @onready var enemy_behavior = %EnemyBehavior
 
-@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@onready var navigation_agent_3d: NavigationAgent3D = %NavigationAgent3D
 @export var move_speed := 2.0
 
 

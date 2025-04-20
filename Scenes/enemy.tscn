@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://86tqqctnpter"]
+[gd_scene load_steps=32 format=3 uid="uid://86tqqctnpter"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="PackedScene" uid="uid://dgaow6besley2" path="res://Assets/Animations/Skeleton/Enemy/AM_EnemyIdle.glb" id="2_byatf"]
@@ -99,7 +99,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon/HitBox:enabled")
+tracks/2/path = NodePath("Weapon/WeaponHitBox:enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -163,7 +163,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon/HitBox:enabled")
+tracks/2/path = NodePath("Weapon/WeaponHitBox:enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -227,7 +227,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon/HitBox:enabled")
+tracks/2/path = NodePath("Weapon/WeaponHitBox:enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -330,7 +330,7 @@ bones/70/position = Vector3(0.117643, 0.00740073, -0.00612068)
 bones/70/rotation = Quaternion(-0.066075, 0.753479, 0.0826947, 0.648895)
 
 [node name="P_Mace" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="0"]
-transform = Transform3D(-0.431373, -0.797227, 0.165504, -0.774195, 0.343599, -0.362777, 0.252159, -0.308892, -0.83069, 0.294853, 0.178448, -0.457269)
+transform = Transform3D(-0.431373, -0.797227, 0.165503, -0.774194, 0.343599, -0.362777, 0.25216, -0.308892, -0.83069, 0.294853, 0.178448, -0.45727)
 
 [node name="P_Mace" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Mace" index="0"]
 surface_material_override/0 = ExtResource("3_2nqcl")
@@ -417,6 +417,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90745, 0)
 shape = SubResource("CapsuleShape3D_bshh7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
 path_desired_distance = 2.0
 path_height_offset = 0.25
 debug_enabled = true
@@ -464,8 +465,10 @@ show_percentage = false
 
 [node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0184426, 0.99983, 0, -0.99983, -0.0184426, -0.731, 1.29698, -0.952375)
+visible = false
 
-[node name="HitBox" type="ShapeCast3D" parent="Weapon"]
+[node name="WeaponHitBox" type="ShapeCast3D" parent="Weapon"]
+unique_name_in_owner = true
 transform = Transform3D(1, -2.98023e-08, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 enabled = false
 shape = SubResource("BoxShape3D_si27w")
@@ -486,9 +489,6 @@ libraries = {
 }
 autoplay = "idle"
 
-[connection signal="Attack_Player" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_attack_player"]
-[connection signal="Player_Detected" from="Model/Body/Head" to="." method="_on_head_player_detected"]
-[connection signal="Player_Detected" from="Model/Body/Head" to="EnemyBehavior" method="_on_head_player_detected"]
 [connection signal="Player_Detected" from="Model/Head" to="." method="_on_head_player_detected"]
 [connection signal="Player_Detected" from="Model/Head" to="EnemyBehavior" method="_on_head_player_detected"]
 

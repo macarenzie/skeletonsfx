@@ -2,8 +2,9 @@ extends Node
 
 @onready var enemy_detection = %Head
 @onready var enemy_pathfinding = $".."
-@onready var hit_box = $"../Weapon/HitBox"
+@onready var hit_box = %WeaponHitBox
 @onready var animation_player = $"../AnimationPlayer"
+
 
 
 @export var attacking_player := false
