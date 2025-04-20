@@ -18,6 +18,7 @@ mesh = ExtResource("2_efukp")
 
 [node name="StaticFlame" parent="." instance=ExtResource("3_gdex1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.346241, 0.815567, 0.0311003)
+lifetime = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0973758, 0.0188681, -0.00247192)

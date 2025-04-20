@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://b0vjx4r71tmx1"]
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dnpverq6fv4ux"]
 
 [ext_resource type="Texture2D" uid="uid://dnpifn2md0ji3" path="res://Assets/Materials/Textures/Floor/P_F_initialShadingGroup_Albedo.png" id="1_q82vl"]
 [ext_resource type="Texture2D" uid="uid://bduvc6lej2ddk" path="res://Assets/Materials/Textures/Floor/P_F_initialShadingGroup_AO.png" id="2_22i4b"]
@@ -17,3 +17,6 @@ ao_texture = ExtResource("2_22i4b")
 heightmap_enabled = true
 heightmap_scale = 1.0
 heightmap_texture = ExtResource("3_towl0")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
+uv1_world_triplanar = true

@@ -17,3 +17,6 @@ ao_texture = ExtResource("2_mmdhp")
 heightmap_enabled = true
 heightmap_scale = 1.0
 heightmap_texture = ExtResource("3_qs8cu")
+uv1_scale = Vector3(0.33, 0.33, 0.33)
+uv1_triplanar = true
+uv1_world_triplanar = true

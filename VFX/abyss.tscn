@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5bplr7v5l0gh"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tu8ax"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qp0x8"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_td4i1"]
+density = 8.0
+albedo = Color(0, 0, 0, 1)
+
+[node name="Abyss" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_tu8ax")
+surface_material_override/0 = SubResource("StandardMaterial3D_qp0x8")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(1, 1, 1)
+material = SubResource("FogMaterial_td4i1")

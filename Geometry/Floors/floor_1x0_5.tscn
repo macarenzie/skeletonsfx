@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bg65hsqf6do2u"]
 
-[ext_resource type="Material" uid="uid://b0vjx4r71tmx1" path="res://Assets/Materials/Geometry/cobble_floor_mat.tres" id="1_0gsr8"]
+[ext_resource type="Material" uid="uid://dnpverq6fv4ux" path="res://Assets/Materials/Geometry/cobble_floor_mat.tres" id="1_0gsr8"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_0qhqp"]
 [ext_resource type="ArrayMesh" uid="uid://b8qilifi18e8y" path="res://Assets/Models/Geometry/Floors/1x0_5.obj" id="2_qmgou"]
 

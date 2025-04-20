@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c454x8ju826gc"]
 
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_tq560"]
-[ext_resource type="Material" uid="uid://b0vjx4r71tmx1" path="res://Assets/Materials/Geometry/cobble_floor_mat.tres" id="2_sya8e"]
+[ext_resource type="Material" uid="uid://dnpverq6fv4ux" path="res://Assets/Materials/Geometry/cobble_floor_mat.tres" id="2_sya8e"]
 [ext_resource type="ArrayMesh" uid="uid://bp7lxrng1f418" path="res://Assets/Models/Geometry/Floors/2x2.obj" id="3_yo3lh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vvjtw"]
