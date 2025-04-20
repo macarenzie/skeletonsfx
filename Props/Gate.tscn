@@ -1,0 +1,124 @@
+[gd_scene load_steps=5 format=3 uid="uid://byjysf483irr"]
+
+[ext_resource type="Script" path="res://Props/Gate.gd" id="1_i5xu7"]
+[ext_resource type="Material" path="res://Assets/Materials/GB_Bars_Mat.tres" id="2_8kpy6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p62pf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ubqg"]
+size = Vector3(2.28705, 2.79199, 0.122803)
+
+[node name="Gate" type="StaticBody3D"]
+transform = Transform3D(1.885, 0, 0, 0, 1.885, 0, 0, 0, 1.885, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_i5xu7")
+
+[node name="Bars" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 0, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_8kpy6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, -0.12536, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 0.134979, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, -0.384311, 0, 0)
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_8kpy6")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, -0.509672, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, -0.249332, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, -0.629511, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, -0.888461, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, -1.01382, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, -0.753482, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 1.06063, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 0.801681, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 0.676321, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 0.936661, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 0.404973, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 0.279613, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Bars"]
+transform = Transform3D(-0.0500001, 0, 0, 0, 1.39752, 0, 0, 0, -0.0500001, 0.539952, 0, 0)
+material_override = ExtResource("2_8kpy6")
+mesh = SubResource("CylinderMesh_p62pf")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0282288, -0.000488281, 0.0032959)
+shape = SubResource("BoxShape3D_0ubqg")

@@ -1,13 +1,36 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=22 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
+[ext_resource type="Script" path="res://Scripts/Room Managers/L1_Manager.gd" id="1_tw7dh"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
+[ext_resource type="PackedScene" uid="uid://byjysf483irr" path="res://Props/Gate.tscn" id="2_06a27"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="2_p8fb7"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="3_fbhii"]
+[ext_resource type="Script" path="res://Scenes/Air.gd" id="4_2rlua"]
 [ext_resource type="PackedScene" uid="uid://86tqqctnpter" path="res://Scenes/enemy.tscn" id="4_cydpp"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
-[ext_resource type="Material" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
+[ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
+[ext_resource type="PackedScene" uid="uid://cponc45xl3euw" path="res://Props/Torch.tscn" id="10_bu4vf"]
+[ext_resource type="PackedScene" uid="uid://ics10igxbxyv" path="res://Props/death_plane.tscn" id="11_uj820"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wfu4"]
+size = Vector3(1, 2.55579, 0.916504)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w48xy"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
+size = Vector3(0.30542, 1.02698, 0.212189)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_67rnx"]
+size = Vector3(12.1844, 5.89551, 9.84729)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ieyax"]
+vertices = PackedVector3Array(-35.8888, 0.238704, -19.469, -35.8888, 0.238704, -6.96905, -24.6388, 0.238704, -6.96905, -24.6388, 0.238704, -19.469, -19.6388, 0.238704, 0.780951, -19.6388, 0.238704, 11.031, -5.38885, 0.238704, 11.031, -5.38885, 0.238704, 0.780951)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
+geometry_source_geometry_mode = 2
+geometry_source_group_name = &"Traversable"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i6jfr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,28 +45,8 @@ sky = SubResource("Sky_3frgm")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7cwaa"]
-viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ky74i"]
-viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
-size = Vector3(0.30542, 1.02698, 0.212189)
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_ieyax"]
-vertices = PackedVector3Array(-35.8888, 0.238704, -19.469, -35.8888, 0.238704, -6.96905, -24.6388, 0.238704, -6.96905, -24.6388, 0.238704, -19.469, -19.6388, 0.238704, 0.780951, -19.6388, 0.238704, 11.031, -5.38885, 0.238704, 11.031, -5.38885, 0.238704, 0.780951)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
-geometry_source_geometry_mode = 2
-geometry_source_group_name = &"Traversable"
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_uv2il"]
-viewport_path = NodePath("Sprite3D/SubViewport")
-
 [node name="Level 1" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ons5l")
+script = ExtResource("1_tw7dh")
 
 [node name="Geometry" type="Node3D" parent="."]
 
@@ -379,6 +382,41 @@ skeleton = NodePath("../..")
 transform = Transform3D(-7.64654e-09, 0, 0.26483, 0, 2.00827, 0, -0.174932, 0, -1.15761e-08, 3.37322, 2.9736, 1.44567)
 skeleton = NodePath("../..")
 
+[node name="Gates" type="Node3D" parent="Geometry"]
+
+[node name="Gate A" parent="Geometry/Gates" instance=ExtResource("2_06a27")]
+unique_name_in_owner = true
+transform = Transform3D(-8.2396e-08, 0, -1.885, 0, 1.885, 0, 1.885, 0, -8.2396e-08, 3.49762, 0.711339, -18.8547)
+
+[node name="Gate B1" parent="Geometry/Gates" instance=ExtResource("2_06a27")]
+unique_name_in_owner = true
+transform = Transform3D(1.885, 0, 0, 0, 1.885, 0, 0, 0, 1.885, -12.279, 0.709821, 0.478492)
+isOpen = true
+
+[node name="Gate B2" parent="Geometry/Gates" instance=ExtResource("2_06a27")]
+unique_name_in_owner = true
+transform = Transform3D(1.885, 0, 0, 0, 1.885, 0, 0, 0, 1.885, -12.279, 0.709821, 11.656)
+isOpen = true
+
+[node name="Gate C1" parent="Geometry/Gates" instance=ExtResource("2_06a27")]
+unique_name_in_owner = true
+transform = Transform3D(1.885, 0, 0, 0, 1.885, 0, 0, 0, 1.885, -30.3146, 1.53063, -6.7221)
+isOpen = true
+
+[node name="Gate C2" parent="Geometry/Gates" instance=ExtResource("2_06a27")]
+unique_name_in_owner = true
+transform = Transform3D(1.885, 0, 0, 0, 1.885, 0, 0, 0, 1.885, -30.3146, 1.53063, -19.8361)
+
+[node name="Air" type="StaticBody3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_2rlua")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Air"]
+transform = Transform3D(50.09, 0, 0, 0, -12.0463, 0, 0, 0, 50.09, -16.7897, 0.9277, 5.88228)
+shape = SubResource("BoxShape3D_0wfu4")
+
 [node name="Props" type="Node3D" parent="."]
 
 [node name="Box" parent="Props" instance=ExtResource("2_3t8e0")]
@@ -436,60 +474,150 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4246, 0.461538, -16.9667)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3357, 1.45887, 11.3554)
 
 [node name="Chest" parent="Props" instance=ExtResource("3_fbhii")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.228, -0.0388089, -14.6953)
 visible = false
 
-[node name="Sprite3D" parent="Props/Chest/Pickup/Area3D" index="1"]
-texture = SubResource("ViewportTexture_7cwaa")
-
-[node name="Player" parent="." instance=ExtResource("2_p8fb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
-
-[node name="Sword Pickup" parent="." instance=ExtResource("5_26ev8")]
+[node name="Sword Pickup" parent="Props" instance=ExtResource("5_26ev8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -21.6091)
 
-[node name="Area3D" parent="Sword Pickup" index="0"]
+[node name="Area3D" parent="Props/Sword Pickup" index="0"]
 storage = {
 0: [1, 32, 90]
 }
 
-[node name="Sprite3D" parent="Sword Pickup/Area3D" index="1"]
+[node name="Sprite3D" parent="Props/Sword Pickup/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.16763, 0.00157547)
-texture = SubResource("ViewportTexture_ky74i")
+texture = SubResource("ViewportTexture_w48xy")
 
-[node name="PlayerModel" parent="Sword Pickup/Area3D" index="2"]
+[node name="PlayerModel" parent="Props/Sword Pickup/Area3D" index="2"]
 visible = false
 
-[node name="Weapon" type="MeshInstance3D" parent="Sword Pickup"]
+[node name="Weapon" type="MeshInstance3D" parent="Props/Sword Pickup"]
 process_mode = 1
 transform = Transform3D(-0.991908, 0.117558, -0.0479577, 0.116476, 0.692223, -0.712219, -0.0505297, -0.712041, -0.700314, 0.00271076, 0.127508, 0.260683)
 mesh = ExtResource("6_a6e2v")
 surface_material_override/0 = ExtResource("7_kl3kh")
 
-[node name="Area3D" type="Area3D" parent="Sword Pickup/Weapon"]
+[node name="Area3D" type="Area3D" parent="Props/Sword Pickup/Weapon"]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sword Pickup/Weapon/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Sword Pickup/Weapon/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -3.9563e-11, -1.30285e-10, 1, 0.00378326, 0.474306, -0.00929293)
 shape = SubResource("BoxShape3D_5j4v6")
+
+[node name="Torches" type="Node3D" parent="Props"]
+
+[node name="Torch" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61916, 1.82506, -5.45585)
+
+[node name="Torch2" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61916, 1.82506, -10.2212)
+
+[node name="Torch10" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.773, 1.82506, 8.56777)
+
+[node name="Torch14" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.0724, 1.82506, 13.5827)
+
+[node name="Torch15" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.885, 1.82506, 13.5827)
+
+[node name="Torch16" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -21.7408, 1.82506, 11.7838)
+
+[node name="Torch11" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.773, 1.82506, 3.80242)
+
+[node name="Torch17" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.2892, 1.82506, -10.6748)
+
+[node name="Torch18" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.2892, 1.82506, -15.4402)
+
+[node name="Torch19" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.3729, 1.82506, -15.4402)
+
+[node name="Torch20" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24.3729, 1.82506, -10.6748)
+
+[node name="Torch6" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.996149, 1.82506, -24.1753)
+
+[node name="Torch5" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5384, 1.82506, -19.3822)
+
+[node name="Torch9" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3968, 1.82506, -19.3822)
+
+[node name="Torch3" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.39516, 1.82506, -10.2212)
+
+[node name="Torch8" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.8583, 1.82506, -19.4672)
+
+[node name="Torch7" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.13318, 1.82506, -19.9009)
+
+[node name="Torch4" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.39516, 1.82506, -5.45585)
+
+[node name="Torch12" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.97219, 1.82506, 3.79953)
+
+[node name="Torch13" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.97219, 1.82506, 8.56488)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy A" parent="Enemies" instance=ExtResource("4_cydpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.304, -0.0424425, 9.16856)
+
+[node name="Enemy B1" parent="Enemies" instance=ExtResource("4_cydpp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.411, -0.0388095, -15.3205)
+
+[node name="Enemy B2" parent="Enemies" instance=ExtResource("4_cydpp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.5168, -0.0814573, -15.7027)
+
+[node name="Triggers" type="Node3D" parent="."]
+
+[node name="Encounter_A" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2101, 0.457557, 6.94076)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/Encounter_A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123627, 2.44775, -0.288757)
+shape = SubResource("BoxShape3D_67rnx")
+
+[node name="Encounter_B" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5811, 0.457557, -12.0751)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/Encounter_B"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.812799, 2.43365, -0.572528)
+shape = SubResource("BoxShape3D_67rnx")
+
+[node name="Player" parent="." instance=ExtResource("2_p8fb7")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ieyax")
 
-[node name="Enemy" parent="." instance=ExtResource("4_cydpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.304, -0.0424425, 9.16856)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ons5l")
 
-[node name="Sprite3D" parent="Enemy" index="5"]
-texture = SubResource("ViewportTexture_uv2il")
+[node name="Death Plane" parent="." instance=ExtResource("11_uj820")]
+transform = Transform3D(90.5991, 0, 0, 0, 1, 0, 0, 0, 84.8345, -17.7105, -7.82556, -12.1622)
 
-[node name="Enemy2" parent="." instance=ExtResource("4_cydpp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.411, -0.0388095, -15.3205)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_cydpp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.5168, -0.0814573, -15.7027)
+[connection signal="tree_exited" from="Props/Sword Pickup/Weapon" to="." method="_on_weapon_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Enemy A" to="." method="_on_enemy_a_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Enemy B1" to="." method="_on_enemy_b_1_tree_exited"]
+[connection signal="tree_exited" from="Enemies/Enemy B2" to="." method="_on_enemy_b_2_tree_exited"]
+[connection signal="body_entered" from="Triggers/Encounter_A" to="." method="_on_encounter_a_body_entered"]
+[connection signal="body_entered" from="Triggers/Encounter_B" to="." method="_on_encounter_b_body_entered"]
 
 [editable path="Props/Box"]
-[editable path="Props/Chest"]
-[editable path="Props/Chest/Pickup"]
-[editable path="Sword Pickup"]
-[editable path="Enemy"]
+[editable path="Props/Sword Pickup"]

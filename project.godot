@@ -19,11 +19,19 @@ config/icon="res://icon.svg"
 
 Scheduler="*res://Scripts/Scheduler.gd"
 DataHandler="*res://Data/DataHandler.gd"
+Globals="*res://Scripts/Global/globals.gd"
 
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[file_customization]
+
+folder_colors={
+"res://Shader/": "orange",
+"res://VFX/": "orange"
+}
 
 [input]
 
