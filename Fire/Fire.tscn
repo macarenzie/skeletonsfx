@@ -32,12 +32,18 @@ transform = Transform3D(1, 0, 0, 0, 1.94, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_rkbin")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="FireFloorDetector" type="Area3D" parent="."]
 collision_layer = 7
-collision_mask = 3
+collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FireFloorDetector"]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
 shape = SubResource("BoxShape3D_5u28p")
 
-[node name="StaticFlame" parent="." instance=ExtResource("2_ndo1i")]
+[node name="FireSmall" parent="." instance=ExtResource("2_ndo1i")]
+
+[node name="FireMedium" parent="." instance=ExtResource("2_ndo1i")]
+visible = false
+
+[node name="FireLarge" parent="." instance=ExtResource("2_ndo1i")]
+visible = false
