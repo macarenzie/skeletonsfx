@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dxn1xe7fd1w1j" path="res://Geometry/Floors/floor_1x2.tscn" id="8_0lsig"]
 [ext_resource type="PackedScene" uid="uid://ceqvu2i5a5j8n" path="res://Geometry/Roof/roof_1x0_5.tscn" id="9_dqcrl"]
 [ext_resource type="PackedScene" uid="uid://cwwarm1pwnybw" path="res://Geometry/Walls/wall_3x3.tscn" id="9_kju6e"]
-[ext_resource type="PackedScene" uid="uid://cponc45xl3euw" path="res://Props/Torch.tscn" id="10_bu4vf"]
+[ext_resource type="PackedScene" uid="uid://daudtv7xnhq1b" path="res://Props/Torch.tscn" id="10_bu4vf"]
 [ext_resource type="PackedScene" uid="uid://crayk8pla32dg" path="res://Geometry/Roof/roof_0_5x0_5.tscn" id="10_ixteg"]
 [ext_resource type="PackedScene" uid="uid://lwx2rpnho8xf" path="res://Geometry/Walls/Misc/Inside Corners/icorner_3x2.tscn" id="10_kue4g"]
 [ext_resource type="PackedScene" uid="uid://b52557k3v885l" path="res://Geometry/Walls/wall_3x0_5.tscn" id="10_titw6"]
@@ -92,7 +92,7 @@ transform = Transform3D(16, 0, 0, 0, 2.75, 0, 0, 0, 18, -30, -2.875, 3)
 transform = Transform3D(-16, 2.40413e-07, 0, -1.39876e-06, -2.75, 0, 0, 0, 18, -30, 6, 3)
 
 [node name="Abyss" parent="Geometry" instance=ExtResource("2_ngf2h")]
-transform = Transform3D(15.5, 0, 0, 0, 2.86, 0, 0, 0, 11.5, -12.875, -3, -6.375)
+transform = Transform3D(15.5, 0, 0, 0, 2.86, 0, 0, 0, 11.5, -12.875, -3, -6.25)
 
 [node name="Abyss2" parent="Geometry" instance=ExtResource("2_ngf2h")]
 transform = Transform3D(-15.5, -2.62268e-07, 0, 1.35505e-06, -3, 0, 0, 0, 11.5, -12.75, 6, -6.25)

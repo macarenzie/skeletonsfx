@@ -134,14 +134,14 @@ func _process(delta: float) -> void:
 			return
 		#print(multipliers["nextFire"])
 		
-		for i in range( multipliers["nextFire"] + 1) :
+		for i in range( multipliers["nextFire"]) :
 				#var new_fire = load("res://Fire/Fire.tscn").instantiate()
 				#new_fire.global_position = position + Vector3(cos((2*PI/i)) *10 , 0, sin((2*PI/i)) *10)
 				#new_fire.sleeping = true
 				#get_parent().add_child(new_fire)
 				var new_fire = load("res://Fire/Fire.tscn").instantiate()
 				var angle = TAU * i / float( multipliers["nextFire"] + 1)
-				var offset = Vector3(cos(angle), 0, sin(angle)) * 5
+				var offset = Vector3(cos(angle), 0, sin(angle))
 				new_fire.global_position = global_position + offset + Vector3(0, new_fire.scale.y , 0)
 				#new_fire.sleeping = true
 				get_parent().add_child(new_fire)
