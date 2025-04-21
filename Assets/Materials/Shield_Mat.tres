@@ -1,18 +1,17 @@
-[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://ciifs4ls3fber"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dfv0g1r003kc4"]
 
-[ext_resource type="Texture2D" uid="uid://c2fadhaxroolk" path="res://Assets/Materials/Textures/Shield/P_Shield_initialShadingGroup_Albedo.png" id="1_gvntt"]
-[ext_resource type="Texture2D" uid="uid://b1g0mgcdnkcvq" path="res://Assets/Materials/Textures/Shield/P_Shield_initialShadingGroup_AO.png" id="2_0s7th"]
-[ext_resource type="Texture2D" uid="uid://bpl2j6t3g04bc" path="res://Assets/Materials/Textures/Shield/P_Shield_initialShadingGroup_Height.png" id="3_whd1t"]
-[ext_resource type="Texture2D" uid="uid://dyv3ynj422wy0" path="res://Assets/Materials/Textures/Shield/P_Shield_initialShadingGroup_Metallic.png" id="4_4ejwn"]
-[ext_resource type="Texture2D" uid="uid://cvq668vtl47m6" path="res://Assets/Materials/Textures/Shield/P_Shield_initialShadingGroup_Normal.png" id="5_p6ung"]
+[ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="1_1lygj"]
+[ext_resource type="Texture2D" uid="uid://dyv3ynj422wy0" path="res://Assets/Materials/Textures/Shield/P_Shield_initialShadingGroup_Metallic.png" id="2_njl0j"]
+[ext_resource type="Texture2D" uid="uid://cvq668vtl47m6" path="res://Assets/Materials/Textures/Shield/P_Shield_initialShadingGroup_Normal.png" id="3_ia4xl"]
+[ext_resource type="Texture2D" uid="uid://c2fadhaxroolk" path="res://Assets/Materials/Textures/Shield/P_Shield_initialShadingGroup_Albedo.png" id="4_b1deo"]
 
 [resource]
-albedo_texture = ExtResource("1_gvntt")
-metallic = 1.0
-metallic_texture = ExtResource("4_4ejwn")
-normal_enabled = true
-normal_texture = ExtResource("5_p6ung")
-ao_enabled = true
-ao_texture = ExtResource("2_0s7th")
-heightmap_enabled = true
-heightmap_texture = ExtResource("3_whd1t")
+render_priority = 0
+shader = ExtResource("1_1lygj")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+shader_parameter/Metallic = 0.0
+shader_parameter/Roughness = 1.0
+shader_parameter/Emissive_Intensity = 1.0
+shader_parameter/Texture2DParameter = ExtResource("4_b1deo")
+shader_parameter/MaskMap = ExtResource("2_njl0j")
+shader_parameter/Normal = ExtResource("3_ia4xl")

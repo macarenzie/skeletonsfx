@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dfpt1o8g8rngj"]
 
 [ext_resource type="ArrayMesh" uid="uid://vt5vow2kmqom" path="res://Assets/Models/P_Chest_Together.obj" id="1_shuxh"]
-[ext_resource type="Material" uid="uid://btamy7i543sx1" path="res://Assets/Materials/P_Chest_Mat.tres" id="2_s0k8i"]
+[ext_resource type="Material" uid="uid://crvkybdkraiio" path="res://Assets/Materials/P_Chest_Mat.tres" id="2_tu0qu"]
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="3_0cy18"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibs4v"]
@@ -15,9 +15,9 @@ collision_layer = 3
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_shuxh")
-surface_material_override/0 = ExtResource("2_s0k8i")
-surface_material_override/1 = ExtResource("2_s0k8i")
-surface_material_override/2 = ExtResource("2_s0k8i")
+surface_material_override/0 = ExtResource("2_tu0qu")
+surface_material_override/1 = ExtResource("2_tu0qu")
+surface_material_override/2 = ExtResource("2_tu0qu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000366211, 0.637244, 0)

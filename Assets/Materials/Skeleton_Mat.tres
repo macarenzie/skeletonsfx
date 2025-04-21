@@ -1,22 +1,19 @@
-[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://bi5bnxuxlhrjd"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bvwxaar5qs56v"]
 
-[ext_resource type="Texture2D" uid="uid://d217ycug2nm6g" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Albedo.png" id="1_v7f6y"]
-[ext_resource type="Texture2D" uid="uid://degq0yj0pt5e7" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_AO.png" id="2_tvnif"]
-[ext_resource type="Texture2D" uid="uid://cnuiqa2jaidcv" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Emissive.png" id="3_4jrew"]
-[ext_resource type="Texture2D" uid="uid://ceo3sge4enp5o" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Height.png" id="4_jjb4w"]
-[ext_resource type="Texture2D" uid="uid://da0b5rcetx4mh" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Metallic.png" id="5_ppkfo"]
-[ext_resource type="Texture2D" uid="uid://d2iyaoh10ytra" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Normal.png" id="6_ajwqi"]
+[ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="1_fksk8"]
+[ext_resource type="Texture2D" uid="uid://cnuiqa2jaidcv" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Emissive.png" id="2_ewjlm"]
+[ext_resource type="Texture2D" uid="uid://da0b5rcetx4mh" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Metallic.png" id="3_ex3fv"]
+[ext_resource type="Texture2D" uid="uid://d2iyaoh10ytra" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Normal.png" id="4_411k1"]
+[ext_resource type="Texture2D" uid="uid://d217ycug2nm6g" path="res://Assets/Materials/Textures/Skeleton/CM_Skeleton(1)_initialShadingGroup_Albedo.png" id="5_l7svu"]
 
 [resource]
-albedo_texture = ExtResource("1_v7f6y")
-metallic = 1.0
-metallic_texture = ExtResource("5_ppkfo")
-emission_enabled = true
-emission_texture = ExtResource("3_4jrew")
-normal_enabled = true
-normal_texture = ExtResource("6_ajwqi")
-ao_enabled = true
-ao_texture = ExtResource("2_tvnif")
-heightmap_enabled = true
-heightmap_scale = 0.886
-heightmap_texture = ExtResource("4_jjb4w")
+render_priority = 0
+shader = ExtResource("1_fksk8")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+shader_parameter/Metallic = 0.0
+shader_parameter/Roughness = 1.0
+shader_parameter/Emissive_Intensity = 1.0
+shader_parameter/Texture2DParameter = ExtResource("5_l7svu")
+shader_parameter/MaskMap = ExtResource("3_ex3fv")
+shader_parameter/EmissionMap = ExtResource("2_ewjlm")
+shader_parameter/Normal = ExtResource("4_411k1")

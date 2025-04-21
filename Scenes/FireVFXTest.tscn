@@ -1,21 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbrnc3akoikmo"]
+[gd_scene load_steps=17 format=3 uid="uid://bbrnc3akoikmo"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_gxt3e"]
 [ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="2_uirvp"]
 [ext_resource type="PackedScene" uid="uid://dlw2yigievwho" path="res://VFX/Fire_Medium.tscn" id="3_6gpvv"]
 [ext_resource type="PackedScene" uid="uid://c54fra6i3bswh" path="res://Props/Barrel.tscn" id="4_7bus1"]
 [ext_resource type="PackedScene" uid="uid://ky0mvp84vdvf" path="res://VFX/Fire_Large.tscn" id="5_cmt5s"]
+[ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="6_ynkde"]
+[ext_resource type="Material" uid="uid://cnysmqcqdj7di" path="res://Assets/Materials/P_Box_Mat.tres" id="7_ofyi2"]
+[ext_resource type="PackedScene" uid="uid://33mj4e2b1ksm" path="res://Props/Door.tscn" id="8_y85j1"]
+[ext_resource type="Material" uid="uid://dod5ylpv8a7ka" path="res://VFX/Burning.tres" id="9_boxtl"]
+[ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="9_jryuf"]
+[ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="10_sfsxi"]
+[ext_resource type="Texture2D" uid="uid://ki13e5d6aw8w" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Metallic.png" id="11_45422"]
+[ext_resource type="Texture2D" uid="uid://gbo6up3kmbeo" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Normal.png" id="12_k4fyo"]
+[ext_resource type="Texture2D" uid="uid://e7g277cabvv6" path="res://Assets/Materials/Textures/Door/P_Door_initialShadingGroup_Albedo.png" id="13_c6uf2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yo88g"]
+render_priority = 0
+next_pass = ExtResource("9_boxtl")
+shader = ExtResource("10_sfsxi")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+shader_parameter/Metallic = 1.0
+shader_parameter/Roughness = 1.0
+shader_parameter/Emissive_Intensity = 1.0
+shader_parameter/Texture2DParameter = ExtResource("13_c6uf2")
+shader_parameter/MaskMap = ExtResource("11_45422")
+shader_parameter/Normal = ExtResource("12_k4fyo")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vvra3"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [node name="FireVfxTest" type="Node3D"]
 
 [node name="gb_block" parent="." instance=ExtResource("1_gxt3e")]
-transform = Transform3D(0.230473, 0, 0, 0, 0.0763017, 0, 0, 0, 11.9851, -0.0455464, 0, -0.106682)
+transform = Transform3D(0.230473, 0, 0, 0, 0.0763017, 0, 0, 0, 11.9851, -0.186304, 0.00406593, -0.0954415)
 
 [node name="Camera3D" type="Camera3D" parent="gb_block"]
 transform = Transform3D(4.3389, 0, 0, 0, 13.1059, 0, 0, 0, 0.083437, 0, 7.08582, 0.171082)
 
 [node name="StaticFlame" parent="." instance=ExtResource("2_uirvp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36941, 1.10603, 1.74058)
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.45792, 0.888993, 0, -0.888993, 0.45792, 0, 2.87324, 0)
@@ -26,6 +51,34 @@ visible = false
 
 [node name="StaticFlame2" parent="." instance=ExtResource("3_6gpvv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38417, 0.613764, 0.0367365)
+visible = false
 
 [node name="StaticFlame3" parent="." instance=ExtResource("5_cmt5s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23615, 1.39548, -2.96258)
+visible = false
+
+[node name="Box" parent="." instance=ExtResource("6_ynkde")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259144, 0.64135, -0.735662)
+material_override = ExtResource("7_ofyi2")
+
+[node name="StaticBody3D" parent="." instance=ExtResource("8_y85j1")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 0, 0, 1)
+
+[node name="MeshInstance3D" parent="StaticBody3D" index="0"]
+material_override = SubResource("ShaderMaterial_yo88g")
+
+[node name="Chest" parent="." instance=ExtResource("9_jryuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="Mesh" parent="Chest" index="0"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" parent="Chest" index="1"]
+transform = Transform3D(-0.589041, 0, -0.808103, 0, 1, 0, 0.808103, 0, -0.589041, -0.000366211, 0.637244, 0)
+
+[node name="Sprite3D" parent="Chest/Pickup/Area3D" index="1"]
+texture = SubResource("ViewportTexture_vvra3")
+
+[editable path="StaticBody3D"]
+[editable path="Chest"]
+[editable path="Chest/Pickup"]
