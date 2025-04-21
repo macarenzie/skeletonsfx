@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxyemt3e2j4sp"]
+[gd_scene load_steps=7 format=3 uid="uid://dxyemt3e2j4sp"]
 
 [ext_resource type="Script" path="res://Fire/Fire.gd" id="1_n824t"]
+[ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="2_ndo1i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aui2j"]
 size = Vector3(1, 1.96, 1)
@@ -28,12 +29,21 @@ shape = SubResource("BoxShape3D_aui2j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.94, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_rkbin")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="FireFloorDetector" type="Area3D" parent="."]
 collision_layer = 7
-collision_mask = 3
+collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FireFloorDetector"]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
 shape = SubResource("BoxShape3D_5u28p")
+
+[node name="FireSmall" parent="." instance=ExtResource("2_ndo1i")]
+
+[node name="FireMedium" parent="." instance=ExtResource("2_ndo1i")]
+visible = false
+
+[node name="FireLarge" parent="." instance=ExtResource("2_ndo1i")]
+visible = false

@@ -668,6 +668,7 @@ draw_pass_1 = SubResource("QuadMesh_muapw")
 
 [node name="Smoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0462494, 0)
+visible = false
 material_override = SubResource("ShaderMaterial_6edrk")
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_u0e1a")
@@ -680,3 +681,7 @@ interp_to_end = 1.0
 trail_lifetime = 1.0
 process_material = SubResource("ParticleProcessMaterial_bs6h5")
 draw_pass_1 = SubResource("QuadMesh_wwnj1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.643137, 0.14902, 1)
+omni_range = 2.51954

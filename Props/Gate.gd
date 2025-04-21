@@ -3,6 +3,7 @@ extends StaticBody3D
 @export var isOpen:bool = false
 var isMoving = false
 var rest
+var speed = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,13 +20,13 @@ func _process(delta):
 	if isMoving:
 		if isOpen:
 			if position.y > rest - 5:
-				position.y -= 0.1
+				position.y -= speed
 			else:
 				isMoving = false
 				visible = false
 		else:
 			if position.y < rest:
-				position.y += 0.1
+				position.y += speed
 			else:
 				isMoving = false
 			

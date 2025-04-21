@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dypopn55b7efd"]
+
+[ext_resource type="Texture2D" uid="uid://ba1mfstvmyh7n" path="res://Assets/Materials/Textures/Torch/P_Torch_initialShadingGroup_Albedo.png" id="1_og5in"]
+[ext_resource type="Texture2D" uid="uid://cjnuenwe6h3tj" path="res://Assets/Materials/Textures/Torch/P_Torch_initialShadingGroup_AO.png" id="2_8hlvj"]
+[ext_resource type="Texture2D" uid="uid://c2jbmk63pps1b" path="res://Assets/Materials/Textures/Torch/P_Torch_initialShadingGroup_Height.png" id="3_iaqt5"]
+[ext_resource type="Texture2D" uid="uid://dcc6j1hbwonp5" path="res://Assets/Materials/Textures/Torch/P_Torch_initialShadingGroup_Metallic.png" id="4_tiorp"]
+[ext_resource type="Texture2D" uid="uid://qm827vtx7x84" path="res://Assets/Materials/Textures/Torch/P_Torch_initialShadingGroup_Normal.png" id="5_64f1e"]
+
+[resource]
+albedo_texture = ExtResource("1_og5in")
+metallic = 1.0
+metallic_texture = ExtResource("4_tiorp")
+normal_enabled = true
+normal_texture = ExtResource("5_64f1e")
+ao_enabled = true
+ao_texture = ExtResource("2_8hlvj")
+heightmap_enabled = true
+heightmap_scale = 0.505
+heightmap_texture = ExtResource("3_iaqt5")

@@ -17,6 +17,7 @@ var playerDead = false
 func _ready():
 	#close Inventory
 	inventory.close()
+	Globals.player_dies.connect(kill_player)
 	
 
 func _input(event):
@@ -109,7 +110,7 @@ func _on_controls_pressed():
 	playerUIPage2.visible = true
 
 
-func _on_inner_fire_player_dies():
+func kill_player():
 	pauseMenu.visible = true
 	playerUI.visible = false
 	playerUIGameOver.visible = true
