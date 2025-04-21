@@ -486,3 +486,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.72318, 0)
 amount = 48
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_trlph")
+
+[node name="OmniLight3D" parent="." index="2"]
+light_energy = 6.267
+light_indirect_energy = 5.472
+light_volumetric_fog_energy = 4.677
+omni_range = 4.125

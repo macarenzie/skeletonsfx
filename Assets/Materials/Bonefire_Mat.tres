@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c0p42t446dqf4"]
+
+[ext_resource type="Texture2D" uid="uid://u3gt3usdf1pl" path="res://Assets/Materials/Textures/Bonefire/Bonefire_initialShadingGroup_BaseColor.png" id="1_8ygq1"]
+[ext_resource type="Texture2D" uid="uid://cxh23i4tmdh5c" path="res://Assets/Materials/Textures/Bonefire/Bonefire_initialShadingGroup_Height.png" id="2_5uqd2"]
+[ext_resource type="Texture2D" uid="uid://fmakkrn03qca" path="res://Assets/Materials/Textures/Bonefire/Bonefire_initialShadingGroup_Metallic.png" id="3_4p082"]
+[ext_resource type="Texture2D" uid="uid://cmub504dyde2v" path="res://Assets/Materials/Textures/Bonefire/Bonefire_initialShadingGroup_Normal.png" id="4_r27i8"]
+[ext_resource type="Texture2D" uid="uid://e4ivtjf4kg1m" path="res://Assets/Materials/Textures/Bonefire/Bonefire_initialShadingGroup_Roughness.png" id="5_efhqn"]
+
+[resource]
+albedo_texture = ExtResource("1_8ygq1")
+metallic = 1.0
+metallic_texture = ExtResource("3_4p082")
+roughness_texture = ExtResource("5_efhqn")
+normal_enabled = true
+normal_texture = ExtResource("4_r27i8")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("2_5uqd2")

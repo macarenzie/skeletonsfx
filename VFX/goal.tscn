@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7lqmyagu30gi"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1gjlo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv5g7"]
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_8oeuv"]
+density = 8.0
+edge_fade = 0.627667
+
+[node name="Goal" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_1gjlo")
+surface_material_override/0 = SubResource("StandardMaterial3D_fv5g7")
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(1, 1, 1)
+material = SubResource("FogMaterial_8oeuv")

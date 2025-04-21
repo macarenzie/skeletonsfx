@@ -844,7 +844,7 @@ bones/70/rotation = Quaternion(-0.066075, 0.753479, 0.0826947, 0.648896)
 bones/70/scale = Vector3(1, 1, 1)
 
 [node name="P_Mace" type="BoneAttachment3D" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D"]
-transform = Transform3D(0.904956, 0.0990203, -0.142459, 0.113214, -0.910363, 0.0864071, -0.131461, -0.102365, -0.906247, 0.612998, 0.183906, -0.675261)
+transform = Transform3D(0.904956, 0.0990201, -0.142457, 0.113214, -0.910364, 0.0864081, -0.131459, -0.102366, -0.906247, 0.612996, 0.183905, -0.675261)
 bone_name = "P_Mace"
 bone_idx = 56
 

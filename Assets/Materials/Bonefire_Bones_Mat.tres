@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://coaqstcnthtkf"]
+
+[ext_resource type="Texture2D" uid="uid://k3q3xumlrlwx" path="res://Assets/Materials/Textures/Bonefire/BonesInFire_initialShadingGroup_BaseColor.png" id="1_ofqa4"]
+[ext_resource type="Texture2D" uid="uid://dnvsel477iwh" path="res://Assets/Materials/Textures/Bonefire/BonesInFire_initialShadingGroup_Height.png" id="2_mkkbw"]
+[ext_resource type="Texture2D" uid="uid://cyi4d2nmpu1yp" path="res://Assets/Materials/Textures/Bonefire/BonesInFire_initialShadingGroup_Metallic.png" id="3_bmvap"]
+[ext_resource type="Texture2D" uid="uid://cgp0nlhq5bt4f" path="res://Assets/Materials/Textures/Bonefire/BonesInFire_initialShadingGroup_Normal.png" id="4_3dl6x"]
+[ext_resource type="Texture2D" uid="uid://c73iqq8lu7ugs" path="res://Assets/Materials/Textures/Bonefire/BonesInFire_initialShadingGroup_Roughness.png" id="5_xoqoq"]
+
+[resource]
+albedo_texture = ExtResource("1_ofqa4")
+metallic = 1.0
+metallic_texture = ExtResource("3_bmvap")
+roughness_texture = ExtResource("5_xoqoq")
+normal_enabled = true
+normal_texture = ExtResource("4_3dl6x")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("2_mkkbw")
