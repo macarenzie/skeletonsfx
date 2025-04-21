@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://01m5b13q5rf5"]
+[gd_scene load_steps=7 format=3 uid="uid://01m5b13q5rf5"]
 
 [ext_resource type="Theme" uid="uid://fq3f5aqpe066" path="res://Assets/Themes/Button.tres" id="1_wok1l"]
 [ext_resource type="FontFile" uid="uid://b4vnrueaby676" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="2_3nyb2"]
+[ext_resource type="Texture2D" uid="uid://dic8hqwepeeqr" path="res://Assets/UI Assets/Playbutton UI.png" id="3_e3lb6"]
 [ext_resource type="FontFile" uid="uid://cgmmpik56qoat" path="res://Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf" id="3_fd8hq"]
+[ext_resource type="Texture2D" uid="uid://cr8gxk3l6atys" path="res://Assets/UI Assets/death ui.png" id="5_vq0rp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bppd5"]
+line_spacing = 0.0
 font = ExtResource("2_3nyb2")
-font_size = 60
+font_size = 48
 font_color = Color(0.882353, 0.545098, 0.290196, 1)
 
 [node name="Menu" type="Control"]
@@ -35,38 +38,71 @@ anchor_top = 0.395
 anchor_right = 0.757
 anchor_bottom = 0.605
 offset_left = 0.0639954
-offset_top = 35.04
+offset_top = 8.03999
 offset_right = -0.0640259
-offset_bottom = -35.04
+offset_bottom = 38.96
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Resume" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_wok1l")
 theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Resume"
+flat = true
 
-[node name="Quit" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_wok1l")
-theme_override_fonts/font = ExtResource("2_3nyb2")
-text = "Quit"
+[node name="PlaybuttonUi" type="Sprite2D" parent="ColorRect/MarginContainer/VBoxContainer/Resume"]
+z_index = -1
+position = Vector2(288, 12)
+scale = Vector2(0.0899263, 0.045068)
+texture = ExtResource("3_e3lb6")
 
 [node name="Controls" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_wok1l")
 theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Controls"
+flat = true
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="ColorRect/MarginContainer/VBoxContainer/Controls"]
+z_index = -1
+position = Vector2(288, 12)
+scale = Vector2(0.0899263, 0.045068)
+texture = ExtResource("3_e3lb6")
 
 [node name="DevRoom" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_wok1l")
 theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Main Menu"
+flat = true
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="ColorRect/MarginContainer/VBoxContainer/DevRoom"]
+z_index = -1
+position = Vector2(288, 12)
+scale = Vector2(0.0899263, 0.045068)
+texture = ExtResource("3_e3lb6")
+
+[node name="Quit" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+theme = ExtResource("1_wok1l")
+theme_override_fonts/font = ExtResource("2_3nyb2")
+text = "Quit"
+flat = true
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="ColorRect/MarginContainer/VBoxContainer/Quit"]
+z_index = -1
+position = Vector2(288, 12)
+scale = Vector2(0.0899263, 0.045068)
+texture = ExtResource("3_e3lb6")
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect"]
 visible = false
@@ -90,66 +126,105 @@ theme_override_colors/default_color = Color(0.996078, 0.898039, 0.666667, 1)
 theme_override_fonts/normal_font = ExtResource("3_fd8hq")
 text = "WASD to move
 Space to jump
-Left click to attack/spawn fire
+Left click to attack
 Right click to block
+Middle Click to Spawn Fire
 I to open inventory
 E to loot items
 Esc for menu"
 fit_content = true
 
 [node name="Back" type="Button" parent="ColorRect/MarginContainer2/RichTextLabel"]
+z_index = 1
 layout_mode = 2
-offset_left = 355.029
-offset_top = 7.14636
-offset_right = 947.029
-offset_bottom = 168.146
+offset_left = 409.27
+offset_top = 14.8424
+offset_right = 871.27
+offset_bottom = 175.842
 scale = Vector2(0.373718, 0.20174)
 theme = ExtResource("1_wok1l")
 theme_override_fonts/font = ExtResource("2_3nyb2")
 theme_override_font_sizes/font_size = 60
 text = "Back"
+flat = true
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="ColorRect/MarginContainer2/RichTextLabel/Back"]
+z_index = -1
+position = Vector2(239.753, 74.2046)
+scale = Vector2(0.120594, 0.223396)
+texture = ExtResource("3_e3lb6")
 
 [node name="Game Over" type="MarginContainer" parent="ColorRect"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.221
+anchor_left = 0.192
 anchor_top = 0.195
 anchor_right = 0.827
-anchor_bottom = 0.789
-offset_left = -18.592
-offset_top = 79.64
-offset_right = -11.704
-offset_bottom = -31.272
+anchor_bottom = 1.272
+offset_left = -7.18401
+offset_top = 131.64
+offset_right = -33.704
+offset_bottom = -243.256
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Game Over"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ColorRect/Game Over/VBoxContainer"]
+[node name="Label" type="Label" parent="ColorRect/Game Over"]
 layout_mode = 2
 text = "Game Over
 
 "
 label_settings = SubResource("LabelSettings_bppd5")
 horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Game Over"]
+layout_mode = 2
+theme_override_constants/separation = 31
+alignment = 2
 
 [node name="Restart" type="Button" parent="ColorRect/Game Over/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_wok1l")
 theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Restart"
+flat = true
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="ColorRect/Game Over/VBoxContainer/Restart"]
+z_index = -1
+position = Vector2(352, 12)
+scale = Vector2(0.121376, 0.045068)
+texture = ExtResource("3_e3lb6")
 
 [node name="MainMenu" type="Button" parent="ColorRect/Game Over/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_wok1l")
 theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Main Menu"
+flat = true
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="ColorRect/Game Over/VBoxContainer/MainMenu"]
+z_index = -1
+position = Vector2(352, 12)
+scale = Vector2(0.121, 0.045)
+texture = ExtResource("3_e3lb6")
 
 [node name="Quit" type="Button" parent="ColorRect/Game Over/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 theme = ExtResource("1_wok1l")
 theme_override_fonts/font = ExtResource("2_3nyb2")
 text = "Quit"
+flat = true
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="ColorRect/Game Over/VBoxContainer/Quit"]
+z_index = -1
+position = Vector2(352, 12)
+scale = Vector2(0.121, 0.045)
+texture = ExtResource("3_e3lb6")
+
+[node name="DeathUi" type="Sprite2D" parent="ColorRect/Game Over"]
+position = Vector2(354, -66)
+scale = Vector2(0.119902, 0.119902)
+texture = ExtResource("5_vq0rp")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=18 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="1_4kd8k"]
 [ext_resource type="Script" path="res://Scripts/Room Managers/L1_Manager.gd" id="1_tw7dh"]
@@ -12,14 +12,8 @@
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
 [ext_resource type="PackedScene" uid="uid://djbb56l5ga5uc" path="res://Props/death_plane.tscn" id="11_uj820"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w48xy"]
-viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
 size = Vector3(0.30542, 1.02698, 0.212189)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_gn6t7"]
-viewport_path = NodePath("Sprite3D/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_67rnx"]
 size = Vector3(12.1844, 5.89551, 9.84729)
@@ -476,7 +470,6 @@ storage = {
 
 [node name="Sprite3D" parent="Props/Sword Pickup/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.16763, 0.00157547)
-texture = SubResource("ViewportTexture_w48xy")
 
 [node name="PlayerModel" parent="Props/Sword Pickup/Area3D" index="2"]
 visible = false
@@ -498,9 +491,6 @@ shape = SubResource("BoxShape3D_5j4v6")
 
 [node name="Enemy A" parent="Enemies" instance=ExtResource("4_cydpp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.304, -0.0424425, 9.16856)
-
-[node name="Sprite3D" parent="Enemies/Enemy A" index="5"]
-texture = SubResource("ViewportTexture_gn6t7")
 
 [node name="Enemy B1" parent="Enemies" instance=ExtResource("4_cydpp")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.411, -0.0388095, -15.3205)

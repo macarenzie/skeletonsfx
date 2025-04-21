@@ -104,9 +104,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 154.0
-offset_top = -180.0
+offset_top = -193.0
 offset_right = -406.0
-offset_bottom = -19.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4196, 1.81911)
@@ -125,17 +125,23 @@ E to loot items
 Esc for menu"
 fit_content = true
 
+[node name="PlaybuttonUi" type="Sprite2D" parent="CanvasLayer/Menu/ColorRect/MarginContainer2/RichTextLabel"]
+position = Vector2(468.58, 31.4616)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
+
 [node name="Back" type="Button" parent="CanvasLayer/Menu/ColorRect/MarginContainer2/RichTextLabel"]
 layout_mode = 2
-offset_left = 355.029
-offset_top = 7.14636
-offset_right = 947.029
-offset_bottom = 168.146
+offset_left = 378.729
+offset_top = 18.6717
+offset_right = 845.729
+offset_bottom = 179.672
 scale = Vector2(0.373718, 0.20174)
 theme = ExtResource("3_f3woq")
 theme_override_fonts/font = ExtResource("2_f2caj")
 theme_override_font_sizes/font_size = 60
 text = "Back"
+flat = true
 
 [node name="ControlesRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = -1
@@ -147,7 +153,16 @@ offset_left = -18.504
 offset_top = 0.0879974
 offset_right = 29.928
 offset_bottom = 0.0880127
-color = Color(0.345098, 0.27451, 0.262745, 0.521569)
+color = Color(0.345098, 0.27451, 0.262745, 0)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ControlesRect"]
+visible = false
+layout_mode = 0
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 184.0
+offset_bottom = 247.0
+color = Color(0.996078, 0.898039, 0.666667, 0.439216)
 
 [node name="PlaybuttonUi" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
 position = Vector2(90, 28)
@@ -161,9 +176,9 @@ anchor_left = 0.104
 anchor_top = 0.041
 anchor_right = 0.875
 anchor_bottom = 0.206
-offset_left = -0.312007
-offset_top = 0.0370007
-offset_right = -6.10352e-05
+offset_left = -18.096
+offset_top = 0.0369997
+offset_right = 20.75
 offset_bottom = -0.0579987
 theme = ExtResource("3_f3woq")
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
@@ -176,6 +191,11 @@ theme_override_fonts/font = ExtResource("2_f2caj")
 text = "Start Game"
 flat = true
 
+[node name="PlaybuttonUi2" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
+position = Vector2(90, 88)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
+
 [node name="Dev Room" type="Button" parent="CanvasLayer/ControlesRect"]
 layout_mode = 1
 anchors_preset = -1
@@ -183,13 +203,19 @@ anchor_left = 0.102
 anchor_top = 0.288
 anchor_right = 0.875
 anchor_bottom = 0.453
-offset_left = -0.0560064
+offset_left = -17.748
 offset_top = 0.0160065
-offset_right = -6.10352e-05
-offset_bottom = -0.0789871
+offset_right = 20.75
+offset_bottom = -0.0790024
 theme = ExtResource("3_f3woq")
 theme_override_fonts/font = ExtResource("2_f2caj")
 text = "Dev Room"
+flat = true
+
+[node name="PlaybuttonUi3" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
+position = Vector2(90, 148)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
 
 [node name="Controles" type="Button" parent="CanvasLayer/ControlesRect"]
 layout_mode = 1
@@ -198,13 +224,19 @@ anchor_left = 0.104
 anchor_top = 0.535
 anchor_right = 0.875
 anchor_bottom = 0.7
-offset_left = -0.312007
-offset_top = -0.00498962
-offset_right = -6.10352e-05
+offset_left = -18.096
+offset_top = -0.00500488
+offset_right = 20.75
 offset_bottom = -0.0999908
 theme = ExtResource("3_f3woq")
 theme_override_fonts/font = ExtResource("2_f2caj")
 text = "Controles"
+flat = true
+
+[node name="PlaybuttonUi4" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
+position = Vector2(90, 208)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
 
 [node name="Quit" type="Button" parent="CanvasLayer/ControlesRect"]
 layout_mode = 1
@@ -213,13 +245,14 @@ anchor_left = 0.117
 anchor_top = 0.782
 anchor_right = 0.875
 anchor_bottom = 0.947
-offset_left = -1.97601
-offset_top = -0.0259857
-offset_right = -6.10352e-05
-offset_bottom = -0.120972
+offset_left = -20.358
+offset_top = -0.026001
+offset_right = 20.75
+offset_bottom = -0.121002
 theme = ExtResource("3_f3woq")
 theme_override_fonts/font = ExtResource("2_f2caj")
 text = "Quit"
+flat = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8437, 1.44916, 4.09305)

@@ -614,7 +614,7 @@ func update_stat_UI():
 	#Fire Values
 	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Max Fire/Number".text = str(player_fire.maxInnerFire)
 	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire/Number".text = str(roundf(player_fire.innerFire))
-	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate/Number".text = str(0.028 - player_fire.fireRegen)
+	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate/Number".text = str((0.028 - player_fire.fireRegen) * -1) + " Fire/Tick"
 	
 	#Weapon Values 
 	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Damage/Number".text = str(roundf(player_combat.attack_damage /10) )

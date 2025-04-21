@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=18 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
 [ext_resource type="PackedScene" uid="uid://cybr83rnnlyul" path="res://Scenes/target_dummy.tscn" id="2_2re6m"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="9_4y1dm"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="9_fd2ay"]
 [ext_resource type="PackedScene" uid="uid://dlw2yigievwho" path="res://VFX/Fire_Medium.tscn" id="10_l6si3"]
-[ext_resource type="PackedScene" uid="uid://33mj4e2b1ksm" path="res://Props/Door.tscn" id="11_dwo0m"]
+[ext_resource type="PackedScene" path="res://Props/Door.tscn" id="11_dwo0m"]
 [ext_resource type="PackedScene" uid="uid://ky0mvp84vdvf" path="res://VFX/Fire_Large.tscn" id="11_xkdmb"]
 [ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="12_n2obh"]
 [ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="13_21dio"]
@@ -28,9 +28,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ka87u"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_n0d3a"]
-viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [node name="World" type="Node"]
 process_mode = 3
@@ -96,9 +93,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.535, 0, -5.93963)
 
 [node name="Chest" parent="." instance=ExtResource("9_fd2ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1252, 0, 6.67332)
-
-[node name="Sprite3D" parent="Chest/Pickup/Area3D" index="1"]
-texture = SubResource("ViewportTexture_n0d3a")
 
 [node name="StaticFlame" parent="." instance=ExtResource("9_4y1dm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8986, 0.478946, 5.03084)

@@ -33,7 +33,7 @@
 	},
 	"3": {
 		"ItemID": "3",
-		"Name": "textIsALie",
+		"Name": "Item2Old",
 		"Grid": "0,0/0,1/-1,0",
 		"Slot": "mainhand",
 		"Damage": "250",
