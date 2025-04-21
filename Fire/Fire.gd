@@ -18,6 +18,7 @@ var max_size: float
 var current_time: float = 0.0
 var lifetime: float = 4.0  # Increased base lifetime in seconds
 var multipliers
+var floor_material
 
 func _ready() -> void:
 	
@@ -41,7 +42,7 @@ func _ready() -> void:
 	
 	var result = space_state.intersect_shape(query)
 	if result.size() > 0:
-		var floor_material = "stone"  # Default to stone
+		floor_material = "stone"  # Default to stone
 		for hit in result:
 			if hit.collider.has_method("get_material"):
 				floor_material = hit.collider.get_material()
@@ -71,6 +72,7 @@ func _on_body_exited(body: Node3D) -> void:
 		overlapping_bodies.erase(body)
 
 func _process(delta: float) -> void:
+	
 	# Handle damage to destructible props
 	damage_accumulator += damage_per_second * delta
 	if damage_accumulator >= 1.0:
@@ -134,14 +136,14 @@ func _process(delta: float) -> void:
 			return
 		#print(multipliers["nextFire"])
 		
-		for i in range( multipliers["nextFire"] + 1) :
+		for i in range( multipliers["nextFire"] ) :
 				#var new_fire = load("res://Fire/Fire.tscn").instantiate()
 				#new_fire.global_position = position + Vector3(cos((2*PI/i)) *10 , 0, sin((2*PI/i)) *10)
 				#new_fire.sleeping = true
 				#get_parent().add_child(new_fire)
 				var new_fire = load("res://Fire/Fire.tscn").instantiate()
 				var angle = TAU * i / float( multipliers["nextFire"] + 1)
-				var offset = Vector3(cos(angle), 0, sin(angle)) * 5
+				var offset = Vector3(cos(angle), 0, sin(angle)) 
 				new_fire.global_position = global_position + offset + Vector3(0, new_fire.scale.y , 0)
 				#new_fire.sleeping = true
 				get_parent().add_child(new_fire)

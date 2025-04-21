@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="PackedScene" uid="uid://dgaow6besley2" path="res://Assets/Animations/Skeleton/Enemy/AM_EnemyIdle.glb" id="2_byatf"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
-[ext_resource type="Material" uid="uid://kb4xg02en0e5" path="res://Assets/Materials/Mace_Mat.tres" id="3_2nqcl"]
+[ext_resource type="Material" path="res://Assets/Materials/Mace_Mat.tres" id="3_2nqcl"]
 [ext_resource type="Script" path="res://Scripts/EnemyBehavior.gd" id="3_loj3b"]
 [ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="4_cw11r"]
 [ext_resource type="Script" path="res://Scenes/Dummy.gd" id="4_vqdun"]
@@ -116,7 +116,7 @@ bones/70/position = Vector3(0.117643, 0.00740073, -0.00612068)
 bones/70/rotation = Quaternion(-0.066075, 0.753479, 0.0826947, 0.648895)
 
 [node name="P_Mace" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="0"]
-transform = Transform3D(-0.431373, -0.797227, 0.165504, -0.774195, 0.343599, -0.362777, 0.252159, -0.308892, -0.83069, 0.294853, 0.178448, -0.457269)
+transform = Transform3D(-0.431373, -0.797227, 0.165503, -0.774194, 0.343599, -0.362777, 0.25216, -0.308892, -0.83069, 0.294853, 0.178448, -0.45727)
 
 [node name="P_Mace" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Mace" index="0"]
 surface_material_override/0 = ExtResource("3_2nqcl")

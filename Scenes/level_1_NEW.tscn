@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
-[ext_resource type="PackedScene" uid="uid://cponc45xl3euw" path="res://Props/Torch.tscn" id="10_bu4vf"]
+[ext_resource type="PackedScene" uid="uid://daudtv7xnhq1b" path="res://Props/Torch.tscn" id="10_bu4vf"]
 [ext_resource type="PackedScene" uid="uid://ics10igxbxyv" path="res://Props/death_plane.tscn" id="11_uj820"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfu4"]
@@ -55,9 +55,10 @@ script = ExtResource("1_tw7dh")
 [node name="gb_block" parent="Geometry/Floors" instance=ExtResource("1_4kd8k")]
 transform = Transform3D(0.148694, 0, 0, 0, 0.322951, 0, 0, 0, 8.99785, -0.21677, -0.523236, 1.52306)
 skeleton = NodePath("../..")
+material = "wood"
 
 [node name="gb_block13" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("1_4kd8k")]
-transform = Transform3D(0.304018, 0, 0, 0, 0.322951, 0, 0, 0, 11.1431, -12.3732, -0.526869, 6.0821)
+transform = Transform3D(0.304004, -0.00190257, 0.0860008, 0.00182748, 0.322906, -0.173842, -0.00231809, 0.00505306, 11.1414, -12.3732, -0.526869, 6.0821)
 skeleton = NodePath("../..")
 
 [node name="gb_block22" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("1_4kd8k")]
