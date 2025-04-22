@@ -9,7 +9,7 @@ extends Node
 var can_see_player := false
 
 var attack_landed := false
-var damage := 50.0
+@export var damage := 50.0
 
 #awareness is the value from 0-100
 #the increase and decrease rate is the rate at which the awareness value increases or decreases in seconds
