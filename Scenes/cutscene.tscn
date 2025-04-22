@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://c83bqxi51qsx0"]
+[gd_scene load_steps=19 format=3 uid="uid://c83bqxi51qsx0"]
 
 [ext_resource type="Script" path="res://Scripts/cutscene.gd" id="1_q1osx"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="2_yqt4r"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="3_qa1ex"]
 [ext_resource type="PackedScene" uid="uid://cbq0vt8tvw5yf" path="res://Shader/CellShader.tscn" id="4_md6lx"]
+[ext_resource type="FontFile" uid="uid://b4vnrueaby676" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="4_ph7n0"]
 [ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="5_kg2lc"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0v624"]
@@ -53,10 +54,10 @@ tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.968627, 0.392157, 0.172549, 0), Color(0.866667, 0.494118, 0.0666667, 0.643137), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866645, 0.493271, 0.0659541, 1), Color(0.968627, 0.392157, 0.172549, 1)]
+"values": [Color(0.152941, 0.101961, 0.0705882, 0.752941), Color(0.968627, 0.392157, 0.172549, 0), Color(0.866667, 0.494118, 0.0666667, 0.643137), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866645, 0.493271, 0.0659541, 1), Color(0.968627, 0.392157, 0.172549, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -68,7 +69,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -116,41 +117,158 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(6, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.898039, 0.666667, 0), Color(0.996078, 0.898039, 0.666667, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cweim"]
+resource_name = "Start_1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.152941, 0.101961, 0.0705882, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.898039, 0.666667, 0), Color(0.996078, 0.898039, 0.666667, 0.701961)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Press Q to Absorb Fire"]
+}
+
+[sub_resource type="Animation" id="Animation_8ewfb"]
+resource_name = "Start_2"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.152941, 0.101961, 0.0705882, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.898039, 0.666667, 0.701961), Color(0.996078, 0.898039, 0.666667, 1), Color(0.996078, 0.898039, 0.666667, 0.701961)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Press Q to Absorb Fire"]
+}
+
+[sub_resource type="Animation" id="Animation_0xv84"]
+resource_name = "Start_3"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.152941, 0.101961, 0.0705882, 1), Color(0.152941, 0.101961, 0.0705882, 1), Color(0.152941, 0.101961, 0.0705882, 0.752941)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.898039, 0.666667, 0.701961), Color(0.996078, 0.898039, 0.666667, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Press Q to Absorb Fire"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jkw1n"]
 _data = {
 "RESET": SubResource("Animation_2ahit"),
+"Start_1": SubResource("Animation_cweim"),
+"Start_2": SubResource("Animation_8ewfb"),
+"Start_3": SubResource("Animation_0xv84"),
 "camera_animation": SubResource("Animation_rnh1g")
 }
 
-[sub_resource type="FontFile" id="FontFile_pk6th"]
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mqmcc"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_gybxa"]
-font_size = 50
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_q1osx")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8437, 1.44916, -21.0777)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8437, 1.44916, 40.5111)
 attributes = SubResource("CameraAttributesPractical_0v624")
 current = true
 far = 13.29
@@ -302,21 +420,19 @@ mesh = SubResource("BoxMesh_wykgn")
 libraries = {
 "": SubResource("AnimationLibrary_jkw1n")
 }
+autoplay = "Start_1"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.968627, 0.392157, 0.172549, 0)
+color = Color(0.968627, 0.392157, 0.172549, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
 anchors_preset = -1
 anchor_top = 0.447
 anchor_right = 1.0
@@ -326,12 +442,11 @@ offset_bottom = 0.155975
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = SubResource("FontFile_pk6th")
-theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("4_ph7n0")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mqmcc")
-text = "Press Escape to skip"
-label_settings = SubResource("LabelSettings_gybxa")
+text = "Now Arise "
 horizontal_alignment = 1
 vertical_alignment = 1
 

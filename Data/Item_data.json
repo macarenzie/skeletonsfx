@@ -35,16 +35,16 @@
 		"ItemID": "3",
 		"Name": "Item2Old",
 		"Grid": "0,0/0,1/-1,0",
-		"Slot": "mainhand",
-		"Damage": "250",
+		"Slot": "other",
+		"Damage": "100",
 		"Speed": "0.1",
 		"Delay": "0.4",
 		"block_startup": "0.0",
 		"block_endlag": "5.0",
 		"block_damage_reduction": "0.0",
 		"block_angle": "0.0",
-		"maxInnerFire": "-25.0",
-		"fireRegen": "-1.0"
+		"maxInnerFire": "50.0",
+		"fireRegen": "-0.01"
 
 	}
 }
