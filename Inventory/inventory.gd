@@ -38,7 +38,7 @@ var weaponRange = 0
 #controll looting
 var in_range = false
 #var 
-@export var number_of_slots = 100
+@export var number_of_slots = 48
 
 var enemy_item_data := {}
 var loaded_enemy_item_data := {}
@@ -54,7 +54,6 @@ var slot_2 = []
 
 @onready var item_slot_3 = $"equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer/Item_Slot3"
 var slot_3 = []
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -152,7 +151,7 @@ func spawn_item(item:int, slot:int, itemRotate:int):
 		item_held.rotate_item()
 		clear_grid()
 	
-	if slot > -1:
+	if slot > -1 and slot < number_of_slots +1:
 		set_desired_slot(slot)
 
 #Used to place the item
@@ -287,7 +286,7 @@ func set_grids(a_slot):
 func kill_out_of_place_items():
 	var children = get_children()  
 	for child in children:
-		if child.get_index() > 3:
+		if child.get_index() > 4:
 			child.queue_free()
 			item_held = null
 
@@ -615,10 +614,10 @@ func update_stat_UI():
 	#Fire Values
 	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Max Fire/Number".text = str(player_fire.maxInnerFire)
 	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire/Number".text = str(roundf(player_fire.innerFire))
-	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate/Number".text = str(0.028 - player_fire.fireRegen)
+	$"Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate/Number".text = str((0.028 - player_fire.fireRegen) * -1) + " Fire/Tick"
 	
 	#Weapon Values 
-	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Damage/Number".text = str(player_combat.attack_damage)
+	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Damage/Number".text = str(roundf(player_combat.attack_damage /10) )
 	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed/Number".text = str(player_combat.attack_speed)
 	$"Player Stats/HBoxContainer/weapon/VBoxContainer/Reach/Number".text = str(weaponRange)
 

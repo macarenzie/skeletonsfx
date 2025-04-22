@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://h3oed28gj68k"]
+[gd_scene load_steps=9 format=3 uid="uid://h3oed28gj68k"]
 
 [ext_resource type="Script" path="res://Inventory/inventory.gd" id="1_83hh5"]
 [ext_resource type="Texture2D" uid="uid://cqom8qybks2m6" path="res://Assets/UI Assets/inventory_texture.png" id="2_7ey3k"]
 [ext_resource type="Texture2D" uid="uid://jtl846m6ulp0" path="res://Assets/UI Assets/equipment_texture_main.png" id="2_gpcx8"]
 [ext_resource type="Texture2D" uid="uid://cegt8bfddajci" path="res://Assets/UI Assets/equipment_texture_off.png" id="3_ttagu"]
+[ext_resource type="Texture2D" uid="uid://btd0u78nqkiuf" path="res://Assets/UI Assets/Inventory_UI.png" id="5_pma1j"]
+[ext_resource type="FontFile" uid="uid://b4vnrueaby676" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="6_e04hc"]
+[ext_resource type="FontFile" uid="uid://cgmmpik56qoat" path="res://Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf" id="7_i2kss"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_drogs"]
 font_size = 20
+font_color = Color(0.996078, 0.898039, 0.666667, 1)
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -17,11 +21,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_83hh5")
 
+[node name="InventoryUi" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(272.746, 316)
+scale = Vector2(0.147702, 0.1196)
+texture = ExtResource("5_pma1j")
+
+[node name="ColorRect" type="ColorRect" parent="InventoryUi"]
+z_index = -1
+offset_left = -1853.0
+offset_top = -2651.0
+offset_right = -1577.0
+offset_bottom = -2484.0
+scale = Vector2(28.3218, 32.6093)
+color = Color(0.162066, 0.162066, 0.162066, 0.74902)
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 594.0
-offset_bottom = 648.0
-color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+offset_left = 145.0
+offset_top = 141.0
+offset_right = 399.0
+offset_bottom = 457.0
+color = Color(0.152941, 0.101961, 0.0705882, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1
@@ -35,6 +56,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Header" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
@@ -52,15 +74,15 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-columns = 10
+columns = 6
 
 [node name="EnemyGrid" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 609.0
-offset_top = 1.0
-offset_right = 1203.0
-offset_bottom = 649.0
-color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+offset_left = 707.0
+offset_top = 77.0
+offset_right = 1023.0
+offset_bottom = 557.0
+color = Color(0.152941, 0.101961, 0.0705882, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="EnemyGrid"]
 layout_mode = 1
@@ -78,6 +100,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
 [node name="Button_Spawn" type="Button" parent="EnemyGrid/MarginContainer/VBoxContainer/Header"]
+visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -91,16 +114,16 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-columns = 10
+columns = 6
 
 [node name="equipment Slots" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 664.0
-offset_right = 606.0
-offset_bottom = 1312.0
-scale = Vector2(0.347315, 0.326641)
-color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+offset_left = 211.0
+offset_top = 97.0
+offset_right = 1112.0
+offset_bottom = 397.0
+scale = Vector2(0.130955, 0.123159)
+color = Color(0.0980392, 0.0980392, 0.0980392, 0)
 
 [node name="MarginContainer" type="MarginContainer" parent="equipment Slots"]
 layout_mode = 1
@@ -121,7 +144,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-columns = 2
+columns = 3
 
 [node name="Item_Slot" type="Button" parent="equipment Slots/MarginContainer/VBoxContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(300, 300)
@@ -152,22 +175,24 @@ expand_icon = true
 
 [node name="Player Stats" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 242.0
-offset_top = 659.0
-offset_right = 1159.0
-offset_bottom = 876.0
-color = Color(0.10748, 0.10748, 0.10748, 1)
+offset_left = 65.0
+offset_top = 438.0
+offset_right = 910.0
+offset_bottom = 655.0
+scale = Vector2(0.500764, 0.516727)
+color = Color(0.105882, 0.105882, 0.105882, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Player Stats"]
 layout_mode = 0
 offset_left = 2.0
-offset_right = 860.0
+offset_right = 775.0
 offset_bottom = 124.0
 theme_override_constants/separation = 150
 alignment = 1
 
 [node name="Fire" type="Label" parent="Player Stats/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_e04hc")
 text = "Fire Stats:"
 label_settings = SubResource("LabelSettings_drogs")
 
@@ -180,6 +205,8 @@ offset_bottom = 229.0
 
 [node name="Max Fire" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Max Fire: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer/Max Fire"]
@@ -187,10 +214,14 @@ layout_mode = 0
 offset_left = 85.0
 offset_right = 125.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="Current Fire" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Current Fire: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer/Current Fire"]
@@ -198,10 +229,14 @@ layout_mode = 0
 offset_left = 109.0
 offset_right = 149.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="Burn Rate" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Burn Rate: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/Fire/VBoxContainer/Burn Rate"]
@@ -209,10 +244,13 @@ layout_mode = 0
 offset_left = 96.0
 offset_right = 136.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="weapon" type="Label" parent="Player Stats/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_e04hc")
 text = "Weapon Stats:"
 label_settings = SubResource("LabelSettings_drogs")
 
@@ -225,6 +263,8 @@ offset_bottom = 229.0
 
 [node name="Damage" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Damage: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer/Damage"]
@@ -232,10 +272,14 @@ layout_mode = 0
 offset_left = 78.0
 offset_right = 118.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="Attack Speed" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Attack Time: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer/Attack Speed"]
@@ -243,10 +287,14 @@ layout_mode = 0
 offset_left = 114.0
 offset_right = 154.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "0"
 
 [node name="Reach" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "Weapon Reach: "
 
 [node name="Number" type="Label" parent="Player Stats/HBoxContainer/weapon/VBoxContainer/Reach"]
@@ -254,9 +302,12 @@ layout_mode = 0
 offset_left = 128.0
 offset_right = 168.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/font = ExtResource("7_i2kss")
 text = "None"
 
 [node name="Sheild Stats" type="Label" parent="Player Stats/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Sheild Stats:"
 label_settings = SubResource("LabelSettings_drogs")

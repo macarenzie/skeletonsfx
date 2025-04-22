@@ -21,6 +21,12 @@ Scheduler="*res://Scripts/Scheduler.gd"
 DataHandler="*res://Data/DataHandler.gd"
 Globals="*res://Scripts/Global/globals.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://Assets/UI Assets/Cursor UI.png"
+mouse_cursor/custom_image_hotspot=Vector2(16, 16)
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

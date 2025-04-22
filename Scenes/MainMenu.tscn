@@ -1,10 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://oedns07ol4yc"]
+[gd_scene load_steps=22 format=3 uid="uid://oedns07ol4yc"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_36k88"]
 [ext_resource type="Script" path="res://Scenes/Ground.gd" id="1_gbiat"]
+[ext_resource type="FontFile" uid="uid://b4vnrueaby676" path="res://Assets/Fonts/MedievalSharp-Regular.ttf" id="2_f2caj"]
 [ext_resource type="PackedScene" uid="uid://dixaush43p6ya" path="res://Graybox Utils/gb_block.tscn" id="2_kwctc"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="3_5iol5"]
+[ext_resource type="FontFile" uid="uid://cgmmpik56qoat" path="res://Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf" id="3_bvq4v"]
+[ext_resource type="Theme" uid="uid://fq3f5aqpe066" path="res://Assets/Themes/Button.tres" id="3_f3woq"]
 [ext_resource type="PackedScene" uid="uid://c54fra6i3bswh" path="res://Props/Barrel.tscn" id="4_vmse7"]
+[ext_resource type="Texture2D" uid="uid://dic8hqwepeeqr" path="res://Assets/UI Assets/Playbutton UI.png" id="5_jrw1s"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_njdd2"]
 [ext_resource type="PackedScene" uid="uid://cbq0vt8tvw5yf" path="res://Shader/CellShader.tscn" id="7_whgx2"]
 [ext_resource type="Material" uid="uid://bvwxaar5qs56v" path="res://Assets/Materials/Skeleton_Mat.tres" id="8_u6rtx"]
@@ -13,8 +17,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_nd5cw"]
 line_spacing = 30.0
-font_size = 40
-font_color = Color(0.950935, 0.398728, 0.112357, 1)
+font_size = 48
+font_color = Color(0.882353, 0.545098, 0.290196, 1)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xhip0"]
 dof_blur_far_enabled = true
@@ -48,70 +52,6 @@ script = ExtResource("1_36k88")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ControlesRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.852
-anchor_top = 0.219
-anchor_right = 0.961
-anchor_bottom = 0.594
-offset_left = -2.50409
-offset_top = 0.0879974
-offset_right = -0.0720215
-offset_bottom = 0.0879822
-color = Color(0.294118, 0.294118, 0.294118, 0.603922)
-
-[node name="Start" type="Button" parent="CanvasLayer/ControlesRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.104
-anchor_top = 0.041
-anchor_right = 0.872
-anchor_bottom = 0.204
-offset_left = 1.14441e-05
-offset_top = 0.0369987
-offset_right = 1.52588e-05
-offset_bottom = 0.0669899
-text = "Start Game"
-
-[node name="Dev Room" type="Button" parent="CanvasLayer/ControlesRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.102
-anchor_top = 0.309
-anchor_right = 0.805
-anchor_bottom = 0.473
-offset_left = -0.0560074
-offset_top = -0.086998
-offset_right = -0.0400543
-offset_bottom = 0.0610123
-text = "Dev Room"
-
-[node name="Controles" type="Button" parent="CanvasLayer/ControlesRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.104
-anchor_top = 0.576
-anchor_right = 0.768
-anchor_bottom = 0.739
-offset_left = 1.14441e-05
-offset_top = 0.0319824
-offset_right = -4.57764e-05
-offset_bottom = 0.0619812
-text = "Controles"
-
-[node name="Quit" type="Button" parent="CanvasLayer/ControlesRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.117
-anchor_top = 0.835
-anchor_right = 0.773
-anchor_bottom = 0.971
-offset_left = 0.0240002
-offset_top = 0.0949707
-offset_right = 0.0559921
-offset_bottom = 0.0469818
-text = "Quit"
-
 [node name="Title Rect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.298
@@ -124,7 +64,7 @@ offset_right = 0.295959
 offset_bottom = 0.135994
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.74902, 0.74902, 0.74902, 0.431373)
+color = Color(0.345098, 0.27451, 0.262745, 0.521569)
 
 [node name="Title Text" type="Label" parent="CanvasLayer/Title Rect"]
 layout_mode = 1
@@ -133,6 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_f2caj")
 text = "Bonefire"
 label_settings = SubResource("LabelSettings_nd5cw")
 horizontal_alignment = 1
@@ -154,7 +95,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.753984, 0.753984, 0.753984, 1)
+color = Color(0.345098, 0.27451, 0.262745, 1)
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Menu/ColorRect"]
 layout_mode = 1
@@ -163,15 +104,17 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 154.0
-offset_top = -180.0
+offset_top = -193.0
 offset_right = -406.0
-offset_bottom = -19.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4196, 1.81911)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Menu/ColorRect/MarginContainer2"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_fonts/normal_font = ExtResource("3_bvq4v")
 text = "WASD to move
 Space to jump
 Left click to attack
@@ -182,15 +125,134 @@ E to loot items
 Esc for menu"
 fit_content = true
 
+[node name="PlaybuttonUi" type="Sprite2D" parent="CanvasLayer/Menu/ColorRect/MarginContainer2/RichTextLabel"]
+position = Vector2(468.58, 31.4616)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
+
 [node name="Back" type="Button" parent="CanvasLayer/Menu/ColorRect/MarginContainer2/RichTextLabel"]
 layout_mode = 2
-offset_left = 355.029
-offset_top = 7.14636
-offset_right = 947.029
-offset_bottom = 168.146
+offset_left = 378.729
+offset_top = 18.6717
+offset_right = 845.729
+offset_bottom = 179.672
 scale = Vector2(0.373718, 0.20174)
+theme = ExtResource("3_f3woq")
+theme_override_fonts/font = ExtResource("2_f2caj")
 theme_override_font_sizes/font_size = 60
 text = "Back"
+flat = true
+
+[node name="ControlesRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.852
+anchor_top = 0.219
+anchor_right = 0.961
+anchor_bottom = 0.594
+offset_left = -18.504
+offset_top = 0.0879974
+offset_right = 29.928
+offset_bottom = 0.0880127
+color = Color(0.345098, 0.27451, 0.262745, 0)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ControlesRect"]
+visible = false
+layout_mode = 0
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 184.0
+offset_bottom = 247.0
+color = Color(0.996078, 0.898039, 0.666667, 0.439216)
+
+[node name="PlaybuttonUi" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
+position = Vector2(90, 28)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
+
+[node name="Start" type="Button" parent="CanvasLayer/ControlesRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104
+anchor_top = 0.041
+anchor_right = 0.875
+anchor_bottom = 0.206
+offset_left = -18.096
+offset_top = 0.0369997
+offset_right = 20.75
+offset_bottom = -0.0579987
+theme = ExtResource("3_f3woq")
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("2_f2caj")
+text = "Start Game"
+flat = true
+
+[node name="PlaybuttonUi2" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
+position = Vector2(90, 88)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
+
+[node name="Dev Room" type="Button" parent="CanvasLayer/ControlesRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.102
+anchor_top = 0.288
+anchor_right = 0.875
+anchor_bottom = 0.453
+offset_left = -17.748
+offset_top = 0.0160065
+offset_right = 20.75
+offset_bottom = -0.0790024
+theme = ExtResource("3_f3woq")
+theme_override_fonts/font = ExtResource("2_f2caj")
+text = "Dev Room"
+flat = true
+
+[node name="PlaybuttonUi3" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
+position = Vector2(90, 148)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
+
+[node name="Controles" type="Button" parent="CanvasLayer/ControlesRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104
+anchor_top = 0.535
+anchor_right = 0.875
+anchor_bottom = 0.7
+offset_left = -18.096
+offset_top = -0.00500488
+offset_right = 20.75
+offset_bottom = -0.0999908
+theme = ExtResource("3_f3woq")
+theme_override_fonts/font = ExtResource("2_f2caj")
+text = "Controles"
+flat = true
+
+[node name="PlaybuttonUi4" type="Sprite2D" parent="CanvasLayer/ControlesRect"]
+position = Vector2(90, 208)
+scale = Vector2(0.045068, 0.045068)
+texture = ExtResource("5_jrw1s")
+
+[node name="Quit" type="Button" parent="CanvasLayer/ControlesRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.117
+anchor_top = 0.782
+anchor_right = 0.875
+anchor_bottom = 0.947
+offset_left = -20.358
+offset_top = -0.026001
+offset_right = 20.75
+offset_bottom = -0.121002
+theme = ExtResource("3_f3woq")
+theme_override_fonts/font = ExtResource("2_f2caj")
+text = "Quit"
+flat = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8437, 1.44916, 4.09305)
@@ -254,8 +316,8 @@ material_override = ExtResource("8_u6rtx")
 mesh = ExtResource("9_mu2pk")
 script = ExtResource("10_ul3hu")
 
+[connection signal="pressed" from="CanvasLayer/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlesRect/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlesRect/Dev Room" to="." method="_on_dev_room_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlesRect/Controles" to="." method="_on_controles_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlesRect/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="CanvasLayer/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="." method="_on_back_pressed"]
