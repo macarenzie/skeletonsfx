@@ -18,7 +18,6 @@ var max_size: float
 var current_time: float = 0.0
 var lifetime: float = 4.0  # Increased base lifetime in seconds
 var multipliers
-var floor_material
 
 func _ready() -> void:
 	
@@ -42,7 +41,7 @@ func _ready() -> void:
 	
 	var result = space_state.intersect_shape(query)
 	if result.size() > 0:
-		floor_material = "stone"  # Default to stone
+		var floor_material = "stone"  # Default to stone
 		for hit in result:
 			if hit.collider.has_method("get_material"):
 				floor_material = hit.collider.get_material()
@@ -72,7 +71,6 @@ func _on_body_exited(body: Node3D) -> void:
 		overlapping_bodies.erase(body)
 
 func _process(delta: float) -> void:
-	
 	# Handle damage to destructible props
 	damage_accumulator += damage_per_second * delta
 	if damage_accumulator >= 1.0:

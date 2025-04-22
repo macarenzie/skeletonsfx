@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
-[ext_resource type="Material" path="res://Assets/Materials/Mace_Mat.tres" id="3_2nqcl"]
+[ext_resource type="Material" uid="uid://kb4xg02en0e5" path="res://Assets/Materials/Mace_Mat.tres" id="3_2nqcl"]
 [ext_resource type="Script" path="res://Scripts/EnemyBehavior.gd" id="3_loj3b"]
 [ext_resource type="Material" uid="uid://bvwxaar5qs56v" path="res://Assets/Materials/Skeleton_Mat.tres" id="4_cw11r"]
 [ext_resource type="Script" path="res://Scenes/Dummy.gd" id="4_vqdun"]
