@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=72 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="Script" path="res://Scripts/Room Managers/L1_Manager.gd" id="1_tw7dh"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
@@ -66,6 +66,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfu4"]
 size = Vector3(1, 2.55579, 0.916504)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5k34o"]
+viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w48xy"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
@@ -2395,6 +2398,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.312391, 3.125)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.228, 5, -14.695)
 
+[node name="Area3D" parent="Props/Chest/Pickup" index="0"]
+storage = {
+0: [1, 32, 90],
+1: [2, 15, 0],
+2: [3, 8, 180]
+}
+
+[node name="Sprite3D" parent="Props/Chest/Pickup/Area3D" index="1"]
+texture = SubResource("ViewportTexture_5k34o")
+
 [node name="Sword Pickup" parent="Props" instance=ExtResource("5_26ev8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -21.6091)
 
@@ -2611,5 +2624,7 @@ transform = Transform3D(90.5991, 0, 0, 0, 1, 0, 0, 0, 84.8345, -17.7105, -3.0749
 [connection signal="body_entered" from="Triggers/Encounter_B" to="." method="_on_encounter_b_body_entered"]
 [connection signal="body_entered" from="Triggers/Win" to="." method="_on_win_body_entered"]
 
+[editable path="Props/Chest"]
+[editable path="Props/Chest/Pickup"]
 [editable path="Props/Sword Pickup"]
 [editable path="Props/Boxes/Box"]
