@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 	if damage_accumulator >= 1.0:
 		for body in overlapping_bodies:
 			if body.has_method("take_damage"):
-				body.take_damage(damage_accumulator)
+				body.take_damage(damage_accumulator, true)
 		damage_accumulator = 0.0
 	
 	# Update time and calculate size

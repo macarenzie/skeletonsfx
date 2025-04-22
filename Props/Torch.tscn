@@ -1,13 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://daudtv7xnhq1b"]
 
-[ext_resource type="Material" path="res://Assets/Materials/P_Torch_Mat.tres" id="1_p0esu"]
+[ext_resource type="Material" uid="uid://dypopn55b7efd" path="res://Assets/Materials/P_Torch_Mat.tres" id="1_p0esu"]
 [ext_resource type="ArrayMesh" uid="uid://enoxlcmvupwd" path="res://Assets/Models/P_Torch.obj" id="2_efukp"]
 [ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="3_gdex1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_duclv"]
-size = Vector3(0.50708, 0.63208, 0.200012)
+size = Vector3(0.739502, 0.923157, 0.546986)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s44ky"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wgb3k"]
+size = Vector3(0.385376, 1, 0.377563)
 
 [node name="Torch" type="StaticBody3D"]
 collision_layer = 3
@@ -25,9 +26,9 @@ lifetime = 0.5
 [node name="InfiniteFireSource" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InfiniteFireSource"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330518, 0.506567, -0.00247192)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.284131, 0.784772, -0.00854303)
 shape = SubResource("BoxShape3D_duclv")
 
-[node name="Ignore this shit" type="CollisionShape3D" parent="."]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-shape = SubResource("BoxShape3D_s44ky")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144348, 0, 0.0022583)
+shape = SubResource("BoxShape3D_wgb3k")

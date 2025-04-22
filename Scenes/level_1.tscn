@@ -99,51 +99,39 @@ process_mode = 1
 
 [node name="Box" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.846, 2.84827, -17.6982)
-skeleton = NodePath("../..")
 
 [node name="Box6" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3624, 2.84827, -14.3255)
-skeleton = NodePath("../..")
 
 [node name="Box2" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(0.91257, 0, -0.40892, 0, 1, 0, 0.40892, 0, 0.91257, -12.846, 3.91157, -17.6982)
-skeleton = NodePath("../..")
 
 [node name="Box7" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3237, 5.0626, 8.71259)
-skeleton = NodePath("../..")
 
 [node name="Box8" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(0.91257, 0, -0.40892, 0, 1, 0, 0.40892, 0, 0.91257, -20.3237, 6.12589, 8.71259)
-skeleton = NodePath("../..")
 
 [node name="Box11" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5281, 9.25773, 0.439029)
-skeleton = NodePath("../..")
 
 [node name="Box12" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(0.91257, 0, -0.40892, 0, 1, 0, 0.40892, 0, 0.91257, -29.5281, 10.321, 0.439029)
-skeleton = NodePath("../..")
 
 [node name="Box3" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(0.899062, 0, 0.437822, 0, 1, 0, -0.437822, 0, 0.899062, -4.577, 2.88398, -14.8729)
-skeleton = NodePath("../..")
 
 [node name="Box4" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(0.899062, 0, 0.437822, 0, 1, 0, -0.437822, 0, 0.899062, -16.9174, 5.10942, -11.043)
-skeleton = NodePath("../..")
 
 [node name="Box5" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(0.962304, 0, -0.271978, 0, 1, 0, 0.271978, 0, 0.962304, -18.5593, 5.10942, -11.043)
-skeleton = NodePath("../..")
 
 [node name="Box9" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(0.962304, 0, -0.271978, 0, 1, 0, 0.271978, 0, 0.962304, -26.0507, 7.18981, 10.4634)
-skeleton = NodePath("../..")
 
 [node name="Box10" parent="Props" instance=ExtResource("4_d64oc")]
 transform = Transform3D(0.982499, 0, 0.186267, 0, 1, 0, -0.186267, 0, 0.982499, -32.186, 7.18981, 16.7661)
-skeleton = NodePath("../..")
 
 [node name="TargetDummy" parent="Props" instance=ExtResource("5_2p4v4")]
 transform = Transform3D(-0.143121, -0.560254, 0.815863, 0.98659, -0.146115, 0.0727331, 0.0784608, 0.815332, 0.573653, 4.46167, 0.374176, -15.9418)

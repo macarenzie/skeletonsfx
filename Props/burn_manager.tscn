@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxoq026j2ndow"]
+
+[ext_resource type="Script" path="res://Props/Burn Manager.gd" id="1_l42ne"]
+
+[node name="Burn Manager" type="Node3D"]
+script = ExtResource("1_l42ne")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=69 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=70 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="Script" path="res://Scripts/Room Managers/L1_Manager.gd" id="1_tw7dh"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
-[ext_resource type="PackedScene" uid="uid://byjysf483irr" path="res://Props/Gate.tscn" id="2_06a27"]
+[ext_resource type="PackedScene" uid="uid://e7xwfrqac8at" path="res://Props/Gate.tscn" id="2_06a27"]
 [ext_resource type="PackedScene" uid="uid://c7lqmyagu30gi" path="res://VFX/goal.tscn" id="2_c80jy"]
 [ext_resource type="PackedScene" uid="uid://b5bplr7v5l0gh" path="res://VFX/abyss.tscn" id="2_ngf2h"]
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="2_p8fb7"]
@@ -18,7 +18,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
 [ext_resource type="PackedScene" uid="uid://cqj28ljoc0gwy" path="res://Geometry/Floors/floor_0_5x0_5.tscn" id="6_pjnio"]
 [ext_resource type="PackedScene" uid="uid://6l0jma6fcotx" path="res://Geometry/Floors/floor_3x3.tscn" id="7_cjh7u"]
-[ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
+[ext_resource type="Material" uid="uid://b7qle5licexc1" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
 [ext_resource type="PackedScene" uid="uid://dxn1xe7fd1w1j" path="res://Geometry/Floors/floor_1x2.tscn" id="8_0lsig"]
 [ext_resource type="PackedScene" uid="uid://ceqvu2i5a5j8n" path="res://Geometry/Roof/roof_1x0_5.tscn" id="9_dqcrl"]
 [ext_resource type="PackedScene" uid="uid://cwwarm1pwnybw" path="res://Geometry/Walls/wall_3x3.tscn" id="9_kju6e"]
@@ -62,6 +62,7 @@
 [ext_resource type="PackedScene" uid="uid://ld7j1uoh6lh7" path="res://Geometry/Roof/roof_2x3.tscn" id="38_e4iyy"]
 [ext_resource type="PackedScene" uid="uid://80kuyo1gq5sd" path="res://Geometry/Roof/roof_2x2.tscn" id="44_sywyb"]
 [ext_resource type="PackedScene" uid="uid://boyhi74etqvv8" path="res://Props/Bonefire.tscn" id="50_pevhi"]
+[ext_resource type="PackedScene" uid="uid://33mj4e2b1ksm" path="res://Props/Door.tscn" id="59_7h38t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfu4"]
 size = Vector3(1, 2.55579, 0.916504)
@@ -76,14 +77,17 @@ size = Vector3(0.30542, 1.02698, 0.212189)
 size = Vector3(12.1844, 5.89551, 9.84729)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ieyax"]
-vertices = PackedVector3Array(-35.8888, 0.238704, -19.469, -35.8888, 0.238704, -6.96905, -24.6388, 0.238704, -6.96905, -24.6388, 0.238704, -19.469, -19.6388, 0.238704, 0.780951, -19.6388, 0.238704, 11.031, -5.38885, 0.238704, 11.031, -5.38885, 0.238704, 0.780951)
+vertices = PackedVector3Array(-35, 0.5, -19, -35, 0.5, -7, -25, 0.5, -7, -25, 0.5, -19, -19.5, 0.5, 0.5, -19.5, 0.5, 11.5, -5.5, 0.5, 11.5, -5.5, 0.5, 0.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
+geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 2
 geometry_source_group_name = &"Traversable"
 
 [sub_resource type="Environment" id="Environment_al300"]
+ambient_light_color = Color(0, 0.0745098, 0.270588, 1)
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
+volumetric_fog_density = 0.1019
+volumetric_fog_albedo = Color(0, 0.0509804, 0.290196, 1)
 
 [node name="Level 1" type="Node3D"]
 script = ExtResource("1_tw7dh")
@@ -91,7 +95,14 @@ script = ExtResource("1_tw7dh")
 [node name="Geometry" type="Node3D" parent="."]
 
 [node name="Goal" parent="Geometry" instance=ExtResource("2_c80jy")]
-transform = Transform3D(3, 0, 0, 0, -7.17566e-07, -2.97, 0, 16.416, -1.29823e-07, -30, 1.5, -38.5)
+transform = Transform3D(5.08802, 0, 0, 0, -7.1588e-07, -5.33344, 0, 16.3774, -2.33132e-07, -30, 1.5, -38.5)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Geometry/Goal"]
+transform = Transform3D(0.19654, 0, 0, 0, -2.669e-09, -0.0610596, 0, 0.187496, -8.19572e-09, 0, 0.0177062, 0)
+light_energy = 16.0
+light_volumetric_fog_energy = 10.143
+spot_range = 17.8106
+spot_angle = 8.68249
 
 [node name="Abyss3" parent="Geometry" instance=ExtResource("2_ngf2h")]
 transform = Transform3D(16, 0, 0, 0, 2.75, 0, 0, 0, 18, -30, -2.875, 3)
@@ -276,64 +287,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, -13.5)
 [node name="Floor 2x9" parent="Geometry/Floors" instance=ExtResource("12_8nun5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -9)
 
-[node name="Floor 3x30" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x30" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 1.5)
 
-[node name="Floor 3x31" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x31" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 1.5)
 
-[node name="Floor 3x32" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x32" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 1.5)
 
-[node name="Floor 3x33" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x33" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 1.5)
 
-[node name="Floor 3x34" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x34" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 1.5)
 
-[node name="Floor 3x35" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x35" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 4.5)
 
-[node name="Floor 3x36" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x36" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 4.5)
 
-[node name="Floor 3x37" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x37" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 4.5)
 
-[node name="Floor 3x38" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x38" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 4.5)
 
-[node name="Floor 3x39" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x39" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 4.5)
 
-[node name="Floor 3x40" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x40" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 7.5)
 
-[node name="Floor 3x41" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x41" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 7.5)
 
-[node name="Floor 3x42" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x42" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 7.5)
 
-[node name="Floor 3x43" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x43" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 7.5)
 
-[node name="Floor 3x44" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x44" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 7.5)
 
-[node name="Floor 3x45" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x45" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 10.5)
 
-[node name="Floor 3x46" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x46" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, 10.5)
 
-[node name="Floor 3x47" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x47" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 0, 10.5)
 
-[node name="Floor 3x48" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x48" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 10.5)
 
-[node name="Floor 3x49" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x49" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 10.5)
 
 [node name="Floor 1x7" parent="Geometry/Floors" instance=ExtResource("8_0lsig")]
@@ -387,61 +398,61 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -6.25)
 [node name="Floor 1x18" parent="Geometry/Floors" instance=ExtResource("8_0lsig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, 0, 2.5)
 
-[node name="Floor 3x50" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x50" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -8)
 
-[node name="Floor 3x53" parent="Geometry/Floors" instance=ExtResource("3_y0akw")]
+[node name="Floor 3x53" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("3_y0akw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -8)
 
-[node name="Floor 3x51" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x51" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -8)
 
-[node name="Floor 3x52" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x52" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -8)
 
-[node name="Floor 3x54" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x54" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -11)
 
-[node name="Floor 3x55" parent="Geometry/Floors" instance=ExtResource("3_y0akw")]
+[node name="Floor 3x55" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("3_y0akw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -11)
 
-[node name="Floor 3x56" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x56" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -11)
 
-[node name="Floor 3x57" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x57" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -11)
 
-[node name="Floor 3x58" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x58" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -14)
 
-[node name="Floor 3x59" parent="Geometry/Floors" instance=ExtResource("3_y0akw")]
+[node name="Floor 3x59" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("3_y0akw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -14)
 
-[node name="Floor 1x23" parent="Geometry/Floors" instance=ExtResource("8_0lsig")]
+[node name="Floor 1x23" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("8_0lsig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -19)
 
-[node name="Floor 1x24" parent="Geometry/Floors" instance=ExtResource("4_ml47n")]
+[node name="Floor 1x24" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("4_ml47n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -19)
 
-[node name="Floor 1x25" parent="Geometry/Floors" instance=ExtResource("4_ml47n")]
+[node name="Floor 1x25" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("4_ml47n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -19)
 
-[node name="Floor 1x26" parent="Geometry/Floors" instance=ExtResource("4_ml47n")]
+[node name="Floor 1x26" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("4_ml47n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -19)
 
-[node name="Floor 3x60" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x60" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -14)
 
-[node name="Floor 3x61" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x61" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -14)
 
-[node name="Floor 3x62" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x62" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0, -17)
 
-[node name="Floor 3x63" parent="Geometry/Floors" instance=ExtResource("3_y0akw")]
+[node name="Floor 3x63" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("3_y0akw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -17)
 
-[node name="Floor 3x64" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x64" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -17)
 
 [node name="Floor 3x66" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
@@ -462,7 +473,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -34)
 [node name="Floor 3x71" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -37)
 
-[node name="Floor 3x65" parent="Geometry/Floors" instance=ExtResource("7_cjh7u")]
+[node name="Floor 3x65" parent="Geometry/Floors" groups=["Traversable"] instance=ExtResource("7_cjh7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -17)
 
 [node name="Floor 1x14" parent="Geometry/Floors" instance=ExtResource("4_ml47n")]
@@ -2276,6 +2287,102 @@ script = ExtResource("4_2rlua")
 transform = Transform3D(50.09, 0, 0, 0, -12.0463, 0, 0, 0, 50.09, -16.7897, 0.9277, 5.88228)
 shape = SubResource("BoxShape3D_0wfu4")
 
+[node name="Ambient Lights" type="Node3D" parent="Geometry"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, -6.80125)
+light_color = Color(0.894118, 0.713726, 0, 1)
+light_energy = 1.596
+omni_range = 5.89693
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.125, -12.5684)
+light_color = Color(0.894118, 0.713726, 0, 1)
+light_energy = 1.596
+omni_range = 5.89693
+
+[node name="OmniLight3D16" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.875, -18.6934)
+light_color = Color(0.894118, 0.713726, 0, 1)
+light_energy = 2.193
+omni_range = 5.89693
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1659, 1.125, 13.6252)
+light_color = Color(0.894118, 0.713726, 0, 1)
+light_energy = 0.503
+omni_range = 5.89693
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5681, 1.125, 13.6252)
+light_color = Color(0.894118, 0.713726, 0, 1)
+light_energy = 0.503
+omni_range = 5.89693
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 1.125, -23.7919)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+omni_range = 5.89693
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.25, 1.125, -18.1669)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+omni_range = 5.89693
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.55454, 1.125, 8.10434)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+light_energy = 1.497
+omni_range = 5.89693
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4441, 1.125, 8.10434)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+light_energy = 1.497
+omni_range = 5.89693
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53508, 1.125, 3.61062)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+light_energy = 1.497
+omni_range = 5.89693
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3547, 1.125, 3.61062)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+light_energy = 1.497
+omni_range = 5.89693
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7483, 1.125, -14.8551)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+light_energy = 1.397
+omni_range = 5.89693
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0425, 1.125, -14.8551)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+light_energy = 1.397
+omni_range = 5.89693
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7483, 1.125, -8.73007)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+light_energy = 1.397
+omni_range = 5.89693
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0425, 1.125, -8.73007)
+light_color = Color(0.894118, 0.713726, 0.760784, 1)
+light_energy = 1.397
+omni_range = 5.89693
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Geometry/Ambient Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.875)
+light_color = Color(0.894118, 0.392157, 0, 1)
+light_energy = 16.0
+omni_range = 5.89693
+
 [node name="Props" type="Node3D" parent="."]
 
 [node name="Bonefire" parent="Props" instance=ExtResource("50_pevhi")]
@@ -2283,8 +2390,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.312391, 3.125)
 
 [node name="Chest" parent="Props" instance=ExtResource("3_fbhii")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.228, -0.0388089, -14.6953)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.228, 5, -14.695)
 
 [node name="Sword Pickup" parent="Props" instance=ExtResource("5_26ev8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -21.6091)
@@ -2313,6 +2419,12 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Props/Sword Pickup/Weapon/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -3.9563e-11, -1.30285e-10, 1, 0.00378326, 0.474306, -0.00929293)
 shape = SubResource("BoxShape3D_5j4v6")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Props/Sword Pickup/Weapon"]
+transform = Transform3D(0.999999, 1.3411e-07, 1.45286e-07, 7.45058e-09, 1, -1.78814e-07, -2.23517e-08, 0, 1, 0.0339948, 0.279328, -0.0183954)
+light_color = Color(0.554147, 0.745209, 0.940304, 1)
+light_energy = 2.193
+light_volumetric_fog_energy = 3.882
 
 [node name="Torches" type="Node3D" parent="Props"]
 
@@ -2376,86 +2488,75 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.972
 [node name="Torch13" parent="Props/Torches" instance=ExtResource("10_bu4vf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.97219, 1.07506, 8.56488)
 
+[node name="StaticBody3D" parent="Props" instance=ExtResource("59_7h38t")]
+transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, -0.481211, 0.0441264, -16.7929)
+
 [node name="Boxes" type="Node3D" parent="Props"]
 
 [node name="Box" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
 transform = Transform3D(0.958223, 0, -0.286023, 0, 1, 0, 0.286023, 0, 0.958223, -3.55214, 0.5, -23.4968)
-skeleton = NodePath("../..")
 
 [node name="Box2" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
 transform = Transform3D(0.974855, 0, 0.222842, 0, 1, 0, -0.222842, 0, 0.974855, -3.55214, 1.49733, -23.4374)
-skeleton = NodePath("../..")
 
 [node name="Box3" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(0.965145, 0, 0.261718, 0, 1, 0, -0.261718, 0, 0.965145, -6.32744, 0.461538, -14.983)
-skeleton = NodePath("../..")
+transform = Transform3D(0.965145, 0, 0.261718, 0, 1, 0, -0.261718, 0, 0.965145, -6.32744, 0.5, -14.983)
 
 [node name="Box4" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(0.975959, 0, -0.217956, 0, 1, 0, 0.217956, 0, 0.975959, -7.60505, 0.461538, -14.983)
-skeleton = NodePath("../..")
+transform = Transform3D(0.975959, 0, -0.217956, 0, 1, 0, 0.217956, 0, 0.975959, -7.60505, 0.5, -14.983)
 
 [node name="Box5" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(0.949233, 0, 0.314572, 0, 1, 0, -0.314572, 0, 0.949233, -6.97751, 1.45887, -14.983)
-skeleton = NodePath("../..")
+transform = Transform3D(0.949233, 0, 0.314572, 0, 1, 0, -0.314572, 0, 0.949233, -6.91662, 1.49733, -14.983)
 
 [node name="Box9" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(0.997316, 0, 0.0732208, 0, 1, 0, -0.0732208, 0, 0.997316, -11.7756, 0.461539, 0.672902)
-skeleton = NodePath("../..")
+transform = Transform3D(0.997316, 0, 0.0732208, 0, 1, 0, -0.0732208, 0, 0.997316, -11.7756, 0.5, 0.672902)
 
 [node name="Box10" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(0.975959, 0, -0.217956, 0, 1, 0, 0.217956, 0, 0.975959, -12.9329, 0.461538, 0.49926)
-skeleton = NodePath("../..")
+transform = Transform3D(0.975959, 0, -0.217956, 0, 1, 0, 0.217956, 0, 0.975959, -12.9329, 0.5, 0.49926)
 
 [node name="Box8" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -5.34908, 0.5, -18.0487)
-skeleton = NodePath("../..")
 
 [node name="Box7" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.56505, 0.5, -23.8449)
-skeleton = NodePath("../..")
 
 [node name="Box11" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1356, 0.461537, 12.6097)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1356, 0.5, 12.6097)
 
 [node name="Box12" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1856, 0.461537, 11.4548)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1856, 0.5, 11.4548)
 
 [node name="Box13" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.787, 0.461537, 11.3264)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.787, 0.5, 11.3264)
 
 [node name="Box15" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7976, 0.461538, -9.89161)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5056, 0.5, -9.89161)
 
 [node name="Box16" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1383, 0.461538, -17.9205)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8463, 0.5, -17.9205)
 
 [node name="Box17" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7463, 0.461538, -9.03354)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4543, 0.5, -9.03354)
 
 [node name="Box18" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4246, 0.461538, -16.9667)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1326, 0.5, -16.9667)
 
 [node name="Box14" parent="Props/Boxes" instance=ExtResource("2_3t8e0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0857, 1.45887, 11.9804)
-skeleton = NodePath("../..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0857, 1.49733, 11.9928)
 
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Enemy A" parent="Enemies" instance=ExtResource("4_cydpp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.304, -0.0424425, 9.16856)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.304, 5, 9.169)
 
 [node name="Enemy B1" parent="Enemies" instance=ExtResource("4_cydpp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.411, -0.0388095, -15.3205)
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.411, 5, -15.3205)
 
 [node name="Enemy B2" parent="Enemies" instance=ExtResource("4_cydpp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.5168, -0.0814573, -15.7027)
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.5168, 5, -15.7027)
 
 [node name="Triggers" type="Node3D" parent="."]
 
@@ -2482,7 +2583,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-visible = false
 navigation_mesh = SubResource("NavigationMesh_ieyax")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

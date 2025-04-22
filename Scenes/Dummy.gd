@@ -14,7 +14,7 @@ func _ready():
 	healthbar.value = health
 	maxHealth = health
 
-func take_damage(amount: float):
+func take_damage(amount: float, _fire := false):
 	# Convert float damage to integer (e.g., 0.3 damage accumulates over frames)
 	health -= int(amount)
 	healthbar.value = health

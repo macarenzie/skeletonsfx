@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c54fra6i3bswh" path="res://Props/Barrel.tscn" id="4_vmse7"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="5_njdd2"]
 [ext_resource type="PackedScene" uid="uid://cbq0vt8tvw5yf" path="res://Shader/CellShader.tscn" id="7_whgx2"]
-[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="8_u6rtx"]
+[ext_resource type="Material" uid="uid://bvwxaar5qs56v" path="res://Assets/Materials/Skeleton_Mat.tres" id="8_u6rtx"]
 [ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="9_mu2pk"]
 [ext_resource type="Script" path="res://Scenes/Spiiiiiin.gd" id="10_ul3hu"]
 
