@@ -55,6 +55,8 @@ func openMenu():
 	else:
 		menuOpen = true
 		pauseMenu.visible = true
+		playerUIPage1.visible = true
+		playerUIPage2.visible = false
 		playerUI.visible = false
 		playerCrosshair.visible = false
 		get_tree().paused = true
@@ -116,6 +118,7 @@ func kill_player():
 	playerUIGameOver.visible = true
 	playerCrosshair.visible = false
 	playerUIPage1.visible = false
+	playerUIPage2.visible = false
 	playerDead = true
 	get_tree().paused = true
 	$"Menu/ColorRect/Game Over/Label".text = "Game Over"
@@ -127,6 +130,7 @@ func win_player():
 	playerUI.visible = false
 	playerUIGameOver.visible = true
 	playerCrosshair.visible = false
+	playerUIPage2.visible = false
 	playerUIPage1.visible = false
 	playerDead = true
 	get_tree().paused = true

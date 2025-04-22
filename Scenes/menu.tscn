@@ -162,10 +162,10 @@ anchor_left = 0.192
 anchor_top = 0.195
 anchor_right = 0.827
 anchor_bottom = 1.272
-offset_left = -7.18401
-offset_top = 131.64
-offset_right = -33.704
-offset_bottom = -243.256
+offset_left = -5.18401
+offset_top = 108.64
+offset_right = -31.704
+offset_bottom = -220.256
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -225,6 +225,6 @@ scale = Vector2(0.121, 0.045)
 texture = ExtResource("3_e3lb6")
 
 [node name="DeathUi" type="Sprite2D" parent="ColorRect/Game Over"]
-position = Vector2(354, -66)
+position = Vector2(353, -51)
 scale = Vector2(0.119902, 0.119902)
 texture = ExtResource("5_vq0rp")
