@@ -1,6 +1,6 @@
 extends CharacterBody3D
 # this script controls player movement 
-
+@onready var anim_player = $"AM_PlayerIdle/AnimationPlayer"
 @export_category("Movement")
 @export var speed = 5.0
 @export var sprint_multiplier = 1 # I don't know if the game is going to have sprinting in it, but for me phillip i want this just for debuging, if you set this to 0 it's effectively disabled
@@ -14,6 +14,7 @@ func _ready() -> void:
 	# Connect signals from the player air detector (an Area3D child)
 	$PlayerAirDetector.area_entered.connect(_on_air_entered)
 	$PlayerAirDetector.area_exited.connect(_on_air_exited)
+	anim_player.play("PlayerIdle/Idle")
 
 func decrement_oxygen(delta: float) -> void:
 	oxygen = max(oxygen - 0.01 * delta, 0)

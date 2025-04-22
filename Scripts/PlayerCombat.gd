@@ -1,7 +1,7 @@
 extends Node
 # this script houses all the combat for the player, attacking, blocking
 
-@onready var anim_player = %AnimationPlayer
+@onready var anim_player = $"../AM_PlayerIdle/AnimationPlayer"
 
 @onready var hitList = []
 @onready var inventory = $"../UIController/Inventory"
@@ -94,8 +94,8 @@ func attack():
 	
 	Scheduler.schedule(reset_attack, attack_speed)
 	Scheduler.schedule(attack_raycast, attack_delay)
-
-	anim_player.play("attack")
+	$"../AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Sword/P_Sword".visible = true
+	anim_player.play("PlayerAttack/Attack")
 	
 	#var new_fire = load("res://Fire/Fire.tscn").instantiate()
 	#new_fire.global_position = get_parent().position
@@ -110,6 +110,8 @@ func reset_attack():
 	attacking = false
 	ready_to_attack = true
 	ready_to_block = true
+	
+	anim_player.play("PlayerIdle/Idle")
 
 func attack_raycast():
 	attack_ray.target_position = Vector3(0,0,-attack_distance)
@@ -133,8 +135,10 @@ func start_block():
 	if not ready_to_block and attacking:
 		return
 	ready_to_attack = false
-	anim_player.play("block_start")
-	anim_player.queue("block_active")
+	$"../AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Shield/P_Shield".visible = true
+	anim_player.play("PlayerBlock/Block")
+	anim_player.seek(1.0, true)  # Seek to pose and update immediately
+	anim_player.pause()
 
 func block():
 	blocking = true
@@ -147,7 +151,11 @@ func end_block():
 		return
 	blocking = false
 	Scheduler.schedule(reset_block, block_endlag)
-	anim_player.play("block_end")
+	anim_player.play("PlayerBlock/Block")
+	anim_player.seek(1.0)
+	#anim_player.playback_speed = 1
+	anim_player.play()
+	anim_player.play("PlayerIdle/Idle")
 	pass
 
 func reset_block():

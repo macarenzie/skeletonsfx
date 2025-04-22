@@ -94,10 +94,19 @@ process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 5.95762, 39.9727, -6.3625)
 
 [node name="P_Shield" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.0791003, -0.518622, -0.234637, -0.372496, -0.226288, 0.374594, -0.43043, 0.100524, -0.367294, -0.260442, -0.0123527, -0.884055)
+transform = Transform3D(-0.435307, -0.262402, -0.268203, -0.256132, 0.508003, -0.0812999, 0.274197, 0.0579517, -0.501734, -0.0987696, 0.229024, -1.32309)
+
+[node name="P_Shield" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Shield" index="0"]
+surface_material_override/0 = null
 
 [node name="P_Sword" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.165098, 1.07158, 0.558185, -0.638639, 0.555636, -0.877791, -1.02567, -0.173482, 0.636412, 0.411757, 0.0930183, -0.863738)
+transform = Transform3D(-0.394859, 0.950467, 0.654069, -0.804929, 0.268351, -0.87589, -0.826609, -0.715337, 0.540479, 0.322603, 0.407437, -1.05742)
+
+[node name="P_Sword" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Sword" index="0"]
+surface_material_override/0 = null
+
+[node name="CM_Skeleton_Skeleton_Mesh_Combined_pasted__pasted__pCube166" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="2"]
+surface_material_override/0 = null
 
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
