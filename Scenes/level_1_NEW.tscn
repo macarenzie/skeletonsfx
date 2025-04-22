@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=71 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="Script" path="res://Scripts/Room Managers/L1_Manager.gd" id="1_tw7dh"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
@@ -75,6 +75,9 @@ size = Vector3(0.30542, 1.02698, 0.212189)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_67rnx"]
 size = Vector3(12.1844, 5.89551, 9.84729)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2kvjq"]
+size = Vector3(3, 3, 9)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ieyax"]
 vertices = PackedVector3Array(-35, 0.5, -19, -35, 0.5, -7, -25, 0.5, -7, -25, 0.5, -19, -19.5, 0.5, 0.5, -19.5, 0.5, 11.5, -5.5, 0.5, 11.5, -5.5, 0.5, 0.5)
@@ -2578,6 +2581,13 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.812799, 2.43365, -0.572528)
 shape = SubResource("BoxShape3D_67rnx")
 
+[node name="Win" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1.75, -33.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/Win"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.25)
+shape = SubResource("BoxShape3D_2kvjq")
+
 [node name="Player" parent="." instance=ExtResource("2_p8fb7")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
@@ -2597,6 +2607,7 @@ transform = Transform3D(90.5991, 0, 0, 0, 1, 0, 0, 0, 84.8345, -17.7105, -7.8255
 [connection signal="tree_exited" from="Enemies/Enemy B2" to="." method="_on_enemy_b_2_tree_exited"]
 [connection signal="body_entered" from="Triggers/Encounter_A" to="." method="_on_encounter_a_body_entered"]
 [connection signal="body_entered" from="Triggers/Encounter_B" to="." method="_on_encounter_b_body_entered"]
+[connection signal="body_entered" from="Triggers/Win" to="." method="_on_win_body_entered"]
 
 [editable path="Props/Sword Pickup"]
 [editable path="Props/Boxes/Box"]

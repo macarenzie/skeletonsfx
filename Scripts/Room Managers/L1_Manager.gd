@@ -55,3 +55,8 @@ func _on_enemy_b_2_tree_exited():
 	if EncB_Count >= 2:
 		Gate_C2.open()
 		Chest.position.y -= 5
+
+
+func _on_win_body_entered(body):
+	if body == Player:
+		Player.win()

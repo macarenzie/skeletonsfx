@@ -57,5 +57,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+	
+func win():
+	var uiController = $"UIController"
+	uiController.win_player()
 
 
