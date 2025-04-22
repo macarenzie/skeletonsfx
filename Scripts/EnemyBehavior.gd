@@ -79,8 +79,8 @@ func _physics_process(delta):
 	attack_landed = true
 	hit_box.set_enabled(false)		
 	# the line that does the damage to the player
-	#obj_hit.get_node("../InnerFire").innerFire = obj_hit.get_node("../InnerFire").innerFire - damage
-	obj_hit.get_child(7).innerFire = obj_hit.get_child(7).innerFire - damage
+	obj_hit.get_node("InnerFire").innerFire = obj_hit.get_node("InnerFire").innerFire - damage
+	#obj_hit.get_child(7).innerFire = obj_hit.get_child(7).innerFire - damage
 
 func get_awareness() -> float:
 	return awareness
