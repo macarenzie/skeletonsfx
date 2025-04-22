@@ -1,15 +1,34 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cnysmqcqdj7di"]
+[gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://cnysmqcqdj7di"]
 
 [ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="1_0d7pb"]
-[ext_resource type="Material" uid="uid://dod5ylpv8a7ka" path="res://VFX/Burning.tres" id="1_xavue"]
+[ext_resource type="Shader" uid="uid://b3hmc4186s0ji" path="res://Shader/burningObject.tres" id="1_36doe"]
 [ext_resource type="Texture2D" uid="uid://7al83j4rx3f6" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Emissive.png" id="2_dvpq6"]
+[ext_resource type="Texture2D" uid="uid://cvn86mk3fd30d" path="res://VFX/CloudNoise.png" id="2_ejuld"]
 [ext_resource type="Texture2D" uid="uid://xonl4o8bb3on" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_MaskMap.png" id="3_0o6na"]
+[ext_resource type="Texture2D" uid="uid://ckr8v5we0bodt" path="res://VFX/FlammableFire.png" id="3_bmno1"]
 [ext_resource type="Texture2D" uid="uid://5e3pmixoi4jn" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Normal.png" id="4_h25qd"]
+[ext_resource type="Texture2D" uid="uid://sgidv8n4fsvx" path="res://VFX/Dissolve.png" id="4_y5pr1"]
 [ext_resource type="Texture2D" uid="uid://bxnffqvvvflq0" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_BaseMap.png" id="5_mjsfd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uoxo0"]
+render_priority = 0
+shader = ExtResource("1_36doe")
+shader_parameter/FireIntensity = 1.0
+shader_parameter/FireColor = Color(4, 2, 2, 1)
+shader_parameter/TriplanarSpeed = Vector3(0.5, 1, 0.2)
+shader_parameter/TriplanarScale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/TriplanarScale2 = Vector3(0.5, 0.5, 0.5)
+shader_parameter/WarpStrength = 0.2
+shader_parameter/TriplanarPower = 2.0
+shader_parameter/BurnTransition = 0.0
+shader_parameter/VertexNoiseParameter = ExtResource("4_y5pr1")
+shader_parameter/NoiseTexture = ExtResource("2_ejuld")
+shader_parameter/SideTexture = ExtResource("3_bmno1")
+shader_parameter/TopTexture = ExtResource("3_bmno1")
 
 [resource]
 render_priority = 0
-next_pass = ExtResource("1_xavue")
+next_pass = SubResource("ShaderMaterial_uoxo0")
 shader = ExtResource("1_0d7pb")
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 shader_parameter/Metallic = 0.0

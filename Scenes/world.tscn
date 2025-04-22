@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgx6jd0rfjota"]
+[gd_scene load_steps=35 format=3 uid="uid://dgx6jd0rfjota"]
 
 [ext_resource type="PackedScene" uid="uid://b44n5un2mgd3u" path="res://Scenes/player.tscn" id="1_xfvv5"]
 [ext_resource type="PackedScene" uid="uid://cybr83rnnlyul" path="res://Scenes/target_dummy.tscn" id="2_2re6m"]
@@ -9,11 +9,23 @@
 [ext_resource type="PackedScene" uid="uid://6q53rgjerv1k" path="res://VFX/Fire_Basic.tscn" id="9_4y1dm"]
 [ext_resource type="PackedScene" uid="uid://dfpt1o8g8rngj" path="res://Props/Chest.tscn" id="9_fd2ay"]
 [ext_resource type="PackedScene" uid="uid://dlw2yigievwho" path="res://VFX/Fire_Medium.tscn" id="10_l6si3"]
-[ext_resource type="PackedScene" path="res://Props/Door.tscn" id="11_dwo0m"]
+[ext_resource type="PackedScene" uid="uid://33mj4e2b1ksm" path="res://Props/Door.tscn" id="11_dwo0m"]
 [ext_resource type="PackedScene" uid="uid://ky0mvp84vdvf" path="res://VFX/Fire_Large.tscn" id="11_xkdmb"]
-[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="12_n2obh"]
+[ext_resource type="Material" uid="uid://bvwxaar5qs56v" path="res://Assets/Materials/Skeleton_Mat.tres" id="12_n2obh"]
 [ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="13_21dio"]
 [ext_resource type="PackedScene" uid="uid://ics10igxbxyv" path="res://Props/death_plane.tscn" id="14_fhsse"]
+[ext_resource type="Script" path="res://Props/Prop.gd" id="14_lphk1"]
+[ext_resource type="ArrayMesh" uid="uid://duv13ddn1agl3" path="res://Assets/Models/P_Box.obj" id="15_oddg1"]
+[ext_resource type="Shader" uid="uid://b3hmc4186s0ji" path="res://Shader/burningObject.tres" id="16_naoik"]
+[ext_resource type="Texture2D" uid="uid://cvn86mk3fd30d" path="res://VFX/CloudNoise.png" id="17_hle3y"]
+[ext_resource type="Texture2D" uid="uid://ckr8v5we0bodt" path="res://VFX/FlammableFire.png" id="18_pnqij"]
+[ext_resource type="Texture2D" uid="uid://sgidv8n4fsvx" path="res://VFX/Dissolve.png" id="19_j4las"]
+[ext_resource type="Shader" uid="uid://bnlb3pdj0vyge" path="res://Shader/toonLight.tres" id="20_ir3nr"]
+[ext_resource type="Texture2D" uid="uid://7al83j4rx3f6" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Emissive.png" id="21_bjta8"]
+[ext_resource type="Texture2D" uid="uid://xonl4o8bb3on" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_MaskMap.png" id="22_v857d"]
+[ext_resource type="Texture2D" uid="uid://5e3pmixoi4jn" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_Normal.png" id="23_sbrdo"]
+[ext_resource type="Texture2D" uid="uid://bxnffqvvvflq0" path="res://Assets/Materials/Textures/Box/P_Box_initialShadingGroup_BaseMap.png" id="24_1axjx"]
+[ext_resource type="PackedScene" uid="uid://cxoq026j2ndow" path="res://Props/burn_manager.tscn" id="25_lsjjf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eol4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -33,6 +45,38 @@ glow_enabled = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_noe5v"]
 viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uptam"]
+size = Vector3(1.00343, 0.997331, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_landf"]
+render_priority = 0
+shader = ExtResource("16_naoik")
+shader_parameter/FireIntensity = 1.0
+shader_parameter/FireColor = Color(1, 1, 1, 1)
+shader_parameter/TriplanarSpeed = Vector3(0.5, 1, 0.2)
+shader_parameter/TriplanarScale = Vector3(0.5, 0.5, 0.5)
+shader_parameter/TriplanarScale2 = Vector3(0.5, 0.5, 0.5)
+shader_parameter/WarpStrength = 0.2
+shader_parameter/TriplanarPower = 2.0
+shader_parameter/BurnTransition = 1.0
+shader_parameter/VertexNoiseParameter = ExtResource("19_j4las")
+shader_parameter/NoiseTexture = ExtResource("17_hle3y")
+shader_parameter/SideTexture = ExtResource("18_pnqij")
+shader_parameter/TopTexture = ExtResource("18_pnqij")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_noukc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_landf")
+shader = ExtResource("20_ir3nr")
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+shader_parameter/Metallic = 0.0
+shader_parameter/Roughness = 1.0
+shader_parameter/Emissive_Intensity = 1.0
+shader_parameter/Texture2DParameter = ExtResource("24_1axjx")
+shader_parameter/MaskMap = ExtResource("22_v857d")
+shader_parameter/EmissionMap = ExtResource("21_bjta8")
+shader_parameter/Normal = ExtResource("23_sbrdo")
+
 [node name="World" type="Node"]
 process_mode = 3
 
@@ -50,10 +94,10 @@ process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 5.95762, 39.9727, -6.3625)
 
 [node name="P_Shield" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="0"]
-transform = Transform3D(-0.26188, -0.477811, -0.182745, -0.328507, 0.314448, -0.351405, 0.39215, -0.0556689, -0.416412, -0.243349, 0.504711, -1.43917)
+transform = Transform3D(0.0791003, -0.518622, -0.234637, -0.372496, -0.226288, 0.374594, -0.43043, 0.100524, -0.367294, -0.260442, -0.0123527, -0.884055)
 
 [node name="P_Sword" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.722505, 0.978542, 0.086892, -0.539019, 0.485046, -0.980458, -0.821312, 0.542489, 0.719903, 0.334823, 0.455588, -1.14244)
+transform = Transform3D(0.165098, 1.07158, 0.558185, -0.638639, 0.555636, -0.877791, -1.02567, -0.173482, 0.636412, 0.411757, 0.0930183, -0.863738)
 
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
@@ -76,7 +120,6 @@ collision_mask = 3
 shape = SubResource("BoxShape3D_ka87u")
 
 [node name="Geometry" type="Node3D" parent="."]
-visible = false
 
 [node name="Ground" parent="Geometry" instance=ExtResource("5_m0f4h")]
 
@@ -128,12 +171,41 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.4379
 material_override = ExtResource("12_n2obh")
 mesh = ExtResource("13_21dio")
 
+[node name="Box2" type="RigidBody3D" parent="." node_paths=PackedStringArray("burner")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21982, 0.5, 0)
+collision_layer = 10
+collision_mask = 11
+script = ExtResource("14_lphk1")
+burner = NodePath("Burn Manager")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000360429, -0.00133473, 0)
+shape = SubResource("BoxShape3D_uptam")
+
+[node name="Mesh" type="MeshInstance3D" parent="Box2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240272, 0, 0)
+mesh = ExtResource("15_oddg1")
+surface_material_override/0 = SubResource("ShaderMaterial_noukc")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Box2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240272, 0, -2)
+mesh = ExtResource("15_oddg1")
+surface_material_override/0 = SubResource("ShaderMaterial_noukc")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Box2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240272, 0, -4)
+mesh = ExtResource("15_oddg1")
+surface_material_override/0 = SubResource("ShaderMaterial_noukc")
+
+[node name="Burn Manager" parent="Box2" node_paths=PackedStringArray("mesh") instance=ExtResource("25_lsjjf")]
+mesh = NodePath("../Mesh")
+
 [node name="Death Plane" parent="." instance=ExtResource("14_fhsse")]
 transform = Transform3D(90.005, 0, 0, 0, 1, 0, 0, 0, 85.51, -0.293411, -1.21824, -0.180328)
 
 [editable path="Player"]
-[editable path="Player/AM_PlayerIdle"]
 [editable path="Player/UIController/Menu"]
 [editable path="Player/UIController/Inventory"]
+[editable path="Box"]
 [editable path="Chest"]
 [editable path="Chest/Pickup"]

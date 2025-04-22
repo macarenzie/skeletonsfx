@@ -2583,6 +2583,8 @@ shape = SubResource("BoxShape3D_67rnx")
 
 [node name="Win" type="Area3D" parent="Triggers"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1.75, -33.75)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/Win"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.25)
@@ -2599,7 +2601,7 @@ navigation_mesh = SubResource("NavigationMesh_ieyax")
 environment = SubResource("Environment_al300")
 
 [node name="Death Plane" parent="." instance=ExtResource("11_uj820")]
-transform = Transform3D(90.5991, 0, 0, 0, 1, 0, 0, 0, 84.8345, -17.7105, -7.82556, -12.1622)
+transform = Transform3D(90.5991, 0, 0, 0, 1, 0, 0, 0, 84.8345, -17.7105, -3.07496, -12.1622)
 
 [connection signal="tree_exited" from="Props/Sword Pickup/Weapon" to="." method="_on_weapon_tree_exited"]
 [connection signal="tree_exited" from="Enemies/Enemy A" to="." method="_on_enemy_a_tree_exited"]
