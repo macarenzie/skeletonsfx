@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c6bw4p1otedk5" path="res://Inventory/pickup.tscn" id="5_26ev8"]
 [ext_resource type="ArrayMesh" uid="uid://ditnncssdtspl" path="res://Assets/Models/P_Sword.obj" id="6_a6e2v"]
 [ext_resource type="Material" uid="uid://bontt4yctopbk" path="res://Assets/Materials/Sword_Mat.tres" id="7_kl3kh"]
-[ext_resource type="PackedScene" uid="uid://cponc45xl3euw" path="res://Props/Torch.tscn" id="10_bu4vf"]
+[ext_resource type="PackedScene" uid="uid://daudtv7xnhq1b" path="res://Props/Torch.tscn" id="10_bu4vf"]
 [ext_resource type="PackedScene" uid="uid://ics10igxbxyv" path="res://Props/death_plane.tscn" id="11_uj820"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfu4"]

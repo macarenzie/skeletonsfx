@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=41 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="2_3xs3q"]
