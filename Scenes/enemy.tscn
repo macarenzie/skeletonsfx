@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://86tqqctnpter"]
+[gd_scene load_steps=36 format=3 uid="uid://86tqqctnpter"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyPathfinding.gd" id="1_xoblp"]
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
@@ -49,6 +49,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_irdcn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qi2he"]
+size = Vector3(0.3, 0.3, 0.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i22x"]
 resource_name = "standardSurface1"
@@ -313,7 +316,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2jscl"]
@@ -379,204 +382,6 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_kvjqp")
 radius = 0.2
 height = 0.4
-
-[sub_resource type="Animation" id="Animation_mpaop"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.731, 1.29698, -0.952375)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.58924, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon/WeaponHitBox:enabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("EnemyBehavior:attacking_player")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Weapon/ball:mesh:material:albedo_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_5saek"]
-resource_name = "attack"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.731, 0.9, -0.6), Vector3(-0.731, 2.80284, 0.177258), Vector3(-0.302794, 0.984882, -1.14168), Vector3(-0.731, 0.9, -0.6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.8326, 0, 0), Vector3(0.550023, 0, 0), Vector3(-1.92054, 0, 0), Vector3(-1.8326, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon/WeaponHitBox:enabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.7, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("EnemyBehavior:attacking_player")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Weapon/ball:mesh:material:albedo_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.7, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_41tca"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.731, 0.9, -0.6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapon:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.8326, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Weapon/WeaponHitBox:enabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("EnemyBehavior:attacking_player")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Weapon/ball:mesh:material:albedo_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_or2oh"]
-_data = {
-"RESET": SubResource("Animation_mpaop"),
-"attack": SubResource("Animation_5saek"),
-"idle": SubResource("Animation_41tca")
-}
 
 [node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 collision_layer = 16
@@ -667,7 +472,7 @@ bones/10/parent = 9
 bones/10/rest = Transform3D(0.99999, -9.54627e-16, -0.0044844, 9.32752e-16, 1, -4.88016e-15, 0.0044844, 4.87593e-15, 0.99999, -0.326628, 1.01124e-05, 0.00873361)
 bones/10/enabled = true
 bones/10/position = Vector3(-0.326628, 1.01124e-05, 0.00873361)
-bones/10/rotation = Quaternion(-0.00216742, -0.00290873, -0.0332001, 0.999442)
+bones/10/rotation = Quaternion(-8.36472e-10, -0.00224221, -1.18291e-10, 0.999997)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "CM_Skeleton_jnt_R_thumb01"
 bones/11/parent = 10
@@ -821,7 +626,7 @@ bones/32/parent = 31
 bones/32/rest = Transform3D(0.993451, 0.114262, 4.39518e-16, -0.114262, 0.993451, 7.12734e-15, 3.77748e-16, -7.13088e-15, 1, 0.199584, -0.00141443, -0.0147446)
 bones/32/enabled = true
 bones/32/position = Vector3(0.199584, -0.00141443, -0.0147446)
-bones/32/rotation = Quaternion(-3.57041e-15, 1.54677e-17, -0.057225, 0.998361)
+bones/32/rotation = Quaternion(0.171766, -0.219054, -0.0411186, 0.959594)
 bones/32/scale = Vector3(1, 1, 1)
 bones/33/name = "CM_Skeleton_jnt_L_shoulder01"
 bones/33/parent = 32
@@ -842,7 +647,7 @@ bones/35/parent = 34
 bones/35/rest = Transform3D(0.99999, 1.36877e-16, -0.00448426, -5.31932e-16, 1, -8.80969e-14, 0.00448426, 8.80984e-14, 0.99999, 0.326628, -1.01136e-05, -0.00873367)
 bones/35/enabled = true
 bones/35/position = Vector3(0.326628, -1.01136e-05, -0.00873367)
-bones/35/rotation = Quaternion(-0.0766079, 0.314413, -0.0355151, 0.945524)
+bones/35/rotation = Quaternion(-1.93251e-08, -0.00224214, 1.48782e-11, 0.999997)
 bones/35/scale = Vector3(1, 1, 1)
 bones/36/name = "CM_Skeleton_jnt_L_thumb01"
 bones/36/parent = 35
@@ -961,7 +766,7 @@ bones/52/parent = 35
 bones/52/rest = Transform3D(0.996175, -3.80791e-15, 0.0873838, -2.55114e-16, 1, 4.64851e-14, -0.0873838, -4.63296e-14, 0.996175, 0.00947297, 0.000690186, -0.0202601)
 bones/52/enabled = true
 bones/52/position = Vector3(0.00947297, 0.000690186, -0.0202601)
-bones/52/rotation = Quaternion(-0.468927, 0.187573, -0.0947485, 0.857873)
+bones/52/rotation = Quaternion(-0.468927, 0.187573, -0.0947486, 0.857873)
 bones/52/scale = Vector3(1, 1, 1)
 bones/53/name = "CM_Skeleton_jnt_L_pinkie02"
 bones/53/parent = 52
@@ -1091,7 +896,7 @@ bones/70/rotation = Quaternion(-0.066075, 0.753479, 0.0826947, 0.648896)
 bones/70/scale = Vector3(1, 1, 1)
 
 [node name="P_Mace" type="BoneAttachment3D" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D"]
-transform = Transform3D(0.893643, 0.0569775, -0.217258, -0.0040459, -0.887067, -0.249281, -0.224569, 0.242716, -0.86006, 0.416941, 0.150898, -0.577151)
+transform = Transform3D(0.630944, 0.302928, 0.599325, 0.149895, -0.865141, 0.27948, 0.654589, -0.0938758, -0.641674, -0.0286537, 0.0340692, -0.656408)
 bone_name = "P_Mace"
 bone_idx = 56
 
@@ -1099,6 +904,14 @@ bone_idx = 56
 mesh = SubResource("ArrayMesh_coki0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_2nqcl")
+
+[node name="WeaponHitBox" type="ShapeCast3D" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D/P_Mace/P_Mace"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.225)
+shape = SubResource("BoxShape3D_qi2he")
+target_position = Vector3(0, 0, 0)
+collision_mask = 2
+debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="CM_Skeleton_Skeleton_Mesh_Combined_pasted__pasted__pCube166" type="MeshInstance3D" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D"]
 mesh = SubResource("ArrayMesh_22ift")
@@ -1121,6 +934,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29188, 0)
 script = ExtResource("2_ris5s")
 forward_pathfinding_detection_range = 6.0
+vicinity_pathfinding_detection_range = 2.0
 
 [node name="RayToPlayer" type="RayCast3D" parent="Model/Head"]
 unique_name_in_owner = true
@@ -1187,14 +1001,11 @@ shape = SubResource("CapsuleShape3D_bshh7")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
-path_desired_distance = 2.0
 path_height_offset = 0.25
-debug_enabled = true
 
 [node name="EnemyBehavior" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_loj3b")
-attacking_player = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 script = ExtResource("4_vqdun")
@@ -1236,7 +1047,7 @@ show_percentage = false
 transform = Transform3D(1, 0, 0, 0, -0.0184426, 0.99983, 0, -0.99983, -0.0184426, -0.731, 1.29698, -0.952375)
 visible = false
 
-[node name="WeaponHitBox" type="ShapeCast3D" parent="Weapon"]
+[node name="WeaponHitBox2" type="ShapeCast3D" parent="Weapon"]
 unique_name_in_owner = true
 transform = Transform3D(1, -2.98023e-08, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
 enabled = false
@@ -1252,12 +1063,6 @@ mesh = SubResource("CylinderMesh_nqg0h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.558111, 0)
 mesh = SubResource("SphereMesh_2l2w6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-active = false
-libraries = {
-"": SubResource("AnimationLibrary_or2oh")
-}
-autoplay = "idle"
-
+[connection signal="Attack_Player" from="Model/Head" to="EnemyBehavior" method="_on_head_attack_player"]
 [connection signal="Player_Detected" from="Model/Head" to="." method="_on_head_player_detected"]
 [connection signal="Player_Detected" from="Model/Head" to="EnemyBehavior" method="_on_head_player_detected"]
