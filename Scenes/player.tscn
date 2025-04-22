@@ -531,6 +531,17 @@ script = ExtResource("9_t1dii")
 visible = false
 layout_mode = 1
 
+[node name="RichTextLabel" parent="UIController/Menu/ColorRect/MarginContainer2" index="0"]
+text = "WASD to move
+Space to jump
+Left click to attack
+Right click to block
+Middle Click to Spawn Fire
+I to open inventory
+E to loot items
+Q to absorb Fire
+Esc for menu"
+
 [node name="Crosshair" type="Control" parent="UIController"]
 process_mode = 3
 layout_mode = 1
