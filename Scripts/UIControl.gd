@@ -118,6 +118,19 @@ func kill_player():
 	playerUIPage1.visible = false
 	playerDead = true
 	get_tree().paused = true
+	$"Menu/ColorRect/Game Over/Label".text = "Game Over"
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+
+func win_player():
+	pauseMenu.visible = true
+	playerUI.visible = false
+	playerUIGameOver.visible = true
+	playerCrosshair.visible = false
+	playerUIPage1.visible = false
+	playerDead = true
+	get_tree().paused = true
+	$"Menu/ColorRect/Game Over/Label".text = "You have become Bonefire"
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 
