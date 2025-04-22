@@ -32,7 +32,7 @@ func _on_encounter_a_body_entered(body):
 	if not EncA_Flag and body == Player:
 		Gate_B1.close()
 		Gate_B2.close()
-		Enemy_A.position = 0
+		Enemy_A.position.y = 0
 		EncA_Flag = true
 
 func _on_enemy_a_tree_exited():

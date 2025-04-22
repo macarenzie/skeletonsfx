@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/EnemyDetection.gd" id="2_ris5s"]
 [ext_resource type="Material" uid="uid://kb4xg02en0e5" path="res://Assets/Materials/Mace_Mat.tres" id="3_2nqcl"]
 [ext_resource type="Script" path="res://Scripts/EnemyBehavior.gd" id="3_loj3b"]
-[ext_resource type="Material" uid="uid://bi5bnxuxlhrjd" path="res://Assets/Materials/Skeleton_Mat.tres" id="4_cw11r"]
+[ext_resource type="Material" uid="uid://bvwxaar5qs56v" path="res://Assets/Materials/Skeleton_Mat.tres" id="4_cw11r"]
 [ext_resource type="Script" path="res://Scenes/Dummy.gd" id="4_vqdun"]
 [ext_resource type="AnimationLibrary" uid="uid://ce7lmix6lcxvs" path="res://Assets/Animations/Skeleton/res/Enemy/EnemyAttack.res" id="5_g560p"]
 [ext_resource type="AnimationLibrary" uid="uid://c4v7unjqt4vsb" path="res://Assets/Animations/Skeleton/res/Enemy/EnemyDamaged.res" id="6_no1rk"]
@@ -866,7 +866,7 @@ bones/70/rotation = Quaternion(-0.066075, 0.753479, 0.0826947, 0.648895)
 bones/70/scale = Vector3(1, 1, 1)
 
 [node name="P_Mace" type="BoneAttachment3D" parent="Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D"]
-transform = Transform3D(-0.496851, -0.771429, 0.0841549, -0.734368, 0.499712, 0.245024, -0.250774, 0.0650507, -0.884265, 0.306764, -0.378129, -0.781073)
+transform = Transform3D(-0.496851, -0.771429, 0.0841548, -0.734367, 0.499712, 0.245025, -0.250774, 0.0650512, -0.884265, 0.306764, -0.37813, -0.781074)
 bone_name = "P_Mace"
 bone_idx = 56
 
