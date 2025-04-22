@@ -59,7 +59,7 @@ func _process(_delta):
 		end_block()
 	elif Input.is_action_pressed("attack") and $"../PlayerHead/WeaponHolder".visible == true: 
 		attack()
-	elif Input.is_action_just_pressed("fire"):
+	elif Input.is_action_just_pressed("fire") && Input.is_key_pressed(KEY_Q) == false:
 		fire()
 	
 	if !blocking:
@@ -70,7 +70,7 @@ func _process(_delta):
 func take_damage(originator:Node,value:int):
 	#find if the origin of the hit was within the block angle
 	var player : Node = get_parent()
-	var player_to_attacker = Vector2(player.position.x-originator.position.x,player.position.z-originator.position.z).normalized()
+	var player_to_attacker = Vector2(player.posistion.x-originator.position.x,player.position.z-originator.position.z).normalized()
 	var facing_direction = Vector2(sin(player.rotation.y),cos(player.rotation.y)).normalized()
 	var incoming_angle = rad_to_deg(acos(player_to_attacker.dot(facing_direction)))
 	#print(player_to_attacker.dot(facing_direction))
@@ -105,6 +105,7 @@ func attack():
 	#innerfire.innerFire - 30.0
 
 func reset_attack():
+	print("ATAAAAAAAAAAAAACK!")
 	hitList.clear()
 	attacking = false
 	ready_to_attack = true
@@ -118,8 +119,14 @@ func attack_raycast():
 	if !attack_ray.get_collider() is Hittable: #if it's not hittable don't continue
 		return
 	var object_hit : Hittable = attack_ray.get_collider()
-	#print("I hit "+object_hit.to_string())
-	object_hit.hit(self,attack_damage)
+	print("I hit "+object_hit.to_string())
+	if(!object_hit.get_parent().get_parent().is_in_group("fire")):
+		object_hit.hit(self,attack_damage)
+		print("obj hit")
+	else:
+		get_parent().get_node("InnerFire").innerFire += 20.0
+		object_hit.queue_free()
+		print("Fire hit!")
 
 #functions for blocking
 func start_block():
@@ -157,7 +164,22 @@ func fire():
 	var new_fire = load("res://Fire/Fire.tscn").instantiate()
 	new_fire.global_position = get_parent().position + Vector3(0, 0.8, 0)
 	get_parent().get_parent().add_child(new_fire)
+# Access camera
+	var camera = get_parent().get_node("PlayerHead/PlayerCamera")
+	if camera == null:
+		print("Camera not found!")
+		return
+	var forward = -camera.global_transform.basis.z.normalized()  # forward = -Z
+	var up = Vector3.UP  # global up
 	
+	# Combine forward and up for 45-degree arc
+	var launch_direction = (forward + up/2).normalized()
+	
+	# Scale force
+	var force = launch_direction * 25  # adjust this for more/less power
+	
+	# Apply the force
+	new_fire.apply_force(force)
 	var innerfire = %InnerFire
 	innerfire.innerFire - 30.0
 
