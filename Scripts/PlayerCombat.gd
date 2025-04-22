@@ -197,3 +197,5 @@ func _on_area_3d_body_entered(body):
 	if body.has_method("take_damage") and not hitList.has(body) and attacking:
 		hitList.append(body)
 		body.take_damage(attack_damage)
+
+#
