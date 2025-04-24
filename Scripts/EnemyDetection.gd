@@ -32,11 +32,11 @@ func _process(delta):
 	short_range_check = local_player.length() < vicinity_pathfinding_detection_range
 	attack_range_check = local_player.length() <= forward_attack_detection_range
 	angle_check = Vector3.FORWARD.dot(local_player.normalized()) > cos(deg_to_rad(angle/2))
-	print(Vector3.FORWARD.dot(local_player.normalized()))
-	print(angle_check)
+	#print(Vector3.FORWARD.dot(local_player.normalized()))
+	#print(angle_check)
 	enemy_behavior.can_see_player = false
 	if attack_range_check and angle_check and not enemy_behavior.attacking_player:
-		print("I want to attack")
+		#print("I want to attack")
 		Attack_Player.emit()
 	if short_range_check:
 		Player_Detected.emit(player.position)	

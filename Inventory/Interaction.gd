@@ -8,6 +8,7 @@ var old_storage = {}
 
 @onready var viewport = $Sprite3D
 @export var isPermanant = false
+@export var worldItem = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport.visible = false
@@ -24,6 +25,15 @@ func _process(delta):
 			#if invetory.is_Loaded:
 				#storage = invetory.pull_enemy_grid()
 				
+
+func _on_inventory_closed():
+	if worldItem and player_in_range:
+		if invetory != null:
+			invetory.pull_enemy_grid()
+			storage = invetory.enemy_item_data
+			print(storage.size())
+				
+			 
 
 func _on_body_entered(body):
 	if body.name.match("Player"):

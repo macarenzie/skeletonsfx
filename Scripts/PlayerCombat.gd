@@ -118,6 +118,10 @@ func attack_raycast():
 	attack_ray.force_raycast_update()
 	if !attack_ray.is_colliding(): #if it's not colliding with anything don't continue
 		return
+	print(attack_ray.get_collider())
+	if attack_ray.get_collider().has_method("take_damage") and !attack_ray.get_collider() is Hittable:
+		var object_hit = attack_ray.get_collider()
+		object_hit.take_damage(attack_damage, false)
 	if !attack_ray.get_collider() is Hittable: #if it's not hittable don't continue
 		return
 	var object_hit : Hittable = attack_ray.get_collider()
@@ -189,7 +193,7 @@ func fire():
 	# Apply the force
 	new_fire.apply_force(force)
 	var innerfire = %InnerFire
-	innerfire.innerFire - 30.0
+	innerfire.innerFire -= 5.0
 
 
 #Temparary weapon damage Code. 

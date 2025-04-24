@@ -37,101 +37,6 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_rnh1g"]
-resource_name = "camera_animation"
-length = 10.0
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -1.8437, 1.44916, -21.0777, 6, 1, -1.8437, 1.44916, 40.5111)
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.152941, 0.101961, 0.0705882, 0.752941), Color(0.968627, 0.392157, 0.172549, 0), Color(0.866667, 0.494118, 0.0666667, 0.643137), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866645, 0.493271, 0.0659541, 1), Color(0.968627, 0.392157, 0.172549, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/ColorRect:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Label:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.8, 6, 6.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Label:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 6, 6.5, 7, 7.5, 8, 8.5, 9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Label:text")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.9, 6, 8, 8.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": ["Press Escape to skip", "May you burn forever eternal...", "May you burn forever eternal...", "May you burn forever eternal...", "Now Arise "]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(6, 6.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.996078, 0.898039, 0.666667, 0), Color(0.996078, 0.898039, 0.666667, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_cweim"]
 resource_name = "Start_1"
 length = 2.0
@@ -170,6 +75,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["Press Q to Absorb Fire"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_8ewfb"]
@@ -253,6 +182,101 @@ tracks/2/keys = {
 "values": ["Press Q to Absorb Fire"]
 }
 
+[sub_resource type="Animation" id="Animation_rnh1g"]
+resource_name = "camera_animation"
+length = 10.5
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -1.8437, 1.44916, -21.0777, 6, 1, -1.8437, 1.44916, 40.5111)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.152941, 0.101961, 0.0705882, 0.752941), Color(0.968627, 0.392157, 0.172549, 0), Color(0.866667, 0.494118, 0.0666667, 0.643137), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866667, 0.494118, 0.0666667, 1), Color(0.968627, 0.392157, 0.172549, 1), Color(0.866645, 0.493271, 0.0659541, 1), Color(0.968627, 0.392157, 0.172549, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 6, 6.5, 7, 7.5, 8, 8.5, 9, 10, 10.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.9, 6, 8, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Press Escape to skip", "May you burn forever eternal...", "May you burn forever eternal...", "May you burn forever eternal...", "Now Arise "]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(6, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.996078, 0.898039, 0.666667, 0), Color(0.996078, 0.898039, 0.666667, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jkw1n"]
 _data = {
 "RESET": SubResource("Animation_2ahit"),
@@ -268,7 +292,7 @@ _data = {
 script = ExtResource("1_q1osx")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8437, 1.44916, 40.5111)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8437, 1.44916, -21.0777)
 attributes = SubResource("CameraAttributesPractical_0v624")
 current = true
 far = 13.29
@@ -430,7 +454,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.968627, 0.392157, 0.172549, 1)
+color = Color(0.152941, 0.101961, 0.0705882, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
@@ -442,11 +466,11 @@ offset_bottom = 0.155975
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 1)
+theme_override_colors/font_color = Color(0.996078, 0.898039, 0.666667, 0)
 theme_override_fonts/font = ExtResource("4_ph7n0")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mqmcc")
-text = "Now Arise "
+text = "Press Q to Absorb Fire"
 horizontal_alignment = 1
 vertical_alignment = 1
 

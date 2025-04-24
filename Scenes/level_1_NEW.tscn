@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cqxno1ivt58jp"]
+[gd_scene load_steps=71 format=3 uid="uid://cqxno1ivt58jp"]
 
 [ext_resource type="Script" path="res://Scripts/Room Managers/L1_Manager.gd" id="1_tw7dh"]
 [ext_resource type="PackedScene" uid="uid://dqyao6x5oq0kc" path="res://Props/Box.tscn" id="2_3t8e0"]
@@ -62,16 +62,11 @@
 [ext_resource type="PackedScene" uid="uid://ld7j1uoh6lh7" path="res://Geometry/Roof/roof_2x3.tscn" id="38_e4iyy"]
 [ext_resource type="PackedScene" uid="uid://80kuyo1gq5sd" path="res://Geometry/Roof/roof_2x2.tscn" id="44_sywyb"]
 [ext_resource type="PackedScene" uid="uid://boyhi74etqvv8" path="res://Props/Bonefire.tscn" id="50_pevhi"]
+[ext_resource type="Texture2D" uid="uid://cdr12t3i68sh8" path="res://Assets/UI Assets/Work around Test.png" id="55_a8ke2"]
 [ext_resource type="PackedScene" uid="uid://33mj4e2b1ksm" path="res://Props/Door.tscn" id="59_7h38t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wfu4"]
 size = Vector3(1, 2.55579, 0.916504)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_5k34o"]
-viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_w48xy"]
-viewport_path = NodePath("Area3D/Sprite3D/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5j4v6"]
 size = Vector3(0.30542, 1.02698, 0.212189)
@@ -2405,8 +2400,11 @@ storage = {
 2: [3, 8, 180]
 }
 
+[node name="CollisionShape3D" parent="Props/Chest/Pickup/Area3D" index="0"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.357826, 0)
+
 [node name="Sprite3D" parent="Props/Chest/Pickup/Area3D" index="1"]
-texture = SubResource("ViewportTexture_5k34o")
+texture = ExtResource("55_a8ke2")
 
 [node name="Sword Pickup" parent="Props" instance=ExtResource("5_26ev8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -21.6091)
@@ -2415,10 +2413,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03395, -0.038463, -21.6091
 storage = {
 0: [1, 32, 90]
 }
+worldItem = true
 
 [node name="Sprite3D" parent="Props/Sword Pickup/Area3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0024395, 1.16763, 0.00157547)
-texture = SubResource("ViewportTexture_w48xy")
+texture = ExtResource("55_a8ke2")
 
 [node name="PlayerModel" parent="Props/Sword Pickup/Area3D" index="2"]
 visible = false
@@ -2623,8 +2622,19 @@ transform = Transform3D(90.5991, 0, 0, 0, 1, 0, 0, 0, 84.8345, -17.7105, -3.0749
 [connection signal="body_entered" from="Triggers/Encounter_A" to="." method="_on_encounter_a_body_entered"]
 [connection signal="body_entered" from="Triggers/Encounter_B" to="." method="_on_encounter_b_body_entered"]
 [connection signal="body_entered" from="Triggers/Win" to="." method="_on_win_body_entered"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="Player/UIController" method="_on_restart_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="Player/UIController" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
+[connection signal="closed" from="Player/UIController/Inventory" to="Props/Sword Pickup/Area3D" method="_on_inventory_closed"]
 
 [editable path="Props/Chest"]
 [editable path="Props/Chest/Pickup"]
 [editable path="Props/Sword Pickup"]
 [editable path="Props/Boxes/Box"]
+[editable path="Player"]
+[editable path="Player/UIController/Menu"]

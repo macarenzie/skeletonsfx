@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b44n5un2mgd3u"]
+[gd_scene load_steps=52 format=3 uid="uid://b44n5un2mgd3u"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_4wc5k"]
 [ext_resource type="ArrayMesh" uid="uid://ctgnrqjctk35d" path="res://Assets/Models/CM_Skeleton.obj" id="2_3xs3q"]
@@ -668,9 +668,37 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_blv3l"]
+resource_name = "heal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.968627, 0.392157, 0.172549, 0), Color(0.968627, 0.392157, 0.172549, 0.298039), Color(0.968627, 0.392157, 0.172549, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tdcv0"]
 _data = {
-"Fade": SubResource("Animation_ivhau")
+"Fade": SubResource("Animation_ivhau"),
+"heal": SubResource("Animation_blv3l")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qdbma"]
@@ -1193,7 +1221,7 @@ bones/71/rotation = Quaternion(-0.066075, 0.753479, 0.0826947, 0.648896)
 bones/71/scale = Vector3(1, 1, 1)
 
 [node name="P_Shield" type="BoneAttachment3D" parent="AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D"]
-transform = Transform3D(-0.412974, -0.245224, -0.315591, -0.320348, 0.47445, 0.0505369, 0.238976, 0.212232, -0.477628, -0.0931223, 0.200716, -1.28896)
+transform = Transform3D(-0.412973, -0.245225, -0.315591, -0.320349, 0.47445, 0.0505365, 0.238976, 0.212232, -0.477628, -0.0931234, 0.200716, -1.28896)
 bone_name = "P_Shield"
 bone_idx = 31
 
@@ -1204,7 +1232,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_yeb8m")
 
 [node name="P_Sword" type="BoneAttachment3D" parent="AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D"]
-transform = Transform3D(0.184744, 0.828037, 0.875975, -0.438573, 0.871639, -0.731442, -1.12278, -0.204228, 0.429846, 0.0122542, 0.0809693, -0.88543)
+transform = Transform3D(0.184743, 0.828037, 0.875975, -0.438573, 0.871638, -0.731443, -1.12278, -0.204228, 0.429846, 0.0122545, 0.0809692, -0.88543)
 bone_name = "P_Sword"
 bone_idx = 57
 
@@ -1261,7 +1289,6 @@ unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 3
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="ShieldHolder" type="Node3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -1295,6 +1322,7 @@ shape = SubResource("BoxShape3D_2p3wn")
 
 [node name="FireAbsorber" type="Area3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.91616, 0)
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHead/FireAbsorber"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0231909, 1.92807, -1.61951)
@@ -1508,10 +1536,11 @@ libraries = {
 autoplay = "Fade"
 
 [node name="ColorRect" type="ColorRect" parent="UIController"]
+visible = false
 layout_mode = 0
 offset_right = 1162.0
 offset_bottom = 656.0
-color = Color(0.968627, 0.392157, 0.172549, 1)
+color = Color(0.968627, 0.392157, 0.172549, 0)
 
 [node name="PlayerAirDetector" type="Area3D" parent="."]
 collision_layer = 4

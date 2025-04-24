@@ -35,6 +35,8 @@ var isOpen: bool = false
 var perferd_grid = null
 var weaponRange = 0
 
+var worldItem = false
+
 #controll looting
 var in_range = false
 #var 
@@ -336,6 +338,7 @@ func close():
 
 func loot(item:int, slot:int):
 	if in_range:
+		print("looting")
 		enemy_item_data = {}
 		visible = true
 		enemy_rect.visible = true
@@ -351,7 +354,7 @@ func loot(item:int, slot:int):
 			await placed_enemy
 		loaded_enemy_item_data = {}
 	else:
-		pass
+		open()
 
 
 
@@ -387,6 +390,7 @@ func clear_enemy_grid():
 func load_enemy_grid(storage):
 	is_Loaded = true
 	loaded_enemy_item_data = storage
+	print(loaded_enemy_item_data)
 
 #Used to send the storage data to pickup objects after leaving the objects area
 func left_looting_area():

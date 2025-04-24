@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://boyhi74etqvv8"]
+[gd_scene load_steps=8 format=3 uid="uid://boyhi74etqvv8"]
 
 [ext_resource type="ArrayMesh" uid="uid://c38ka7n8361lf" path="res://Assets/Models/Bonefire.obj" id="1_mh4il"]
 [ext_resource type="Material" uid="uid://c0p42t446dqf4" path="res://Assets/Materials/Bonefire_Mat.tres" id="2_bfgkq"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nhj7q"]
 radius = 1.51921
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qddp0"]
+size = Vector3(0.907257, 1.64925, 0.779813)
 
 [node name="Bonefire" type="StaticBody3D"]
 collision_layer = 8
@@ -29,3 +32,9 @@ shape = SubResource("SphereShape3D_nhj7q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05953, 0)
 amount = 100
 lifetime = 0.12
+
+[node name="BoneFire" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoneFire"]
+transform = Transform3D(3.11564, 0, 0, 0, 1.47819, 0, 0, 0, 3.77917, -0.165662, 1.57973, -0.0316618)
+shape = SubResource("BoxShape3D_qddp0")

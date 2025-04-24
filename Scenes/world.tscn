@@ -94,10 +94,10 @@ process_mode = 1
 transform = Transform3D(-0.78536, 0, -0.619039, 0, 1, 0, 0.619039, 0, -0.78536, 5.95762, 39.9727, -6.3625)
 
 [node name="P_Shield" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="0"]
-transform = Transform3D(-0.26188, -0.477811, -0.182745, -0.340507, 0.316023, -0.338326, 0.381778, -0.0458933, -0.427106, -0.243349, 0.501942, -1.42037)
+transform = Transform3D(-0.412973, -0.245225, -0.315591, -0.320349, 0.47445, 0.0505365, 0.238976, 0.212232, -0.477628, -0.0931234, 0.200716, -1.28896)
 
 [node name="P_Sword" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.407567, -1.1418, 0.131467, -0.61743, -0.0998564, 1.04686, -0.969421, -0.416442, -0.61148, 0.42682, -0.18763, -0.98711)
+transform = Transform3D(0.184743, 0.828037, 0.875975, -0.438573, 0.871638, -0.731443, -1.12278, -0.204228, 0.429846, 0.0122545, 0.0809692, -0.88543)
 
 [node name="PlayerCamera" parent="Player/PlayerHead" index="0"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)

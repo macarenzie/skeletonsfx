@@ -13,6 +13,7 @@ extends Node3D
 @onready var Enemy_B2 = %"Enemy B2"
 
 @onready var Chest = %Chest
+@onready var pickup = 	$Props/Chest/Pickup/Area3D/CollisionShape3D
 
 var EncA_Flag = false
 var EncB_Count = 0
@@ -24,6 +25,7 @@ func _process(delta):
 func drop_chest():
 	if Chest.position.y > 0:
 		Chest.position.y -= 0.1
+		pickup.scale = 4.071
 
 func _on_weapon_tree_exited():
 	Gate_A.open()
@@ -39,7 +41,7 @@ func _on_enemy_a_tree_exited():
 	Gate_B2.open()
 
 func _on_encounter_b_body_entered(body):
-	if body == Player:
+	if body == Player and EncB_Count < 2:
 		Gate_C1.close()
 		Enemy_B1.position.y = 0
 		Enemy_B2.position.y = 0

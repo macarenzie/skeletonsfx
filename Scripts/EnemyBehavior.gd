@@ -53,27 +53,27 @@ func _process(delta):
 		pass
 
 func _physics_process(delta):
-	print("physics process")
+	#print("physics process")
 	if not attacking_player:
-		print("not attacking the player")
+		#print("not attacking the player")
 		return
-	print("trying to attack the player")
+	#print("trying to attack the player")
 	if attack_landed:
-		print("attack was already hit")
+		#print("attack was already hit")
 		return
-	print("attack hasn't hit yet")
+	#print("attack hasn't hit yet")
 	if not hit_box.enabled:
-		print("hit box isnt active")
+		#print("hit box isnt active")
 		return
-	print("hit box is active")
+	#print("hit box is active")
 	# the line that get the object the hit box is touching
 	hit_box.force_shapecast_update()
 	var obj_hit = hit_box.get_collider(0)
-	print(obj_hit)
+	#print(obj_hit)
 	if obj_hit == null:
-		print("obj detected was null")
+		#print("obj detected was null")
 		return
-	print("hit the player")
+	#print("hit the player")
 		
 	# the next two lines virtually have the same effect
 	attack_landed = true

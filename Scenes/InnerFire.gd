@@ -21,7 +21,7 @@ func switch():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	#print(innerFire)
-	print(firesList)
+	#print(firesList)
 	if firesList != []:
 		if innerFire <= maxInnerFire:
 			innerFire += 0.1 + fireRegen
@@ -41,14 +41,22 @@ func _physics_process(delta):
 		 # check the other Area3D’s name
 		if area.name == "FireFloorDetector":
 			if Input.is_key_pressed(KEY_Q):
+				$"../UIController/AnimationPlayer".play("heal")
 				innerFire += 5 *  area.get_parent().size
 				area.get_parent().queue_free()
 		elif area.name == "InfiniteFireSource":
 			if Input.is_key_pressed(KEY_Q):
+				$"../UIController/AnimationPlayer".play("heal")
 				innerFire += .1
 				print("I AM HEALING")
+		elif area.name == "BoneFire":
+			if Input.is_key_pressed(KEY_Q):
+				innerFire = maxInnerFire
+				$"../UIController/AnimationPlayer".play("heal")
+				print("FULL HEAL")
 		elif area.name == "FiniteFireSource":
 			if Input.is_key_pressed(KEY_Q):
+				$"../UIController/AnimationPlayer".play("heal")
 				innerFire += .1
 				print("I Healed once")
 				area.get_parent().queue_free()
