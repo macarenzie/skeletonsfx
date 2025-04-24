@@ -25,7 +25,9 @@ func _process(delta):
 func drop_chest():
 	if Chest.position.y > 0:
 		Chest.position.y -= 0.1
-		pickup.scale = 4.071
+		pickup.scale.x = 4.071
+		pickup.scale.y = 4.071
+		pickup.scale.z = 4.071
 
 func _on_weapon_tree_exited():
 	Gate_A.open()

@@ -2606,6 +2606,15 @@ shape = SubResource("BoxShape3D_2kvjq")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108571, 0, -0.006809)
 
+[node name="P_Shield" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.412973, -0.245225, -0.315591, -0.320349, 0.47445, 0.0505365, 0.238976, 0.212232, -0.477628, -0.0931234, 0.200716, -1.28896)
+
+[node name="P_Sword" parent="Player/AM_PlayerIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="1"]
+transform = Transform3D(0.184743, 0.828037, 0.875975, -0.438573, 0.871638, -0.731443, -1.12278, -0.204228, 0.429846, 0.0122545, 0.0809692, -0.88543)
+
+[node name="Weapon" parent="Player/PlayerHead/WeaponHolder" index="0"]
+transform = Transform3D(-2.58158e-06, 2.53786e-06, -0.999998, 0.707107, 0.707105, -3.09085e-08, 0.707107, -0.707105, -3.61998e-06, 0.486111, 0.127508, -0.460107)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ieyax")
 
@@ -2622,14 +2631,6 @@ transform = Transform3D(90.5991, 0, 0, 0, 1, 0, 0, 0, 84.8345, -17.7105, -3.0749
 [connection signal="body_entered" from="Triggers/Encounter_A" to="." method="_on_encounter_a_body_entered"]
 [connection signal="body_entered" from="Triggers/Encounter_B" to="." method="_on_encounter_b_body_entered"]
 [connection signal="body_entered" from="Triggers/Win" to="." method="_on_win_body_entered"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Resume" to="Player/UIController" method="_on_resume_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Controls" to="Player/UIController" method="_on_controls_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/DevRoom" to="Player/UIController" method="_on_dev_room_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/MarginContainer2/RichTextLabel/Back" to="Player/UIController" method="_on_back_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Restart" to="Player/UIController" method="_on_restart_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/MainMenu" to="Player/UIController" method="_on_main_menu_pressed"]
-[connection signal="pressed" from="Player/UIController/Menu/ColorRect/Game Over/VBoxContainer/Quit" to="Player/UIController" method="_on_quit_pressed"]
 [connection signal="closed" from="Player/UIController/Inventory" to="Props/Sword Pickup/Area3D" method="_on_inventory_closed"]
 
 [editable path="Props/Chest"]

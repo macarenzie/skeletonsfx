@@ -530,6 +530,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85591, -0.312391, 9.94637)
 transform = Transform3D(0.720103, 0, 0.693867, 0, 1, 0, -0.693867, 0, 0.720103, 0.137978, 0, 7.15011)
 script = null
 
+[node name="P_Mace" parent="Enemy/Model/AM_EnemyIdle/CM_Skeleton_Skeleton_Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.496851, -0.771429, 0.0841548, -0.734367, 0.499712, 0.245025, -0.250774, 0.0650512, -0.884265, 0.306764, -0.37813, -0.781074)
+
 [node name="Head" parent="Enemy/Model" index="1"]
 script = null
 
